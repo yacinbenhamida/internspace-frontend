@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="845px" height="835px" viewBox="0 0 845 835" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53 (72520) - https://sketchapp.com -->
+    <title>692A9205-5C9D-42DF-BDE1-9C542AB681C1</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="8.83013988%" y1="21.7350368%" x2="57.9343071%" y2="73.5003807%" id="linearGradient-1">
+            <stop stop-color="#cacaca" offset="0%"></stop>
+            <stop stop-color="#a5a5a5" offset="100%"></stop>
+        </linearGradient>
+        <path d="M558.86425,304.730606 C352.353197,235.667282 449.935456,112.235019 281,25 C167,-33.8674066 70.7068661,22.8659485 28,85 C-16.7177646,150.0597 2.58597282,245.476433 21,291 C56.330533,378.344929 157,404 196,466 C235,528 205,647.799077 264,758.299077 C323,868.799077 501.86425,840.655294 558.86425,788.799077 C618.466504,734.575439 651.581553,648.00859 734,581 C806.967224,521.675529 870.603301,474.754966 956.5,383 C973.375476,364.973594 1004.51541,326.986065 1049.91981,269.037411 C953.863333,300.664742 888.223398,319.985605 853,327 C731.945348,351.106849 654.707061,336.78324 558.86425,304.730606 Z" id="path-2"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="01_Index-v5" transform="translate(-955.000000, -195.000000)">
+            <g id="Group-4" transform="translate(125.000000, 103.000000)">
+                <g id="Iphone" transform="translate(830.000000, 92.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Mask" fill="url(#linearGradient-1)" fill-rule="nonzero" opacity="0.145651" xlink:href="#path-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

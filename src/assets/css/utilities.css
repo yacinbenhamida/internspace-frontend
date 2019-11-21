@@ -1,0 +1,1418 @@
+/* Info
+================================================== 
+     Author: http://bootstraptemplates.net 
+     Version: 1.0
+     License: GNU General Public License version
+ ================================================== 
+ Info */
+
+.font-weight-semi-bold{
+    font-weight:600!important;
+}
+/* ===========================================
+    Font Size
+============================================ */
+.fs-11 {
+    font-size: 11px !important;
+}
+.fs-12 { font-size: 12px !important; }
+.fs-13 { font-size: 13px !important; }
+.fs-14 { font-size: 14px !important; }
+.fs-15 { font-size: 15px !important; }
+.fs-16 { font-size: 16px !important; }
+.fs-17 { font-size: 17px !important; }
+.fs-18 { font-size: 18px !important; line-height: 26px; }
+.fs-19 { font-size: 19px !important; }
+.fs-20 { font-size: 20px !important; line-height: 30px; }
+.fs-21 { font-size: 21px !important; }
+.fs-22 { font-size: 22px !important; }
+.fs-23 { font-size: 23px !important; }
+.fs-24 { font-size: 24px !important; }
+.fs-25 { font-size: 25px !important; }
+.fs-26 { font-size: 26px !important; }
+.fs-27 { font-size: 27px !important; }
+.fs-28 { font-size: 28px !important; }
+.fs-29 { font-size: 29px !important; }
+.fs-30 { font-size: 30px; line-height: 1.2; }
+.fs-31 { font-size: 31px !important; }
+.fs-32 { font-size: 32px !important; }
+.fs-33 { font-size: 33px !important; }
+.fs-34 { font-size: 34px !important; }
+.fs-35 { font-size: 35px !important; }
+.fs-36 { font-size: 36px !important; }
+.fs-37 { font-size: 37px !important; }
+.fs-38 { font-size: 38px !important; }
+.fs-39 { font-size: 39px !important; }
+.fs-40 { font-size: 40px !important; }
+.fs-41 { font-size: 41px !important; }
+.fs-42 { font-size: 42px !important; line-height: 52px !important; }
+.fs-43 { font-size: 43px !important; }
+.fs-44 { font-size: 44px !important; }
+.fs-45 { font-size: 45px !important; }
+.fs-46 { font-size: 46px !important; }
+.fs-47 { font-size: 47px !important; }
+.fs-48 { font-size: 48px !important; }
+.fs-49 { font-size: 49px !important; }
+.fs-50 { font-size: 50px; line-height: 1.2; }
+.fs-51 { font-size: 51px !important; }
+.fs-52 { font-size: 52px !important; }
+.fs-53 { font-size: 53px !important; }
+.fs-54 { font-size: 54px !important; }
+.fs-55 { font-size: 55px !important; }
+.fs-56 { font-size: 56px !important; }
+.fs-57 { font-size: 57px !important; }
+.fs-58 { font-size: 58px !important; }
+.fs-59 { font-size: 59px !important; }
+.fs-60 { font-size: 60px !important; }
+.fs-61 { font-size: 61px !important; }
+.fs-62 { font-size: 62px !important; }
+.fs-63 { font-size: 63px !important; }
+.fs-64 { font-size: 64px !important; }
+.fs-65 { font-size: 65px !important;    line-height: 75px; }
+.fs-66 { font-size: 66px !important; }
+.fs-67 { font-size: 67px !important; }
+.fs-68 { font-size: 68px !important; }
+.fs-69 { font-size: 69px !important; }
+.fs-71 { font-size: 71px !important;line-height:1!important; }
+.fs-72 { font-size: 72px !important;line-height: 1.17; }
+.fs-73 { font-size: 73px !important; }
+.fs-74 { font-size: 74px !important; }
+.fs-75 { font-size: 75px !important; }
+.fs-76 { font-size: 76px !important; }
+.fs-77 { font-size: 77px !important; }
+.fs-78 { font-size: 78px !important; }
+.fs-79 { font-size: 79px !important; }
+.fs-81 { font-size: 81px !important; }
+.fs-82 { font-size: 82px !important; }
+.fs-83 { font-size: 83px !important; }
+.fs-84 { font-size: 84px !important; }
+.fs-85 { font-size: 85px !important; }
+.fs-86 { font-size: 86px !important; }
+.fs-87 { font-size: 87px !important; }
+.fs-88 { font-size: 88px !important; }
+.fs-89 { font-size: 89px !important; }
+.fs-91 { font-size: 91px !important; }
+.fs-92 { font-size: 92px !important; }
+.fs-93 { font-size: 93px !important; }
+.fs-94 { font-size: 94px !important; }
+.fs-95 { font-size: 95px !important; }
+.fs-96 { font-size: 96px !important; }
+.fs-97 { font-size: 97px !important; }
+.fs-98 { font-size: 98px !important; }
+.fs-99 { font-size: 99px !important; }
+.fs-100 { font-size: 100px; }
+
+/* ===========================================
+    Font Weight
+============================================ */
+.fw-100 { font-weight: 100 !important; }
+.fw-200 { font-weight: 200 !important; }
+.fw-300 { font-weight: 300 !important; }
+.fw-400 { font-weight: 400 !important; }
+.fw-500 { font-weight: 500 !important; }
+.fw-600 { font-weight: 600 !important; }
+
+
+/* ===========================================
+    Padding
+============================================ */
+.p-20 { padding: 20px !important; }
+.p-25 { padding: 25px !important; }
+.p-30 { padding: 30px !important; }
+.p-35 { padding: 35px !important; }
+
+/* ===========================================
+    Opacity
+============================================ */
+
+.o-0,
+.o-h-0:hover { opacity: 0 !important; }
+
+.o-1,
+.o-h-1:hover { opacity: .1 !important; }
+
+.o-2,
+.o-h-2:hover { opacity: .2 !important; }
+
+.o-3,
+.o-h-3:hover { opacity: .3 !important; }
+
+.o-4,
+.o-h-4:hover { opacity: .4 !important; }
+
+.o-5,
+.o-h-5:hover { opacity: .5 !important; }
+
+.o-6,
+.o-h-6:hover { opacity: .6 !important; }
+
+.o-7,
+.o-h-7:hover { opacity: .7 !important; }
+
+.o-8,
+.o-h-8:hover { opacity: .8 !important; }
+
+.o-9,
+.o-h-9:hover { opacity: .9 !important; }
+
+.o-10,
+.o-h-10:hover { opacity: 1 !important; }
+
+
+/* ===========================================
+    Filter styles
+============================================ */
+.saturate { filter: saturate(3); }
+.grayscale { filter: grayscale(100%); }
+.contrast { filter: contrast(160%); }
+.brightness { filter: brightness(0.25); }
+.blur { filter: blur(3px); }
+.invert { filter: invert(100%); }
+.sepia { filter: sepia(100%); }
+.huerotate { filter: hue-rotate(180deg); }
+
+ 
+/*------------------------------------
+  Link
+------------------------------------*/
+.m-link { border-bottom: 1px dashed #3c91fd; }
+.m-link-light { color: rgba(255, 255, 255, 0.7); border-bottom: 1px dashed rgba(255, 255, 255, 0.7); }
+.m-link-light:hover { color: #fff; border-color: rgba(255, 255, 255, 0.7); }
+.m-link-white { color: #fff; border-bottom: 1px dashed #fff; }
+.m-link-white:hover { color: #fff; }
+.m-link-muted { color: #8c98a4; border-bottom: 1px dashed #97a4af; }
+.m-link-muted:hover { color: #3c91fd; border-color: #3c91fd; }
+
+.link-white {
+    color: #fff !important;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.7);
+}
+.link-primary {
+    color: #1873EF !important;
+    border-bottom: 1px dashed #1873EF;
+}
+.link-secondary {
+    color: #77838f !important;
+    border-bottom: 1px dashed #77838f;
+}
+.link-success {
+    color: #00c9a7 !important;
+    border-bottom: 1px dashed #00c9a7;
+}
+.link-info {
+    color: #00dffc !important;
+    border-bottom: 1px dashed #00dffc;
+}
+.link-warning {
+    color: #ffc107 !important;
+    border-bottom: 1px dashed #ffc107;
+}
+.link-danger {
+    color: #de4437 !important;
+    border-bottom: 1px dashed #de4437;
+}
+.link-light {
+    color: #f6f9fc !important;
+    border-bottom: 1px dashed #f6f9fc;
+}
+.link-dark {
+    color: #1e2022 !important;
+    border-bottom: 1px dashed #1e2022;
+}
+
+
+.m-link-light { color: rgba(255, 255, 255, 0.7); border-bottom: 1px dashed rgba(255, 255, 255, 0.7); }
+.m-link-light:hover { color: #fff; border-color: rgba(255, 255, 255, 0.7); }
+.m-link-white { color: #fff; border-bottom: 1px dashed #fff; }
+.m-link-white:hover { color: #fff; }
+.m-link-muted { color: #8c98a4; border-bottom: 1px dashed #97a4af; }
+.m-link-muted:hover { color: #3c91fd; border-color: #3c91fd; }
+
+/*.list-inline-item:not(:last-child) { margin-right: 0.75rem; }*/
+
+
+/*------------------------------------
+  Border
+------------------------------------*/
+.border-top-muted { border-top: 1px solid rgba(231, 234, 243, 0.14) !important; }
+.border-bottom-muted { border-bottom: 1px solid rgba(231, 234, 243, 0.14) !important; }
+
+
+/*------------------------------------
+  Overlay Colors
+------------------------------------*/
+.overlay-light:before { background-color: #FFF !important; }
+.overlay-dark:before { background-color: #1c1f21 !important; }
+.overlay-primary:before { background-color: #3c91fd !important; }
+.overlay-secondary:before { background-color: #1c1f21 !important; }
+
+.bg-light-1 { background-color: #f9f9f9 !important; }
+.border-w-2 { border-width: 2px !important; }
+.border-w-3 { border-width: 3px !important; }
+
+.text-white p { color: rgba(255,255,255,0.85); }
+
+.vertical-center { height: 100%; width: 100%; display: flex; align-items: center; }
+.vertical-center:before { content: " "; display: inline-block; vertical-align: middle; height: 100%; }
+
+.text-white hr { border-top-color: rgba(255,255,255,0.15); }
+.text-white code { background-color: rgba(255,255,255,0.1); color: #eee; }
+
+
+hr.hr-1 { width: 40px; border-width: 3px; border-color: #3c91fd; display: inline-block; margin-top: 1em; }
+.hr-success { border-color: #00c9a7 !important; opacity: 0.7; }
+.hr-danger { border-color: #de4437 !important; opacity: 0.7; }
+.hr-primary { border-color: #3c91fd !important; opacity: 0.7; }
+.hr-indigo { border-color: #2d1582 !important; opacity: 0.7; }
+.hr-light { border-color: #f8f9fa !important; opacity: 0.7; }
+.hr-warning { border-color: #ffc107 !important; opacity: 0.8; }
+
+.m-list--link { display: block; color: #77838f; font-size: 0.875rem; padding-top: 0.425rem; padding-bottom: 0.425rem; }
+ 
+
+/*------------------------------------
+  Misc
+------------------------------------*/
+.pb-10, .py-10 { padding-bottom: 9rem !important; }
+.gap-x > *, .gap-x-3 > * { display: inline-block; margin-left: 8px; margin-right: 8px; }
+.row.gap-y > .col, .row.gap-y > [class*="col-"] { padding-top: 15px; padding-bottom: 15px; }
+
+.w-fullscreen, .w-100vw { width: 100vw !important }
+.h-fullscreen, .h-100vh { height: 100vh !important }
+.mw-fullscreen, .mw-100vw { min-width: 100vw !important }
+.mh-fullscreen, .mh-100vh { min-height: 100vh !important }
+
+@media (max-height: 640px) {
+    .h-fullscreen { height: auto !important }
+}
+
+.overflow-hidden { overflow: hidden; }
+.overflow-visible { overflow: visible; }
+.h-100 { height: 100% !important; }
+.opacity-95 { opacity: .95 !important; }
+
+.text-white a:not(.btn):not(.dropdown-item) { color: rgba(255,255,255,0.8); }
+.text-white .close { color: rgba(255,255,255,0.85); }
+
+.fit-cover { object-fit: cover; }
+
+
+
+/*------------------------------------
+  Background Position
+------------------------------------*/
+.bg-img { background-position: center; background-size: cover; background-repeat: no-repeat; }
+.bg-repeat { background-repeat: repeat; background-size: auto; }
+.bg-img-left { background-position: left center; }
+.bg-img-right { background-position: right center; }
+.bg-img-top { background-position: center top; }
+.bg-img-bottom { background-position: center bottom; }
+.bg-size-contain { background-size: contain; }
+.bg-fixed { background-attachment: fixed; }
+
+@media (max-width:640px) {
+    .bg-fixed { background-attachment: initial; }
+}
+
+
+.w-5 { width: 5% !important; }
+
+/*------------------------------------
+  Lead
+------------------------------------*/
+.lead-1 { font-size: 1.05469rem !important; }
+.lead-2 { font-size: 1.17188rem !important; }
+.lead-3 { font-size: 1.40625rem !important; }
+.lead-4 { font-size: 1.64063rem !important; }
+.lead-5 { font-size: 1.875rem !important; }
+.lead-6 { font-size: 2.34375rem !important; }
+.lead-7 { font-size: 3.04688rem !important; }
+.lead-8 { font-size: 3.75rem !important; }
+.lead-9 { font-size: 4.6875rem !important; }
+
+/*------------------------------------
+  Height
+------------------------------------*/
+.h-81 { height: 81px !important; }
+.h-150 { height: 150px !important; }
+.h-175 { height: 175px !important; }
+.h-200 { height: 200px !important; }
+.h-240 { height: 240px !important; }
+.h-245 { height: 245px !important; }
+.h-250 { height: 250px !important; }
+.h-300 { height: 300px !important; }
+.h-325 { height: 325px !important; }
+.h-350 { height: 350px !important; }
+.h-375 { height: 375px !important; }
+.h-380 { height: 380px !important; }
+.h-385 { height: 385px !important; }
+.h-390 { height: 390px !important; }
+.h-400 {height: 400px !important;}
+.h-425 {height: 425px !important;}
+.h-450 {height: 450px !important;}
+.h-475 {height: 475px !important;}
+.h-500 { height: 500px !important; }
+.h-600 { height: 600px !important; }
+
+.w-5px { width:5px!important }
+.w-10px { width:10px!important }
+.w-15px { width:15px!important }
+.w-20px { width:20px!important }
+.w-25px { width:25px!important }
+.w-30px { width:30px!important }
+.w-35px { width:35px!important }
+.w-40px { width:40px!important }
+.w-45px { width:45px!important }
+.w-50px { width:50px!important }
+.w-55px { width:55px!important }
+.w-60px { width:60px!important }
+.w-65px { width:65px!important }
+.w-70px { width:70px!important }
+.w-75px { width:75px!important }
+.w-80px { width:80px!important }
+.w-85px { width:85px!important }
+.w-90px { width:90px!important }
+.w-95px { width:95px!important }
+.w-100px { width:100px!important } 
+
+.w-40 {
+    width: 40% !important;
+}
+.w-30 { width: 30% !important; }
+.w-70 { width: 70% !important; }
+
+.w-90 {
+    width: 90% !important;
+}
+
+/*------------------------------------
+  Opacity
+------------------------------------*/
+.opacity-01 { opacity: 0.1; }
+.opacity-02 { opacity: 0.2; }
+.opacity-03 { opacity: 0.3; }
+.opacity-04 { opacity: 0.4; }
+.opacity-05 { opacity: 0.5; }
+.opacity-06 { opacity: 0.6; }
+.opacity-07 { opacity: 0.7; }
+.opacity-08 { opacity: 0.8; }
+.opacity-09 { opacity: 0.9; }
+.opacity-1 { opacity: 1; }
+
+
+/*------------------------------------
+  Shadow
+------------------------------------*/
+.shadow-0, .hover-shadow-0:hover { box-shadow: none; }
+.shadow-1, .hover-shadow-1:hover { box-shadow: 0 0 4px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-2, .hover-shadow-2:hover { box-shadow: 0 0 8px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-3, .hover-shadow-3:hover { box-shadow: 0 0 12px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-4, .hover-shadow-4:hover { box-shadow: 0 0 18px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-5, .hover-shadow-5:hover { box-shadow: 0 0 26px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-6, .hover-shadow-6:hover { box-shadow: 0 0 36px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-7, .hover-shadow-7:hover { box-shadow: 0 0 48px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-8, .hover-shadow-8:hover { box-shadow: 0 0 60px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-9, .hover-shadow-9:hover { box-shadow: 0 0 74px rgba(0,0,0,0.06); box-shadow: 0 0 36px rgba(0,0,0,0.06); }
+.shadow-10 {     box-shadow: 0 11px 45px rgba(58,64,64,.18); }
+
+
+
+/*------------------------------------
+  Padding
+------------------------------------*/
+.p-10 { padding: 4.5rem !important; }
+.pt-10, .py-10 { padding-top: 4.5rem !important; }
+.pr-10, .px-10 { padding-right: 4.5rem !important; }
+.pb-10, .py-10 { padding-bottom: 4.5rem !important; }
+.pl-10, .px-10 { padding-left: 4.5rem !important; }
+
+.p-11 { padding: 5rem !important; }
+.pt-11, .py-11 { padding-top: 5rem !important; }
+.pr-11, .px-11 { padding-right: 5rem !important; }
+.pb-11, .py-11 { padding-bottom: 5rem !important; }
+.pl-11, .px-11 { padding-left: 5rem !important; }
+
+.p-12 { padding: 5.5rem !important; }
+.pt-12, .py-12 { padding-top: 5.5rem !important; }
+.pr-12, .px-12 { padding-right: 5.5rem !important; }
+.pb-12, .py-12 { padding-bottom: 5.5rem !important; }
+.pl-12, .px-12 { padding-left: 5.5rem !important; }
+
+.p-13 { padding: 6rem !important; }
+.pt-13, .py-13 { padding-top: 6rem !important; }
+.pr-13, .px-13 { padding-right: 6rem !important; }
+.pb-13, .py-13 { padding-bottom: 6rem !important; }
+.pl-13, .px-13 { padding-left: 6rem !important; }
+
+/*------------------------------------
+  Padding
+------------------------------------*/
+.m-gab-1 { padding-top: 2rem; padding-bottom: 2rem; }
+.m-gab-1-top { padding-top: 2rem; }
+.m-gab-1-bottom { padding-bottom: 2rem; }
+.m-gab-2 { padding-top: 4.0625rem; padding-bottom: 4.0625rem; }
+.m-gab-2-top { padding-top: 4.0625rem; }
+.m-gab-2-bottom { padding-bottom: 4.0625rem; }
+.m-gab-3 { padding-top: 8.125rem; padding-bottom: 8.125rem; }
+.m-gab-3-top { padding-top: 8.125rem; }
+.m-gab-3-bottom { padding-bottom: 8.125rem; }
+.m-gab-4 { padding-top: 12.5rem; padding-bottom: 12.5rem; }
+.m-gab-4-top { padding-top: 12.5rem; }
+.m-gab-4-bottom { padding-bottom: 12.5rem; }
+.m-gab-5 { padding-top: 15rem; padding-bottom: 15rem; }
+.m-gab-5-top { padding-top: 15rem; }
+.m-gab-5-bottom { padding-bottom: 15rem; }
+.m-gab-0 { padding-top: 0; padding-bottom: 0; }
+.m-gab-0-top { padding-top: 0; }
+.m-gab-0-bottom { padding-bottom: 0; }
+@media (min-width: 576px) {
+    .m-gab-3--sm { padding-top: 8.125rem; padding-bottom: 8.125rem; }
+    .m-gab-5-top--sm { padding-top: 15rem; }
+}
+
+@media (min-width: 768px) {
+    .m-gab-1-top--md { padding-top: 2rem; }
+    .m-gab-2-top--md { padding-top: 4.0625rem; }
+    .m-gab-5-top--md { padding-top: 15rem; }
+}
+
+@media (min-width: 992px) {
+    .m-gab-3--lg { padding-top: 8.125rem; padding-bottom: 8.125rem; }
+    .m-gab-3-top--lg { padding-top: 8.125rem; }
+    .m-gab-4--lg { padding-top: 12.5rem; padding-bottom: 12.5rem; }
+    .m-gab-4-top--lg { padding-top: 12.5rem; }
+    .m-gab-5-top--lg { padding-top: 15rem; }
+    .m-gab-5-bottom--lg { padding-bottom: 15rem; }
+    .m-gab-0--lg { padding-top: 0; padding-bottom: 0; }
+    .m-gab-bottom-0--lg { padding-bottom: 0; }
+}
+
+@media (min-width: 1200px) {
+    .m-gab-4-top--xl { padding-top: 12.5rem; }
+    .m-gab-5-top--xl { padding-top: 15rem; }
+}
+
+
+
+
+/*------------------------------------
+  Negative Margin
+------------------------------------*/
+.mnt-1 { margin-top: -0.5rem !important; }
+.mnt-2 { margin-top: -1rem !important; }
+.mnt-3 { margin-top: -1.5rem !important; }
+.mnt-4 { margin-top: -2rem !important; }
+.mnt-5 { margin-top: -2.5rem !important; }
+.mnt-6 { margin-top: -3rem !important; }
+.mnt-7 { margin-top: -3.5rem !important; }
+.mnt-8 { margin-top: -4rem !important; }
+.mnt-9 { margin-top: -4.5rem !important; }
+.mnt-10 { margin-top: -5rem !important; }
+.mnt-11 { margin-top: -5.5rem !important; }
+.mnt-12 { margin-top: -6rem !important; }
+.mnt-13 { margin-top: -6.5rem !important; }
+.mnt-14 { margin-top: -7rem !important; }
+.mnt-15 { margin-top: -7.5rem !important; }
+
+.mnb-1 { margin-bottom: -0.5rem !important; }
+.mnb-2 { margin-bottom: -1rem !important; }
+.mnb-3 { margin-bottom: -1.5rem !important; }
+.mnb-4 { margin-bottom: -2rem !important; }
+.mnb-5 { margin-bottom: -2.5rem !important; }
+.mnb-6 { margin-bottom: -3rem !important; }
+.mnb-7 { margin-bottom: -3.5rem !important; }
+.mnb-8 { margin-bottom: -4rem !important; }
+.mnb-9 { margin-bottom: -4.5rem !important; }
+.mnb-10 { margin-bottom: -5rem !important; }
+.mnb-11 { margin-bottom: -5.5rem !important; }
+.mnb-12 { margin-bottom: -6rem !important; }
+.mnb-13 { margin-bottom: -6.5rem !important; }
+.mnb-14 { margin-bottom: -7rem !important; }
+.mnb-15 { margin-bottom: -7.5rem !important; }
+
+
+/*------------------------------------
+  Opacity
+------------------------------------*/
+.opacity-01 { opacity: 0.1; }
+.opacity-02 { opacity: 0.2; }
+.opacity-03 { opacity: 0.3; }
+.opacity-04 { opacity: 0.4; }
+.opacity-05 { opacity: 0.5; }
+.opacity-06 { opacity: 0.6; }
+.opacity-07 { opacity: 0.7; }
+.opacity-08 { opacity: 0.8; }
+.opacity-09 { opacity: 0.9; }
+.opacity-1 { opacity: 1; }
+
+
+/*------------------------------------
+  Shadow
+------------------------------------*/
+.shadow-0, .hover-shadow-0:hover { box-shadow: none; }
+.shadow-1, .hover-shadow-1:hover { box-shadow: 0 0 4px rgba(0,0,0,0.06); }
+.shadow-2, .hover-shadow-2:hover { box-shadow: 0 0 8px rgba(0,0,0,0.06);  }
+.shadow-3, .hover-shadow-3:hover { box-shadow: 0 0 12px rgba(0,0,0,0.06);}
+.shadow-4, .hover-shadow-4:hover { box-shadow: 0 0 18px rgba(0,0,0,0.06);  }
+.shadow-5, .hover-shadow-5:hover { box-shadow: 0 0 26px rgba(0,0,0,0.06);}
+.shadow-6, .hover-shadow-6:hover { box-shadow: 0 0 36px rgba(0,0,0,0.06);  }
+.shadow-7, .hover-shadow-7:hover { box-shadow: 0 0 48px rgba(0,0,0,0.06);  }
+.shadow-8, .hover-shadow-8:hover { box-shadow: 0 0 60px rgba(0,0,0,0.06); }
+.shadow-9, .hover-shadow-9:hover { box-shadow: 0 0 74px rgba(0,0,0,0.06);}
+
+.height-inherit {
+    height:inherit;
+        line-height: 1.4;
+}
+
+.bg-dark {
+    background-color: #191919 !important;
+}
+
+.z-index--1 { z-index: -1!important; }
+.z-index-0 { z-index: 0!important; }
+.z-index-1 { z-index: 1!important; }
+.z-index-10 { z-index: 10!important; }
+
+.video-player-centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.left-0 {
+    left: 0;
+}
+.right-0 {
+    right: 0;
+}
+.top-0 {
+    top: 0;
+}
+.bottom-0 {
+    bottom: 0;
+}
+[class*="rounded-10rem"] { border-radius: 10rem !important; } 
+
+a.underline:hover {
+    text-decoration:underline!important;
+}
+
+.text-style-italic {
+    font-style: italic!important;
+}
+
+.height-none {
+    height:0!important;
+}
+.line-height-1 {
+    line-height:1!important;
+}
+.line-height-2 {
+    line-height:2!important;
+}
+
+b, strong {
+    font-weight: bold;
+}
+
+ 
+
+
+
+/* Flags */
+.flag { width: 16px; height: 11px; background: url('../img/base/flags.png') no-repeat; margin-top: -1px; }
+
+    .flag.flag-ad { background-position: -16px 0; }
+
+    .flag.flag-ae { background-position: -32px 0; }
+
+    .flag.flag-af { background-position: -48px 0; }
+
+    .flag.flag-ag { background-position: -64px 0; }
+
+    .flag.flag-ai { background-position: -80px 0; }
+
+    .flag.flag-al { background-position: -96px 0; }
+
+    .flag.flag-am { background-position: -112px 0; }
+
+    .flag.flag-an { background-position: -128px 0; }
+
+    .flag.flag-ao { background-position: -144px 0; }
+
+    .flag.flag-ar { background-position: -160px 0; }
+
+    .flag.flag-as { background-position: -176px 0; }
+
+    .flag.flag-at { background-position: -192px 0; }
+
+    .flag.flag-au { background-position: -208px 0; }
+
+    .flag.flag-aw { background-position: -224px 0; }
+
+    .flag.flag-az { background-position: -240px 0; }
+
+    .flag.flag-ba { background-position: 0 -11px; }
+
+    .flag.flag-bb { background-position: -16px -11px; }
+
+    .flag.flag-bd { background-position: -32px -11px; }
+
+    .flag.flag-be { background-position: -48px -11px; }
+
+    .flag.flag-bf { background-position: -64px -11px; }
+
+    .flag.flag-bg { background-position: -80px -11px; }
+
+    .flag.flag-bh { background-position: -96px -11px; }
+
+    .flag.flag-bi { background-position: -112px -11px; }
+
+    .flag.flag-bj { background-position: -128px -11px; }
+
+    .flag.flag-bm { background-position: -144px -11px; }
+
+    .flag.flag-bn { background-position: -160px -11px; }
+
+    .flag.flag-bo { background-position: -176px -11px; }
+
+    .flag.flag-br { background-position: -192px -11px; }
+
+    .flag.flag-bs { background-position: -208px -11px; }
+
+    .flag.flag-bt { background-position: -224px -11px; }
+
+    .flag.flag-bv { background-position: -240px -11px; }
+
+    .flag.flag-bw { background-position: 0 -22px; }
+
+    .flag.flag-by { background-position: -16px -22px; }
+
+    .flag.flag-bz { background-position: -32px -22px; }
+
+    .flag.flag-ca { background-position: -48px -22px; }
+
+    .flag.flag-catalonia { background-position: -64px -22px; }
+
+    .flag.flag-cd { background-position: -80px -22px; }
+
+    .flag.flag-cf { background-position: -96px -22px; }
+
+    .flag.flag-cg { background-position: -112px -22px; }
+
+    .flag.flag-ch { background-position: -128px -22px; }
+
+    .flag.flag-ci { background-position: -144px -22px; }
+
+    .flag.flag-ck { background-position: -160px -22px; }
+
+    .flag.flag-cl { background-position: -176px -22px; }
+
+    .flag.flag-cm { background-position: -192px -22px; }
+
+    .flag.flag-cn { background-position: -208px -22px; }
+
+    .flag.flag-co { background-position: -224px -22px; }
+
+    .flag.flag-cr { background-position: -240px -22px; }
+
+    .flag.flag-cu { background-position: 0 -33px; }
+
+    .flag.flag-cv { background-position: -16px -33px; }
+
+    .flag.flag-cw { background-position: -32px -33px; }
+
+    .flag.flag-cy { background-position: -48px -33px; }
+
+    .flag.flag-cz { background-position: -64px -33px; }
+
+    .flag.flag-de { background-position: -80px -33px; }
+
+    .flag.flag-dj { background-position: -96px -33px; }
+
+    .flag.flag-dk { background-position: -112px -33px; }
+
+    .flag.flag-dm { background-position: -128px -33px; }
+
+    .flag.flag-do { background-position: -144px -33px; }
+
+    .flag.flag-dz { background-position: -160px -33px; }
+
+    .flag.flag-ec { background-position: -176px -33px; }
+
+    .flag.flag-ee { background-position: -192px -33px; }
+
+    .flag.flag-eg { background-position: -208px -33px; }
+
+    .flag.flag-eh { background-position: -224px -33px; }
+
+    .flag.flag-england { background-position: -240px -33px; }
+
+    .flag.flag-er { background-position: 0 -44px; }
+
+    .flag.flag-es { background-position: -16px -44px; }
+
+    .flag.flag-et { background-position: -32px -44px; }
+
+    .flag.flag-eu { background-position: -48px -44px; }
+
+    .flag.flag-fi { background-position: -64px -44px; }
+
+    .flag.flag-fj { background-position: -80px -44px; }
+
+    .flag.flag-fk { background-position: -96px -44px; }
+
+    .flag.flag-fm { background-position: -112px -44px; }
+
+    .flag.flag-fo { background-position: -128px -44px; }
+
+    .flag.flag-fr { background-position: -144px -44px; }
+
+    .flag.flag-ga { background-position: -160px -44px; }
+
+    .flag.flag-gb { background-position: -176px -44px; }
+
+    .flag.flag-gd { background-position: -192px -44px; }
+
+    .flag.flag-ge { background-position: -208px -44px; }
+
+    .flag.flag-gf { background-position: -224px -44px; }
+
+    .flag.flag-gg { background-position: -240px -44px; }
+
+    .flag.flag-gh { background-position: 0 -55px; }
+
+    .flag.flag-gi { background-position: -16px -55px; }
+
+    .flag.flag-gl { background-position: -32px -55px; }
+
+    .flag.flag-gm { background-position: -48px -55px; }
+
+    .flag.flag-gn { background-position: -64px -55px; }
+
+    .flag.flag-gp { background-position: -80px -55px; }
+
+    .flag.flag-gq { background-position: -96px -55px; }
+
+    .flag.flag-gr { background-position: -112px -55px; }
+
+    .flag.flag-gs { background-position: -128px -55px; }
+
+    .flag.flag-gt { background-position: -144px -55px; }
+
+    .flag.flag-gu { background-position: -160px -55px; }
+
+    .flag.flag-gw { background-position: -176px -55px; }
+
+    .flag.flag-gy { background-position: -192px -55px; }
+
+    .flag.flag-hk { background-position: -208px -55px; }
+
+    .flag.flag-hm { background-position: -224px -55px; }
+
+    .flag.flag-hn { background-position: -240px -55px; }
+
+    .flag.flag-hr { background-position: 0 -66px; }
+
+    .flag.flag-ht { background-position: -16px -66px; }
+
+    .flag.flag-hu { background-position: -32px -66px; }
+
+    .flag.flag-ic { background-position: -48px -66px; }
+
+    .flag.flag-id { background-position: -64px -66px; }
+
+    .flag.flag-ie { background-position: -80px -66px; }
+
+    .flag.flag-il { background-position: -96px -66px; }
+
+    .flag.flag-im { background-position: -112px -66px; }
+
+    .flag.flag-in { background-position: -128px -66px; }
+
+    .flag.flag-io { background-position: -144px -66px; }
+
+    .flag.flag-iq { background-position: -160px -66px; }
+
+    .flag.flag-ir { background-position: -176px -66px; }
+
+    .flag.flag-is { background-position: -192px -66px; }
+
+    .flag.flag-it { background-position: -208px -66px; }
+
+    .flag.flag-je { background-position: -224px -66px; }
+
+    .flag.flag-jm { background-position: -240px -66px; }
+
+    .flag.flag-jo { background-position: 0 -77px; }
+
+    .flag.flag-jp { background-position: -16px -77px; }
+
+    .flag.flag-ke { background-position: -32px -77px; }
+
+    .flag.flag-kg { background-position: -48px -77px; }
+
+    .flag.flag-kh { background-position: -64px -77px; }
+
+    .flag.flag-ki { background-position: -80px -77px; }
+
+    .flag.flag-km { background-position: -96px -77px; }
+
+    .flag.flag-kn { background-position: -112px -77px; }
+
+    .flag.flag-kp { background-position: -128px -77px; }
+
+    .flag.flag-kr { background-position: -144px -77px; }
+
+    .flag.flag-kurdistan { background-position: -160px -77px; }
+
+    .flag.flag-kw { background-position: -176px -77px; }
+
+    .flag.flag-ky { background-position: -192px -77px; }
+
+    .flag.flag-kz { background-position: -208px -77px; }
+
+    .flag.flag-la { background-position: -224px -77px; }
+
+    .flag.flag-lb { background-position: -240px -77px; }
+
+    .flag.flag-lc { background-position: 0 -88px; }
+
+    .flag.flag-li { background-position: -16px -88px; }
+
+    .flag.flag-lk { background-position: -32px -88px; }
+
+    .flag.flag-lr { background-position: -48px -88px; }
+
+    .flag.flag-ls { background-position: -64px -88px; }
+
+    .flag.flag-lt { background-position: -80px -88px; }
+
+    .flag.flag-lu { background-position: -96px -88px; }
+
+    .flag.flag-lv { background-position: -112px -88px; }
+
+    .flag.flag-ly { background-position: -128px -88px; }
+
+    .flag.flag-ma { background-position: -144px -88px; }
+
+    .flag.flag-mc { background-position: -160px -88px; }
+
+    .flag.flag-md { background-position: -176px -88px; }
+
+    .flag.flag-me { background-position: -192px -88px; }
+
+    .flag.flag-mg { background-position: -208px -88px; }
+
+    .flag.flag-mh { background-position: -224px -88px; }
+
+    .flag.flag-mk { background-position: -240px -88px; }
+
+    .flag.flag-ml { background-position: 0 -99px; }
+
+    .flag.flag-mm { background-position: -16px -99px; }
+
+    .flag.flag-mn { background-position: -32px -99px; }
+
+    .flag.flag-mo { background-position: -48px -99px; }
+
+    .flag.flag-mp { background-position: -64px -99px; }
+
+    .flag.flag-mq { background-position: -80px -99px; }
+
+    .flag.flag-mr { background-position: -96px -99px; }
+
+    .flag.flag-ms { background-position: -112px -99px; }
+
+    .flag.flag-mt { background-position: -128px -99px; }
+
+    .flag.flag-mu { background-position: -144px -99px; }
+
+    .flag.flag-mv { background-position: -160px -99px; }
+
+    .flag.flag-mw { background-position: -176px -99px; }
+
+    .flag.flag-mx { background-position: -192px -99px; }
+
+    .flag.flag-my { background-position: -208px -99px; }
+
+    .flag.flag-mz { background-position: -224px -99px; }
+
+    .flag.flag-na { background-position: -240px -99px; }
+
+    .flag.flag-nc { background-position: 0 -110px; }
+
+    .flag.flag-ne { background-position: -16px -110px; }
+
+    .flag.flag-nf { background-position: -32px -110px; }
+
+    .flag.flag-ng { background-position: -48px -110px; }
+
+    .flag.flag-ni { background-position: -64px -110px; }
+
+    .flag.flag-nl { background-position: -80px -110px; }
+
+    .flag.flag-no { background-position: -96px -110px; }
+
+    .flag.flag-np { background-position: -112px -110px; }
+
+    .flag.flag-nr { background-position: -128px -110px; }
+
+    .flag.flag-nu { background-position: -144px -110px; }
+
+    .flag.flag-nz { background-position: -160px -110px; }
+
+    .flag.flag-om { background-position: -176px -110px; }
+
+    .flag.flag-pa { background-position: -192px -110px; }
+
+    .flag.flag-pe { background-position: -208px -110px; }
+
+    .flag.flag-pf { background-position: -224px -110px; }
+
+    .flag.flag-pg { background-position: -240px -110px; }
+
+    .flag.flag-ph { background-position: 0 -121px; }
+
+    .flag.flag-pk { background-position: -16px -121px; }
+
+    .flag.flag-pl { background-position: -32px -121px; }
+
+    .flag.flag-pm { background-position: -48px -121px; }
+
+    .flag.flag-pn { background-position: -64px -121px; }
+
+    .flag.flag-pr { background-position: -80px -121px; }
+
+    .flag.flag-ps { background-position: -96px -121px; }
+
+    .flag.flag-pt { background-position: -112px -121px; }
+
+    .flag.flag-pw { background-position: -128px -121px; }
+
+    .flag.flag-py { background-position: -144px -121px; }
+
+    .flag.flag-qa { background-position: -160px -121px; }
+
+    .flag.flag-re { background-position: -176px -121px; }
+
+    .flag.flag-ro { background-position: -192px -121px; }
+
+    .flag.flag-rs { background-position: -208px -121px; }
+
+    .flag.flag-ru { background-position: -224px -121px; }
+
+    .flag.flag-rw { background-position: -240px -121px; }
+
+    .flag.flag-sa { background-position: 0 -132px; }
+
+    .flag.flag-sb { background-position: -16px -132px; }
+
+    .flag.flag-sc { background-position: -32px -132px; }
+
+    .flag.flag-scotland { background-position: -48px -132px; }
+
+    .flag.flag-sd { background-position: -64px -132px; }
+
+    .flag.flag-se { background-position: -80px -132px; }
+
+    .flag.flag-sg { background-position: -96px -132px; }
+
+    .flag.flag-sh { background-position: -112px -132px; }
+
+    .flag.flag-si { background-position: -128px -132px; }
+
+    .flag.flag-sk { background-position: -144px -132px; }
+
+    .flag.flag-sl { background-position: -160px -132px; }
+
+    .flag.flag-sm { background-position: -176px -132px; }
+
+    .flag.flag-sn { background-position: -192px -132px; }
+
+    .flag.flag-so { background-position: -208px -132px; }
+
+    .flag.flag-somaliland { background-position: -224px -132px; }
+
+    .flag.flag-sr { background-position: -240px -132px; }
+
+    .flag.flag-ss { background-position: 0 -143px; }
+
+    .flag.flag-st { background-position: -16px -143px; }
+
+    .flag.flag-sv { background-position: -32px -143px; }
+
+    .flag.flag-sx { background-position: -48px -143px; }
+
+    .flag.flag-sy { background-position: -64px -143px; }
+
+    .flag.flag-sz { background-position: -80px -143px; }
+
+    .flag.flag-tc { background-position: -96px -143px; }
+
+    .flag.flag-td { background-position: -112px -143px; }
+
+    .flag.flag-tf { background-position: -128px -143px; }
+
+    .flag.flag-tg { background-position: -144px -143px; }
+
+    .flag.flag-th { background-position: -160px -143px; }
+
+    .flag.flag-tibet { background-position: -176px -143px; }
+
+    .flag.flag-tj { background-position: -192px -143px; }
+
+    .flag.flag-tk { background-position: -208px -143px; }
+
+    .flag.flag-tl { background-position: -224px -143px; }
+
+    .flag.flag-tm { background-position: -240px -143px; }
+
+    .flag.flag-tn { background-position: 0 -154px; }
+
+    .flag.flag-to { background-position: -16px -154px; }
+
+    .flag.flag-tr { background-position: -32px -154px; }
+
+    .flag.flag-tt { background-position: -48px -154px; }
+
+    .flag.flag-tv { background-position: -64px -154px; }
+
+    .flag.flag-tw { background-position: -80px -154px; }
+
+    .flag.flag-tz { background-position: -96px -154px; }
+
+    .flag.flag-ua { background-position: -112px -154px; }
+
+    .flag.flag-ug { background-position: -128px -154px; }
+
+    .flag.flag-um { background-position: -144px -154px; }
+
+    .flag.flag-us { background-position: -160px -154px; }
+
+    .flag.flag-uy { background-position: -176px -154px; }
+
+    .flag.flag-uz { background-position: -192px -154px; }
+
+    .flag.flag-va { background-position: -208px -154px; }
+
+    .flag.flag-vc { background-position: -224px -154px; }
+
+    .flag.flag-ve { background-position: -240px -154px; }
+
+    .flag.flag-vg { background-position: 0 -165px; }
+
+    .flag.flag-vi { background-position: -16px -165px; }
+
+    .flag.flag-vn { background-position: -32px -165px; }
+
+    .flag.flag-vu { background-position: -48px -165px; }
+
+    .flag.flag-wales { background-position: -64px -165px; }
+
+    .flag.flag-wf { background-position: -80px -165px; }
+
+    .flag.flag-ws { background-position: -96px -165px; }
+
+    .flag.flag-xk { background-position: -112px -165px; }
+
+    .flag.flag-ye { background-position: -128px -165px; }
+
+    .flag.flag-yt { background-position: -144px -165px; }
+
+    .flag.flag-za { background-position: -160px -165px; }
+
+    .flag.flag-zanzibar { background-position: -176px -165px; }
+
+    .flag.flag-zm { background-position: -192px -165px; }
+
+    .flag.flag-zw { background-position: -208px -165px; }
+
+
+
+    
+.p-1 { padding: 0.25rem !important; }
+
+.pt-1,
+.py-1 { padding-top: 0.25rem !important; }
+
+.pr-1,
+.px-1 { padding-right: 0.25rem !important; }
+
+.pb-1,
+.py-1 { padding-bottom: 0.25rem !important; }
+
+.pl-1,
+.px-1 { padding-left: 0.25rem !important; }
+
+.p-2 { padding: 0.5rem !important; }
+
+.pt-2,
+.py-2 { padding-top: 0.5rem !important; }
+
+.pr-2,
+.px-2 { padding-right: 0.5rem !important; }
+
+.pb-2,
+.py-2 { padding-bottom: 0.5rem !important; }
+
+.pl-2,
+.px-2 { padding-left: 0.5rem !important; }
+
+.p-3 { padding: 1rem !important; }
+
+.pt-3,
+.py-3 { padding-top: 1rem !important; }
+
+.pr-3,
+.px-3 { padding-right: 1rem !important; }
+
+.pb-3,
+.py-3 { padding-bottom: 1rem !important; }
+
+.pl-3,
+.px-3 { padding-left: 1rem !important; }
+
+.p-4 { padding: 1.5rem !important; }
+
+.pt-4,
+.py-4 { padding-top: 1.5rem !important; }
+
+.pr-4,
+.px-4 { padding-right: 1.5rem !important; }
+
+.pb-4,
+.py-4 { padding-bottom: 1.5rem !important; }
+
+.pl-4,
+.px-4 { padding-left: 1.5rem !important; }
+
+.p-5 { padding: 2rem !important; }
+
+.pt-5,
+.py-5 { padding-top: 2rem !important; }
+
+.pr-5,
+.px-5 { padding-right: 2rem !important; }
+
+.pb-5,
+.py-5 { padding-bottom: 2rem !important; }
+
+.pl-5,
+.px-5 { padding-left: 2rem !important; }
+
+.p-6 { padding: 2.5rem !important; }
+
+.pt-6,
+.py-6 { padding-top: 2.5rem !important; }
+
+.pr-6,
+.px-6 { padding-right: 2.5rem !important; }
+
+.pb-6,
+.py-6 { padding-bottom: 2.5rem !important; }
+
+.pl-6,
+.px-6 { padding-left: 2.5rem !important; }
+
+.p-7 { padding: 3rem !important; }
+
+.pt-7,
+.py-7 { padding-top: 3rem !important; }
+
+.pr-7,
+.px-7 { padding-right: 3rem !important; }
+
+.pb-7,
+.py-7 { padding-bottom: 3rem !important; }
+
+.pl-7,
+.px-7 { padding-left: 3rem !important; }
+
+.p-8 { padding: 3.5rem !important; }
+
+.pt-8,
+.py-8 { padding-top: 3.5rem !important; }
+
+.pr-8,
+.px-8 { padding-right: 3.5rem !important; }
+
+.pb-8,
+.py-8 { padding-bottom: 3.5rem !important; }
+
+.pl-8,
+.px-8 { padding-left: 3.5rem !important; }
+
+.p-9 { padding: 4rem !important; }
+
+.pt-9,
+.py-9 { padding-top: 4rem !important; }
+
+.pr-9,
+.px-9 { padding-right: 4rem !important; }
+
+.pb-9,
+.py-9 { padding-bottom: 4rem !important; }
+
+.pl-9,
+.px-9 { padding-left: 4rem !important; }
+
+
+.m-1 { margin: 0.25rem !important; }
+
+.mt-1,
+.my-1 { margin-top: 0.25rem !important; }
+
+.mr-1,
+.mx-1 { margin-right: 0.25rem !important; }
+
+.mb-1,
+.my-1 { margin-bottom: 0.25rem !important; }
+
+.ml-1,
+.mx-1 { margin-left: 0.25rem !important; }
+
+.m-2 { margin: 0.5rem !important; }
+
+.mt-2,
+.my-2 { margin-top: 0.5rem !important; }
+
+.mr-2,
+.mx-2 { margin-right: 0.5rem !important; }
+
+.mb-2,
+.my-2 { margin-bottom: 0.5rem !important; }
+
+.ml-2,
+.mx-2 { margin-left: 0.5rem !important; }
+
+.m-3 { margin: 1rem !important; }
+
+.mt-3,
+.my-3 { margin-top: 1rem !important; }
+
+.mr-3,
+.mx-3 { margin-right: 1rem !important; }
+
+.mb-3,
+.my-3 { margin-bottom: 1rem !important; }
+
+.ml-3,
+.mx-3 { margin-left: 1rem !important; }
+
+.m-4 { margin: 1.5rem !important; }
+
+.mt-4,
+.my-4 { margin-top: 1.5rem !important; }
+
+.mr-4,
+.mx-4 { margin-right: 1.5rem !important; }
+
+.mb-4,
+.my-4 { margin-bottom: 1.5rem !important; }
+
+.ml-4,
+.mx-4 { margin-left: 1.5rem !important; }
+
+.m-5 { margin: 2rem !important; }
+
+.mt-5,
+.my-5 { margin-top: 2rem !important; }
+
+.mr-5,
+.mx-5 { margin-right: 2rem !important; }
+
+.mb-5,
+.my-5 { margin-bottom: 2rem !important; }
+
+.ml-5,
+.mx-5 { margin-left: 2rem !important; }
+
+.m-6 { margin: 2.5rem !important; }
+
+.mt-6,
+.my-6 { margin-top: 2.5rem !important; }
+
+.mr-6,
+.mx-6 { margin-right: 2.5rem !important; }
+
+.mb-6,
+.my-6 { margin-bottom: 2.5rem !important; }
+
+.ml-6,
+.mx-6 { margin-left: 2.5rem !important; }
+
+.m-7 { margin: 3rem !important; }
+
+.mt-7,
+.my-7 { margin-top: 3rem !important; }
+
+.mr-7,
+.mx-7 { margin-right: 3rem !important; }
+
+.mb-7,
+.my-7 { margin-bottom: 3rem !important; }
+
+.ml-7,
+.mx-7 { margin-left: 3rem !important; }
+
+.m-8 { margin: 3.5rem !important; }
+
+.mt-8,
+.my-8 { margin-top: 3.5rem !important; }
+
+.mr-8,
+.mx-8 { margin-right: 3.5rem !important; }
+
+.mb-8,
+.my-8 { margin-bottom: 3.5rem !important; }
+
+.ml-8,
+.mx-8 { margin-left: 3.5rem !important; }
+
+.m-9 { margin: 4rem !important; }
+
+.mt-9,
+.my-9 { margin-top: 4rem !important; }
+
+.mr-9,
+.mx-9 { margin-right: 4rem !important; }
+
+.mb-9,
+.my-9 { margin-bottom: 4rem !important; }
+
+.ml-9,
+.mx-9 { margin-left: 4rem !important; }
+
+@media (min-width: 992px) {
+    .w-lg-25 { width: 25% !important; }
+    .w-lg-50 { width: 50% !important; }
+    .w-lg-75 { width: 75% !important; }
+    .w-lg-100 { width: 100% !important; }
+    .w-lg-auto { width: auto !important; }
+    .w-lg-15 { width: 15% !important; }
+    .w-lg-30 { width: 30% !important; }
+    .w-lg-35 { width: 35% !important; }
+    .w-lg-40 { width: 40% !important; }
+    .w-lg-60 { width: 60% !important; }
+    .w-lg-65 { width: 65% !important; }
+    .w-lg-80 { width: 80% !important; }
+}
+
+@media (min-width: 1200px) {
+    .w-xl-25 { width: 25% !important; }
+    .w-xl-50 { width: 50% !important; }
+    .w-xl-75 { width: 75% !important; }
+    .w-xl-100 { width: 100% !important; }
+    .w-xl-auto { width: auto !important; }
+    .w-xl-15 { width: 15% !important; }
+    .w-xl-30 { width: 30% !important; }
+    .w-xl-35 { width: 35% !important; }
+    .w-xl-40 { width: 40% !important; }
+    .w-xl-60 { width: 60% !important; }
+    .w-xl-65 { width: 65% !important; }
+    .w-xl-80 { width: 80% !important; }
+}
