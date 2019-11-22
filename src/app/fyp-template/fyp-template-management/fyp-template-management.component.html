@@ -1,0 +1,17 @@
+<p>
+  fyp-template-management works!
+</p>
+<div class="example-box shadow-sm card" cdkDragBoundary=".example-boundary" cdkDrag
+>
+<div class="card-body">
+  <div>
+    <div style="height: 70px; min-height: 70px; width: 900px;">
+      <div class="form-group">
+        <input type="text" class="form-control" name="name"
+          placeholder="Title" required
+          [ngClass]="{'is-invalid': Name.invalid && (Name.touched || fileTemplateForm.submitted) }">
+      </div>
+    </div>
+  </div>
+</div>
+</div>

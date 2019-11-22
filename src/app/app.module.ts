@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AdminModule } from './admin/admin.module';
+import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
@@ -23,7 +24,8 @@ import { AppService } from './app.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    FypTemplateModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

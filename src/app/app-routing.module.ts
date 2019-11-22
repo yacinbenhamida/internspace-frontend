@@ -1,3 +1,4 @@
+import { FypTemplateManagementComponent } from './fyp-template/fyp-template-management/fyp-template-management.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './admin/settings/settings.component';
@@ -7,11 +8,12 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 
 const routes: Routes = [
-  {path : '',component : HomepageComponent},
+  {path : '', component : HomepageComponent},
   {path : 'admin', component : SettingsComponent},
   {path : 'login', component : AuthenticationComponent},
   {path: '404', component: NotfoundComponent},
-  {path: '**', redirectTo: '/404'}
+  {path: 'fypTemplate', component: FypTemplateManagementComponent},
+  {path: '**', redirectTo: '/404'},
 ];
 
 @NgModule({
