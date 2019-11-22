@@ -55,6 +55,7 @@ Thumbs.db
 /app/logs
 # dependencies
 /node_modules
+proxy.conf.json
 
 # IDEs and editors
 /.idea
