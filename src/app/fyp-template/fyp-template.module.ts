@@ -6,9 +6,10 @@ import { FypTemplateManagementComponent } from './fyp-template-management/fyp-te
  * CDK
  */
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { FypTemplateElementComponent } from './fyp-template-element/fyp-template-element.component';
 
 @NgModule({
-  declarations: [FypTemplateManagementComponent],
+  declarations: [FypTemplateManagementComponent, FypTemplateElementComponent],
   imports: [
     CommonModule,
     DragDropModule
