@@ -16,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
 // Custom
 import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-// e6447ab970454075acf54ec8b19718d5
 
 @NgModule({
   declarations: [
