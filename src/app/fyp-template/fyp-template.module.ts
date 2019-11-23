@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FypTemplateManagementComponent } from './fyp-template-management/fyp-template-management.component';
+import { CdkDragRelease } from '@angular/cdk/drag-drop';
 
 /**
  * CDK
