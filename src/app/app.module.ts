@@ -13,6 +13,9 @@ import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './services/security/authguard.service';
+import { AuthenticationService } from './services/security/authentication.service';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     NotfoundComponent,
     AuthenticationComponent,
     HomepageComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     AdminModule,
     FypTemplateModule
   ],
-  providers: [AppService],
+  providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
