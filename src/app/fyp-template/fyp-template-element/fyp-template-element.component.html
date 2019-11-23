@@ -1,151 +1,149 @@
 <!-- Title -->
 
-<div id="a" *ngIf="element.sectionName === 'title'" cdkDragBoundary=".drag-boundary" class="drag-box title-elem"
-cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)" (cdkDragEnded)="onDragEnded($event)">
-<h5> Title </h5>
-<input type="text" class="form-control" name="name" placeholder="Title" required>
+<div [ngStyle]="{'z-index':orderz }" id="a" *ngIf="element.sectionName === 'title'" cdkDragBoundary=".drag-boundary" class="drag-box title-elem" cdkDrag
+  [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)" (cdkDragEnded)="onDragEnded($event)">
+  <h5> Title </h5>
+  <p type="text" class="form-control"> {{previewFypFile ? previewFypFile.title : 'Title'}} </p>
 </div>
 
 <!-- Description -->
 
-<div *ngIf="element.sectionName === 'description'" cdkDragBoundary=".drag-boundary" class="drag-box title-elem"
-cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-<h5> Description </h5>
-<textarea class="form-control" rows="4" placeholder="Description"></textarea>
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'description'" cdkDragBoundary=".drag-boundary" class="drag-box description-elem" cdkDrag
+  [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
+  <h5> Description </h5>
+  <textarea class="form-control" rows="10"
+    placeholder="Description"> {{previewFypFile ? previewFypFile.description : 'Description'}} </textarea>
 </div>
 
 <!-- Problematic -->
 
-<div *ngIf="element.sectionName === 'problematic'" cdkDragBoundary=".drag-boundary" class="drag-box title-elem"
-cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-<h5> Problematic </h5>
-<input type="text" class="form-control" name="name" placeholder="Problematic" required>
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'problematic'" cdkDragBoundary=".drag-boundary" class="drag-box problematic-elem" cdkDrag
+  [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
+  <h5> Problematic </h5>
+  <textarea class="form-control" rows="10"
+    placeholder="Description"> {{previewFypFile ? previewFypFile.problematic : 'Problematic'}} </textarea>
 </div>
 
 <!-- Features -->
 
-<div *ngIf="element.sectionName === 'features'" class="drag-box features-elem" cdkDragBoundary=".drag-boundary"
-cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-<div class="card-body">
-  <div class="d-flex justify-content-between">
-    <h5>Features</h5>
-    <button class="btn btn-primary">+</button>
-  </div>
-  <hr>
-  <div class="rXow" style="width: 350px" *ngFor="let ex of [1, 2 ,3]; let i=index">
-    <div class="col-md-12">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Employer">
-      </div>
-      <div class="form-group">
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'features'" class="drag-box features-elem" cdkDragBoundary=".drag-boundary" cdkDrag
+  [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <h5>Features</h5>
+      <button class="btn btn-primary">+</button>
+    </div>
+    <hr>
+
+    <div class="rXow" style="width: 350px">
+      <div *ngFor="let feature of (previewFypFile && previewFypFile.features ? previewFypFile.features : [1, 2]); let i=index" class="col-md-12">
         <div class="form-group">
-          <textarea class="form-control" rows="3" placeholder="Job Description"></textarea>
+          <p type="text" class="form-control"> {{i}}: {{feature && feature.content ? (feature.content) : 'Preview ' + i}} </p>
         </div>
       </div>
     </div>
+
   </div>
-</div>
 </div>
 
 <!-- Categories -->
 
-<div *ngIf="element.sectionName === 'categories'" class="drag-box features-elem" cdkDragBoundary=".drag-boundary"
-cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-<div class="card-body">
-  <div class="d-flex justify-content-between card-title">
-    <h5 class="d-flex align-items-center">
-      Categories</h5>
-    <button class="btn btn-primary">+</button>
-  </div>
-  <div class="rXow">
-    <div class="col-md-12" *ngFor="let s of [1, 2]; let i=index">
-      <div class="form-group">
-      </div>
-      <select class="form-control" placeholder="Degree" name="degree{{i}}" required>
-        <option [value]="d" *ngFor="let d of [1, 2]">{{d}}</option>
-      </select>
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'categories'" class="drag-box categories-elem" cdkDragBoundary=".drag-boundary"
+  cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
+  <div class="card-body">
+    <div class="d-flex justify-content-between card-title">
+      <h5 class="d-flex align-items-center">
+        Categories</h5>
+      <button class="btn btn-primary">+</button>
     </div>
+
+    <div class="rXow" style="width: 350px; height: 200px;">
+        <div *ngFor="let category of (previewFypFile && previewFypFile.categories ? previewFypFile.categories : [1, 2]); let i=index" class="col-md-12">
+          <div class="form-group">
+            <p type="text" class="form-control"> {{i}}: {{category && category.name ? (category.name) : 'Preview ' + i}} </p>
+          </div>
+        </div>
+      </div>
+
   </div>
-</div>
 </div>
 
 <!-- Keywords -->
 
-<div *ngIf="element.sectionName === 'keywords'" class="drag-box features-elem" cdkDragBoundary=".drag-boundary"
-cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-<div class="card-body">
-  <div class="d-flex justify-content-between card-title">
-    <h5 class="d-flex align-items-center">
-      Keywords</h5>
-    <button class="btn btn-primary">+</button>
-  </div>
-  <div class="rXow">
-    <div class="col-md-12" *ngFor="let s of [1, 2]; let i=index">
-      <div class="form-group">
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'keywords'" class="drag-box keywords-elem" cdkDragBoundary=".drag-boundary" cdkDrag
+  [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
+  <div class="card-body">
+    <div class="d-flex justify-content-between card-title">
+      <h5 class="d-flex align-items-center">
+        Keywords</h5>
+      <button class="btn btn-primary">+</button>
+    </div>
+    <div class="rXow">
+      <div class="col-md-12"
+        *ngFor="let keyword of (previewFypFile && previewFypFile.keywords ? previewFypFile.keywords : [1, 2]) ; let i=index">
+        <div class="form-group">
+        </div>
+        <p type="text" class="form-control"> {{keyword && keyword.content ? (keyword.content) : 'Preview ' + i}} </p>
       </div>
-      <select class="form-control" placeholder="Degree" name="degree{{i}}" required>
-        <option [value]="d" *ngFor="let d of [1, 2]">{{d}}</option>
-      </select>
     </div>
   </div>
-</div>
 </div>
 
-<!-- Company Information -->
+<!-- Subject | Company Information -->
 
-<div *ngIf="element.sectionName === 'company'" class="drag-box features-elem" cdkDragBoundary=".drag-boundary" cdkDrag
-[cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-<div class="card-body">
-  <div class="d-flex justify-content-between card-title">
-    <h5> Company Information </h5>
-  </div>
-  <input type="text" class="form-control" placeholder="Company Name">
-  <hr>
-  <div class="title-elem drag-box">
-    <h6 class="d-flex align-items-center"> Supervisor </h6>
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'company'" class="drag-box company-info-elem" cdkDragBoundary=".drag-boundary" cdkDrag
+  [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
+  <div class="card-body">
     <div class="d-flex justify-content-between card-title">
-      <input type="text" class="form-control" placeholder="Supervisor Email">
+      <h5> Company Information </h5>
     </div>
-    <br>
-    <h6 class="d-flex align-items-center"> Reporter </h6>
-    <div class="d-flex justify-content-between card-title">
-      <input type="text" class="form-control" placeholder="Reporter Email">
+
+    <p type="text" class="form-control"> {{previewFypFile && previewFypFile.subject && previewFypFile.subject.company ? (previewFypFile.subject.company.name) : 'Company Name '}} </p>
+    <hr>
+    <div class="title-elem drag-box">
+      <h6 class="d-flex align-items-center"> Supervisor </h6>
+      <div class="d-flex justify-content-between card-title">
+          <p type="text" class="form-control"> {{previewFypFile && previewFypFile.subject && previewFypFile.subject.company ? (previewFypFile.subject.company.supervisorEmail) : 'Supervisor Email '}} </p>
+      </div>
+      <h6 class="d-flex align-items-center"> Reporter </h6>
+      <div class="d-flex justify-content-between card-title">
+          <p type="text" class="form-control"> {{previewFypFile && previewFypFile.subject && previewFypFile.subject.company ? (previewFypFile.subject.company.email) : 'Supervisor Email '}} </p>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <!-- Personal Details-->
 
-<div *ngIf="element.sectionName === 'personal-details'" class="drag-box personal-details-elem"
-cdkDragBoundary=".drag-boundary" cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-<h5> Personal Details </h5>
-<div class="row">
-  <div class="col-md-6">
-    <div class="form-group">
-
-      <input type="text" class="form-control" name="name" placeholder="Name" required
-        [ngClass]="{'is-invalid': Name.invalid && (Name.touched || fileTemplateForm.submitted) }">
-    </div>
-    <div class="form-group">
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'personal-details'" class="drag-box personal-details-elem"
+  cdkDragBoundary=".drag-boundary" cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
+  <h5> Personal Details </h5>
+  <div class="row">
+    <div class="col-md-6">
       <div class="form-group">
-        <textarea class="form-control" name="address" rows="3" placeholder="Address" required
-          [ngClass]="{'is-invalid': Address.invalid && (Address.touched || fileTemplateForm.submitted) }"></textarea>
+
+        <input type="text" class="form-control" name="name" placeholder="Name" required
+          [ngClass]="{'is-invalid': Name.invalid && (Name.touched || fileTemplateForm.submitted) }">
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <textarea class="form-control" name="address" rows="3" placeholder="Address" required
+            [ngClass]="{'is-invalid': Address.invalid && (Address.touched || fileTemplateForm.submitted) }"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <input type="text" class="form-control" name="contactNo" placeholder="Contact No." required
+          [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || fileTemplateForm.submitted) }">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="emailId" placeholder="Email ID" required
+          [ngClass]="{'is-invalid': Email.invalid && (Email.touched || fileTemplateForm.submitted) }">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="socialProfile" placeholder="Social Profile ">
       </div>
     </div>
   </div>
-  <div class="col-md-6">
-    <div class="form-group">
-      <input type="text" class="form-control" name="contactNo" placeholder="Contact No." required
-        [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || fileTemplateForm.submitted) }">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" name="emailId" placeholder="Email ID" required
-        [ngClass]="{'is-invalid': Email.invalid && (Email.touched || fileTemplateForm.submitted) }">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" name="socialProfile" placeholder="Social Profile ">
-    </div>
-  </div>
-</div>
 </div>

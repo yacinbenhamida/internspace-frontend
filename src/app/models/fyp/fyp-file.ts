@@ -10,6 +10,7 @@ export interface FypFile {
   isPrevalidated: boolean;
   isConfirmed: boolean;
 
+  subject: any;
   features: any[];
   interventions: any[];
   keywords: any[];

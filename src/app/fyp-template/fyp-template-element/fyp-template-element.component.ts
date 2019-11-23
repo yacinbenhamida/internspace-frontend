@@ -1,3 +1,4 @@
+import { FypFile } from './../../models/fyp/fyp-file';
 import { FypTemplateService } from './../../services/fyp-template/fyp-template.service';
 import { FypTemplateElement } from '../../models/fyp/fyp-template-element';
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
@@ -11,6 +12,8 @@ import { CdkDragEnd } from '@angular/cdk/drag-drop';
 export class FypTemplateElementComponent implements OnInit {
 
   @Input() element: FypTemplateElement;
+  @Input() previewFypFile: FypFile;
+  @Input() orderz: number;
 
   coords2D: any;
   fypTemplateService: FypTemplateService;

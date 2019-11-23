@@ -45,6 +45,24 @@
   margin: 0 auto;
 }
 
+
+.description-elem {
+  width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+.problematic-elem {
+  width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .personal-details-elem {
   width: auto;
   max-width: 500px;
@@ -54,6 +72,32 @@
 
 .features-elem {
   width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+.categories-elem {
+  width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.keywords-elem {
+  width: auto;
+  height: 300px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.company-info-elem {
+  width: auto;
+  height: 400px;
+
   max-width: 500px;
   margin: 0 auto;
 }

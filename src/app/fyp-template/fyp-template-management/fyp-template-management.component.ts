@@ -21,7 +21,6 @@ export class FypTemplateManagementComponent implements OnInit, AfterViewInit {
   // Previewing
   previewFypFile: FypFile;
   likeFypFileSearch: FypFile[];
-  previewFileInputFocus = false;
 
   constructor(fypTemplateService: FypTemplateService) {
     this.fypTemplateService = fypTemplateService;
@@ -44,7 +43,7 @@ export class FypTemplateManagementComponent implements OnInit, AfterViewInit {
 
     });
 
-    this.selectPreviewFypFile('2');
+    this.selectPreviewFypFile('');
 
   }
 
@@ -76,13 +75,19 @@ export class FypTemplateManagementComponent implements OnInit, AfterViewInit {
   selectPreviewFypFile(name: string) {
     this.fypTemplateService.GetSimilarFypFileByName(name).subscribe(files => {
       this.likeFypFileSearch = files as FypFile[];
-      console.log(this.likeFypFileSearch);
+      console.log(name);
     });
   }
 
   onChange_FypTemplateIndex(index: number) {
     this.currFypTemplate = this.allFypTemplates[index];
     console.log(this.currFypTemplate);
+  }
+
+  onChange_FypFileIndex(index: number) {
+    this.previewFypFile = this.likeFypFileSearch[index];
+    // this.previewFypFile.features = null;
+    console.log(this.previewFypFile);
   }
 
   exportTemplate() {
@@ -105,9 +110,4 @@ export class FypTemplateManagementComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
   }
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
 }
