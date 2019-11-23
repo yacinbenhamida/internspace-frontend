@@ -21,9 +21,7 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(
       (event: any) => {
         if (event instanceof NavigationEnd) {
-          console.log(this.router.url);
-
-          if (this.router.url === '/login') {
+          if (this.router.url === '/login' || this.router.url === '/404') {
             this.appservice.hideFooter();
             this.appservice.hideNavbar();
           } else {
