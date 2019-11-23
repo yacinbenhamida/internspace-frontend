@@ -1,9 +1,7 @@
 import { FypTemplateService } from './../../services/fyp-template/fyp-template.service';
-import { FypTemplateElement } from './../../models/fyp-template-element';
+import { FypTemplateElement } from '../../models/fyp/fyp-template-element';
 import { Component, OnInit, Input, ElementRef, Output, EventEmitter } from '@angular/core';
-import { CdkDragRelease, CdkDragEnd } from '@angular/cdk/drag-drop';
-
-declare var jQuery: any;
+import { CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-fyp-template-element',
@@ -21,6 +19,10 @@ export class FypTemplateElementComponent implements OnInit {
     this.fypTemplateService = fypTemplateService;
   }
 
+  ngOnInit() {
+    this.coords2D = { x: this.element.x_coord, y: this.element.y_coord };
+  }
+
   onDragEnded(event: CdkDragEnd): void {
     const pos = event.source.getFreeDragPosition();
 
@@ -31,8 +33,5 @@ export class FypTemplateElementComponent implements OnInit {
     this.fypTemplateService.UpdateTemplateElement(this.element).subscribe(res => { });
   }
 
-  ngOnInit() {
-    this.coords2D = { x: this.element.x_coord, y: this.element.y_coord };
-  }
 
 }

@@ -1,19 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { FypFile } from './../../models/fyp/fyp-file';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FypTemplateService } from './../../services/fyp-template/fyp-template.service';
-import { FypTemplate } from './../../models/fyp-template';
-import { FypTemplateElement } from './../../models/fyp-template-element';
+import { FypTemplate } from '../../models/fyp/fyp-template';
+import * as jspdf from 'jspdf';
+import html2canvas from 'html2canvas';
+
+declare var jQuery: any;
 
 @Component({
   selector: 'app-fyp-template-management',
   templateUrl: './fyp-template-management.component.html',
   styleUrls: ['./fyp-template-management.component.css']
 })
-export class FypTemplateManagementComponent implements OnInit {
+export class FypTemplateManagementComponent implements OnInit, AfterViewInit {
 
   fakeEditorId = 35;
   allFypTemplates: FypTemplate[];
   fypTemplateService: FypTemplateService;
   currFypTemplate: FypTemplate;
+  // Previewing
+  previewFypFile: FypFile;
+  likeFypFileSearch: FypFile[];
+  previewFileInputFocus = false;
 
   constructor(fypTemplateService: FypTemplateService) {
     this.fypTemplateService = fypTemplateService;
@@ -35,6 +43,9 @@ export class FypTemplateManagementComponent implements OnInit {
       console.log(this.currFypTemplate);
 
     });
+
+    this.selectPreviewFypFile('2');
+
   }
 
   generateFypTemplate() {
@@ -62,9 +73,41 @@ export class FypTemplateManagementComponent implements OnInit {
     return { templateName: 'Untitled', isFyp: true, editor: this.fakeEditorId, templateElements };
   }
 
+  selectPreviewFypFile(name: string) {
+    this.fypTemplateService.GetSimilarFypFileByName(name).subscribe(files => {
+      this.likeFypFileSearch = files as FypFile[];
+      console.log(this.likeFypFileSearch);
+    });
+  }
+
   onChange_FypTemplateIndex(index: number) {
     this.currFypTemplate = this.allFypTemplates[index];
     console.log(this.currFypTemplate);
   }
 
+  exportTemplate() {
+    const data = document.getElementById('template-editor-window');
+    html2canvas(data).then(canvas => {
+      // Few necessary setting options
+      const imgWidth = 208;
+      const pageHeight = 295;
+      const imgHeight = canvas.height * imgWidth / canvas.width;
+      const heightLeft = imgHeight;
+
+      const contentDataURL = canvas.toDataURL('image/png');
+      const pdf = new jspdf('p', 'mm', 'a4');
+      const position = 0;
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight);
+      pdf.save(this.currFypTemplate.templateName + '.pdf');
+    });
+  }
+
+  ngAfterViewInit() {
+  }
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
 }
