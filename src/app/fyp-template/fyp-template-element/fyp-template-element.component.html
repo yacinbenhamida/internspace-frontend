@@ -1,8 +1,7 @@
   <!-- Title -->
 
-
   <div id="a" *ngIf="element.sectionName === 'title'" cdkDragBoundary=".drag-boundary" class="drag-box title-elem"
-    cdkDrag cdkDragFreeDragPosition="coords2D" (mouseup)="onRelease_UpdateCoords()">
+    cdkDrag [cdkDragFreeDragPosition]="coords2D" (mouseup)="onRelease_UpdateCoords()">
     <h5> Title </h5>
     <input type="text" class="form-control" name="name" placeholder="Title" required>
   </div>
