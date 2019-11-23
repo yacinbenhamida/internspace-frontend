@@ -1,3 +1,4 @@
+
 .drag-box {
   /*
   width: 200px;
@@ -44,6 +45,24 @@
   margin: 0 auto;
 }
 
+
+.description-elem {
+  width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+.problematic-elem {
+  width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .personal-details-elem {
   width: auto;
   max-width: 500px;
@@ -53,6 +72,32 @@
 
 .features-elem {
   width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+
+.categories-elem {
+  width: auto;
+  height: 300px;
+
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.keywords-elem {
+  width: auto;
+  height: 300px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.company-info-elem {
+  width: auto;
+  height: 400px;
+
   max-width: 500px;
   margin: 0 auto;
 }
@@ -79,3 +124,5 @@
   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
+
+

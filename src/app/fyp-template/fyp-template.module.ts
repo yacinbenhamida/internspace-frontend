@@ -10,6 +10,11 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FypTemplateElementComponent } from './fyp-template-element/fyp-template-element.component';
 
 /**
+ * Search
+ */
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+/**
  * Importing REST Services Providers
  */
 import { FypTemplateService } from './../services/fyp-template/fyp-template.service';
@@ -18,7 +23,8 @@ import { FypTemplateService } from './../services/fyp-template/fyp-template.serv
   declarations: [FypTemplateManagementComponent, FypTemplateElementComponent],
   imports: [
     CommonModule,
-    DragDropModule
+    DragDropModule,
+    BrowserAnimationsModule,
   ],
 
   providers: [FypTemplateService]

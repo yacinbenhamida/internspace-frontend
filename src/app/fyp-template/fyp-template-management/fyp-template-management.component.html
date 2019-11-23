@@ -1,7 +1,22 @@
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
+
+<div class="form-inline cool-item ">
+
+  <div class="mr-4">
+
+    <select class="cool-item" style="max-width:90%;" (change)="onChange_FypFileIndex($event.target.value)" formControlName="template">
+      <option>Preview File</option>
+      <option *ngFor="let template of likeFypFileSearch; let index = index;" [value]="index"
+        [selected]="template == previewFypFile">
+        {{template.title}}</option>
+    </select>
+
+  </div>
+</div>
+
 
 <div class="form-inline cool-item ">
 
@@ -13,16 +28,13 @@
 
   </select>
 
-  <button type="button" class="btn btn-outline-secondary mr-2">
+  <button type="button" class="btn btn-outline-secondary mr-4">
     <span>Save</span></button>
-  <button type="button" class="btn btn-outline-secondary mr-2">
-    <span>Preview</span></button>
-  <button type="button" class="btn btn-outline-secondary mr-2">
+
+  <button type="button" class="btn btn-outline-secondary mr-4" (click)="exportTemplate()">
     <span>Export</span></button>
-  <button type="button" class="btn btn-outline-secondary mr-2">
-    <span>Print</span></button>
-  <button type="button" class="btn btn-outline-secondary mr-2">
-    <span>Reset</span></button>
+  <button [disabled]='previewFypFile == null' type="button" class="btn btn-outline-secondary mr-2">
+    <span>Clear Data</span></button>
 
   <form justify-content-center>
     <input formControlName="templateName" class="cool-item ml-4" type="text">
@@ -32,10 +44,10 @@
 
 <hr>
 
-<div *ngIf='currFypTemplate' class="drag-boundary">
+<div id="template-editor-window" *ngIf='currFypTemplate' class="drag-boundary">
 
-  <div *ngFor='let element of currFypTemplate.templateElements'>
-    <app-fyp-template-element [element]='element'></app-fyp-template-element>
+  <div *ngFor='let element of currFypTemplate.templateElements; let i=index'>
+    <app-fyp-template-element [orderz]='i' [element]='element' [previewFypFile]='previewFypFile'></app-fyp-template-element>
   </div>
 
 

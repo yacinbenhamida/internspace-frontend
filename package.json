@@ -22,6 +22,8 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "core-js": "^3.4.2",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "material-design-icons": "^3.0.1",
     "rxjs": "~6.5.3",
     "zone.js": "~0.10.2"

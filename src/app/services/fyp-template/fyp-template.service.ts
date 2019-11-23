@@ -1,8 +1,9 @@
-import { FypTemplateElement } from './../../models/fyp-template-element';
+import { FypTemplateElement } from '../../models/fyp/fyp-template-element';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { FypTemplate } from './../../models/fyp-template';
+import { FypTemplate } from '../../models/fyp/fyp-template';
+import { FypFile } from 'src/app/models/fyp/fyp-file';
 
 @Injectable({
   providedIn: 'root'
@@ -35,11 +36,11 @@ export class FypTemplateService {
   GetFypTemplatesForEditor(editorId: number): Observable<FypTemplate[]> {
     const params = new HttpParams().set('editorId', editorId.toString());
 
-    return this.http.get<FypTemplate[]>(this.baseurl + '/editor/all', {headers: this.headers, params: params});
+    return this.http.get<FypTemplate[]>(this.baseurl + '/editor/all', { headers: this.headers, params: params });
   }
 
-   // GET
-   UpdateTemplateElement(element: FypTemplateElement): Observable<Object> {
+  // GET
+  UpdateTemplateElement(element: FypTemplateElement): Observable<Object> {
 
     const params = new HttpParams()
       .set('id', element.id.toString())
@@ -48,7 +49,16 @@ export class FypTemplateService {
       .set('x', element.x_coord.toString())
       .set('y', element.y_coord.toString());
 
-    return this.http.get<Object>(this.baseurl + '/update/element', {headers: this.headers, params: params});
+    return this.http.get<Object>(this.baseurl + '/update/element', { headers: this.headers, params: params });
   }
 
+  // GET
+  GetSimilarFypFileByName(name: string): Observable<FypFile[]> {
+    const params = new HttpParams()
+      .set('name', name)
+      .set('n', '10')
+      .set('like', 'true');
+
+    return this.http.get<FypFile[]>(this.baseurl + '/find-file/name', { headers: this.headers, params: params });
+  }
 }

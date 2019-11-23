@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AdminModule } from './admin/admin.module';
-import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
@@ -16,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/security/authguard.service';
 import { AuthenticationService } from './services/security/authentication.service';
 import { ProfileComponent } from './profile/profile.component';
+import { FypTemplateModule } from './fyp-template/fyp-template.module';
+import { DashboardModule } from './dashboard/dashboard.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
-    FypTemplateModule
+    FypTemplateModule,
+    DashboardModule
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]
