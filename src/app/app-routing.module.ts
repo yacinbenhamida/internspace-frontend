@@ -1,3 +1,4 @@
+import { UniversityStatsComponent } from './dashboard/university-stats/university-stats.component';
 import { FypTemplateManagementComponent } from './fyp-template/fyp-template-management/fyp-template-management.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path : 'login', component : AuthenticationComponent},
   {path: '404', component: NotfoundComponent},
   {path: 'fypTemplate', component: FypTemplateManagementComponent},
+  {path: 'uniDash', component: UniversityStatsComponent},
   {path: '**', redirectTo: '/404'},
 ];
 
