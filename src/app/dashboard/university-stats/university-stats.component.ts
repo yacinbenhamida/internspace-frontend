@@ -15,7 +15,7 @@ export class UniversityStatsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.uniStatsService.GetCoordsByCountryName('Tunisia').subscribe(coords => console.log(coords));
+    // this.uniStatsService.GetCoordsByCountryName('Tunisia').subscribe(coords => console.log(coords));
   }
 
 }
