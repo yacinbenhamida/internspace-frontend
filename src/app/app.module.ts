@@ -11,6 +11,7 @@ import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AppService } from './app.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AdminModule,
     FypTemplateModule
   ],

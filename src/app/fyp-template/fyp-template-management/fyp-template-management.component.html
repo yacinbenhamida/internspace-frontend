@@ -1,147 +1,42 @@
+
 <br>
 <br>
-<div class="drag-boundary">
+<br>
 
-  <!-- Title -->
+<div class="form-inline cool-item ">
 
-  <div cdkDragBoundary=".drag-boundary" class="drag-box title-elem" cdkDrag>
-    <h5> Title </h5>
-    <input type="text" class="form-control" name="name" placeholder="Title" required>
+  <select (change)="onChange_FypTemplateIndex($event.target.value)" class="custom-select mr-4"
+    formControlName="template">
+    <option value="">Choose your template</option>
+    <option *ngFor="let template of allFypTemplates; let index = index;" [value]="index"
+      [selected]="template == currFypTemplate">{{template.templateName}}</option>
+
+  </select>
+
+  <button type="button" class="btn btn-outline-secondary mr-2">
+    <span>Save</span></button>
+  <button type="button" class="btn btn-outline-secondary mr-2">
+    <span>Preview</span></button>
+  <button type="button" class="btn btn-outline-secondary mr-2">
+    <span>Export</span></button>
+  <button type="button" class="btn btn-outline-secondary mr-2">
+    <span>Print</span></button>
+  <button type="button" class="btn btn-outline-secondary mr-2">
+    <span>Reset</span></button>
+
+  <form justify-content-center>
+    <input formControlName="templateName" class="cool-item ml-4" type="text">
+    <button class="btn btn-primary mr-4">Add</button>
+  </form>
+</div>
+
+<hr>
+
+<div *ngIf='currFypTemplate' class="drag-boundary">
+
+  <div *ngFor='let element of currFypTemplate.templateElements'>
+    <app-fyp-template-element [element]='element'></app-fyp-template-element>
   </div>
 
-  <!-- Description -->
-
-  <div cdkDragBoundary=".drag-boundary" class="drag-box title-elem" cdkDrag>
-    <h5> Description </h5>
-    <textarea class="form-control" rows="4" placeholder="Description"></textarea>
-  </div>
-
-  <!-- Problematic -->
-
-  <div cdkDragBoundary=".drag-boundary" class="drag-box title-elem" cdkDrag>
-    <h5> Problematic </h5>
-    <input type="text" class="form-control" name="name" placeholder="Problematic" required>
-  </div>
-
-  <!-- Features -->
-
-  <div class="drag-box features-elem" cdkDragBoundary=".drag-boundary" cdkDrag>
-    <div class="card-body">
-      <div class="d-flex justify-content-between">
-        <h5>Features</h5>
-        <button class="btn btn-primary">+</button>
-      </div>
-      <hr>
-      <div class="rXow" style="width: 350px" *ngFor="let ex of [1, 2 ,3]; let i=index">
-        <div class="col-md-12">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Employer">
-          </div>
-          <div class="form-group">
-            <div class="form-group">
-              <textarea class="form-control" rows="3" placeholder="Job Description"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Categories -->
-
-  <div class="drag-box features-elem" cdkDragBoundary=".drag-boundary" cdkDrag>
-    <div class="card-body">
-      <div class="d-flex justify-content-between card-title">
-        <h5 class="d-flex align-items-center">
-          Categories</h5>
-        <button class="btn btn-primary">+</button>
-      </div>
-      <div class="rXow">
-        <div class="col-md-12" *ngFor="let s of [1, 2]; let i=index">
-          <div class="form-group">
-          </div>
-          <select class="form-control" placeholder="Degree" name="degree{{i}}" required>
-            <option [value]="d" *ngFor="let d of [1, 2]">{{d}}</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="drag-box features-elem" cdkDragBoundary=".drag-boundary" cdkDrag>
-    <div class="card-body">
-      <div class="d-flex justify-content-between card-title">
-        <h5 class="d-flex align-items-center">
-          Keywords</h5>
-        <button class="btn btn-primary">+</button>
-      </div>
-      <div class="rXow">
-        <div class="col-md-12" *ngFor="let s of [1, 2]; let i=index">
-          <div class="form-group">
-          </div>
-          <select class="form-control" placeholder="Degree" name="degree{{i}}" required>
-            <option [value]="d" *ngFor="let d of [1, 2]">{{d}}</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Company Information -->
-
-  <div class="drag-box features-elem" cdkDragBoundary=".drag-boundary" cdkDrag>
-    <div class="card-body">
-      <div class="d-flex justify-content-between card-title">
-        <h5> Company Information </h5>
-      </div>
-      <input type="text" class="form-control" placeholder="Company Name">
-      <hr>
-      <div class="title-elem drag-box">
-        <h6 class="d-flex align-items-center"> Supervisor </h6>
-        <div class="d-flex justify-content-between card-title">
-          <input type="text" class="form-control" placeholder="Supervisor Email">
-        </div>
-        <br>
-        <h6 class="d-flex align-items-center"> Reporter </h6>
-        <div class="d-flex justify-content-between card-title">
-          <input type="text" class="form-control" placeholder="Reporter Email">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Personal Details-->
-
-  <div class="drag-box personal-details-elem" cdkDragBoundary=".drag-boundary" cdkDrag>
-    <h5> Personal Details </h5>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-
-          <input type="text" class="form-control" name="name" placeholder="Name" required
-            [ngClass]="{'is-invalid': Name.invalid && (Name.touched || fileTemplateForm.submitted) }">
-        </div>
-        <div class="form-group">
-          <div class="form-group">
-            <textarea class="form-control" name="address" rows="3" placeholder="Address" required
-              [ngClass]="{'is-invalid': Address.invalid && (Address.touched || fileTemplateForm.submitted) }"></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <input type="text" class="form-control" name="contactNo" placeholder="Contact No." required
-            [ngClass]="{'is-invalid': ContactNo.invalid && (ContactNo.touched || fileTemplateForm.submitted) }">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="emailId" placeholder="Email ID" required
-            [ngClass]="{'is-invalid': Email.invalid && (Email.touched || fileTemplateForm.submitted) }">
-        </div>
-        <div class="form-group">
-          <input type="text" class="form-control" name="socialProfile" placeholder="Social Profile ">
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
