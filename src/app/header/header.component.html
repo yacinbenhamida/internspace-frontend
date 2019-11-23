@@ -11,9 +11,22 @@
                             </a>
                         </div>
                     </div>
-                </div>
+                </div>     
                 <div class="header-column justify-content-end">
-
+                        <div  *ngIf="auth.currentUserValue" class="header-row pt-2">
+                                <nav class="header-nav-top">
+                                    <ul class="nav nav-pills">
+                                        <li class="nav-item nav-item-anim-icon d-none d-md-block">
+                                            <span class="ws-nowrap m-list--link fs-15"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span>
+                                        </li>
+                                        <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                                            <div class="social social-bg-light social-sm mt-1">
+                                                <a (click)="logoutAction()" class="social-facebook m-0 transition-hover" href="#"><i class="fas fa-sign-out-alt"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                     <div class="header-row">
                         <div class="header-nav header-nav-links order-2 order-lg-1">
                             <div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
@@ -22,102 +35,12 @@
                                         <li class="dropdown dropdown-mega">
                                             <a class="dropdown-item dropdown-toggle active" routerLink="/">
                                                 Home
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <div class="dropdown-mega-content">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 dropdown-mega-sub-content-block gradient-half-primary-v6 d-none d-lg-block">
-                                                                <span class="top-sub-title text-white-50 d-block">THE MOST</span>
-                                                                <span class="text-white font-weight-bold d-block text-4 mb-2">POWERFUL</span>
-                                                                <p class="text-white-50">A revolutionary theme trusted by tons of customers</p>
-                                                                <a class="btn btn-light btn-sm" href="#">Get Started</a>
-                                                            </div>
-                                                            <div class="col-lg-3 ml-auto">
-                                                                <ul class="dropdown-mega-sub-nav">
-                                                                    <li><a class="dropdown-item" href="index-2.html">Home - Variation 1</a></li>
-                                                                    <li><a class="dropdown-item" href="index-3.html">Home - Variation 2</a></li>
-                                                                    <li><a class="dropdown-item" href="index-4.html">Home - Variation 3</a></li>
-                                                                    <li><a class="dropdown-item current" href="index-5.html">Home - Variation 4</a></li>
-                                                                    <li><a class="dropdown-item" href="index-6.html">Home - Variation 5</a></li>
-                                                                    <li><a class="dropdown-item" href="index-7.html">Home - Variation 6</a></li>
-                                                                    <li><a class="dropdown-item" href="index-8.html">Home - Variation 7</a></li>
-                                                                    <li><a class="dropdown-item" href="index-9.html">Home - Variation 8</a></li>
-                                                                    <li><a class="dropdown-item" href="index-10.html">Home - Variation 9 </a></li>
-                                                                    <li><a class="dropdown-item" href="index-11.html">Home - Variation 10 </a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <ul class="dropdown-mega-sub-nav">
-                                                                    <li><a class="dropdown-item" href="index-12.html">Home - Variation 11</a></li>
-                                                                    <li><a class="dropdown-item" href="index-13.html">Home - Variation 12 <span class="badge badge-success ml-1">New</span></a></li>
-                                                                    <li><a class="dropdown-item" href="index-14.html">Home - Event <span class="badge badge-success ml-1">New</span></a></li>
-                                                                </ul>
-                                                                <span class="dropdown-mega-sub-title">Contact Us</span>
-                                                                <ul class="dropdown-mega-sub-nav">
-                                                                    <li><a class="dropdown-item" href="page/contact-us.html">Contact Us</a></li>
-                                                                    <li><a class="dropdown-item" href="page/contact-us-2.html">Contact Us 2</a></li>
-                                                                    <li><a class="dropdown-item" href="page/contact-us-3.html">Contact Us 3 <span class="badge badge-success ml-1">New</span></a></li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="col-lg-3">
-                                                                <span class="dropdown-mega-sub-title">About</span>
-                                                                <ul class="dropdown-mega-sub-nav">
-                                                                    <li><a class="dropdown-item" href="page/about-us.html">About Us</a></li>
-                                                                    <li><a class="dropdown-item" href="page/about-me.html">About Me</a></li>
-                                                                    <li><a class="dropdown-item" href="page/team.html">Team</a></li>
-                                                                    <li><a class="dropdown-item" href="page/job.html">Job</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
+                                            </a> 
                                         </li>
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="#">
-                                                Pages
+                                            <a class="dropdown-item dropdown-toggle" routerLink="/profile">
+                                                Profile
                                             </a>
-                                            <ul class="dropdown-menu">
-
-                                                <li class="dropdown-submenu">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">About Us</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="page/about-us.html">About Us</a></li>
-                                                        <li><a class="dropdown-item" href="page/about-me.html">About Me</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="dropdown-submenu">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">Contact Us</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="page/contact-us.html">Contact Us</a></li>
-                                                        <li><a class="dropdown-item" href="page/contact-us-2.html">Contact Us 2</a></li>
-                                                        <li><a class="dropdown-item" href="page/contact-us-3.html">Contact Us 3 <span class="badge badge-success ml-1">New</span></a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a class="dropdown-item" href="page/team.html">Team</a></li>
-                                                <li><a class="dropdown-item" href="page/services.html">Services</a></li>
-                                                <li><a class="dropdown-item" href="page/job.html">Job</a></li>
-                                                <li><a class="dropdown-item" href="page/job-detail.html">Job Detail</a></li>
-                                                <li class="dropdown-submenu">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">Account</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="page/login.html">Login</a></li>
-                                                        <li><a class="dropdown-item" href="page/register.html">Register</a></li>
-                                                        <li><a class="dropdown-item" href="page/password-recovery.html">Recovery</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a class="dropdown-item" href="page/help.html">Help Page</a></li>
-                                                <li><a class="dropdown-item" href="page/pricing.html">Pricing Page</a></li>
-                                                <li class="header-divider"></li>
-                                                <li class="dropdown-submenu">
-                                                    <a class="dropdown-item dropdown-toggle font-weight-bold" href="#">Extra</a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" href="page/faq.html">FAQ</a></li>
-                                                        <li><a class="dropdown-item" href="page/404.html">404 Error</a></li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
                                         </li>
                                         <li class="dropdown">
                                             <a class="dropdown-item dropdown-toggle" href="#">
@@ -267,12 +190,7 @@
                                     </ul>
                                 </nav>
                             </div>
-                            <a routerLink="login" class="btn btn-primary shadow-3 transition-hover btn-sm ml-3">Sign in</a>
-                            <!--<ul class="header-social-icons social-icons d-none d-sm-block">
-                                <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-                            </ul>-->
+                            <a routerLink="login"  *ngIf="auth.currentUserValue == null" class="btn btn-primary shadow-3 transition-hover btn-sm ml-3">Sign in</a>
                             <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
                                 <i class="fas fa-bars"></i>
                             </button>
