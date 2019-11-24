@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <header class="section-header">
+        <small>FYP files history</small>
+        <p class="lead">FYP files history records</p>
+    </header>
+
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h6 class="divider">to display history, just click on an element of the table</h6>
+           
+            <div class="uikit-example">
+                <table datatable  [dtOptions]="dtOptions" class="row-border hover">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let a of fypFiles">
+                        <td>{{a.title}}</td>
+                        <td>{{a.description}}</td>
+                        <td>{{a.problematic}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+         </div>
+    </div>
+</div>
+</div>
+<br/>
+<br/>

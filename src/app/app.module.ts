@@ -19,7 +19,9 @@ import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
-// e6447ab970454075acf54ec8b19718d5
+import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
+import { DataTablesModule } from 'angular-datatables';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { FypConventionComponent } from './fyp-convention/fyp-convention.componen
     FooterComponent,
     FypCategorieComponent,
     ProfileComponent,
-    FypConventionComponent
+    FypConventionComponent,
+    FypfileHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { FypConventionComponent } from './fyp-convention/fyp-convention.componen
     HttpClientModule,
     AdminModule,
     FypTemplateModule,
-    DashboardModule
+    DashboardModule,
+    DataTablesModule
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]
