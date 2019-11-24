@@ -17,6 +17,8 @@ import { AuthenticationService } from './services/security/authentication.servic
 import { ProfileComponent } from './profile/profile.component';
 import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
+// e6447ab970454075acf54ec8b19718d5
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     AuthenticationComponent,
     HomepageComponent,
     FooterComponent,
+    FypCategorieComponent
     ProfileComponent
   ],
   imports: [
