@@ -12,8 +12,9 @@ import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-// Custom
+import { AuthGuard } from './services/security/authguard.service';
+import { AuthenticationService } from './services/security/authentication.service';
+import { ProfileComponent } from './profile/profile.component';
 import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
@@ -28,6 +29,7 @@ import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
     HomepageComponent,
     FooterComponent,
     FypCategorieComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
     FypTemplateModule,
     DashboardModule
   ],
-  providers: [AppService],
+  providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
