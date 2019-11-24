@@ -14,4 +14,5 @@ export interface Student {
   password: string;
   userType: string;
   username: string;
+  fypFile: any;
 }
