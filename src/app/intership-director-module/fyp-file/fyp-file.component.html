@@ -1,0 +1,55 @@
+<div class="navBar">
+<h6 (click)="CritHandler('cin')">CIN</h6>
+<h6 (click)="CritHandler('year')">YEAR</h6>     
+<h5>Fiche PFE</h5>
+<h6 (click)="CritHandler('State')">FILE STATE</h6> 
+<h6 (click)="CritHandler('Country')">COUNTRY</h6>  
+</div>
+<div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>FileStatus</th>
+            <th>FinalMark</th>
+            <th>IsArchived</th>
+            <th>IsCanceled</th>
+            <th>IsConfirmed</th>
+            <th>IsPrevalidated</th>
+            <th>Problematic</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let x of allFYPFiles , let i = index">
+        <tr>
+            <th scope="row">{{i+1}}</th>
+            <td>{{x.title}}</td>
+            <td>{{x.description}}</td>
+            <td>{{x.fileStatus}}</td>
+            <td>{{x.finalMark}}</td>
+            <td>{{x.isArchived}}</td>
+            <td>{{x.isCanceled}}</td>
+            <td>{{x.isConfirmed}}</td>
+            <td>{{x.isPrevalidated}}</td>
+            <td>{{x.problematic}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="byCIN">
+ by CIN
+</div>
+
+<div class="byCIN">
+    by year
+</div>
+
+<div class="byCIN">
+    by State
+</div>
+
+<div class="byCIN">
+    by country
+</div>
+</div>

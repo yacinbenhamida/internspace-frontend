@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './services/security/authguard.service';
+import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 
 const routes: Routes = [
   {path : '', component : HomepageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: '404', component: NotfoundComponent},
   {path: 'uniDash', component: UniversityStatsComponent},
+  {path: 'internshipDirector', component: FypFileComponent},
   {path: '**', redirectTo: '/404'},
 ];
 

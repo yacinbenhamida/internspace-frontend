@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
+import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 // e6447ab970454075acf54ec8b19718d5
 
 @NgModule({
@@ -28,8 +29,9 @@ import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
     AuthenticationComponent,
     HomepageComponent,
     FooterComponent,
-    FypCategorieComponent
-    ProfileComponent
+    FypCategorieComponent,
+    ProfileComponent,
+    FypFileComponent
   ],
   imports: [
     BrowserModule,
