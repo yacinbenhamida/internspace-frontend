@@ -65,7 +65,7 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
     this.uniStatsService.GetStudentInternshipPerCountry(this.uniId).subscribe(res => {
       const mapData = res;
       const polyData = [];
-      console.log(mapData);
+
       for (const md in mapData) {
         if (md) {
           polyData.push(
@@ -75,16 +75,8 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
               , 'description': 'Description Placeholder'
               , 'students': mapData[md]
             });
-
-          for (const s in mapData[md]) {
-            if (s) {
-              console.log(s);
-            }
-          }
         }
       }
-
-      console.log(mapData);
 
       // Add some custom data
       polygonSeries.data = polyData;

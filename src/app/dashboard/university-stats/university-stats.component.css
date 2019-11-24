@@ -1,0 +1,10 @@
+@import "../../fyp-template/fyp-template-management/fyp-template-management.component.css";
+
+.my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
