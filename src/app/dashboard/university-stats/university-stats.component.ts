@@ -18,6 +18,7 @@ export class UniversityStatsComponent implements OnInit, AfterViewInit {
   chart: am4charts.XYChart;
   zone: NgZone;
   uniStatsService: UniStatsService;
+  chartChache: any;
 
   constructor(uniStatsService: UniStatsService, zone: NgZone) {
     this.uniStatsService = uniStatsService;
@@ -34,18 +35,22 @@ export class UniversityStatsComponent implements OnInit, AfterViewInit {
     // this.chart2();
   }
 
+  ngOnDestroy() {
+    this.chartChache.dispose();
+  }
+
   chart0() {
     // Create map instance
-    const chart = am4core.create('chart0', am4maps.MapChart);
+    this.chartChache = am4core.create('chart0', am4maps.MapChart);
 
     // Set map definition
-    chart.geodata = am4geodata_worldLow;
+    this.chartChache.geodata = am4geodata_worldLow;
 
     // Set projection
-    chart.projection = new am4maps.projections.Miller();
+    this.chartChache.projection = new am4maps.projections.Miller();
 
     // Create map polygon series
-    const polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    const polygonSeries = this.chartChache.series.push(new am4maps.MapPolygonSeries());
 
     // Make map load polygon (like country names) data from GeoJSON
     polygonSeries.useGeodata = true;
@@ -53,49 +58,61 @@ export class UniversityStatsComponent implements OnInit, AfterViewInit {
     // Services test
     console.log(this.uniStatsService.GetCountryCodeByName('Tuinsia'));
     this.uniStatsService.GetStudentsLocationDistribution('2', true).subscribe(res => console.log(res));
-    this.uniStatsService.GetStudentInternshipPerCountry('2').subscribe(res => console.log(res));
+    this.uniStatsService.GetStudentInternshipPerCountry('2').subscribe(res => {
+      const mapData = res;
+      const polyData = [];
+      console.log(mapData);
+      for (const md in mapData) {
+        if (md) {
+          polyData.push(
+            {
+              'id': this.uniStatsService.GetCountryCodeByName(md)
+              , 'color': am4core.color('#0a5ce0')
+              , 'description': 'Description Placeholder'
+              , 'students': mapData[md]
+            });
 
-    // Add some custom data
-    polygonSeries.data = [{
-      "id": "TN",
-      "color": am4core.color('#0a5ce0'),
-      "description": "The U.S. is a country of 50 states covering a vast swath of North America, with Alaska in the northwest and Hawaii extending the nation’s presence into the Pacific Ocean. Major Atlantic Coast cities are New York, a global finance and culture center, and capital Washington, DC. Midwestern metropolis Chicago is known for influential architecture and on the west coast, Los Angeles' Hollywood is famed for filmmaking."
-    }, {
-      "id": "CA",
-      "color": am4core.color('#0a5ce0'),
-      "description": "Canada is a North American country stretching from the U.S. in the south to the Arctic Circle in the north. Major cities include massive Toronto, west coast film centre Vancouver, French-speaking Montréal and Québec City, and capital city Ottawa. Canada's vast swaths of wilderness include lake-filled Banff National Park in the Rocky Mountains. It's also home to Niagara Falls, a famous group of massive waterfalls."
-    }, {
-      "id": "MX",
-      "color": am4core.color('#0a5ce0'),
-      "description": "Mexico is a country between the U.S. and Central America that's known for its Pacific and Gulf of Mexico beaches and its diverse landscape of mountains, deserts and jungles. Ancient ruins such as Teotihuacán and the Mayan city of Chichén Itzá are scattered throughout the country, as are Spanish colonial-era towns. In capital Mexico City, upscale shops, renowned museums and gourmet restaurants cater to modern life."
-    }]
-
-    // Configure series
-    const polygonTemplate = polygonSeries.mapPolygons.template;
-    polygonTemplate.tooltipText = '{name}';
-    polygonTemplate.fill = am4core.color('#bdceeb');
-    polygonTemplate.propertyFields.fill = 'color';
-    polygonTemplate.events.on('hit', function (ev) {
-      let data: any;// {'id': '', 'name': '', 'description': ''};
-      data = ev.target.dataItem.dataContext;
-      const info = document.getElementById('info');
-      info.innerHTML = '<h3>' + data.name + '(' + data.id + ')</h3>';
-      if (data.description) {
-        info.innerHTML += data.description;
-      } else {
-        info.innerHTML += '<i>No description provided.</i>';
+          for (const s in mapData[md]) {
+            if (s) {
+              console.log(s);
+            }
+          }
+        }
       }
+
+      console.log(mapData);
+
+      // Add some custom data
+      polygonSeries.data = polyData;
+
+      // Configure series
+      const polygonTemplate = polygonSeries.mapPolygons.template;
+      polygonTemplate.tooltipText = '{name}';
+      polygonTemplate.fill = am4core.color('#bdceeb');
+      polygonTemplate.propertyFields.fill = 'color';
+      polygonTemplate.events.on('hit', function (ev) {
+        let data: any;// {'id': '', 'name': '', 'description': ''};
+        data = ev.target.dataItem.dataContext;
+        const info = document.getElementById('info');
+        info.innerHTML = '<h3>' + data.name + '(' + data.id + ')</h3>';
+        if (data.description) {
+          info.innerHTML += data.description;
+        } else {
+          info.innerHTML += '<i>No internships found.</i>';
+        }
+      });
+
+      // Create hover state and set alternative fill color
+      const hs = polygonTemplate.states.create('hover');
+      hs.properties.fill = am4core.color('#e0470a');
+
+      // Remove Antarctica
+      polygonSeries.exclude = ['AQ'];
+
+      // Add zoom control
+      this.chartChache.zoomControl = new am4maps.ZoomControl();
     });
 
-    // Create hover state and set alternative fill color
-    const hs = polygonTemplate.states.create('hover');
-    hs.properties.fill = am4core.color('#e0470a');
-
-    // Remove Antarctica
-    polygonSeries.exclude = ['AQ'];
-
-    // Add zoom control
-    chart.zoomControl = new am4maps.ZoomControl();
   }
 
   chart1() {

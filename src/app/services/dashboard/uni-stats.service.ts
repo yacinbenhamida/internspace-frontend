@@ -35,12 +35,14 @@ export class UniStatsService {
 
     // Prepare reverse iso countries data cache
     this.cachedCountryJSON = {};
-    const data = this.http.get<any>('/src/assets/data/isoCountries.json');
-    for (const key in data) {
-      if (key) {
-        this.cachedCountryJSON[data[key]] = key;
+    this.http.get('assets/data/isoCountries.json').subscribe(data => {
+      for (const key in data) {
+        if (key) {
+          this.cachedCountryJSON[data[key]] = key;
+        }
       }
     }
+    );
 
   }
 
@@ -58,6 +60,7 @@ export class UniStatsService {
 
   // Local
   GetCountryCodeByName(countryName: string): String {
+
     if (this.cachedCountryJSON.hasOwnProperty(countryName)) {
       return this.cachedCountryJSON[countryName];
     } else {
