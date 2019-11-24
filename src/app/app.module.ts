@@ -28,7 +28,7 @@ import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
     AuthenticationComponent,
     HomepageComponent,
     FooterComponent,
-    FypCategorieComponent
+    FypCategorieComponent,
     ProfileComponent
   ],
   imports: [
