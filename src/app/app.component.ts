@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { AuthenticationService } from './services/security/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ export class AppComponent implements OnInit {
   constructor(
     public appservice: AppService
     , private routes: ActivatedRoute
-    , private router: Router) {}
+    , private router: Router,
+    private auth:AuthenticationService) {}
 
   /**
    * we have to check if we are not dealing with the login page

@@ -50,12 +50,7 @@
               "src/assets/js/other.js",
               "src/assets/js/page.js",
               "src/assets/js/script.js",
-              "src/assets/js/custom.js",
-              "src/assets/404/assets/js/jquery-2.1.1.min.js",
-              "src/assets/404/assets/boostrap-files/js/bootstrap.min.js",
-              "src//assets/404/assets/js/modernizr.custom.js",
-              "src/assets/404/assets/js/jquery.nicescroll.min.js",
-              "src/assets/404/assets/js/scripts.js"
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {
@@ -138,15 +133,10 @@
               "src/assets/js/other.js",
               "src/assets/js/page.js",
               "src/assets/js/script.js",
-              "src/assets/js/custom.js",
-              "src/assets/404/assets/js/jquery-2.1.1.min.js",
-              "src/assets/404/assets/boostrap-files/js/bootstrap.min.js",
-              "src//assets/404/assets/js/modernizr.custom.js",
-              "src/assets/404/assets/js/jquery.nicescroll.min.js",
-              "src/assets/404/assets/js/scripts.js"
+              "src/assets/js/custom.js"
             ],
             "assets": [
-              "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ]
           }

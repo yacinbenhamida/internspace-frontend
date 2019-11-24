@@ -1,10 +1,11 @@
 export class User{
-    userId : number
-    email : string
+    id : number
     firstName : string
     lastName : string
-    password : string
+    email : string
+    username : string
     userType: string
+    token?:string;
     constructor(){
         
     }
