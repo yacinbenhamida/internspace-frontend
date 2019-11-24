@@ -20,6 +20,8 @@ export class UniversityStatsComponent implements OnInit, AfterViewInit {
   uniStatsService: UniStatsService;
   chartChache: any;
 
+  uniId = '2';
+
   constructor(uniStatsService: UniStatsService, zone: NgZone) {
     this.uniStatsService = uniStatsService;
     this.zone = zone;
@@ -30,13 +32,12 @@ export class UniversityStatsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.chart0();
+    //this.chart0();
     // this.chart1();
     // this.chart2();
   }
 
   ngOnDestroy() {
-    this.chartChache.dispose();
   }
 
   chart0() {
