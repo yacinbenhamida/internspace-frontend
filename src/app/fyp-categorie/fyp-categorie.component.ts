@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TeacherServiceService } from '../services/Teacher/teacher-service.service';
+import { Router } from '@angular/router';
+import { FypCategory } from '../models/fyp/fyp-category';
 
 @Component({
   selector: 'app-fyp-categorie',
@@ -6,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fyp-categorie.component.css']
 })
 export class FypCategorieComponent implements OnInit {
+  @Input() fypcategory :FypCategory;
 
-  constructor() { }
+  constructor(
+    public restApi: TeacherServiceService, 
+    public router: Router
+  ) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  addFypcat(datacategory) {
+    this.restApi.AddFypCategory(this.fypcategory).subscribe((data: {}) => {
+      this.router.navigate([])
+    })
   }
 
 }
