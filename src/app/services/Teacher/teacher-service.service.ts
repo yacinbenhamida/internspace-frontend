@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FypTemplate } from '../../models/fyp/fyp-template';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
+import { FypCategory } from 'src/app/models/fyp/fyp-category';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class TeacherServiceService {
 
   
   // Base url
-  baseurl = '/api/template';
+  baseurl = '/api/teachers';
 
   constructor(private http: HttpClient) { }
 
@@ -29,12 +30,12 @@ export class TeacherServiceService {
   };
 
   // POST
-  AddFypCategory(data: FypTemplate): Observable<FypTemplate> {
-    return this.http.post<FypTemplate>(this.baseurl + '/create/' + data.templateName, JSON.stringify(data), this.httpOptions);
+  AddFypCategory(data: FypCategory): Observable<FypCategory> {
+    return this.http.post<FypCategory>(this.baseurl + '/add/' + data.name, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
-  GetFypTemplatesForEditor(editorId: number): Observable<FypTemplate[]> {
+ /* GetFypTemplatesForEditor(editorId: number): Observable<FypTemplate[]> {
     const params = new HttpParams().set('editorId', editorId.toString());
 
     return this.http.get<FypTemplate[]>(this.baseurl + '/editor/all', { headers: this.headers, params: params });
@@ -61,5 +62,5 @@ export class TeacherServiceService {
       .set('like', 'true');
 
     return this.http.get<FypFile[]>(this.baseurl + '/find-file/name', { headers: this.headers, params: params });
-  }
+  }*/
 }
