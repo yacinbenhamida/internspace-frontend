@@ -35,32 +35,10 @@ export class TeacherServiceService {
   }
 
   // GET
- /* GetFypTemplatesForEditor(editorId: number): Observable<FypTemplate[]> {
-    const params = new HttpParams().set('editorId', editorId.toString());
+  GetPrevalidatedFyp(TeacherId: number): Observable<FypFile[]> {
+    const params = new HttpParams().set('editorId', TeacherId.toString());
 
-    return this.http.get<FypTemplate[]>(this.baseurl + '/editor/all', { headers: this.headers, params: params });
+    return this.http.get<FypFile[]>(this.baseurl + '/pre_valid/', { headers: this.headers, params: params });
   }
 
-  // GET
-  UpdateTemplateElement(element: FypTemplateElement): Observable<Object> {
-
-    const params = new HttpParams()
-      .set('id', element.id.toString())
-      .set('h', element.height.toString())
-      .set('w', element.weight.toString())
-      .set('x', element.x_coord.toString())
-      .set('y', element.y_coord.toString());
-
-    return this.http.get<Object>(this.baseurl + '/update/element', { headers: this.headers, params: params });
-  }
-
-  // GET
-  GetSimilarFypFileByName(name: string): Observable<FypFile[]> {
-    const params = new HttpParams()
-      .set('name', name)
-      .set('n', '10')
-      .set('like', 'true');
-
-    return this.http.get<FypFile[]>(this.baseurl + '/find-file/name', { headers: this.headers, params: params });
-  }*/
 }
