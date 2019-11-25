@@ -18,6 +18,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
+import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
+
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
 import { DataTablesModule } from 'angular-datatables';
@@ -33,8 +35,10 @@ import { DataTablesModule } from 'angular-datatables';
     FooterComponent,
     FypCategorieComponent,
     ProfileComponent,
+    FypFileComponent,
     FypConventionComponent,
     FypfileHistoryComponent
+
   ],
   imports: [
     BrowserModule,
