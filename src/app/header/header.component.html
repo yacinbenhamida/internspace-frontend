@@ -41,7 +41,7 @@
                                             <li *ngIf="auth.currentUserValue" class="dropdown dropdown-reverse">
                                                 <a class="dropdown-item" routerLink="/profile">Profile </a>
                                             </li>
-                                            <li *ngIf="auth.currentUserValue.role == 'departmentHead'" class="dropdown">
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle active" href="#"> Sheets <i class="fas fa-chevron-down"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item active" routerLink="/fypfile/history"><i class="icon-list-2 menu-icon"></i> FYP Sheets</a></li>
