@@ -11,13 +11,13 @@ export class FypConventionComponent implements OnInit {
 
 
   allFypConvention: FypConvention[];
-  fypConventionService: FypConventionService;
-  constructor( fypConventionService: FypConventionService) {
+  constructor( private fypConventionService: FypConventionService) {
     
    }
 
   ngOnInit() { 
     this.getList();
+    this.fypConventionService.findStudentConvention("1").subscribe(data=>console.log(data))
   }
    
   getList(){
