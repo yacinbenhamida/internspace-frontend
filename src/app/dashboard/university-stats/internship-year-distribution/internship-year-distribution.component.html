@@ -1,0 +1,15 @@
+<div class="form-inline cool-item ">
+
+    <div class="mr-4">
+
+      <select class="cool-item" style="max-width:90%;" (change)="onChange_Category($event.target.value)" formControlName="category">
+        <option>Preview File</option>
+        <option *ngFor="let category of categoriesCache; let index = index;" [value]="index"
+          [selected]="category == selectedCategory">
+          {{category.name}}</option>
+      </select>
+
+    </div>
+  </div>
+
+<div class="cool-item" id="chart1" style="width: 100%; height: 500px"></div>

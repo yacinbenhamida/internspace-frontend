@@ -21,6 +21,8 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
   uniStatsService: UniStatsService;
   chartChache: any;
   studentsCache: Student[];
+  countryNameCache = 'Click on a country';
+  descriptionCache = '';
 
   @Input() uniId: string;
 
@@ -72,7 +74,7 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
             {
               'id': this.uniStatsService.GetCountryCodeByName(md)
               , 'color': am4core.color('#0a5ce0')
-              , 'description': 'Description Placeholder'
+              , 'description': 'Over ' + mapData[md].length + ' students.'
               , 'students': mapData[md]
             });
         }
@@ -109,19 +111,25 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
 
     let data: any; // {'id': '', 'name': '', 'description': ''};
     data = ev.target.dataItem.dataContext;
-    const info = document.getElementById('info');
+
+    this.countryNameCache = data.name + ' (' + data.id + ')';
+    this.descriptionCache = data.description;
 
     if (data.students) {
       this.studentsCache = data.students;
+      console.log(this.studentsCache);
+    } else {
+      this.studentsCache = null;
     }
 
+    /*
     info.innerHTML = '<h3>' + data.name + '(' + data.id + ')</h3>';
     if (data.description) {
       info.innerHTML += data.description;
     } else {
       info.innerHTML += '<i>No internships found.</i>';
     }
-
+    */
   }
 
 }

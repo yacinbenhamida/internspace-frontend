@@ -1,56 +1,108 @@
 <div class="row">
+  <!-- Map Container -->
   <div class="col-md-7">
     <div class="cool-item" id="chart0" style="width: 100%; height: 500px"></div>
   </div>
+  <!-- Side Information Container -->
   <div class="col-md-5">
 
     <div class="cool-item" style="height: 500px">
-      <p>Information</p>
-      <div id="info"></div>
+      <div id="info" class="text-center" style="height: 80px">
 
-      <div class="accordion" id="accordionExample">
-        <div class="card mb-3">
-          <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseOne">
-                Students in There
-              </button>
-            </h2>
+        <h3> {{countryNameCache}} </h3>
+        <span>
+           {{descriptionCache}}
+        </span>
+
+      </div>
+
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+          <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Students</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Subjects</a>
+          </li>
+      </ul>
+
+
+      <div *ngIf='studentsCache == null'>
+              <div class="clearfix bg-light rounded p-6">
+                  <i class="icon-direction-2 fs-55 text-primary"></i>
+                  <h3 class="h5 mb-3 mt-2">There are no internships in {{countryNameCache}}.</h3>
+                  <p>
+                      Check countries in blue.
+                  </p>
+              </div>
+              <div class="oval-divider--bottom oval-divider--8"></div>
+      </div>
+
+
+      <div *ngIf='studentsCache != null' class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active pt-3" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+                  <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+
+                    <table class="table table-bordered table-striped mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-center">First Name</th>
+                          <th class="text-center">Last Name</th>
+                          <th class="text-center">Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+
+                        <tr *ngFor='let student of studentsCache; let i = index'>
+
+                          <td>
+                            {{student.firstName}}
+                          </td>
+                          <td>{{student.lastName}}</td>
+                          <td>{{student.email}}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+          </div>
+          <div class="tab-pane fade pt-3" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+                  <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+
+                    <table class="table table-bordered table-striped mb-0">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Title</th>
+                          <th class="text-center">Description</th>
+                          <th class="text-center">Company</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+
+                        <tr *ngFor='let student of studentsCache; let i = index'>
+
+                          <td>
+                            {{student.fypFile.subject.title}}
+                          </td>
+                          <td>{{student.fypFile.subject.content}}</td>
+                          <td>{{student.fypFile.subject.company.username}}</td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
           </div>
 
-
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-
-            <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
-
-              <table class="table table-bordered table-striped mb-0">
-                <thead>
-                  <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
-                  </tr>
-                </thead>
-                <tbody>
-
-
-                  <tr *ngFor='let student of studentsCache; let i = index'>
-
-                    <td>
-                      {{student.email}}
-                    </td>
-                    <td>{{student.email}}</td>
-                    <td>{{student.email}}</td>
-
-                  </tr>
-
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-        </div>
       </div>
 
 
@@ -59,3 +111,11 @@
 
   </div>
 </div>
+
+
+
+
+
+
+
+

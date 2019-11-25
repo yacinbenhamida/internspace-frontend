@@ -39,6 +39,9 @@ export class AuthenticationComponent implements OnInit {
           if (error.status === 401) {
             alert('invalid credentials')
           }
+          if (error.status === 403) {
+            alert('you are not allowed to login')
+          }
         }
         console.log(error)})
     }

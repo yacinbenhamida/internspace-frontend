@@ -1,3 +1,5 @@
+import { UniversitaryYear } from './../../models/university/universitary-year';
+import { FypCategory } from './../../models/fyp/fyp-category';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -86,6 +88,28 @@ export class UniStatsService {
 
   }
 
+  GetCategories(): Observable<FypCategory[]> {
+    const params = new HttpParams();
+    return this.http.get<FypCategory[]>(this.baseurl + '/helper/categories', { headers: this.headersJSON, params: params });
+
+  }
+
+  GetUniversitaryYears(): Observable<UniversitaryYear[]> {
+    const params = new HttpParams();
+    return this.http.get<UniversitaryYear[]>(this.baseurl + '/helper/uys', { headers: this.headersJSON, params: params });
+
+  }
+
+  GetInternshipEvolutionPerUYByCategory(uniId: string, categoryId: string): Observable<Object> {
+    const params = new HttpParams()
+      .set('uni', uniId)
+      .set('category', categoryId);
+
+    return this.http.get<Object>(this.baseurl + '/company/category/evolution', { headers: this.headersJSON, params: params });
+
+  }
+
+  // GetInternshipEvolutionPerUYByCategory(uniId: string, category: string)
 
   // *** TODO ***
 
