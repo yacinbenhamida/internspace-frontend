@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FypConvention } from '../models/fyp/fyp-convention';
+import { FypConventionService } from './../services/fyp-convention/fyp-convention.service';
 
 @Component({
   selector: 'app-fyp-convention',
@@ -10,9 +11,22 @@ export class FypConventionComponent implements OnInit {
 
 
   allFypConvention: FypConvention[];
-  constructor() { }
+  fypConventionService: FypConventionService;
+  constructor( fypConventionService: FypConventionService) {
+    
+   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    this.getList();
   }
+   
+  getList(){
+    this.fypConventionService.GetFypConvention().subscribe((x:FypConvention[])=>{
+      this.allFypConvention =x});
+
+    }
+
 
 }
+
+

@@ -9,7 +9,7 @@ import { FypConvention } from 'src/app/models/fyp/fyp-convention';
 export class FypConventionService {
 
 // Base url
-baseurl = '/api/template';
+baseurl = 'http://localhost:9080/internspace-web/internspace/intership';
 
 
 
@@ -25,12 +25,15 @@ httpOptions = {
   })
 };
    // GET
-   GetFypTemplatesForEditor(editorId: number): Observable<FypConvention[]> {
-    const params = new HttpParams().set('editorId', editorId.toString());
+  /* GetFypConvention(): Observable<FypConvention[]> {
+    const params = new HttpParams();
 
-    return this.http.get<FypConvention[]>(this.baseurl + '/editor/all', { headers: this.headers, params: params });
-  }
+    return this.http.get<FypConvention[]>(this.baseurl );
+  }*/
 
+  GetFypConvention():Observable<FypConvention[]>{
+    return this.http.get<FypConvention[]>(this.baseurl);
+    }
 
   constructor(private http: HttpClient) { }
 
