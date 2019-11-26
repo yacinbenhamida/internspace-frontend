@@ -25,6 +25,12 @@ import { DataTablesModule } from 'angular-datatables';
 import {PerTypeSearchComponent} from './intership-director-module/components/per-type-search/per-type-search.component';
 import {TabelComponent} from './intership-director-module/components/tabel/tabel.component';
 import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
+import { FypfileHistoryCardComponent } from './fypfile-history/fypfile-history-card/fypfile-history-card.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationElementComponent } from './notifications/notification-element/notification-element.component';
+import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
+import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
+import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 
 
 
@@ -43,7 +49,14 @@ import { StudentManagementComponent } from './intership-director-module/student-
     FypfileHistoryComponent,
     PerTypeSearchComponent,
     TabelComponent,
-    StudentManagementComponent
+    StudentManagementComponent,
+    FypfileHistoryCardComponent,
+    NotificationsComponent,
+    NotificationElementComponent,
+    NoitificationsHistoryComponent,
+    FypConventionSComponent,
+    IntershipCComponent
+
 
   ],
   imports: [

@@ -3,21 +3,22 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 import { FypFile } from 'src/app/models/fyp/fyp-file';
+import { Notification } from 'src/app/models/exchanges/notification';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FypFileService {
+export class NotificationService {
 
     constructor(private http: HttpClient) { }
 
-    getFypFilesOfDepartment(depId:number){
-        return this.http.get<FypFile[]>("/api/internspace/fypsheet/"+depId)
+    getEmployeesNotifications(){
+        return this.http.get("/api/internspace/notifications/")
+        .pipe(
+          map(res => res as Notification[] || [])
+          );
     }
-    private extractData(res: Response) {
-      let body = res.json();
-      return res.json || body || { };
-   }
+
 
 
 }

@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FypConvention } from '../models/fyp/fyp-convention';
-import { FypConventionService } from './../services/fyp-convention/fyp-convention.service';
+import { FypConvention } from '../../models/fyp/fyp-convention';
+import { FypConventionService } from './../../services/fyp-convention/fyp-convention.service';
 import Student from 'src/app/models/Student';
 import{ActivatedRoute } from '@angular/router'; 
-
 @Component({
-  selector: 'app-fyp-convention',
-  templateUrl: './fyp-convention.component.html',
-  styleUrls: ['./fyp-convention.component.css']
+  selector: 'app-fyp-convention-s',
+  templateUrl: './fyp-convention-s.component.html',
+  styleUrls: ['./fyp-convention-s.component.css']
 })
-export class FypConventionComponent implements OnInit {
-
+export class FypConventionSComponent implements OnInit {
 
   allFypConvention: FypConvention[];
   allStudent: Student[];
@@ -35,5 +33,3 @@ export class FypConventionComponent implements OnInit {
 
 
 }
-
-
