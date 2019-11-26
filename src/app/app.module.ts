@@ -26,6 +26,7 @@ import { DataTablesModule } from 'angular-datatables';
 import { FypfileHistoryCardComponent } from './fypfile-history/fypfile-history-card/fypfile-history-card.component';
 import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
+import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { IntershipCComponent } from './Student/intership-c/intership-c.component
     FypfileHistoryComponent,
     FypfileHistoryCardComponent,
     FypConventionSComponent,
-    IntershipCComponent
+    IntershipCComponent,
+    IntershipCreateComponent
 
   ],
   imports: [

@@ -15,6 +15,7 @@ import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
+import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
 
 const routes: Routes = [
   {path : '', component : HomepageComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'fypConvention', component: FypConventionComponent},
 
   {path: 'student/inter', component: IntershipCComponent},
+  {path: 'create', component:  IntershipCreateComponent},
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: 'uniDash', component: UniversityStatsComponent},

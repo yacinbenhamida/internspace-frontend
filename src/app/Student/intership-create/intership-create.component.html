@@ -1,0 +1,17 @@
+<p>
+        reactive-form works!
+      </p>
+        <form [formGroup]="conForm"> 
+      nom <input type="text" formControlName="startDate">
+      <div *ngIf="startDate.touched && startDate.invalid">
+      
+        Nom est obligatoire 
+      </div>
+      
+      
+    
+      
+      <button (click)="getInfo()" > Test</button>
+        </form>
+      
+      

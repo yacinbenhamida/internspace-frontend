@@ -3,6 +3,7 @@ import { FypConvention } from '../../models/fyp/fyp-convention';
 import { FypConventionService } from './../../services/fyp-convention/fyp-convention.service';
 import Student from 'src/app/models/Student';
 import{ActivatedRoute } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-intership-c',
@@ -14,7 +15,10 @@ export class IntershipCComponent implements OnInit {
   allFypConvention: FypConvention[];
   allStudent: Student[];
   id:number
-  constructor( private fypConventionService: FypConventionService,private ar:ActivatedRoute) {
+  show:boolean=true;
+  showb:boolean=true;
+
+  constructor( private fypConventionService: FypConventionService,private ar:ActivatedRoute,private router: Router) {
     
    }
 
@@ -31,5 +35,13 @@ export class IntershipCComponent implements OnInit {
       this.allFypConvention =x});
 
     }
+
+
+    affichage(){ 
+      if(this.show==true){
+      this.show = false;
+     
+      this.router.navigate(['/create']);}
+  } 
 
 }
