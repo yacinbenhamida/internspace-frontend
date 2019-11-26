@@ -30,8 +30,8 @@ export class TeacherServiceService {
   };
 
   // POST
-  AddFypCategory(data: FypCategory): Observable<FypCategory> {
-    return this.http.post<FypCategory>(this.baseurl + '/add/' + data.name, JSON.stringify(data), this.httpOptions);
+  AddFypCategory(name: string,data:FypCategory): Observable<FypCategory> {
+    return this.http.post<FypCategory>('http://localhost:9080/internspace-web/internspace/teachers/add?name='+ name, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
@@ -39,6 +39,11 @@ export class TeacherServiceService {
     const params = new HttpParams().set('editorId', TeacherId.toString());
 
     return this.http.get<FypFile[]>(this.baseurl + '/pre_valid/', { headers: this.headers, params: params });
+  }
+  //GET
+  GetFYPFILEPending():Observable<FypFile[]>{
+    return this.http.get<FypFile[]>(this.baseurl + '/pre_valid/', { headers: this.headers});
+
   }
 
 }
