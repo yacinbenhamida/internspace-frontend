@@ -19,16 +19,20 @@ import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
-
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
 import { DataTablesModule } from 'angular-datatables';
+import {PerTypeSearchComponent} from './intership-director-module/components/per-type-search/per-type-search.component';
+import {TabelComponent} from './intership-director-module/components/tabel/tabel.component';
+import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
 import { FypfileHistoryCardComponent } from './fypfile-history/fypfile-history-card/fypfile-history-card.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationElementComponent } from './notifications/notification-element/notification-element.component';
 import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
 import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
+import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
+
 
 
 @NgModule({
@@ -44,12 +48,17 @@ import { IntershipCComponent } from './Student/intership-c/intership-c.component
     FypFileComponent,
     FypConventionComponent,
     FypfileHistoryComponent,
+    PerTypeSearchComponent,
+    TabelComponent,
+    StudentManagementComponent,
     FypfileHistoryCardComponent,
     NotificationsComponent,
     NotificationElementComponent,
     NoitificationsHistoryComponent,
     FypConventionSComponent,
-    IntershipCComponent
+    IntershipCComponent,
+    IntershipCreateComponent
+
 
   ],
   imports: [

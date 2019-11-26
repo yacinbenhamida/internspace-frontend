@@ -24,8 +24,10 @@
        
          <h2>Your Intership Convention</h2>
            
+         <br>
+         <button   (click)="affichage()" class="button button1">Create Convention</button>
             <br>
-          <div>
+          <div *ngIf="show">
               <table class="table table-hover">
                   <thead>
                       <tr>

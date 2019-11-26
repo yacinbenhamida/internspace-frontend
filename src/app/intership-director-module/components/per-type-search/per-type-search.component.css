@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+  
+
+}
+
+
+#inputPT{
+    margin-left: 10px;
+    width: 60%;
+    height: 40px;
+}
+
+label{
+    clear: both;
+    float:left;
+    margin-right:15px;
+    margin-left:5px;
+    margin-top: 7px;
+}
+
+
+
+.indicator{
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#myBTN{
+    width: 43px;
+    height: 43px;
+}

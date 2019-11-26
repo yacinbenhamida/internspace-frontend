@@ -40,6 +40,12 @@ httpOptions = {
       const params = new HttpParams().set('id', id);
       return this.http.get<Student[]>(`${this.baseurl}/list`,{params:params})
     }
+  createIntership(fc:FypConvention ,id:string):Observable<FypConvention[]>{
+    const param = new HttpParams().set('id',id).set('id',id);
+    let url = `http://localhost:9080/internspace-web/internspace/intership/add?id=${id}`
+  
+      return this.http.post<FypConvention[]>(url,{params:param})
+    }
 
   constructor(private http: HttpClient) { }
 
