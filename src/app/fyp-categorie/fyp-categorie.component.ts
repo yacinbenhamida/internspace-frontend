@@ -9,16 +9,19 @@ import { FypCategory } from '../models/fyp/fyp-category';
   styleUrls: ['./fyp-categorie.component.css']
 })
 export class FypCategorieComponent implements OnInit {
-  @Input() fypcategory :FypCategory;
-
+  @Input() fypcategory: FypCategory;
+  restApi: TeacherServiceService;
+  router: Router;
   constructor(
-    public restApi: TeacherServiceService, 
-    public router: Router
-  ) { }
+     restApi: TeacherServiceService, 
+     router: Router
+  ) {this.restApi=restApi;
+  this.router=router;}
 
   ngOnInit() { }
 
-  addFypcat(datacategory) {
+  addFypcat() {
+    console.log(this.fypcategory.name+"hhhhhhhhh")
     this.restApi.AddFypCategory(this.fypcategory).subscribe((data: {}) => {
       this.router.navigate([])
     })
