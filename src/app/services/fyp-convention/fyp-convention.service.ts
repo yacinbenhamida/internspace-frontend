@@ -36,9 +36,9 @@ httpOptions = {
     return this.http.get<FypConvention[]>(this.baseurl);
     }
 
-  findStudentConvention(id:string):Observable<Student>{
+  findStudentConvention(id:string):Observable<Student[]>{
       const params = new HttpParams().set('id', id);
-      return this.http.get<Student>(`${this.baseurl}/list`,{params:params})
+      return this.http.get<Student[]>(`${this.baseurl}/list`,{params:params})
     }
 
   constructor(private http: HttpClient) { }

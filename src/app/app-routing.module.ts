@@ -21,6 +21,7 @@ const routes: Routes = [
   {path : 'login', component : AuthenticationComponent},
   {path: 'fypTemplate', component: FypTemplateManagementComponent},
   {path: 'fypConvention', component: FypConventionComponent},
+  {path: 'update/:id', component: FypConventionComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: 'uniDash', component: UniversityStatsComponent},
   { path: 'create-category', component: FypCategorieComponent },
