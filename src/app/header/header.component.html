@@ -42,13 +42,15 @@
                                                 <a class="dropdown-item" routerLink="/profile">Profile </a>
                                             </li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle active" href="#"> Sheets <i class="fas fa-chevron-down"></i></a>
+                                                <a class="dropdown-item dropdown-toggle" href="#"> Sheets <i class="fas fa-chevron-down"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item active" routerLink="/fypfile/history"><i class="icon-list-2 menu-icon"></i> FYP Sheets</a></li>
                                                     <li><a class="dropdown-item" href="#"><i class="icon-list-1 menu-icon"></i> Footers</a></li>
                                                     <li><a class="dropdown-item" href="#"><i class="icon-arrange-4-1 menu-icon"></i> Section</a></li>
                                                 </ul>
                                             </li>
+
+                                            
                                             <li class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle" href="#"> Element <i class="fas fa-chevron-down"></i></a>
                                                 <ul class="dropdown-menu">
@@ -70,12 +72,13 @@
                                                         <li><a class="dropdown-item" routerLink="create-category">Category</a></li>
                                                     </ul>
                                             </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle active" routerLink="notifications/history"><i class="fas fa-bell"></i></a>                
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
-                                <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
-                                    <i class="fas fa-bars"></i>
-                                </button>
+                                
                                 <a routerLink="login"  *ngIf="auth.currentUserValue == null" class="btn btn-primary shadow-3 transition-hover btn-sm ml-3">Sign in</a>
                             <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
                                 <i class="fas fa-bars"></i>

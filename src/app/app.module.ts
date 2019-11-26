@@ -24,6 +24,9 @@ import { FypConventionComponent } from './fyp-convention/fyp-convention.componen
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
 import { DataTablesModule } from 'angular-datatables';
 import { FypfileHistoryCardComponent } from './fypfile-history/fypfile-history-card/fypfile-history-card.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NotificationElementComponent } from './notifications/notification-element/notification-element.component';
+import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
 
 
 @NgModule({
@@ -39,7 +42,10 @@ import { FypfileHistoryCardComponent } from './fypfile-history/fypfile-history-c
     FypFileComponent,
     FypConventionComponent,
     FypfileHistoryComponent,
-    FypfileHistoryCardComponent
+    FypfileHistoryCardComponent,
+    NotificationsComponent,
+    NotificationElementComponent,
+    NoitificationsHistoryComponent
 
   ],
   imports: [

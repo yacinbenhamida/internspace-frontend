@@ -13,6 +13,8 @@ import { AuthGuard } from './services/security/authguard.service';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,7 @@ const routes: Routes = [
   { path: 'create-category', component: FypCategorieComponent },
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent},
+  {path : 'notifications/history', component : NoitificationsHistoryComponent},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 
