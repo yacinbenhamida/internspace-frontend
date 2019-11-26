@@ -1,0 +1,38 @@
+<div class="main" [ngStyle]="position==='right'?ReversedMain:DefaultMain">
+<div class="container" [ngStyle]="position==='right'?styleRight:default">
+    
+  
+        
+    <div class="input-round" *ngIf="label!=='FILE-STATE'&& label!=='CATEGORY'; else FileState">
+        <label for="input" >{{label}}</label>
+        <input [(ngModel)]="searchInput" name="input" id="inputPT" class="form-control" type="text" placeholder="type here">     
+    </div>
+    <div class="indicator">
+    <div>
+        <h3 id="indicator">FILTER BY</h3>
+        <h3>{{label}}</h3>
+    </div>
+    <button type="button" class="btn btn-primary btn-pill" id="myBTN" (click)="ClickHandler(label)"><i class="fas fa-search fa-2x header-nav-top-icon"></i></button>
+
+    </div>
+</div>
+
+<app-tabel [tab]="FYPFiles" [hidden]="state"></app-tabel>
+
+</div>
+
+
+<ng-template #FileState>
+    <div *ngIf="label==='FILE-STATE'; else Category">
+        <select name="input" [(ngModel)]="selectValue" class="form-control" placeholder="Select input" id="inputPT">
+                <option *ngFor="let x of options">{{x}}</option>
+            </select>
+    </div>   
+</ng-template>
+
+<ng-template #Category>
+        
+            <select name="input" [(ngModel)]="selectValue" class="form-control" placeholder="Select input" id="inputPT">
+                <option  *ngFor="let x of option2">{{x}}</option>
+                </select>
+</ng-template>

@@ -14,8 +14,12 @@ import { AuthGuard } from './services/security/authguard.service';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
+import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
+
 
 const routes: Routes = [
   {path : '', component : HomepageComponent},
@@ -32,6 +36,8 @@ const routes: Routes = [
   { path: 'create-category', component: FypCategorieComponent },
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent},
+  {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
+  {path : 'notifications/history', component : NoitificationsHistoryComponent},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 
