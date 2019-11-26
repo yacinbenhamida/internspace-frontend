@@ -27,6 +27,8 @@ import { FypfileHistoryCardComponent } from './fypfile-history/fypfile-history-c
 import { NotificationsComponent } from './notifications/notifications.component';
 import { NotificationElementComponent } from './notifications/notification-element/notification-element.component';
 import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
+import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
+import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { NoitificationsHistoryComponent } from './notifications/noitifications-h
     FypfileHistoryCardComponent,
     NotificationsComponent,
     NotificationElementComponent,
-    NoitificationsHistoryComponent
+    NoitificationsHistoryComponent,
+    FypConventionSComponent,
+    IntershipCComponent
 
   ],
   imports: [
