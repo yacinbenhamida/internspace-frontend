@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import Student from 'src/app/models/Student';
+import { User } from 'src/app/models/User';
 @Injectable({
   providedIn: 'root'
 })
@@ -20,8 +21,8 @@ export class InternshipDirectorService {
     return this.http.get<FypFile[]>(`${this.baseurl}/FYPFileAnnulationDemandeList`)
   }
 
-  getAllStudents():Observable<Student[]>{
-    return this.http.get<Student[]>(`${this.baseurl}/allStudents`)
+  getAllStudents():Observable<User[]>{
+    return this.http.get<User[]>(`${this.baseurl}/allStudents`)
   }
 
   findStudentByCIN(cin:string):Observable<Student>{

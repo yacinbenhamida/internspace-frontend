@@ -19,10 +19,13 @@ import { FypTemplateModule } from './fyp-template/fyp-template.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
-
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
 import { DataTablesModule } from 'angular-datatables';
+import {PerTypeSearchComponent} from './intership-director-module/components/per-type-search/per-type-search.component';
+import {TabelComponent} from './intership-director-module/components/tabel/tabel.component';
+import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
+
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { DataTablesModule } from 'angular-datatables';
     ProfileComponent,
     FypFileComponent,
     FypConventionComponent,
-    FypfileHistoryComponent
+    FypfileHistoryComponent,
+    PerTypeSearchComponent,
+    TabelComponent,
+    StudentManagementComponent
 
   ],
   imports: [

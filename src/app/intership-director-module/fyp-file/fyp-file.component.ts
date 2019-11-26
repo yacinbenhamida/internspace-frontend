@@ -20,12 +20,12 @@ export class FypFileComponent implements OnInit {
   //this._internshipDirectorService.FYPFileWaitingForDefensePlanByCIN("10101010").subscribe(data=>console.log(data))
   //this._internshipDirectorService.ArchivedFiles().subscribe(data=>console.log(data))
   //this._internshipDirectorService.FullStudentInfo().subscribe(data=>console.log(data))
-  this._internshipDirectorService.FypFileByCountry("Tunisia").subscribe(data=>console.log(data))
+ // this._internshipDirectorService.FypFileByCountry("Tunisia").subscribe(data=>console.log(data))
   //this._internshipDirectorService.ListLateStudents("2018").subscribe(data=>console.log(data))
   this._internshipDirectorService.getAllFypFile().subscribe(data=>{this.allFYPFiles=data,console.log(data)})
-  this._internshipDirectorService.FypFileByState("pending").subscribe(data=>console.log(data))
-  this._internshipDirectorService.FypFileByYear("2017").subscribe(data=>console.log(data))
-  this._internshipDirectorService.FypFileByCategory("Research").subscribe(data=>console.log(data))
+  //this._internshipDirectorService.FypFileByState("pending").subscribe(data=>console.log(data))
+  //this._internshipDirectorService.FypFileByYear("2017").subscribe(data=>console.log(data))
+  //this._internshipDirectorService.FypFileByCategory("Research").subscribe(data=>console.log(data))
   //this._internshipDirectorService.FypFileByDiffSpecfique("","confirmed","2019","Tunisia").subscribe(data=>console.log(data))
   //this._internshipDirectorService.AnnulationFYPFileDemandeList().subscribe(data=>console.log(data))
   /*this._internshipDirectorService.DeclineFYPFileCancellingDemande("3","helloangular").subscribe(data =>{
@@ -49,7 +49,7 @@ export class FypFileComponent implements OnInit {
 allFYPFiles:FypFile[];
 
 
-CritHandler = (xx)=>{
-  console.log(xx);
+CritHandler = (TargetElement:HTMLElement)=>{
+  TargetElement.scrollIntoView();
 }
 }

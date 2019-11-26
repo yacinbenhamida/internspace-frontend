@@ -11,6 +11,13 @@ export class User{
     token?:string
     birthDate : Date
     department : Department;
+    hasSubmittedAReport: Boolean
+    cin: String
+    passGenerated: String
+    isCreated: Boolean
+    isSaved: Boolean
+    isAutorised: Boolean
+    isDisabled: Boolean
     constructor(){
         
     }

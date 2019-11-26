@@ -12,6 +12,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './services/security/authguard.service';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
+import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'uniDash', component: UniversityStatsComponent},
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent},
+  {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

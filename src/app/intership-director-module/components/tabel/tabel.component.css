@@ -1,0 +1,14 @@
+.tab{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+.tab{
+    animation: fadein 1s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}  
