@@ -33,7 +33,11 @@ export class AuthenticationComponent implements OnInit {
         localStorage.setItem("user",JSON.stringify(token.user))
         this.authService.currentUserValue = JSON.parse(JSON.stringify(token.user));
         this.authService.currentUserValue.token = token.hash;
-        this.router.navigateByUrl("/");
+        if(this.authService.currentUserValue.role == "admin" || 
+        this.authService.currentUserValue.role == "superAdmin"){
+          this.router.navigateByUrl("/admin");
+        }
+        else this.router.navigateByUrl("/");
       },error=>{
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401) {

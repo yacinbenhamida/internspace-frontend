@@ -31,6 +31,8 @@ import { NoitificationsHistoryComponent } from './notifications/noitifications-h
 import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.component';
 
 
 
@@ -56,9 +58,9 @@ import { IntershipCreateComponent } from './Student/intership-create/intership-c
     NoitificationsHistoryComponent,
     FypConventionSComponent,
     IntershipCComponent,
-    IntershipCreateComponent
-
-
+    IntershipCreateComponent,
+    AdminHeaderComponent,
+    AdminHomepageComponent
   ],
   imports: [
     BrowserModule,
