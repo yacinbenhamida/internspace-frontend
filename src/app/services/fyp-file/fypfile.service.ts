@@ -12,7 +12,7 @@ export class FypFileService {
     constructor(private http: HttpClient) { }
 
     getFypFilesOfDepartment(depId:number){
-        return this.http.get<FypFile[]>("/api/internspace/fypsheet/"+depId)
+        return this.http.get<FypFile[]>("/api/fypsheet/"+depId)
     }
     private extractData(res: Response) {
       let body = res.json();
