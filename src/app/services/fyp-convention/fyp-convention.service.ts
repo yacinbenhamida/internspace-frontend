@@ -40,11 +40,12 @@ httpOptions = {
       const params = new HttpParams().set('id', id);
       return this.http.get<Student[]>(`${this.baseurl}/list`,{params:params})
     }
-  createIntership(fc:FypConvention ,id:string):Observable<FypConvention[]>{
-    const param = new HttpParams().set('id',id).set('id',id);
-    let url = `http://localhost:9080/internspace-web/internspace/intership/add?id=${id}`
+  createIntership(data:FypConvention ,id:string):Observable<FypConvention[]>{
+    //const param = new HttpParams().set('id',id);
+   // let url = `http://localhost:9080/internspace-web/internspace/intership/add?id=${id}`
   
-      return this.http.post<FypConvention[]>(url,{params:param})
+      return this.http.post<FypConvention[]>(`http://localhost:9080/internspace-web/internspace/intership/add?id=`+id, JSON.stringify(data), this.httpOptions);
+  
     }
 
   constructor(private http: HttpClient) { }
