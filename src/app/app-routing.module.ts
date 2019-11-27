@@ -19,6 +19,10 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
+import { FypFileByCategoryComponent } from './intership-director-module/fyp-file-by-category/fyp-file-by-category.component';
+import { FypFileByYearComponent } from './intership-director-module/fyp-file-by-year/fyp-file-by-year.component';
+import { FypFileByStateComponent } from './intership-director-module/fyp-file-by-state/fyp-file-by-state.component';
+import { FypFileByCountryComponent } from './intership-director-module/fyp-file-by-country/fyp-file-by-country.component';
 
 
 const routes: Routes = [
@@ -38,6 +42,10 @@ const routes: Routes = [
   {path : 'fypfile/history', component : FypfileHistoryComponent},
   {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
   {path : 'notifications/history', component : NoitificationsHistoryComponent},
+  {path : 'fypFileBycategory', component : FypFileByCategoryComponent},
+  {path : 'fypFileByYear', component : FypFileByYearComponent},
+  {path : 'fypFileByState', component : FypFileByStateComponent},
+  {path : 'fypFileByCountry', component : FypFileByCountryComponent},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

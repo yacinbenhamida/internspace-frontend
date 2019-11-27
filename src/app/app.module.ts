@@ -10,7 +10,7 @@ import { AdminModule } from './admin/admin.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
-import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/security/authguard.service';
 import { AuthenticationService } from './services/security/authentication.service';
@@ -32,6 +32,11 @@ import { NoitificationsHistoryComponent } from './notifications/noitifications-h
 import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FypFileByCategoryComponent } from './intership-director-module/fyp-file-by-category/fyp-file-by-category.component';
+import { FypFileByYearComponent } from './intership-director-module/fyp-file-by-year/fyp-file-by-year.component';
+import { FypFileByStateComponent } from './intership-director-module/fyp-file-by-state/fyp-file-by-state.component';
+import { FypFileByCountryComponent } from './intership-director-module/fyp-file-by-country/fyp-file-by-country.component';
 
 
 
@@ -57,7 +62,11 @@ import { IntershipCreateComponent } from './Student/intership-create/intership-c
     NoitificationsHistoryComponent,
     FypConventionSComponent,
     IntershipCComponent,
-    IntershipCreateComponent
+    IntershipCreateComponent,
+    FypFileByCategoryComponent,
+    FypFileByYearComponent,
+    FypFileByStateComponent,
+    FypFileByCountryComponent
 
 
   ],
@@ -70,7 +79,10 @@ import { IntershipCreateComponent } from './Student/intership-create/intership-c
     AdminModule,
     FypTemplateModule,
     DashboardModule,
-    DataTablesModule
+    DataTablesModule,
+    BrowserAnimationsModule,
+
+ 
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]

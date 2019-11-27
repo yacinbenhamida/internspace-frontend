@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { AuthenticationService } from './services/security/authentication.service';
+import 'hammerjs';
 
 @Component({
   selector: 'app-root',
