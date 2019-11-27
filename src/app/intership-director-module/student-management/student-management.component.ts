@@ -13,7 +13,7 @@ export class StudentManagementComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   students : User[];
   studentLS : User[];
-  dtTrigger: Subject = new Subject();
+  dtTrigger: Subject<User> = new Subject();
   constructor(private _internShipDirector : InternshipDirectorService) { }
   ngOnInit() {
    

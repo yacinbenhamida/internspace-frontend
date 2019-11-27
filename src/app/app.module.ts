@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { AdminModule } from './admin/admin.module';
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
@@ -67,7 +66,6 @@ import { IntershipCreateComponent } from './Student/intership-create/intership-c
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule,
     FypTemplateModule,
     DashboardModule,
     DataTablesModule

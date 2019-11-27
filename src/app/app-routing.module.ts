@@ -4,7 +4,6 @@ import { FypConventionComponent } from './fyp-convention/fyp-convention.componen
 import { FypConventionSComponent } from './student/fyp-convention-s/fyp-convention-s.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SettingsComponent } from './admin/settings/settings.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
@@ -23,7 +22,7 @@ import { IntershipCreateComponent } from './Student/intership-create/intership-c
 
 const routes: Routes = [
   {path : '', component : HomepageComponent},
-  {path : 'admin', component : SettingsComponent},
+//  {path : 'admin', component : SettingsComponent},
   {path : 'login', component : AuthenticationComponent},
   {path: 'fypTemplate', component: FypTemplateManagementComponent},
   {path: 'fypConvention', component: FypConventionComponent},
