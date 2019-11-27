@@ -11,7 +11,7 @@ export class FypFileHistoryService {
     constructor(private http: HttpClient) { }
 
     getHistoryOfFypFile(fypFileId:number) {
-        return this.http.get("/api/internspace/FYPSheetHistory/gethistory/"+fypFileId)
+        return this.http.get("/api/FYPSheetHistory/gethistory/"+fypFileId)
         .pipe(
           map(res => res as FypFileHistory[] || [])
           );

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { FypConvention } from '../../models/fyp/fyp-convention';
 import { FypConventionService } from './../../services/fyp-convention/fyp-convention.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,9 +12,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class IntershipCreateComponent implements OnInit {
 
-  fypConvention:FypConvention;
-  fypConventions:FypConvention[];
-  constructor( private fypConventionService: FypConventionService) { }
+  @Input() fypConvention:FypConvention;
+  //fypConventions:FypConvention[];
+  router: Router;
+  constructor( private fypConventionService: FypConventionService, router: Router) { }
 
   ngOnInit() {
   }
@@ -42,17 +44,12 @@ export class IntershipCreateComponent implements OnInit {
     }
    
     create(){
-      this.fypConventionService.createIntership(this.fypConvention,"2").subscribe((x:FypConvention[])=>{
-        this.fypConventions =x});
+      this.fypConventionService.createIntership(this.conForm.value,"8").subscribe((data: {}) => {
+        this.router.navigate([]);
+      })
   
       }
 
-  onSubmit(convForm,startDate){
-    console.log(convForm);
-    console.log(startDate); 
-    
-    
-
-  }
+ 
 
 }

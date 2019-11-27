@@ -20,10 +20,10 @@ export class AuthenticationService {
     const payload = new HttpParams()
     .set('username', username)
     .set('password', password);
-    return this.http.post("/api/internspace/authentication",payload)
+    return this.http.post("/api/authentication",payload)
   }
   getUser(username : string){
-    return this.http.get<User>('/api/internspace/users/getUser'+ username)
+    return this.http.get<User>('/api/users/getUser'+ username)
   }
 
   logout() {
