@@ -32,6 +32,7 @@ import { NoitificationsHistoryComponent } from './notifications/noitifications-h
 import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
+import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.component';
 
 
 
@@ -57,7 +58,8 @@ import { IntershipCreateComponent } from './Student/intership-create/intership-c
     NoitificationsHistoryComponent,
     FypConventionSComponent,
     IntershipCComponent,
-    IntershipCreateComponent
+    IntershipCreateComponent,
+    TeacherFypfilesComponent
 
 
   ],
