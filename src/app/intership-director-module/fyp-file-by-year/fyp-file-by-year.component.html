@@ -1,0 +1,21 @@
+<br><br>
+<div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-9 text-center mb-8">
+              
+                <form class="input-round" novalidate="novalidate" >
+                    <div class="form-group input-group shadow-sm bg-white">
+                                    <input [(ngModel)]="searchInput" type="text"  class="form-control height-inherit pl-4" placeholder="Type to search" [ngModelOptions]="{standalone: true}">
+                        <div class="input-group-append p-2">
+                            <button (click)="ClickHandler()"class="btn btn-primary"  type="button">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+           
+        </div>
+
+        
+    </div>
+    <app-tabel [tab]="FYPFiles" [hidden]="state"></app-tabel>

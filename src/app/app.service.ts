@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 export class AppService {
   navigation : boolean = false;
   footer : boolean = false;
+  administrator : boolean = false;
   constructor() { }
   showNavbar(){
     this.navigation =  true;
@@ -23,5 +24,7 @@ export class AppService {
   hideFooter(){
       this.footer = false;
   }
-
+  isAdmin(){
+    this.administrator = true;
+  }
 }

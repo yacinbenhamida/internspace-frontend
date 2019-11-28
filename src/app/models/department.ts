@@ -1,3 +1,5 @@
+import { Site } from "./Site"
+
 export class Department{
     id: number
     name: string
@@ -5,4 +7,5 @@ export class Department{
     numberOfActionsAllowedForPresidents: number
     numberOfActionsAllowedForProtractors: number
     numberOfActionsAllowedForSupervisors: number
+    site: Site
 }

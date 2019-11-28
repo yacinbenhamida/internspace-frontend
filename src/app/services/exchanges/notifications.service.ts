@@ -13,7 +13,7 @@ export class NotificationService {
     constructor(private http: HttpClient) { }
 
     getEmployeesNotifications(){
-        return this.http.get("/api/internspace/notifications/")
+        return this.http.get("/api/notifications/")
         .pipe(
           map(res => res as Notification[] || [])
           );

@@ -38,10 +38,9 @@ export class IntershipCComponent implements OnInit {
 
 
     affichage(){ 
-      if(this.show==true){
-      this.show = false;
      
-      this.router.navigate(['/create']);}
+     
+      this.router.navigate(['/create']);
   } 
 
 }

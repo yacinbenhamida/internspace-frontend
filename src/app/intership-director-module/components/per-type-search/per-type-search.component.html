@@ -1,4 +1,4 @@
-<div class="main" [ngStyle]="position==='right'?ReversedMain:DefaultMain">
+<!--<div class="main" [ngStyle]="position==='right'?ReversedMain:DefaultMain">
 <div class="container" [ngStyle]="position==='right'?styleRight:default">
     
   
@@ -19,9 +19,21 @@
 
 <app-tabel [tab]="FYPFiles" [hidden]="state"></app-tabel>
 
+</div>-->
+
+<div class="col-md-9 text-center mb-8">
+    <p class="lead mb-5">Subscribe our newsletter asn stay updated.</p>
+    <form class="input-round" novalidate="novalidate">
+        <div class="form-group input-group shadow-sm bg-white">
+            <input type="text" class="form-control height-inherit pl-4" placeholder="Type to search">
+            <div class="input-group-append p-2">
+                <button class="btn btn-primary" type="button">Search</button>
+            </div>
+        </div>
+    </form>
+
+    <p class="small">Interested in more ? <a class="m-link-muted" href="#">Keep Reading</a> </p>
 </div>
-
-
 <ng-template #FileState>
     <div *ngIf="label==='FILE-STATE'; else Category">
         <select name="input" [(ngModel)]="selectValue" class="form-control" placeholder="Select input" id="inputPT">

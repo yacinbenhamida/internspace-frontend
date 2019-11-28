@@ -72,7 +72,7 @@ ul {
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
-    right:50%;
+    
   }
   .button1 {
     background-color: white;

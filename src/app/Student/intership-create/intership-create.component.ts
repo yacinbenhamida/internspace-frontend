@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import { FypConvention } from '../../models/fyp/fyp-convention';
 import { FypConventionService } from './../../services/fyp-convention/fyp-convention.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,9 +12,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class IntershipCreateComponent implements OnInit {
 
-  fypConvention:FypConvention;
-  fypConventions:FypConvention[];
-  constructor( private fypConventionService: FypConventionService) { }
+  @Input() fypConvention:FypConvention;
+  //fypConventions:FypConvention[];
+  router: Router;
+  allFypConvention: FypConvention[];
+  constructor( private fypConventionService: FypConventionService, router: Router) { }
 
   ngOnInit() {
   }
@@ -21,9 +24,10 @@ export class IntershipCreateComponent implements OnInit {
   conForm= new FormGroup({ //c'est un formulaire root 
     'startDate':new FormControl('', [Validators.required,Validators.minLength(3)]),
       //chaque element est FormControl //Validator:fonction synchrone
-    'email': new FormControl('',[Validators.required,
-      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-    ]), 
+    'endDate':new FormControl('', [Validators.required,Validators.minLength(3)]),
+      //chaque element est FormControl //Validator:fonction synchrone
+    'companySupervisorEmail':new FormControl('', [Validators.required,Validators.minLength(3)]),
+    
     
     });
     getInfo(x)
@@ -36,23 +40,23 @@ export class IntershipCreateComponent implements OnInit {
     {
       return this.conForm.get('startDate'); 
     }
-    get email()
+    get endDate()
     {
-      return this.conForm.get('email');
+      return this.conForm.get('endDate'); 
     }
-   
+
+    get companySupervisorEmail()
+    {
+      return this.conForm.get('companySupervisorEmail'); 
+    }
+
+
     create(){
-      this.fypConventionService.createIntership(this.fypConvention,"2").subscribe((x:FypConvention[])=>{
-        this.fypConventions =x});
-  
+      this.fypConventionService.createIntership(this.conForm.value,"8").subscribe(
+        (data: any) => {
+          console.log(data);
+        });
+        
       }
-
-  onSubmit(convForm,startDate){
-    console.log(convForm);
-    console.log(startDate); 
-    
-    
-
-  }
 
 }

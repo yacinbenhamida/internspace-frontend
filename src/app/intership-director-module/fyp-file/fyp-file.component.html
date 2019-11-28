@@ -1,37 +1,4 @@
-<div class="navBar">
-<h6 (click)="CritHandler(category)">CATEGORY</h6>
-<h6 (click)="CritHandler(year)">YEAR</h6>     
-<h5>Final year project file</h5>
-<h6 (click)="CritHandler(fileState)">FILE STATE</h6> 
-<h6 (click)="CritHandler(country)">COUNTRY</h6>  
-</div>
-<h6 class="divider mt-8">Search Methodes</h6>
-<span #category></span>
-<br><br><br><br>
-<div class="left" >
- <app-per-type-search [label]="'CATEGORY'" [position]="'left'"></app-per-type-search>
-</div>
 
-<span #year></span>
-<br><br><br><br>
-<h6 class="divider mt-8">BY YEAR</h6>
-<div class="right" >
-    <app-per-type-search [label]="'YEAR'" [position]="'right'"></app-per-type-search>
-</div>
-
-<span #fileState></span>
-<br><br><br><br>
-<h6 class="divider mt-8">BY FILE STATE</h6>
-<div class="left" >
-    <app-per-type-search [label]="'FILE-STATE'" [position]="'left'"></app-per-type-search>
-</div>
-
-<span #country></span>
-<br><br><br><br>
-<h6 class="divider mt-8">BY COUNTRY</h6>
-<div class="right" >
-    <app-per-type-search [label]="'COUNTRY'" [position]="'right'"></app-per-type-search>
-</div>
 <h3 class="divider mt-8">All the files</h3>
 <br>
 

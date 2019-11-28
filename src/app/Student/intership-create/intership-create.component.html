@@ -1,17 +1,48 @@
-<p>
-        reactive-form works!
-      </p>
+
+<br>
+<div class="container">
         <form [formGroup]="conForm"> 
-      nom <input type="text" formControlName="startDate">
+            <div class="row">
+                <div class="col-25">
+                <label for="fname">Start Date</label>
+              </div>
+              <div class="col-75">
+                <input type="date" formControlName="startDate" >
+              </div>
       <div *ngIf="startDate.touched && startDate.invalid">
       
-        Nom est obligatoire 
+        Start Date est obligatoire 
       </div>
+            </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">End Date</label>
+        </div>
+        <div class="col-75">
+            <input type="date" formControlName="endDate" >
+            <div *ngIf="endDate.touched && endDate.invalid">
       
-      
+                End Date est obligatoire 
+              </div>
+        </div>
     
+      </div>
+      <div class="row">
+          <div class="col-25">
+            <label for="fname">companySupervisorEmail</label>
+          </div>
+          <div class="col-75">
+              <input type="text" formControlName="companySupervisorEmail" >
+              <div *ngIf="companySupervisorEmail.touched && companySupervisorEmail.invalid">
+        
+                  companySupervisorEmail est *
+
+                </div>
+          </div>
       
+        </div>
       <button (click)="getInfo()" > Test</button>
         </form>
+</div>
       
       
