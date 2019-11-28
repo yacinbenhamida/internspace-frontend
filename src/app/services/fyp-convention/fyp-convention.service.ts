@@ -10,7 +10,7 @@ import Student from 'src/app/models/Student';
 export class FypConventionService {
 
 // Base url
-baseurl = "/api/internspace/intership";
+baseurl = "/api/intership";
 
 
 
@@ -44,10 +44,10 @@ httpOptions = {
     //const param = new HttpParams().set('id',id);
    // let url = `http://localhost:9080/internspace-web/internspace/intership/add?id=${id}`
   
-      return this.http.post<FypConvention[]>(`http://localhost:9080/internspace-web/internspace/intership/add?id=`+id, JSON.stringify(data), this.httpOptions);
+      return this.http.post<FypConvention[]>('/api/intership/add?id='+id, JSON.stringify(data), this.httpOptions);
   
     }
-
-  constructor(private http: HttpClient) { }
+    
+    constructor(private http: HttpClient) { }
 
 }

@@ -15,6 +15,7 @@ export class IntershipCreateComponent implements OnInit {
   @Input() fypConvention:FypConvention;
   //fypConventions:FypConvention[];
   router: Router;
+  allFypConvention: FypConvention[];
   constructor( private fypConventionService: FypConventionService, router: Router) { }
 
   ngOnInit() {
@@ -23,9 +24,10 @@ export class IntershipCreateComponent implements OnInit {
   conForm= new FormGroup({ //c'est un formulaire root 
     'startDate':new FormControl('', [Validators.required,Validators.minLength(3)]),
       //chaque element est FormControl //Validator:fonction synchrone
-    'email': new FormControl('',[Validators.required,
-      Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-    ]), 
+    'endDate':new FormControl('', [Validators.required,Validators.minLength(3)]),
+      //chaque element est FormControl //Validator:fonction synchrone
+    'companySupervisorEmail':new FormControl('', [Validators.required,Validators.minLength(3)]),
+    
     
     });
     getInfo(x)
@@ -38,18 +40,23 @@ export class IntershipCreateComponent implements OnInit {
     {
       return this.conForm.get('startDate'); 
     }
-    get email()
+    get endDate()
     {
-      return this.conForm.get('email');
+      return this.conForm.get('endDate'); 
     }
-   
-    create(){
-      this.fypConventionService.createIntership(this.conForm.value,"8").subscribe((data: {}) => {
-        this.router.navigate([]);
-      })
-  
-      }
 
- 
+    get companySupervisorEmail()
+    {
+      return this.conForm.get('companySupervisorEmail'); 
+    }
+
+
+    create(){
+      this.fypConventionService.createIntership(this.conForm.value,"8").subscribe(
+        (data: any) => {
+          console.log(data);
+        });
+        
+      }
 
 }
