@@ -75,6 +75,12 @@
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle active" routerLink="notifications/history"><i class="fas fa-bell"></i></a>                
                                             </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector/studentManagement">Student Managment</a>                
+                                            </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector">Sheets</a>                
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -90,4 +96,9 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+
     </header>
+=======
+</header>
+>>>>>>> 4ab15d22c77c176a38a95b717bbdd7159e929ba7

@@ -1,0 +1,23 @@
+<br><br>
+<div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-9 text-center mb-8">
+              
+                
+                    <div class="form-group input-group shadow-sm bg-white">
+                            <select name="input" [(ngModel)]="selectValue" class="form-control" placeholder="Select input" id="inputPT">
+                                    <option  *ngFor="let x of options">{{x}}</option>
+                                    </select>
+                        <div class="input-group-append p-2">
+                            <button (click)="ClickHandler()"class="btn btn-primary"  type="button">Search</button>
+                        </div>
+                    </div>
+              
+            </div>
+
+           
+        </div>
+
+        
+    </div>
+    <app-tabel [tab]="FYPFiles" [hidden]="state"></app-tabel>

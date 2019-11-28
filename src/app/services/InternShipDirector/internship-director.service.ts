@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import Student from 'src/app/models/Student';
 import { User } from 'src/app/models/User';
+import { Department } from 'src/app/models/department';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,12 +22,13 @@ export class InternshipDirectorService {
     return this.http.get<FypFile[]>(`${this.baseurl}/FYPFileAnnulationDemandeList`)
   }
 
-  getAllStudents():Observable<User[]>{
-    return this.http.get<User[]>(`${this.baseurl}/allStudents`)
+  getAllStudents(id:number):Observable<User[]>{
+    const params = new HttpParams().set('id', id.toString());
+    return this.http.get<User[]>(`${this.baseurl}/allStudents`,{params:params})
   }
 
-  findStudentByCIN(cin:string):Observable<Student>{
-    const params = new HttpParams().set('cin', cin);
+  findStudentByCIN(cin:string,id:string):Observable<Student>{
+    const params = new HttpParams().set('cin', cin).set('id', id);
     return this.http.get<Student>(`${this.baseurl}/FindStudent`,{params:params})
   }
 
@@ -40,8 +42,9 @@ export class InternshipDirectorService {
   }
 
 
-  FullStudentInfo():Observable<Student[]>{
-    return this.http.get<Student[]>(`${this.baseurl}/FullInfoOfStudent`);
+  FullStudentInfo(id:string):Observable<Student[]>{
+    const params = new HttpParams().set('id', id);
+    return this.http.get<Student[]>(`${this.baseurl}/FullInfoOfStudent`,{params:params});
   }
 
   FypFileByCountry(country: string):Observable<FypFile[]>{
@@ -49,13 +52,15 @@ export class InternshipDirectorService {
   return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileCountry`,{params:params})
 }
 
-ListLateStudents(year:string):Observable<Student[]>{
+ListLateStudents(year:string,id:string):Observable<Student[]>{
   if(year){
-  const param = new HttpParams().set('year', year);
+  const param = new HttpParams().set('year', year).set('id', id);
   return this.http.get<Student[]>(`${this.baseurl}/listLate`,{params:param})
 }
-else
-return this.http.get<Student[]>(`${this.baseurl}/listLate`)
+else{
+const param = new HttpParams().set('id', id);
+return this.http.get<Student[]>(`${this.baseurl}/listLate`,{params:param})
+}
 }
 
 
@@ -158,10 +163,31 @@ FilterFYPFileWaitingForDefensePlan(nom:string,cin:string):Observable<FypFile[]>{
   let param = new HttpParams().set('cin',cin);
   return this.http.get<FypFile[]>(`${this.baseurl}/FilterWaitingForDefensePlanningList`,{params:param})}
 }
+//listDepartement?id=1
+DepartementList(id:string):Observable<Department[]>{
+  const param = new HttpParams().set('id',id)
+  return this.http.get<Department[]>(`${this.baseurl}/listDepartement`,{params:param})
 
+}
 FixNumberAsSupervisor(nombre:string,id:string):Observable<any>{
   const param = new HttpParams().set('nb',nombre).set('id',id);
   let url = `http://localhost:9080/internspace-web/internspace/internship/FixActionNumberAsSupervisor?nb=${nombre}&id=${id}`
+  return this.http.put<any>(url,{params:param})
+}
+FixNumberAsProtractor(nombre:string,id:string):Observable<any>{
+  const param = new HttpParams().set('nb',nombre).set('id',id);
+  let url = `http://localhost:9080/internspace-web/internspace/internship/FixActionNumberAsProtractor?nb=${nombre}&id=${id}`
+  return this.http.put<any>(url,{params:param})
+}
+FixNumberAsPreValidator(nombre:string,id:string):Observable<any>{
+  const param = new HttpParams().set('nb',nombre).set('id',id);
+  let url = `http://localhost:9080/internspace-web/internspace/internship/FixActionNumberAsPreValidator?nb=${nombre}&id=${id}`
+  return this.http.put<any>(url,{params:param})
+}
+
+FixNumberAsJuryPresident(nombre:string,id:string):Observable<any>{
+  const param = new HttpParams().set('nb',nombre).set('id',id);
+  let url = `http://localhost:9080/internspace-web/internspace/internship/FixActionNumberAsJuryPresident?nb=${nombre}&id=${id}`
   return this.http.put<any>(url,{params:param})
 }
 
