@@ -68,8 +68,7 @@ import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.co
     FypConventionSComponent,
     IntershipCComponent,
     IntershipCreateComponent,
-    TeacherFypfilesComponent
-
+    TeacherFypfilesComponent,
     FypFileByCategoryComponent,
     FypFileByYearComponent,
     FypFileByStateComponent,

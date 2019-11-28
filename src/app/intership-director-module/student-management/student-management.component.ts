@@ -14,16 +14,9 @@ export class StudentManagementComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   students : User[];
-<<<<<<< HEAD
-  connectedUser : any;
-  dtTrigger: Subject<User>= new Subject();
- 
-  constructor(private _internShipDirector : InternshipDirectorService,private auth:AuthenticationService) { }
-=======
   studentLS : User[];
   dtTrigger: Subject<User> = new Subject();
   constructor(private _internShipDirector : InternshipDirectorService) { }
->>>>>>> 4ab15d22c77c176a38a95b717bbdd7159e929ba7
   ngOnInit() {
     
         
