@@ -10,9 +10,10 @@ import { StudentsSiteComponent } from './university-stats/students-site/students
 import { StudentsAbroadComponent } from './university-stats/students-abroad/students-abroad.component';
 import { AbroadEvolutionPerYearComponent } from './university-stats/abroad-evolution-per-year/abroad-evolution-per-year.component';
 import { MostRequestedCategoriesComponent } from './university-stats/most-requested-categories/most-requested-categories.component';
+import { MostAcceptingCompaniesComponent } from './university-stats/most-accepting-companies/most-accepting-companies.component';
 
 @NgModule({
-  declarations: [UniversityStatsComponent, CountryStudentsMapComponent, InternshipYearDistributionComponent, StudentsSiteComponent, StudentsAbroadComponent, AbroadEvolutionPerYearComponent, MostRequestedCategoriesComponent],
+  declarations: [UniversityStatsComponent, CountryStudentsMapComponent, InternshipYearDistributionComponent, StudentsSiteComponent, StudentsAbroadComponent, AbroadEvolutionPerYearComponent, MostRequestedCategoriesComponent, MostAcceptingCompaniesComponent],
   imports: [
     CommonModule,
     NgbModule
