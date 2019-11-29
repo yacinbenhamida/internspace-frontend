@@ -51,6 +51,11 @@ export class TeacherServiceService {
     return this.http.get<FypFile[]>(this.baseurl +'/pending', { headers: this.headers});
 
   }
+  //PUT
+  PrevalidateFypFile(id:number){
+    this.http.put(this.baseurl+'/prevalidate/'+id,{headers: this.headers});
+    console.log("okay");
+  }
   
 
 }

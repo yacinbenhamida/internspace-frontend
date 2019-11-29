@@ -25,6 +25,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "angular-datatables": "^8.0.0",
     "core-js": "^3.4.2",
     "datatables.net": "^1.10.20",

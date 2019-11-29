@@ -12,6 +12,7 @@ import { AuthenticationService } from '../services/security/authentication.servi
 export class TeacherFypfilesComponent implements OnInit {
   selectedfyp: string;
   state:true;
+  hid:false;
   private lastSelectedCategory: FypFile;
   fypllist:FypFile[];
   fypCache: string[]=['pending','prevalidated','supervised','protractored'];
@@ -41,7 +42,7 @@ export class TeacherFypfilesComponent implements OnInit {
     if (document.querySelector('select').value=="prevalidated")
     {
       this.state=true;
-      this.restApi.GetPrevalidatedFyp(2).subscribe(files => {
+      this.restApi.GetPrevalidatedFyp(106).subscribe(files => {
         this.fypllist = files as FypFile[]});
         console.log(document.querySelector('select').value);
         console.log(this.fypllist);
