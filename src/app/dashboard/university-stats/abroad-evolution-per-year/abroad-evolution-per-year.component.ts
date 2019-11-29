@@ -52,7 +52,6 @@ export class AbroadEvolutionPerYearComponent implements OnInit, OnDestroy {
 
   PlotData() {
 
-    console.log(this.result);
 
     const chart = am4core.create('chart5', am4charts.XYChart);
     this.chartChache = chart;
@@ -98,8 +97,6 @@ export class AbroadEvolutionPerYearComponent implements OnInit, OnDestroy {
     const newData = [];
 
     for (let x = 0; x < this.uysCache.length; x++) {
-
-      console.log(x);
 
       newData.push(
         {

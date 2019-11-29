@@ -120,6 +120,11 @@
             <p> Internship is still ongoing, no evaluation yet. </p>
           </div>
 
+          <div *ngIf="selectedStudent.fypFile.fileStatus == 'confirmed' && selectedStudent.fypFile.finalMark != 0">
+              <p> {{selectedStudent.fypFile.finalMark}} </p>
+            </div>
+
+
           <b>Title: </b>
           <p>
             {{selectedStudent.fypFile.title}}

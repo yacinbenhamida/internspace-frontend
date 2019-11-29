@@ -4,12 +4,13 @@ import { FypCategory } from './../../models/fyp/fyp-category';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NullTemplateVisitor } from '@angular/compiler';
 
 /*
 Partie Dashboard :
   [x]● List des étudiants en 5eme année qui appartiennent à son Site.
   [x]● Affichage de pourcentage des étudiants qui ont effectué un stage à l’étranger pour l’année universitaire courante, puis.
-  [ ]● Calcul et affichage d’une courbe qui décrit l'évolution de ce pourcentage au fils des années.
+  [x]● Calcul et affichage d’une courbe qui décrit l'évolution de ce pourcentage au fils des années.
   [ ]● Calcul et affichage des pourcentage des étudiants qui ont effectué un stage dans un
     pays donnée pour une année universitaire donnée, puis, l’évolution de ce pourcentage
     au fil des années.
@@ -137,6 +138,11 @@ export class UniStatsService {
       .set('uni', uniId);
 
     return this.http.get<any[]>(this.baseurl + '/distribution/abroad', { headers: this.headersJSON, params: params });
+  }
+
+  GetMostRequestedCategoriesByCompanies(): Observable<any[]> {
+    const params = new HttpParams();
+    return this.http.get<any[]>(this.baseurl + '/company/category/most-requested', { headers: this.headersJSON, params: params });
   }
 
   // *** TODO ***
