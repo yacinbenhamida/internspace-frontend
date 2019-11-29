@@ -27,6 +27,8 @@ import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.co
 import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.component';
 import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
 import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
+import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
+import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 
 
 
@@ -59,12 +61,14 @@ const routes: Routes = [
   {path : 'fypfile/tracking', component : FypfilesOperationsComponent, canActivate : [AuthGuard]},
   {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
   {path : 'notifications/history', component : NoitificationsHistoryComponent},
-  {path : 'fypFileBycategory', component : FypFileByCategoryComponent},
-  {path : 'fypFileByYear', component : FypFileByYearComponent},
-  {path : 'fypFileByState', component : FypFileByStateComponent},
-  {path : 'fypFileByCountry', component : FypFileByCountryComponent},
+  {path : 'internshipDirector/fypFileBycategory', component : FypFileByCategoryComponent},
+  {path : 'internshipDirector/fypFileByYear', component : FypFileByYearComponent},
+  {path : 'internshipDirector/fypFileByState', component : FypFileByStateComponent},
+  {path : 'internshipDirector/fypFileByCountry', component : FypFileByCountryComponent},
   {path: 'teacherFypFiles',component:TeacherFypfilesComponent},
   {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate : [AuthGuard]},
+  {path: 'internshipDirector/lateStudents',component:LateStudentListComponent},
+  {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

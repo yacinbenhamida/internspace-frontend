@@ -52,14 +52,14 @@ export class InternshipDirectorService {
   return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileCountry`,{params:params})
 }
 
-ListLateStudents(year:string,id:string):Observable<Student[]>{
+ListLateStudents(year:string,id:string):Observable<User[]>{
   if(year){
   const param = new HttpParams().set('year', year).set('id', id);
-  return this.http.get<Student[]>(`${this.baseurl}/listLate`,{params:param})
+  return this.http.get<User[]>(`${this.baseurl}/listLate`,{params:param})
 }
 else{
 const param = new HttpParams().set('id', id);
-return this.http.get<Student[]>(`${this.baseurl}/listLate`,{params:param})
+return this.http.get<User[]>(`${this.baseurl}/listLate`,{params:param})
 }
 }
 
@@ -203,5 +203,12 @@ CompanyCordinates(id:string):Observable<string[]>{
   const param = new HttpParams().set('id',id);
   return this.http.get<string[]>(`${this.baseurl}/getCompanyCord?`,{params:param})
 }
+
+
+sendMail(year:string,text:string,id:string):Observable<any>{
+  const param = new HttpParams().set('year',year).set('text',text).set('id',id);
+  return this.http.get<any>(`http://localhost:9080/internspace-web/internspace/internship/listmailing?`,{params:param})
+}
+
 
 }

@@ -1,4 +1,4 @@
-<div *ngIf='studentsCache != null' class="tab-content">
+<div *ngIf='studentsCache != null' class="cool-item tab-content">
   <div class="tab-pane fade show active pt-3" id="home" aria-labelledby="home-tab">
 
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -119,6 +119,11 @@
           <div *ngIf="selectedStudent.fypFile.fileStatus == 'confirmed' && selectedStudent.fypFile.finalMark == 0">
             <p> Internship is still ongoing, no evaluation yet. </p>
           </div>
+
+          <div *ngIf="selectedStudent.fypFile.fileStatus == 'confirmed' && selectedStudent.fypFile.finalMark != 0">
+              <p> {{selectedStudent.fypFile.finalMark}} </p>
+            </div>
+
 
           <b>Title: </b>
           <p>

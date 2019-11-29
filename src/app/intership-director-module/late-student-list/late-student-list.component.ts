@@ -1,25 +1,25 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { User } from 'src/app/models/User';
+import { Component, OnInit } from '@angular/core';
 import { InternshipDirectorService } from 'src/app/services/InternShipDirector/internship-director.service';
-import { Subject } from 'rxjs';
+import { User } from 'src/app/models/User';
 import { AuthenticationService } from 'src/app/services/security/authentication.service';
-
+import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-student-management',
-  templateUrl: './student-management.component.html',
-  styleUrls: ['./student-management.component.css']
+  selector: 'app-late-student-list',
+  templateUrl: './late-student-list.component.html',
+  styleUrls: ['./late-student-list.component.css']
 })
-export class StudentManagementComponent implements OnInit,OnDestroy {
+export class LateStudentListComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   students : User[];
-
-
+  textInput;
   connectedUser : any;
   dtTrigger: Subject<User>= new Subject();
+  state=true;
  
   constructor(private _internShipDirector : InternshipDirectorService,private auth:AuthenticationService) { }
+
 
   ngOnInit() {
     
@@ -34,18 +34,17 @@ export class StudentManagementComponent implements OnInit,OnDestroy {
             return row;
           }      
       }
-      this._internShipDirector.getAllStudents(this.auth.currentUserValue.department.site.university.id).subscribe((data)=>{console.log(data);this.students=data;this.dtTrigger.next() })
+      this._internShipDirector.ListLateStudents(new Date().getFullYear().toString(),this.auth.currentUserValue.department.site.university.id.toString()).subscribe((data)=>{console.log(data);this.students=data;this.dtTrigger.next() })
         
      this.connectedUser =this.auth.currentUserValue
      //this._internShipDirector.DepartementList(this.auth.currentUserValue.department.site.university.id.toString()).subscribe((data)=>console.log(data))
   }
   studentInfo = (data)=>{
-    console.log(data[0])
+    
   }
+  sendEmail =()=>{
+  this._internShipDirector.sendMail(new Date().getFullYear().toString(),this.textInput,this.auth.currentUserValue.department.site.university.id.toString()).subscribe(data=>console.log("done"))
 
-  
-  ngOnDestroy(){
-    this.dtTrigger.unsubscribe();
-  }
 }
 
+}
