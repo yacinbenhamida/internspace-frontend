@@ -27,7 +27,6 @@ export class StudentsSiteComponent implements OnInit {
   ngOnInit() {
     this.uniStatsService.GetStudentsBySite(this.siteId).subscribe(res => {
       this.studentsCache = res;
-      console.log(res);
       this.selectedStudent = res.length > 0 ? res[0] : null;
     });
   }

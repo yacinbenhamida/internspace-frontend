@@ -7,9 +7,11 @@ import { CountryStudentsMapComponent } from './university-stats/country-students
 // tslint:disable-next-line: max-line-length
 import { InternshipYearDistributionComponent } from './university-stats/internship-year-distribution/internship-year-distribution.component';
 import { StudentsSiteComponent } from './university-stats/students-site/students-site.component';
+import { StudentsAbroadComponent } from './university-stats/students-abroad/students-abroad.component';
+import { AbroadEvolutionPerYearComponent } from './university-stats/abroad-evolution-per-year/abroad-evolution-per-year.component';
 
 @NgModule({
-  declarations: [UniversityStatsComponent, CountryStudentsMapComponent, InternshipYearDistributionComponent, StudentsSiteComponent],
+  declarations: [UniversityStatsComponent, CountryStudentsMapComponent, InternshipYearDistributionComponent, StudentsSiteComponent, StudentsAbroadComponent, AbroadEvolutionPerYearComponent],
   imports: [
     CommonModule,
     NgbModule

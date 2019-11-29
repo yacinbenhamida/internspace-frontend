@@ -8,27 +8,22 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_dataviz from '@amcharts/amcharts4/themes/dataviz';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
-/* Chart code */
-// Themes begin
 am4core.useTheme(am4themes_dataviz);
 am4core.useTheme(am4themes_animated);
-// Themes end
 
 @Component({
-  selector: 'app-internship-year-distribution',
-  templateUrl: './internship-year-distribution.component.html',
-  styleUrls: ['./internship-year-distribution.component.css']
+  selector: 'app-abroad-evolution-per-year',
+  templateUrl: './abroad-evolution-per-year.component.html',
+  styleUrls: ['./abroad-evolution-per-year.component.css']
 })
-export class InternshipYearDistributionComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AbroadEvolutionPerYearComponent implements OnInit, OnDestroy {
 
   zone: NgZone;
   uniStatsService: UniStatsService;
   chartChache: any;
 
-  selectedCategory: FypCategory;
-  private lastSelectedCategory: FypCategory;
   private chartData: any;
-  categoriesCache: FypCategory[];
+  result: any[];
   uysCache: UniversitaryYear[];
 
   @Input() uniId: string;
@@ -40,8 +35,11 @@ export class InternshipYearDistributionComponent implements OnInit, AfterViewIni
   }
 
   ngOnInit() {
-    this.uniStatsService.GetCategories().subscribe(e => this.categoriesCache = e);
-    this.uniStatsService.GetUniversitaryYears().subscribe(e => this.uysCache = e);
+
+    this.uniStatsService.GetUniversitaryYears().subscribe(e => {
+      this.uysCache = e;
+      this.uniStatsService.GetAbroadPercentagePerYear(this.uniId).subscribe(ex => { this.result = ex; this.PlotData(); });
+    });
   }
 
   ngOnDestroy() {
@@ -52,11 +50,11 @@ export class InternshipYearDistributionComponent implements OnInit, AfterViewIni
     });
   }
 
-  ngAfterViewInit() {
+  PlotData() {
 
-    this.ngOnDestroy(); // trying to destroy current chart
+    console.log(this.result);
 
-    const chart = am4core.create('chart1', am4charts.XYChart);
+    const chart = am4core.create('chart5', am4charts.XYChart);
     this.chartChache = chart;
     chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
@@ -91,50 +89,38 @@ export class InternshipYearDistributionComponent implements OnInit, AfterViewIni
     series.columns.template.strokeOpacity = 0;
 
 
-    this.onChange_Category(1);
-  }
-
-  onChange_Category(categoryIndex: number) {
-
-
     // tslint:disable-next-line: max-line-length
-    if (this.categoriesCache == null || this.categoriesCache.length < categoryIndex || this.lastSelectedCategory === this.categoriesCache[categoryIndex]) {
+    if (this.result == null) {
       return;
     }
 
-    this.selectedCategory = this.categoriesCache[categoryIndex];
+    // return;
+    const newData = [];
 
-    // Update the data...
-    this.uniStatsService.GetInternshipEvolutionPerUYByCategory(this.uniId, categoryIndex.toString()).subscribe(res => {
-      // return;
-      const newData = [];
+    for (let x = 0; x < this.uysCache.length; x++) {
 
-      if (res != null) {
+      console.log(x);
 
-        for (let x = 0; x < this.uysCache.length; x++) {
-          newData.push(
-            { 'uy': this.uysCache[x].endDate + ' - ' + this.uysCache[x].startDate,
-              'amount': x + 1 in res ? res[x + 1].length : 0,
-              'res': res[x]
-            });
-        }
+      newData.push(
+        {
+          'uy': this.uysCache[x].endDate + ' - ' + this.uysCache[x].startDate,
+          'amount': x + 1 in this.result ? this.result[x + 1] : 0,
+        });
+    }
 
-      }
+    this.chartChache.data = newData;
 
-      this.chartChache.data = newData;
+    // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
 
-      // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
+    /**********************
+     *fiha probleme valueY*
+     **********************/
 
-      /**********************
-       *fiha probleme valueY*
-       **********************/
+    /*series.columns.template.adapter.add('fill', function (fill, target) {
+      console.log(target);
+      return chart.colors.getIndex(target.dataItem.valueY + 10);
+    });*/
 
-      /*series.columns.template.adapter.add('fill', function (fill, target) {
-        console.log(target);
-        return chart.colors.getIndex(target.dataItem.valueY + 10);
-      });*/
-
-    });
 
   }
 
