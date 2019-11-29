@@ -51,7 +51,7 @@
                                             </li>
 
                                             
-                                            <li class="dropdown">
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'teacher'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle"routerLink="/teacherFypFiles" href="#"> teacherFypFiles <i class="fas fa-chevron-down"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" href="#"><i class="icon-list-1 menu-icon"></i> Teacher</a></li>
@@ -97,4 +97,5 @@
             </div>
         </div>
 
-    </header>
+
+</header>

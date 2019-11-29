@@ -1,6 +1,7 @@
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import { FypCategory } from './fyp/fyp-category';
 import { Department } from "./department"
+import { FypFile } from "./fyp/fyp-file"
 
 export class User{
 
