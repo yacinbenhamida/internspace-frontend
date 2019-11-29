@@ -115,25 +115,22 @@ export class UniStatsService {
 
   }
 
-  GetInternshipEvolutionPerUYByCategory(uniId: string, categoryId: string): Observable<Object> {
+  GetInternshipEvolutionPerUYByCategory(uniId: string, categoryId: string): Observable<any[]> {
     const params = new HttpParams()
       .set('uni', uniId)
       .set('category', categoryId);
 
-    return this.http.get<Object>(this.baseurl + '/company/category/evolution', { headers: this.headersJSON, params: params });
+    return this.http.get<any[]>(this.baseurl + '/company/category/evolution', { headers: this.headersJSON, params: params });
 
   }
 
-  GetStudentsBySite(uniId: string): Observable<User> {
+  GetStudentsBySite(siteId: string): Observable<User[]> {
       const params = new HttpParams()
-      .set('uni', uniId)
-      .set('category', categoryId);
+      .set('site', siteId);
 
-    return this.http.get<Object>(this.baseurl + '/company/category/evolution', { headers: this.headersJSON, params: params });
+    return this.http.get<User[]>(this.baseurl + '/site/students', { headers: this.headersJSON, params: params });
 
   }
-
-  // GetInternshipEvolutionPerUYByCategory(uniId: string, category: string)
 
   // *** TODO ***
 

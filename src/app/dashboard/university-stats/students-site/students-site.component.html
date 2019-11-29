@@ -1,0 +1,39 @@
+
+      <div *ngIf='studentsCache != null' class="tab-content">
+        <div class="tab-pane fade show active pt-3" id="home" aria-labelledby="home-tab">
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+                <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+
+                  <table class="table table-bordered table-striped mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Username</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                      <label for="typeahead-config">Search for a state:</label>
+                      <input id="typeahead-config" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+
+                      <tr *ngFor='let student of studentsCache; let i = index'>
+
+                        <td>
+                          {{student.firstName}}
+                        </td>
+                        <td>{{student.lastName}}</td>
+                        <td>{{student.email}}</td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+        </div>
+
+
+    </div>

@@ -53,7 +53,45 @@ export class InternshipYearDistributionComponent implements OnInit, AfterViewIni
   }
 
   ngAfterViewInit() {
-    this.onChange_Category(0);
+
+    this.ngOnDestroy(); // trying to destroy current chart
+
+    const chart = am4core.create('chart1', am4charts.XYChart);
+    this.chartChache = chart;
+    chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+
+
+    const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+    categoryAxis.renderer.grid.template.location = 0;
+    categoryAxis.dataFields.category = 'uy';
+    categoryAxis.renderer.minGridDistance = 40;
+    categoryAxis.fontSize = 11;
+    categoryAxis.renderer.labels.template.dy = 5;
+
+    const image = new am4core.Image();
+    image.horizontalCenter = 'middle';
+    image.width = 20;
+    image.height = 20;
+    image.verticalCenter = 'middle';
+
+    categoryAxis.dataItems.template.bullet = image;
+
+    const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+    valueAxis.min = 0;
+    valueAxis.renderer.minGridDistance = 30;
+    valueAxis.renderer.baseGrid.disabled = true;
+
+
+    const series = chart.series.push(new am4charts.ColumnSeries());
+    series.dataFields.categoryX = 'uy';
+    series.dataFields.valueY = 'amount';
+
+    series.columns.template.tooltipText = '{valueY.value}';
+    series.columns.template.tooltipY = 0;
+    series.columns.template.strokeOpacity = 0;
+
+
+    this.onChange_Category(1);
   }
 
   onChange_Category(categoryIndex: number) {
@@ -73,66 +111,24 @@ export class InternshipYearDistributionComponent implements OnInit, AfterViewIni
 
       if (res != null) {
 
-        for (const x in res) {
-          if (!this.uysCache[x]) {
-            continue;
-          }
-
+        for (let x = 0; x < this.uysCache.length; x++) {
           newData.push(
-            { 'uy': this.uysCache[x].startDate + ' - ' + this.uysCache[x].endDate,
-              'amount': res[x].length,
+            { 'uy': this.uysCache[x].endDate + ' - ' + this.uysCache[x].startDate,
+              'amount': x in res ? res[x].length : 0,
               'res': res[x]
             });
-          console.log(res[x][0]);
         }
 
-        console.log('hereeeee');
-        console.log(newData);
       }
 
-      this.ngOnDestroy(); // trying to destroy current chart
-
-      const chart = am4core.create('chart1', am4charts.XYChart);
-      this.chartChache = chart;
-      chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-      chart.data = newData;
-
-      const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-      categoryAxis.renderer.grid.template.location = 0;
-      categoryAxis.dataFields.category = 'uy';
-      categoryAxis.renderer.minGridDistance = 40;
-      categoryAxis.fontSize = 11;
-      categoryAxis.renderer.labels.template.dy = 5;
-
-      const image = new am4core.Image();
-      image.horizontalCenter = 'middle';
-      image.width = 20;
-      image.height = 20;
-      image.verticalCenter = 'middle';
-
-      categoryAxis.dataItems.template.bullet = image;
-
-      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-      valueAxis.min = 0;
-      valueAxis.renderer.minGridDistance = 30;
-      valueAxis.renderer.baseGrid.disabled = true;
-
-
-      const series = chart.series.push(new am4charts.ColumnSeries());
-      series.dataFields.categoryX = 'uy';
-      series.dataFields.valueY = 'amount';
-
-      series.columns.template.tooltipText = '{valueY.value}';
-      series.columns.template.tooltipY = 0;
-      series.columns.template.strokeOpacity = 0;
+      this.chartChache.data = newData;
 
       // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-      
+
       /**********************
        *fiha probleme valueY*
        **********************/
-      
+
       /*series.columns.template.adapter.add('fill', function (fill, target) {
         console.log(target);
         return chart.colors.getIndex(target.dataItem.valueY + 10);
