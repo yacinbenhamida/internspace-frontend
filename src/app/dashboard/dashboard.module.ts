@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import { UniversityStatsComponent } from './university-stats/university-stats.component';
 import { CountryStudentsMapComponent } from './university-stats/country-students-map/country-students-map.component';
 // tslint:disable-next-line: max-line-length
@@ -10,6 +12,7 @@ import { StudentsSiteComponent } from './university-stats/students-site/students
   declarations: [UniversityStatsComponent, CountryStudentsMapComponent, InternshipYearDistributionComponent, StudentsSiteComponent],
   imports: [
     CommonModule,
+    NgbModule
   ]
 })
 export class DashboardModule { }

@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
     [ ]● Calcul et affichage des pourcentage des étudiants qui ont effectué un stage dans un
       pays donnée pour une année universitaire donnée, puis, l’évolution de ce pourcentage
       au fil des années.
-    [ ]● Affichage des N (spécifié par l’user) entreprises qui recrutent le plus grand nombre d’étudiants d’une école spécifiée.
-    [ ]● Calcul et affichage du nombre des stages par catégorie.
+    [x]● Affichage des N (spécifié par l’user) entreprises qui recrutent le plus grand nombre d’étudiants d’une école spécifiée.
+    [x]● Calcul et affichage du nombre des stages par catégorie.
     [ ]● Plot d’une charte qui montre par ordre décroissant les catégories les plus demandées.
     [ ]● Plot de l’évolution du nombre de stages pour une catégorie donnée au fils des
       années (pour dire par exemple, les stages Game Dev augmentent au fils des années, il faut rajouter un module Game Dev).

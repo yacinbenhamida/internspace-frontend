@@ -1,39 +1,179 @@
+<div *ngIf='studentsCache != null' class="tab-content">
+  <div class="tab-pane fade show active pt-3" id="home" aria-labelledby="home-tab">
 
-      <div *ngIf='studentsCache != null' class="tab-content">
-        <div class="tab-pane fade show active pt-3" id="home" aria-labelledby="home-tab">
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
 
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
 
-                <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+        <table class="table table-bordered table-striped mb-0">
+          <thead>
+            <tr>
+              <th class="text-center">First Name</th>
+              <th class="text-center">Last Name</th>
+              <th class="text-center">Username</th>
+            </tr>
+          </thead>
+          <tbody>
 
-                  <table class="table table-bordered table-striped mb-0">
-                    <thead>
-                      <tr>
-                        <th class="text-center">First Name</th>
-                        <th class="text-center">Last Name</th>
-                        <th class="text-center">Username</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+            <tr class="text-center" *ngFor='let student of studentsCache; let i = index'>
 
-                      <label for="typeahead-config">Search for a state:</label>
-                      <input id="typeahead-config" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" />
+              <td>
+                <button class="btn" (click)="openScrollableContent(longContent, i)">
+                  {{student.firstName}}</button>
+              </td>
+              <td>
+                <button class="btn" (click)="openScrollableContent(longContent, i)">
+                  {{student.lastName}}</button>
+              </td>
+              <td>
+                <button class="btn" (click)="openScrollableContent(longContent, i)">
+                  {{student.email}}</button>
+              </td>
+            </tr>
 
-                      <tr *ngFor='let student of studentsCache; let i = index'>
+          </tbody>
+        </table>
 
-                        <td>
-                          {{student.firstName}}
-                        </td>
-                        <td>{{student.lastName}}</td>
-                        <td>{{student.email}}</td>
-                      </tr>
+      </div>
+    </div>
+  </div>
 
-                    </tbody>
-                  </table>
 
-                </div>
-              </div>
+</div>
+
+
+<ng-template #longContent let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Student Information Modal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf='selectedStudent' class="modal-body">
+    <!-- Portfolio Item Row -->
+
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+      <p> <span style="color: black"> {{selectedStudent.firstName}} {{selectedStudent.lastName}}</span>'s Profile
+        Details</p>
+    </h1>
+    <h6>
+      {{selectedStudent.email}}
+      <p>
+        @{{selectedStudent.username}}
+      </p>
+      <p *ngIf='selectedStudent.birthDate'>
+        {{selectedStudent.birthDate}}
+      </p>
+    </h6>
+    <div class="ml-7 mr-7 row">
+
+      <div class="col-md-7">
+
+        <div>
+          <p *ngIf='selectedStudent.birthDate'>
+
+            {{selectedStudent.birthDate}}
+          </p>
+
+          <h3 class="my-3">Skills</h3>
+          <ul>
+            <div *ngFor='let pCat of selectedStudent.preferedCategories'>
+              <li>
+                <h4>
+
+                  {{pCat.category.name}} -
+
+                  <ngb-rating *ngIf='pCat.skillScore' [readonly]="true" [(rate)]="pCat.skillScore">
+                    <ng-template let-fill="fill" let-index="index">
+                      <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                    </ng-template>
+                  </ngb-rating>
+                </h4>
+
+              </li>
+              <hr>
+
+            </div>
+          </ul>
+
+          <h3 class="my-3">File Info</h3>
+
+          <b>File Status:</b>
+          <div *ngIf="selectedStudent.fypFile.fileStatus == 'confirmed'">
+
+            <i style="color: rgb(61, 129, 255);" class="material-icons">
+              check_circle
+            </i> Confirmed.
+          </div>
+
+          <div *ngIf="selectedStudent.fypFile.fileStatus == 'pending'">
+
+            <i style="color: rgb(226, 204, 6);" class="material-icons">
+              uncheck_circle
+            </i> Pending
+          </div>
+          <b>
+            Mark:
+          </b>
+          <div *ngIf="selectedStudent.fypFile.fileStatus == 'confirmed' && selectedStudent.fypFile.finalMark == 0">
+            <p> Internship is still ongoing, no evaluation yet. </p>
+          </div>
+
+          <b>Title: </b>
+          <p>
+            {{selectedStudent.fypFile.title}}
+          </p>
+
+          <b>Description: </b>
+          <p>
+            {{selectedStudent.fypFile.description}}
+          </p>
+
         </div>
 
+      </div>
+
+      <div *ngIf="selectedStudent.fypFile && selectedStudent.fypFile.subject && selectedStudent.fypFile.subject.company"
+        class="col-md-4  v-divider">
+        <h3 class="my-3">Internship Information</h3>
+        <h6>Company:</h6>
+        <p>
+          Performing an internship with the company <span style="color: black">
+            {{selectedStudent.fypFile.subject.company.username}} </span>,
+          supervised by <span style="color: black"> {{selectedStudent.fypFile.subject.company.firstName}}
+            {{selectedStudent.fypFile.subject.company.lastName}}
+          </span>, in <span style="color: black">{{selectedStudent.fypFile.subject.company.country}}</span>
+
+        </p>
+
+        <h3 class="my-3">Subject Details</h3>
+
+        <b>Title: </b>
+        <p>
+          {{selectedStudent.fypFile.subject.title}}
+        </p>
+
+        <div>
+          <b>Description: </b>
+          <p>
+            {{selectedStudent.fypFile.subject.content}}
+          </p>
+        </div>
+
+        <b *ngIf='selectedStudent.fypFile.subject.keywords'>Keywords:</b>
+        <ul>
+          <li *ngFor='let k of selectedStudent.fypFile.subject.keywords'>k.name</li>
+        </ul>
+      </div>
 
     </div>
+
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>

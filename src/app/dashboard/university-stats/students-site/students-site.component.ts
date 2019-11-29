@@ -1,5 +1,6 @@
 import { UniStatsService } from './../../../services/dashboard/uni-stats.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -12,19 +13,28 @@ export class StudentsSiteComponent implements OnInit {
   @Input() uniId = '2';
   siteId = '4';
 
+  selectedStudent: any;
+
   studentsCache = [];
   uniStatsService: UniStatsService;
-  constructor(uniStatsService: UniStatsService) {
-    this.uniStatsService = uniStatsService;
+  modalService: NgbModal;
 
+  constructor(uniStatsService: UniStatsService, modalService: NgbModal) {
+    this.uniStatsService = uniStatsService;
+    this.modalService = modalService;
   }
 
   ngOnInit() {
     this.uniStatsService.GetStudentsBySite(this.siteId).subscribe(res => {
-
-      console.log(res);
       this.studentsCache = res;
+      console.log(res);
+      this.selectedStudent = res.length > 0 ? res[0] : null;
     });
   }
 
+  openScrollableContent(longContent, i) {
+    // this.studentDetails = i;
+    this.selectedStudent = this.studentsCache[i];
+    this.modalService.open(longContent, { scrollable: true, size: 'xl' });
+  }
 }
