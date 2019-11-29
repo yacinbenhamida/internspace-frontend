@@ -1,0 +1,17 @@
+<div class="form-inline cool-item ">
+<br>
+<br>
+<br>
+    <div class="mr-4">
+
+      <select class="cool-item" style="max-width:90%;" (change)="onChange_fyp()">
+        <option>Preview File</option>
+        <option *ngFor="let category of fypCache; let index = index;" [value]="category"
+          [selected]="category == selectedfyp">
+          {{category}}</option>
+      </select>
+
+    </div>
+  </div>
+  <app-tabel [tab]="fypllist"></app-tabel>
+<div class="cool-item" id="chart1" style="width: 100%; height: 500px"></div>

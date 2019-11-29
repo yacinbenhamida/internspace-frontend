@@ -31,19 +31,26 @@ export class TeacherServiceService {
 
   // POST
   AddFypCategory(name: string,data:FypCategory): Observable<FypCategory> {
-    return this.http.post<FypCategory>('http://localhost:9080/internspace-web/internspace/teachers/add?name='+ name, JSON.stringify(data), this.httpOptions);
+    return this.http.post<FypCategory>(this.baseurl+'/add?name='+ name, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
   GetPrevalidatedFyp(TeacherId: number): Observable<FypFile[]> {
-    const params = new HttpParams().set('editorId', TeacherId.toString());
+    //const params = new HttpParams().set('', TeacherId.toString());
 
-    return this.http.get<FypFile[]>(this.baseurl + '/pre_valid/', { headers: this.headers, params: params });
+    return this.http.get<FypFile[]>(this.baseurl + '/pre_valid/'+TeacherId, { headers: this.headers, });
+  }
+   // GET
+   GetSupervisedFyp(TeacherId: number): Observable<FypFile[]> {
+    //const params = new HttpParams().set('', TeacherId.toString());
+
+    return this.http.get<FypFile[]>(this.baseurl + '/supervised/'+TeacherId, { headers: this.headers, });
   }
   //GET
   GetFYPFILEPending():Observable<FypFile[]>{
-    return this.http.get<FypFile[]>(this.baseurl + '/pre_valid/', { headers: this.headers});
+    return this.http.get<FypFile[]>(this.baseurl +'/pending', { headers: this.headers});
 
   }
+  
 
 }

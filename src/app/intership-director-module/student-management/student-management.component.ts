@@ -15,6 +15,7 @@ export class StudentManagementComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   students : User[];
 
+
   connectedUser : any;
   dtTrigger: Subject<User>= new Subject();
  
@@ -23,7 +24,7 @@ export class StudentManagementComponent implements OnInit {
 
   ngOnInit() {
     
-        
+
         this.dtOptions = {
           rowCallback: (row: Node, data: any | Object, index: number) => {
             const self = this;
@@ -32,20 +33,13 @@ export class StudentManagementComponent implements OnInit {
               self.studentInfo(data);
             });
             return row;
-          }
-        
+          }      
       }
       this._internShipDirector.getAllStudents(this.auth.currentUserValue.department.site.university.id).subscribe((data)=>{console.log(data);this.students=data;this.dtTrigger.next() })
         
-     this.connectedUser =localStorage.getItem('user');
-     console.log(this.auth.currentUserValue)
+     this.connectedUser =this.auth.currentUserValue
      this._internShipDirector.DepartementList(this.auth.currentUserValue.department.site.university.id.toString()).subscribe((data)=>console.log(data))
   }
-
- 
-    
-
-
   studentInfo = (data)=>{
     console.log(data[0])
   }

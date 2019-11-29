@@ -7,11 +7,11 @@ import { Company } from 'src/app/models/users/Company';
 
 
 @Component({
-  selector: 'app-intership-create',
-  templateUrl: './intership-create.component.html',
-  styleUrls: ['./intership-create.component.css']
+  selector: 'app-intership-update',
+  templateUrl: './intership-update.component.html',
+  styleUrls: ['./intership-update.component.css']
 })
-export class IntershipCreateComponent implements OnInit {
+export class IntershipUpdateComponent implements OnInit {
 
   @Input() fypConvention:FypConvention;
    comp:Company[];
@@ -23,7 +23,6 @@ export class IntershipCreateComponent implements OnInit {
 
   ngOnInit() {
   }
-
   conForm= new FormGroup({ //c'est un formulaire root 
     'startDate':new FormControl('', [Validators.required,Validators.minLength(3)]),
       //chaque element est FormControl //Validator:fonction synchrone
@@ -37,7 +36,7 @@ export class IntershipCreateComponent implements OnInit {
     getInfo(x)
     {
     console.log(this.conForm); 
-    this.create();
+    this.find();
     }
     
     get startDate()
@@ -59,8 +58,8 @@ export class IntershipCreateComponent implements OnInit {
     }
 
 
-    create(){
-      this.fypConventionService.createIntership(this.conForm.value,"8").subscribe(
+    find(){
+      this.fypConventionService.findStudentConvention(this.conForm.value).subscribe(
         (data: any) => {
           console.log(data);
         });

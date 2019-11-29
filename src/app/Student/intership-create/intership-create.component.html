@@ -1,17 +1,64 @@
-<p>
-        reactive-form works!
-      </p>
+
+<br>
+<div class="container">
         <form [formGroup]="conForm"> 
-      nom <input type="text" formControlName="startDate" >
+            <div class="row">
+                <div class="col-25">
+                <label for="fname">Start Date</label>
+              </div>
+              <div class="col-75">
+                <input type="date" formControlName="startDate" >
+              </div>
       <div *ngIf="startDate.touched && startDate.invalid">
       
-        Nom est obligatoire 
+        Start Date est obligatoire 
       </div>
+            </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">End Date</label>
+        </div>
+        <div class="col-75">
+            <input type="date" formControlName="endDate" >
+            <div *ngIf="endDate.touched && endDate.invalid">
       
-      
+                End Date est obligatoire 
+              </div>
+        </div>
     
+      </div>
+      <div class="row">
+          <div class="col-25">
+            <label for="fname">companySupervisorEmail</label>
+          </div>
+          <div class="col-75">
+              <input type="text" formControlName="companySupervisorEmail" >
+              <div *ngIf="companySupervisorEmail.touched && companySupervisorEmail.invalid">
+        
+                  companySupervisorEmail est *
+
+                </div>
+          </div>
       
+        </div>
+        <div class="row">
+            <div class="col-25">
+              <label for="country">Company</label>
+            </div>
+            <div class="col-75" >
+              <!--<select id="country" name="company" >
+                <div >
+               
+                <option  ng-options="i for i in comp">{{i.name}} </option>
+              </div>
+              </select>-->
+              <select name="mySelect" id="mySelect"
+              ng-options="option.name for option in comp.availableOptions track by option.name"
+              ng-model="comp.selectedOption"></select>
+            </div>
+          </div>
       <button (click)="getInfo()" > Test</button>
         </form>
+</div>
       
       
