@@ -1,0 +1,33 @@
+
+<h3 class="divider mt-8">All the files</h3>
+<br>
+
+<table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>FileStatus</th>
+                <th>FinalMark</th>
+                <th>Archived</th>
+                <th>Canceled</th>
+                <th>Confirmed</th>
+                <th>Prevalidated</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let x of allFYPFiles , let i = index">
+            <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{x.title}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.fileStatus}}</td>
+                <td>{{x.finalMark}}</td>
+                <td>{{x.isArchived}}</td>
+                <td>{{x.isCanceled}}</td>
+                <td>{{x.isConfirmed}}</td>
+                <td>{{x.isPrevalidated}}</td>
+                
+            </tr>
+        </tbody>
+    </table>

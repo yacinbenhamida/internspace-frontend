@@ -1,5 +1,6 @@
 
 export interface FypFile {
+  id:number;
   title: string;
   description: string;
   problematic: string;

@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/assets/vendor/bootstrap/css/bootstrap.css",
               "src/assets/vendor/font-awesome/css/all.min.css",
               "src/assets/vendor/font-awesome/css/fontawesome.min.css",
@@ -33,7 +34,8 @@
               "src/assets/css/style.css",
               "src/assets/css/utilities.css",
               "src/assets/css/skin/default.css",
-              "src/assets/css/custom.css"
+              "src/assets/css/custom.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
             "scripts": [
               "src/assets/vendor/jquery/jquery.min.js",
@@ -50,7 +52,9 @@
               "src/assets/js/other.js",
               "src/assets/js/page.js",
               "src/assets/js/script.js",
-              "src/assets/js/custom.js"
+              "src/assets/js/custom.js",
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js"
             ]
           },
           "configurations": {
@@ -116,7 +120,8 @@
               "src/assets/css/style.css",
               "src/assets/css/utilities.css",
               "src/assets/css/skin/default.css",
-              "src/assets/css/custom.css"
+              "src/assets/css/custom.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
             "scripts": [
               "src/assets/vendor/jquery/jquery.min.js",
@@ -133,7 +138,8 @@
               "src/assets/js/other.js",
               "src/assets/js/page.js",
               "src/assets/js/script.js",
-              "src/assets/js/custom.js"
+              "src/assets/js/custom.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js"
             ],
             "assets": [
               "src/favicon.png",
