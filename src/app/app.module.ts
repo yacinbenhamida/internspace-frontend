@@ -47,6 +47,9 @@ import { AgmCoreModule } from '@agm/core';
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
 import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.component';
+import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
+import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
+import { fypFileManagement } from './intership-director-module/fyp-file-management/fyp-file-management.module';
 
 
 
@@ -85,6 +88,8 @@ import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.com
     IntershipUpdateComponent,
     FypPFECreateComponent,
     FypPFEUpdateComponent,
+    LateStudentListComponent,
+    FypFileManagementComponent,
 
   ],
   imports: [
