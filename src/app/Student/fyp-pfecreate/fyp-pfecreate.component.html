@@ -1,0 +1,36 @@
+<br>
+<br>
+<div class="container">
+        <form [formGroup]="pfeForm"> 
+            <div class="row">
+                <div class="col-25">
+                <label for="fname">Title</label>
+              </div>
+              <div class="col-75">
+                <input type="text" formControlName="title" name="title" >
+              </div>
+      <div *ngIf="title.touched && title.invalid">
+      
+        Start Date est obligatoire 
+      </div>
+            </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">description</label>
+        </div>
+        <div class="col-75">
+            <input type="text" formControlName="description" >
+            <div *ngIf="description.touched && description.invalid">
+      
+                description  est obligatoire 
+              </div>
+        </div>
+    
+      </div>
+      
+       
+      <button (click)="getInfo()" > Create</button>
+        </form>
+</div>
+      
+      

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class IntershipCComponent implements OnInit {
 
   allFypConvention: FypConvention[];
+  fypConvention: FypConvention;
   allStudent: Student[];
   id:number
   show:boolean=true;
@@ -24,7 +25,7 @@ export class IntershipCComponent implements OnInit {
 
   ngOnInit() { 
    // this.getList();
-    this.fypConventionService.findStudentConvention('10').subscribe(fypts => {
+    this.fypConventionService.findStudentConvention('2').subscribe(fypts => {
       this.allStudent = fypts as Student[];
       console.log(this.allStudent);})
       this.ar.paramMap.subscribe(res=>this.id=Number(res.get('id')));
@@ -35,7 +36,11 @@ export class IntershipCComponent implements OnInit {
       this.allFypConvention =x});
 
     }
-
+  delete(){
+      this.fypConventionService.deleteConvention("16").subscribe((x:any)=>{
+        console.log(this.allStudent)});
+  
+      }
 
     affichage(){ 
      

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FypFileComponent } from './fyp-file.component';
+import { FypPFEUpdateComponent } from './fyp-pfeupdate.component';
 
-describe('FypFileComponent', () => {
-  let component: FypFileComponent;
-  let fixture: ComponentFixture<FypFileComponent>;
+describe('FypPFEUpdateComponent', () => {
+  let component: FypPFEUpdateComponent;
+  let fixture: ComponentFixture<FypPFEUpdateComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FypFileComponent ]
+      declarations: [ FypPFEUpdateComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FypFileComponent);
+    fixture = TestBed.createComponent(FypPFEUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

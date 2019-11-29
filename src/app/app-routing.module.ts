@@ -25,6 +25,7 @@ import { FypFileByStateComponent } from './intership-director-module/fyp-file-by
 import { FypFileByCountryComponent } from './intership-director-module/fyp-file-by-country/fyp-file-by-country.component';
 import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.component';
 import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.component';
+import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
 
 
 
@@ -47,6 +48,9 @@ const routes: Routes = [
   {path: 'student/inter', component: IntershipCComponent},
   {path: 'create', component:  IntershipCreateComponent},
   {path: 'update/:id', component: FypConventionComponent},
+  {path: 'delete/:id', component:  IntershipCComponent},
+  //fypPFE
+  {path: 'fyp/create', component:  FypPFECreateComponent},
   {path: 'uniDash', component: UniversityStatsComponent},
   { path: 'create-category', component: FypCategorieComponent },
   {path: 'internshipDirector', component: FypFileComponent},

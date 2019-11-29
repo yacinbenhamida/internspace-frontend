@@ -41,6 +41,22 @@
           </div>
       
         </div>
+        <div class="row">
+            <div class="col-25">
+              <label for="country">Company</label>
+            </div>
+            <div class="col-75" >
+              <!--<select id="country" name="company" >
+                <div >
+               
+                <option  ng-options="i for i in comp">{{i.name}} </option>
+              </div>
+              </select>-->
+              <select name="mySelect" id="mySelect"
+              ng-options="option.name for option in comp.availableOptions track by option.name"
+              ng-model="comp.selectedOption"></select>
+            </div>
+          </div>
       <button (click)="getInfo()" > Test</button>
         </form>
 </div>

@@ -47,7 +47,10 @@ httpOptions = {
       return this.http.post<FypConvention[]>('/api/intership/add?id='+id, JSON.stringify(data), this.httpOptions);
   
     }
-    
+    deleteConvention(id:string):Observable<Student[]>{
+      const params = new HttpParams().set('id', id);
+      return this.http.delete<Student[]>(`${this.baseurl}/delete/`,{params:params})
+    }
     constructor(private http: HttpClient) { }
 
 }

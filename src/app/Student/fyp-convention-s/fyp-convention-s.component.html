@@ -1,1 +1,52 @@
-<p>fyp-convention-s works!</p>
+<div class="container">
+        <br>
+          
+          <div *ngFor="let element of allFypConvention">
+          <div   class="list-group">
+                
+            
+            
+           Start Date : <div class="list-group-item">{{element.startDate}}</div>
+           End Date :<div class="list-group-item">{{element.endDate}}</div>
+           SupervisorEmail : <div class="list-group-item">{{element.companySupervisorEmail}}</div>
+          </div>
+          <br>
+      
+          </div>
+          <br>
+          <div *ngFor="let x of allStudent">
+          <ul>
+              <li><a class="active" href="#home">Fiche</a></li>
+              <li><a [routerLink]="['/update',x.id]" >Update</a></li>
+              <router-outlet></router-outlet>
+              <li><a href="#contact">Contact</a></li>
+         </ul>
+       
+         <h2>Your Intership Convention</h2>
+           
+            <br>
+          <div>
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>#</th>
+                          <th>startDate</th>
+                          <th>endDate</th>
+                          <th>companySupervisorEmail</th>
+                          <th>Actions</th>
+                          
+                      </tr>
+                  </thead>
+                  <tbody >
+                      <tr>
+                          <th scope="row">{{i+1}}</th>
+                          <td>{{x.startDate}}</td>
+                          <td>{{x.endDate}}</td>
+                          <td>{{x.companySupervisorEmail}}</td>
+                          <td><a [routerLink]="['/delete',x.id]" >Delete</a></td>
+                          
+                      </tr>
+                  </tbody>
+              </table>
+             </div>
+        </div>

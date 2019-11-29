@@ -41,6 +41,9 @@ import { FypFileByCountryComponent } from './intership-director-module/fyp-file-
 
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.component';
+import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
+import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
+import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.component';
 
 
 
@@ -75,6 +78,9 @@ import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.co
     FypFileByCountryComponent,
     AdminHeaderComponent,
     AdminHomepageComponent,
+    IntershipUpdateComponent,
+    FypPFECreateComponent,
+    FypPFEUpdateComponent,
 
   ],
   imports: [
