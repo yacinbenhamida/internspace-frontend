@@ -124,12 +124,12 @@ export class UniStatsService {
 
   }
 
-  GetStudentsBySite(uniId: string): Observable<User> {
+  GetStudentsBySite(uniId: string,categoryId): Observable<User> {
       const params = new HttpParams()
       .set('uni', uniId)
       .set('category', categoryId);
 
-    return this.http.get<Object>(this.baseurl + '/company/category/evolution', { headers: this.headersJSON, params: params });
+    return this.http.get<User>(this.baseurl + '/company/category/evolution', { headers: this.headersJSON, params: params });
 
   }
 
