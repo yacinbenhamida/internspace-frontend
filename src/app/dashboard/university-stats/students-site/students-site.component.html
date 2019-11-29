@@ -18,15 +18,15 @@
             <tr class="text-center" *ngFor='let student of studentsCache; let i = index'>
 
               <td>
-                <button class="btn" (click)="openScrollableContent(longContent, i)">
+                <button style="cursor: pointer" class="btn" (click)="openScrollableContent(longContent, i)">
                   {{student.firstName}}</button>
               </td>
               <td>
-                <button class="btn" (click)="openScrollableContent(longContent, i)">
+                <button style="cursor: pointer"  class="btn" (click)="openScrollableContent(longContent, i)">
                   {{student.lastName}}</button>
               </td>
               <td>
-                <button class="btn" (click)="openScrollableContent(longContent, i)">
+                <button style="cursor: pointer" class="btn" (click)="openScrollableContent(longContent, i)">
                   {{student.email}}</button>
               </td>
             </tr>
