@@ -50,7 +50,6 @@ import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.com
 import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
-import { fypFileManagement } from './intership-director-module/fyp-file-management/fyp-file-management.module';
 
 
 
