@@ -199,5 +199,9 @@ LinksOfChoosenCompany(id:string):Observable<string[]>{
   const param = new HttpParams().set('id',id);
   return this.http.get<string[]>(`${this.baseurl}/getLinkOfCompany`,{params:param})
 }
+CompanyCordinates(id:string):Observable<string[]>{
+  const param = new HttpParams().set('id',id);
+  return this.http.get<string[]>(`${this.baseurl}/getCompanyCord?`,{params:param})
+}
 
 }

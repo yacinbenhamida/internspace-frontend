@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import { InternshipDirectorService } from 'src/app/services/InternShipDirector/internship-director.service';
+import { AuthenticationService } from 'src/app/services/security/authentication.service';
 
 @Component({
   selector: 'app-fyp-file-by-state',
@@ -9,16 +10,31 @@ import { InternshipDirectorService } from 'src/app/services/InternShipDirector/i
 })
 export class FypFileByStateComponent implements OnInit {
 
-  constructor(private _internshipDirectorService : InternshipDirectorService) { }
-
+  constructor(private _internshipDirectorService : InternshipDirectorService, private auth:AuthenticationService) { }
+  allFYPFiles:FypFile[]=[];
+  selectedFYPFiles: FypFile[]=[];
   ngOnInit() {
+    this._internshipDirectorService.getAllStudents(this.auth.currentUserValue.department.site.university.id).subscribe(
+      data=>{data.forEach((item)=>this.allFYPFiles.push(item.fypFile))}
+      )
+    console.log(this.allFYPFiles)
+ 
   }
-  options:string[]=["select an option","pending","confirmed","declined"];
+
+  option2:string[]=["select an option","pending","confirmed","declined"];
   FYPFiles:FypFile[];
   searchInput:string="";
   selectValue:string="";
+  
   ClickHandler =(xx)=>{
-    this._internshipDirectorService.FypFileByState(this.selectValue).subscribe(data=>this.FYPFiles=data);
+    this.selectedFYPFiles=[];
+    //this._internshipDirectorService.FypFileByCategory(this.selectValue).subscribe(data=>this.FYPFiles=data);
+    this.allFYPFiles.forEach((item)=>{
+        if(item.fileStatus == xx){
+        this.selectedFYPFiles.push(item)
+      }
+      
+    })
     }
 
 }

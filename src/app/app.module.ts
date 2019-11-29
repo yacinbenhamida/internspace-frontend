@@ -40,7 +40,7 @@ import { FypFileByCountryComponent } from './intership-director-module/fyp-file-
 
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.component';
-
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -76,6 +76,9 @@ import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.co
 
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAixiqoD1TaG9f3EQhGMKGZpZLIFVuUQYQ'
+    }),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
