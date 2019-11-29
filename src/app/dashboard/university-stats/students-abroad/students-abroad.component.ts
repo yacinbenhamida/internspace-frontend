@@ -127,8 +127,8 @@ export class StudentsAbroadComponent implements OnInit, OnDestroy {
     }
 
     pieSeries.slices.template.events.on('hit', function (event) {
-      if (event.target.dataItem.dataContext.id != undefined) {
-        selected = event.target.dataItem.dataContext.id;
+      if (event.target.dataItem.id != undefined) {
+        selected = event.target.dataItem.id;
       } else {
         selected = undefined;
       }

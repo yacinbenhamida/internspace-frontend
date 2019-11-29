@@ -14,6 +14,12 @@ export class FypFileService {
     getFypFilesOfDepartment(depId:number){
         return this.http.get<FypFile[]>("/api/fypsheet/"+depId)
     }
+    getAcceptedFYPFiles(idDep:number){
+      return this.http.get<FypFile[]>("/api/fypsheet/accepted/"+idDep)
+    }
+    getPendingFYPFiles(idDep:number){
+      return this.http.get<FypFile[]>("/api/fypsheet/nosupervisors/"+idDep)
+    }
     private extractData(res: Response) {
       let body = res.json();
       return res.json || body || { };

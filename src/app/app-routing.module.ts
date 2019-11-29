@@ -12,10 +12,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './services/security/authguard.service';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
-import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
+import { FypfileHistoryComponent } from './department-head/fypfile-history/fypfile-history.component';
 import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
+import { NotificationsComponent } from './department-head/notifications/notifications.component';
+import { NoitificationsHistoryComponent } from './department-head/notifications/noitifications-history/noitifications-history.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
 
@@ -26,12 +26,13 @@ import { FypFileByCountryComponent } from './intership-director-module/fyp-file-
 import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.component';
 import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.component';
 import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
+import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
 
 
 
 /**
  * for admin & superAdmin routes please register them below with the prefix 
- * /admin/* to insure the use of the second header layout
+ * /admin/* to ensure the use of the second header layout
  */
 
 const routes: Routes = [
@@ -55,6 +56,7 @@ const routes: Routes = [
   { path: 'create-category', component: FypCategorieComponent },
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent, canActivate : [AuthGuard]},
+  {path : 'fypfile/tracking', component : FypfilesOperationsComponent, canActivate : [AuthGuard]},
   {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
   {path : 'notifications/history', component : NoitificationsHistoryComponent},
   {path : 'fypFileBycategory', component : FypFileByCategoryComponent},

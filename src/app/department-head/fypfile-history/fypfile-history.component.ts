@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthenticationService } from '../services/security/authentication.service';
-import { FypFileService } from '../services/fyp-file/fypfile.service';
-import { FypFile } from '../models/fyp/fyp-file';
-import { FypFileHistoryService } from '../services/fyp-file/fypfile-history.service';
-import { FypFileHistory } from '../models/fyp/fyp-file-history';
+import { AuthenticationService } from '../../services/security/authentication.service';
+import { FypFileService } from '../../services/fyp-file/fypfile.service';
+import { FypFile } from '../../models/fyp/fyp-file';
+import { FypFileHistoryService } from '../../services/fyp-file/fypfile-history.service';
+import { FypFileHistory } from '../../models/fyp/fyp-file-history';
 import { Subject } from 'rxjs';
 @Component({
   selector: 'app-fypfile-history',
@@ -13,7 +13,7 @@ import { Subject } from 'rxjs';
 export class FypfileHistoryComponent implements OnInit,OnDestroy {
 
   fypFilesOptions: DataTables.Settings = {};
-  fypFiles : FypFile[] = [];
+  fypFiles : any[] 
   history : FypFileHistory [] = [];
   fypFilesTriggers: Subject<FypFile> = new Subject();
 
@@ -27,13 +27,14 @@ export class FypfileHistoryComponent implements OnInit,OnDestroy {
       pageLength: 2
     }
     this.fyps.getFypFilesOfDepartment(this.authserv.currentUserValue.department.id)
-    .subscribe(x=>{
-      this.fypFiles = x
-      this.fypFilesTriggers.next()
-      console.log(x)
-        }
-      )
-  }  
+    .subscribe((x:FypFile[])=>{   
+        this.fypFiles.push(x)
+        this.fypFilesTriggers.next()
+      },
+      error=>console.log("oups, all fyp files service failed"))
+      }
+      
+    
   ngOnDestroy(): void {
     this.fypFilesTriggers.unsubscribe()
   }
