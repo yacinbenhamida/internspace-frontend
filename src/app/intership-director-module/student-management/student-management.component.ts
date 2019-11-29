@@ -14,12 +14,17 @@ export class StudentManagementComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   students : User[];
+
+
   connectedUser : any;
   dtTrigger: Subject<User>= new Subject();
  
-  constructor(private _internShipDirector : InternshipDirectorService
-    ,private auth:AuthenticationService) { }
-  ngOnInit() {      
+  constructor(private _internShipDirector : InternshipDirectorService,private auth:AuthenticationService) { }
+
+
+  ngOnInit() {
+    
+
         this.dtOptions = {
           rowCallback: (row: Node, data: any | Object, index: number) => {
             const self = this;

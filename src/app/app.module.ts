@@ -41,9 +41,13 @@ import { FypFileByCountryComponent } from './intership-director-module/fyp-file-
 
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.component';
+
+import { AgmCoreModule } from '@agm/core';
+
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
 import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.component';
+
 
 
 
@@ -84,6 +88,9 @@ import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.com
 
   ],
   imports: [
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAixiqoD1TaG9f3EQhGMKGZpZLIFVuUQYQ'
+    }),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -1,4 +1,5 @@
 import { Department } from "./department"
+import { FypFile } from "./fyp/fyp-file"
 
 export class User{
     id : number
@@ -18,6 +19,7 @@ export class User{
     isSaved: Boolean
     isAutorised: Boolean
     isDisabled: Boolean
+    fypFile: FypFile
     constructor(){
         
     }
