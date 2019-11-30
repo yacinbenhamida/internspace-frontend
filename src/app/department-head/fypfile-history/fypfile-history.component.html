@@ -1,0 +1,67 @@
+<div class="wrapper">
+        <main class="main-content">
+    <header class="section-header">
+        <small>FYP files history</small>
+        <p class="lead">FYP files history records</p>
+    </header>
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <h6 class="divider">to display history, just click on an element of the table</h6>     
+            <div class="uikit-example">
+                <table datatable  [dtOptions]="fypFilesOptions" [dtTrigger]="fypFilesTriggers" class="row-border hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>title</th>
+                        <th>description</th>
+                        <th>problematic</th>
+                        <th>status</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let file of fypFiles;let i = index">
+                        <td>{{ i+1 }}</td>
+                        <td>{{file.title}}</td>
+                        <td>{{file.description}}</td>
+                        <td>{{file.problematic}}</td>
+                        <td>{{file.fileStatus}}</td>
+                        <td><button type="button" (click)="loadHistory(file.id)" class="btn btn-primary transition-hover" data-toggle="modal" data-target="#modal-large">history</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+         </div>
+    </div>
+</div>
+</main>
+</div>
+<!-- Modal - Large -->
+<section id="modal" class="px-6 py-6 bg-gray mb-9">
+  <div class="container mb-9">
+      <div class="modal fade" id="modal-large" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      <div class="row"> 
+                          <div *ngIf="history.length == 0" class="alert alert-danger" role="alert">
+                             No changes were recorded.
+                          </div>
+                                <div  *ngFor="let his of history;let i = index" >
+                                    <app-fypfile-history-card [historyElement]="his"></app-fypfile-history-card>
+                                    <br *ngIf="i%2 == 0"/>
+                                </div>
+                            </div>   
+                </div>
+          </div>
+      </div>
+  </div>
+  </div>
+</section>
+
+<br/>
+<br/>
+

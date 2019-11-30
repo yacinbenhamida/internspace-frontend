@@ -1,0 +1,96 @@
+<div class="wrapper section">
+    <br/>
+    <main class="main-content">
+<header class="section-header">
+    
+            <div class="media align-items-center mb-4">
+                    <div class="w-60px mr-4 text-center">
+                        <i class="icon-bubble-conversation-2 fs-35"></i>
+                    </div>
+                    <div class="media-body">
+                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix">Notifications</a>
+                        <span><a class="text-dark small anim-link-2">Recorded notifications of your department</a> <span class="small"> : </span> </span>
+                        <span class="time small text-muted">{{auth.currentUserValue.department.name}}</span>
+                    </div>
+                </div>
+    
+</header>
+<div class="row uikit-example">
+    <div class="col-lg-8 mx-auto">
+            <div class="accordion" id="accordionExample">
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Employees recieved notifications
+                                </button>
+                            </h2>
+                        </div>       
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                    <div class="uikit-example">
+                                            <table datatable [dtOptions]="employeesOptions" [dtTrigger]="employeesTriggers"  class="row-border hover">
+                                                <thead>
+                                                  <tr>
+                                                    <th>#</th>
+                                                    <th>employee</th>
+                                                    <th>content</th>
+                                                    <th>status</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr *ngFor="let a of employeesNotifications;let i = index">
+                                                    <td>{{i + 1 }}</td>
+                                                    <td>{{a.reciever.username}} ({{a.reciever.role}})</td>
+                                                    <td>{{a.content}}</td>
+                                                    <td>{{a.seen == true ? 'seen' : 'not seen'}}</td>                                                  
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                     </div>
+                            </div>
+                        </div>
+                    </div>       
+            </div>
+             <div class="accordion" id="accordionExample">
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Students recieved notifications
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                    <div class="uikit-example">
+                                            <table datatable [dtOptions]="studentsOptions" [dtTrigger]="studentsTriggers"  class="row-border hover">
+                                                    <thead>
+                                                      <tr>
+                                                        <th>#</th>
+                                                        <th>student</th>
+                                                        <th>content</th>
+                                                        <th>status</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr *ngFor="let a of studentsNotifications;let i = index">
+                                                        <td>{{i + 1 }}</td>
+                                                        <td>{{a.reciever.firstName}} {{a.reciever.lastName}} (@{{a.reciever.username}})</td>
+                                                        <td>{{a.content}}</td>
+                                                        <td>{{a.seen == true ? 'seen' : 'not seen'}}</td>                                                     
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+                                     </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+</div>
+</div>
+</main>
+</div>
+
+
+
