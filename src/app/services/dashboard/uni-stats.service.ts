@@ -5,13 +5,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NullTemplateVisitor } from '@angular/compiler';
+import { string } from '@amcharts/amcharts4/core';
 
 /*
 Partie Dashboard :
   [x]● List des étudiants en 5eme année qui appartiennent à son Site.
   [x]● Affichage de pourcentage des étudiants qui ont effectué un stage à l’étranger pour l’année universitaire courante, puis.
   [x]● Calcul et affichage d’une courbe qui décrit l'évolution de ce pourcentage au fils des années.
-  [ ]● Calcul et affichage des pourcentage des étudiants qui ont effectué un stage dans un
+  [x]● Calcul et affichage des pourcentage des étudiants qui ont effectué un stage dans un
     pays donnée pour une année universitaire donnée, puis, l’évolution de ce pourcentage
     au fil des années.
   [x]● Affichage des N (spécifié par l’user) entreprises qui recrutent le plus grand nombre d’étudiants d’une école spécifiée.
@@ -29,7 +30,8 @@ export class UniStatsService {
   key = 'e6447ab970454075acf54ec8b19718d5';
   headers: HttpHeaders;
   headersJSON: HttpHeaders;
-  cachedCountryJSON: {};
+  public cachedCountryJSON: {};
+  public countryNames: string[];
   httpOptions: {};
 
   // Base url
@@ -50,18 +52,25 @@ export class UniStatsService {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
       })
     };
-
     // Prepare reverse iso countries data cache
+    this.countryNames = [];
     this.cachedCountryJSON = {};
     this.http.get('assets/data/isoCountries.json').subscribe(data => {
       for (const key in data) {
         if (key) {
+          this.countryNames.push(data[key]);
           this.cachedCountryJSON[data[key]] = key;
         }
       }
     }
+
+
     );
 
+  }
+
+  GetCountryNames(): Observable<any> {
+    return this.http.get('assets/data/isoCountries.json');
   }
 
   // External API
@@ -149,8 +158,8 @@ export class UniStatsService {
 
   GetMostCompanyAcceptingInternsWithUniversity(uniId: string, n: string): Observable<any[]> {
     const params = new HttpParams()
-    .set('uni', uniId)
-    .set('n', n);
+      .set('uni', uniId)
+      .set('n', n);
 
     return this.http.get<any[]>(this.baseurl + '/distribution/topcompanies', { headers: this.headersJSON, params: params });
   }

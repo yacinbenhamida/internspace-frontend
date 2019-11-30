@@ -1,8 +1,8 @@
 <div class="form-inline cool-item ">
     <h3> Internships Evolution By Category </h3>
 
-      <select class="cool-item" (change)="onChange_Category($event.target.value)" formControlName="category">
-        <option>Preview File</option>
+      <select class="cool-item" (change)="onChange_Category($event.target.value)">
+        <option>Choose a category</option>
         <option *ngFor="let category of categoriesCache; let index = index;" [value]="index"
           [selected]="category == selectedCategory">
           {{category.name}}</option>
