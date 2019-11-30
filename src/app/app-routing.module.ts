@@ -29,6 +29,7 @@ import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.com
 import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
+import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
 
 
 
@@ -66,6 +67,7 @@ const routes: Routes = [
   {path : 'internshipDirector/fypFileByState', component : FypFileByStateComponent},
   {path : 'internshipDirector/fypFileByCountry', component : FypFileByCountryComponent},
   {path: 'teacherFypFiles',component:TeacherFypfilesComponent},
+  {path: 'majormodif',component:FypFilesModificationComponent},
   {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate : [AuthGuard]},
   {path: 'internshipDirector/lateStudents',component:LateStudentListComponent},
   {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent},

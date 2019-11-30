@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FypTemplate } from '../../models/fyp/fyp-template';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import { FypCategory } from 'src/app/models/fyp/fyp-category';
+import { FypFileModification } from 'src/app/models/fyp/fyp-modification';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,11 @@ export class TeacherServiceService {
     return this.http.get<FypFile[]>(this.baseurl +'/pending', { headers: this.headers});
 
   }
+    //GET
+    GetFYPFIemodifications():Observable<FypFileModification[]>{
+      return this.http.get<FypFileModification[]>(this.baseurl +'/allfypMod', { headers: this.headers});
+  
+    }
   //PUT
   PrevalidateFypFile(id:number){
     this.http.put(this.baseurl+'/prevalidate/'+id,{headers: this.headers});
