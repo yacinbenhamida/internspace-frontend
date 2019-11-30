@@ -1,0 +1,232 @@
+<div class="wrapper section">
+    <br/>
+    <main class="main-content">
+<header class="section-header">
+    
+            <div class="media align-items-center mb-4">
+                    <div class="w-60px mr-4 text-center">
+                        <i class="icon-document-1 fs-35"></i>
+                    </div>
+                    <div class="media-body">
+                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix">FYP Files</a>
+                        <span><a class="text-dark small anim-link-2">FYP Files status tracking</a> </span>
+                    </div>
+                </div>
+    
+</header>
+<div class="row uikit-example">
+    <div class="col-lg-10 mx-auto">
+            <div class="accordion" id="accordionExample">
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Recently accepted FYP sheets
+                                </button>
+                            </h2>
+                        </div>       
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                    <div class="uikit-example">
+                                            <table datatable [dtOptions]="acceptedSheetsOptions" [dtTrigger]="acceptedSheetsTrigger"  class="row-border hover">
+                                                <thead>
+                                                    <tr>
+                                                      <th>#</th>
+                                                      <th>title</th>
+                                                      <th>description</th>
+                                                      <th>status</th>
+                                                      <th></th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr *ngFor="let file of acceptedSheets;let i = index">
+                                                      <td>{{ i+1 }}</td>
+                                                      <td>{{file.title}}</td>
+                                                      <td>{{file.description}}</td>
+                                                      <td><span class="badge badge-pill badge-success">approved</span></td>
+                                                      <td>
+                                                          <button type="button" (click)="affectTeacher(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign">assign</button>
+                                                      </td>
+                                                    </tr>
+                                                  </tbody>
+                                              </table>
+                                     </div>
+                            </div>
+                        </div>
+                    </div>       
+            </div>
+             <div class="accordion" id="accordionExample">
+                    <div class="card mb-3">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collpaseTwo" aria-expanded="true" aria-controls="collpaseTwo">
+                                    FYP Sheets confirmed but not yet supervised
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collpaseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                    <div class="uikit-example">
+                                        <table datatable [dtOptions]="pendingSheetsOptions" [dtTrigger]="pendingSheetsTrigger"  class="row-border hover">
+                                            <thead>
+                                                <tr>
+                                                  <th>#</th>
+                                                  <th>title</th>
+                                                  <th>description</th>
+                                                  <th >status</th>
+                                                  <th></th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <tr *ngFor="let file of pendingSheets;let i = index">
+                                                  <td>{{ i+1 }}</td>
+                                                  <td>{{file.title}}</td>
+                                                  <td>{{file.description}}</td>
+                                                  <td><div class="progress" style="width: 10rem;">
+                                                        <div class="progress-bar" role="progressbar" [ngStyle]="determineAdvancement(file,css)" aria-valuenow="determineAdvancement(file,int)" aria-valuemin="0" aria-valuemax="100">{{parseState(file)}}</div>
+                                                    </div></td>
+                                                  <td><button type="button" (click)="affectSupervisor(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-fix">fix</button>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                          </table>
+                                     </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+</div>
+</div>
+</main>
+</div>
+
+<!-- Modal assign - Large -->
+
+
+<div class="modal fade" id="modal-assign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-long" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--<div class="alert alert-danger">
+                        Please notice that this modal has <code>.modal-long</code> class name added to <code>.modal-dialog</code>.
+                    </div>-->
+                    <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                            <div class="container">
+                                <header class="mb-6">
+                                    <h2>Assign a teacher </h2>
+                                    <hr>
+                                    <p class="lead-1">Assign a teacher </p>
+                                </header>
+
+                                <div class="row gap-y">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Role</label>        
+                                            <select #select [(ngModel)]="teacherTargetedRole" (change)="roleVerification($event.target.value)" class="form-control form-control-sm">
+                                                <option selected></option>
+                                                <option value="supervisor">Supervision</option>
+                                                <option value="preValidator">Pre validation</option>
+                                                <option value="reporter">Reporting</option>
+                                            </select>
+                                        </div>
+                                        <div *ngIf="!informations && select.value != ''" class="alert alert-danger">
+                                                This FYP sheet already has a teacher with that role
+                                        </div>
+                                        <div *ngIf="informations">
+                                                <div class="form-group">
+                                                        <label>Teacher</label>
+                                                        <select [(ngModel)]="teachertoBeAssigned"  class="form-control form-control-sm">
+                                                            <option selected disabled></option>
+                                                            <option *ngFor="let t of teachersList" [ngValue]="t">{{t.firstName}} {{t.lastName}}</option>                                                         
+                                                        </select>
+                                            </div>
+                                        <div class="form-group">
+                                            <label>N° of actions allowed</label>
+                                            <input class="form-control form-control-lg" type="text" [ngModel]="loadNoOfActions()" disabled placeholder="The remaining actions...">
+                                        </div>
+                                        </div>
+                                        
+                                </div> 
+                            </div> 
+                        </div>                         
+                        </section>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="cancelTeacherAssign()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" (click)="confirmTeacherAssign()" class="btn btn-primary transition-hover">Save changes</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+<!-- Modal fix - Large -->
+<div class="modal fade" id="modal-fix" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-long" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--<div class="alert alert-danger">
+                        Please notice that this modal has <code>.modal-long</code> class name added to <code>.modal-dialog</code>.
+                    </div>-->
+                    <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                            <div class="container">
+                                <header class="mb-6">
+                                    <h2>Inputs</h2>
+                                    <hr>
+                                    <p class="lead-1">Text inputs, selects and textarea in three different sizes</p>
+                                </header>
+
+                                <div class="row gap-y">
+                                    <div class="col-md-12">
+                                        <h5 class="mb-3">Text inputs</h5>
+                                        <div class="form-group">
+                                            <label>Small</label>
+                                            <input class="form-control form-control-sm" type="text" placeholder="First name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Normal</label>
+                                            <input class="form-control" type="text" placeholder="Last name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Large</label>
+                                            <input class="form-control form-control-lg" type="text" placeholder="Email address">
+                                        </div>
+
+                                        <br><br>
+                                        <h5 class="mb-3">Select inputs</h5>
+                                        <div class="form-group">
+                                            <label>Small</label>
+                                            <select class="form-control form-control-sm">
+                                                <option>Personal</option>
+                                                <option>Startup</option>
+                                                <option>Business</option>
+                                                <option>Enterprise</option>
+                                            </select>
+                                    </div>
+                                </div> 
+                            </div> 
+                        </div>                         
+                        </section>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary transition-hover">Save changes</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+

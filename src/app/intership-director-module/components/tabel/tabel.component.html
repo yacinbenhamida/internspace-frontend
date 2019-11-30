@@ -9,7 +9,8 @@
                     <th>Archived</th>
                     <th>Canceled</th>
                     <th>Confirmed</th>
-                    <th>Prevalidated</th>
+                    <th>Prevalidated</th>*
+                    <th [hidden]="hide"> Prevalidate</th>
                 </tr>
         </thead>
         <tbody *ngFor="let x of tab , let i = index">
@@ -22,6 +23,8 @@
                 <td>{{x.isCanceled}}</td>
                 <td>{{x.isConfirmed}}</td>
                 <td>{{x.isPrevalidated}}</td>
+                <td><button [hidden]='hide' (click)="Prevalidate(x.id)">prev</button></td>
+
             </tr>
         </tbody>
     </table>

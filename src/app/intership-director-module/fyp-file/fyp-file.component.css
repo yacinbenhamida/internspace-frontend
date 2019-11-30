@@ -52,3 +52,6 @@ div.left {
     0%   { transform:translateY(-3px) ;}
     100%  {transform:translateY(0px);}
   }
+  agm-map {
+    height: 450px;
+  }

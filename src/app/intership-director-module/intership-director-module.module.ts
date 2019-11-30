@@ -8,10 +8,12 @@ import { FypFileByCategoryComponent } from './fyp-file-by-category/fyp-file-by-c
 import { FypFileByYearComponent } from './fyp-file-by-year/fyp-file-by-year.component';
 import { FypFileByStateComponent } from './fyp-file-by-state/fyp-file-by-state.component';
 import { FypFileByCountryComponent } from './fyp-file-by-country/fyp-file-by-country.component';
+import { LateStudentListComponent } from './late-student-list/late-student-list.component';
+import { FypFileManagementComponent } from './fyp-file-management/fyp-file-management.component';
 
 
 @NgModule({
-  declarations: [FypFileComponent, PerTypeSearchComponent, TabelComponent, StudentManagementComponent, FypFileByCategoryComponent, FypFileByYearComponent, FypFileByStateComponent, FypFileByCountryComponent,],
+  declarations: [FypFileComponent, PerTypeSearchComponent, TabelComponent, StudentManagementComponent, FypFileByCategoryComponent, FypFileByYearComponent, FypFileByStateComponent, FypFileByCountryComponent, LateStudentListComponent, FypFileManagementComponent,],
   imports: [
     CommonModule
   ]

@@ -12,11 +12,8 @@ export class NotificationService {
 
     constructor(private http: HttpClient) { }
 
-    getEmployeesNotifications(){
-        return this.http.get("/api/notifications/")
-        .pipe(
-          map(res => res as Notification[] || [])
-          );
+    getEmployeesNotifications() : Observable<Notification []>{
+        return this.http.get<Notification[]>("/api/notifications/")
     }
 
 

@@ -1,0 +1,31 @@
+@import "../university-stats.component.css";
+
+.h-divider{
+  margin-top:5px;
+  margin-bottom:5px;
+  height:1px;
+  width:47%;
+  border-top:1px solid rgb(209, 208, 208);
+ }
+
+ .v-divider{
+  margin-left:5px;
+  margin-right:5px;
+  width:1px;
+  height:100%;
+  border-left:1px solid rgb(209, 208, 208);
+ }
+
+ .star {
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+.filled {
+  color: #1e90ff;
+}
+.bad {
+  color: #deb0b0;
+}
+.filled.bad {
+  color: #ff1e1e;
+}
