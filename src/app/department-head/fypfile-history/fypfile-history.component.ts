@@ -12,26 +12,32 @@ import { Subject } from 'rxjs';
 })
 export class FypfileHistoryComponent implements OnInit,OnDestroy {
 
-  fypFilesOptions: DataTables.Settings = {};
-  fypFiles : any[] 
+  fypFiles : any[] =[]
   history : any [] = [];
   fypFilesTriggers: Subject<FypFile> = new Subject();
-
+  fypFilesOptions: DataTables.Settings = {};
   constructor(private authserv:AuthenticationService,
     private fyps:FypFileService,
-    private fyphistory : FypFileHistoryService) {}
+    private fyphistory : FypFileHistoryService) {
+      this.fyps.getFypFilesOfDepartment(this.authserv.currentUserValue.department.id)
+      .subscribe((val:FypFile[])=>{
+        console.log(val) 
+          this.fypFiles.push(val)
+          this.fypFilesTriggers.next()
+          console.log(this.fypFiles)
+        },
+        error=>console.log("oups, all fyp files service failed"))
+
+    }
+    
+
+    
   ngOnInit() {
-    this.fypFiles = [];
     this.fypFilesOptions = {  
       pagingType: 'full_numbers',
       pageLength: 2
     }
-    this.fyps.getFypFilesOfDepartment(this.authserv.currentUserValue.department.id)
-    .subscribe((x:FypFile[])=>{   
-        this.fypFiles = x
-        this.fypFilesTriggers.next()
-      },
-      error=>console.log("oups, all fyp files service failed"))
+  
       }
       
     
