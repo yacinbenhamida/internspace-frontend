@@ -14,7 +14,7 @@ export class FypfileHistoryComponent implements OnInit,OnDestroy {
 
   fypFilesOptions: DataTables.Settings = {};
   fypFiles : any[] 
-  history : FypFileHistory [] = [];
+  history : any [] = [];
   fypFilesTriggers: Subject<FypFile> = new Subject();
 
   constructor(private authserv:AuthenticationService,

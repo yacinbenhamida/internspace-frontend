@@ -22,8 +22,9 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   pendingSheets : any[] = []
   // dialog related stuff
   teachertoBeAssigned : User;
+  teacherTargetedRole : string 
   selectedFile : FypFile;
-  preloadedIntervention : any
+  preloadedIntervention : any[] = []
   // show details of affectation
   informations : boolean = false;
   teachersList:any [] = []
@@ -66,33 +67,86 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   }
 
   roleVerification(val:any){
+    this.preloadedIntervention = []
     if(val){
       if(this.selectedFile){
         this.interventionService.getInterventionsOfSheet(this.selectedFile.id)
         .subscribe(intv=>{
           this.preloadedIntervention = intv
-        })
-        console.log(this.preloadedIntervention)
-          if(val == "Supervision" && this.collectTeacherWithRole("supervisor",this.preloadedIntervention) != null){
-            this.informations = false
-          }
-          else if(val == "Pre validation" && this.collectTeacherWithRole("preValidator",this.preloadedIntervention ) != null){
-            this.informations = false
-          }
-          else if(val == "Reporting" && this.collectTeacherWithRole("reporter",this.preloadedIntervention) != null){
-            this.informations = false
-          }
-          else if(val == "Jury President" && this.collectTeacherWithRole("juryPresident",this.preloadedIntervention) != null){
-            this.informations = false
-          }else{
+        if(this.preloadedIntervention.length > 0){
+          if(val == "supervisor" && (
+          this.collectTeacherWithRole("supervisor",this.preloadedIntervention) == null
+          || this.collectTeacherWithRole("supervisor",this.preloadedIntervention).length == 0)){
             this.informations = true
-          }      
+            this.teacherTargetedRole = "supervisor"
+          }
+          else if(val == "preValidator" 
+          && (
+            this.collectTeacherWithRole("preValidator",this.preloadedIntervention) == null
+            || this.collectTeacherWithRole("preValidator",this.preloadedIntervention).length == 0)){
+            this.informations = true
+            this.teacherTargetedRole = "preValidator"
+          }
+          else if(val == "reporter" 
+          && (
+            this.collectTeacherWithRole("reporter",this.preloadedIntervention) == null
+            || this.collectTeacherWithRole("reporter",this.preloadedIntervention).length == 0)){
+            this.informations = true
+            this.teacherTargetedRole = "reporter"
+          }
+          else if(val == "juryPresident" 
+          && (
+            this.collectTeacherWithRole("juryPresident",this.preloadedIntervention) == null
+            || this.collectTeacherWithRole("juryPresident",this.preloadedIntervention).length == 0)){
+            this.informations = true
+            this.teacherTargetedRole = "juryPresident"
+          }else{
+            this.informations = false
+          }  
+        }else {
+          this.informations = true
+        }
+        })    
       }
-    }
+    }else this.informations = false
   }
 
-  collectTeacherWithRole(role:string,tab:FypIntervention[]){
-    return role!="" && tab ? tab.filter(val=>val.teacherRole == role) : null
+  collectTeacherWithRole(role:string,tab:FypIntervention[]) : FypIntervention[]{
+    return role && tab ? tab.filter(val=>val.teacherRole == role) : null
+  }
+
+  loadNoOfActions(){
+    if(this.teachertoBeAssigned && this.selectedFile){
+        if(this.teacherTargetedRole =="supervisor"){
+          return this.auth.currentUserValue.department.numberOfActionsAllowedForSupervisors
+        }
+        else if(this.teacherTargetedRole =="preValidator"){
+          return this.auth.currentUserValue.department.numberOfActionsAllowedForPreValidators
+        }
+        else if(this.teacherTargetedRole =="reporter"){
+          return this.auth.currentUserValue.department.numberOfActionsAllowedForProtractors
+        }
+        else if(this.teacherTargetedRole =="juryPresident"){
+          return this.auth.currentUserValue.department.numberOfActionsAllowedForPresidents
+        }
+    }
+    return 0
+  }
+  cancelTeacherAssign(){
+    this.teachertoBeAssigned = null
+    this.teacherTargetedRole = null
+    this.preloadedIntervention = []
+    this.selectedFile = null
+    this.informations = false
+  }
+  confirmTeacherAssign(){
+    if(this.teacherTargetedRole && this.teachertoBeAssigned){
+        this.interventionService.assignTeacherToFYPSheetWithRole(this.teachertoBeAssigned,this.selectedFile,this.teacherTargetedRole)
+        .subscribe(res=>{ 
+          alert("teacher assigned to this sheet")
+          this.cancelTeacherAssign()
+        })
+    }
   }
   determineAdvancement(input:FypFile,type:string){
     let width : number = 0

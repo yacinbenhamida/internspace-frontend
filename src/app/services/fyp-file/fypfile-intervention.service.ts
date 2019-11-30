@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import { FypIntervention } from 'src/app/models/fyp/fyp-intervention';
+import { User } from 'src/app/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class FypFileInterventionService {
     getInterventionsOfSheet(sheetId:number){
         return this.http.get<FypIntervention[]>("/api/interventions/getInterventions/"+sheetId)
     }
-    
+    assignTeacherToFYPSheetWithRole(teacher : User,file:FypFile,role:string){
+      return this.http.get<FypIntervention[]>("/api/interventions/assign/"+teacher.id+"/"+file.id+"/"+role)
+    }
     private extractData(res: Response) {
       let body = res.json();
       return res.json || body || { };

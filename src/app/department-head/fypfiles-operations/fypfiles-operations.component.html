@@ -121,35 +121,34 @@
                                 <header class="mb-6">
                                     <h2>Assign a teacher </h2>
                                     <hr>
-                                    <p class="lead-1">Assign a teacher to be in charge of the </p>
+                                    <p class="lead-1">Assign a teacher </p>
                                 </header>
 
                                 <div class="row gap-y">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Role</label>        
-                                            <select (change)="roleVerification($event.target.value)" class="form-control form-control-sm">
-                                                        <option selected></option>
-                                                        <option>Supervision</option>
-                                                        <option>Pre validation</option>
-                                                        <option>Reporting</option>
-                                                    </select>
+                                            <select #select [ngModel]="teacherTargetedRole" (change)="roleVerification($event.target.value)" class="form-control form-control-sm">
+                                                <option selected></option>
+                                                <option value="supervisor">Supervision</option>
+                                                <option value="preValidator">Pre validation</option>
+                                                <option value="reporter">Reporting</option>
+                                            </select>
                                         </div>
-                                        <div *ngIf="!informations" class="alert alert-danger">
+                                        <div *ngIf="!informations && select.value != ''" class="alert alert-danger">
                                                 This FYP sheet already has a teacher with that role
-                                            </div>
+                                        </div>
                                         <div *ngIf="informations">
                                                 <div class="form-group">
                                                         <label>Teacher</label>
-                                                        <select  class="form-control form-control-sm">
-                                                            <option selected></option>
-                                                            <option *ngFor="let t of teachersList">{{t.firstName}} {{t.lastName}}</option>
-                                                            
+                                                        <select [(ngModel)]="teachertoBeAssigned"  class="form-control form-control-sm">
+                                                            <option selected disabled></option>
+                                                            <option *ngFor="let t of teachersList" [value]="t.Value">{{t.firstName}} {{t.lastName}}</option>                                                         
                                                         </select>
                                             </div>
                                         <div class="form-group">
                                             <label>N° of actions allowed</label>
-                                            <input class="form-control form-control-lg" type="text" disabled placeholder="The remaining actions...">
+                                            <input class="form-control form-control-lg" type="text" [ngModel]="loadNoOfActions()" disabled placeholder="The remaining actions...">
                                         </div>
                                         </div>
                                         
@@ -159,8 +158,8 @@
                         </section>
                     </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary transition-hover">Save changes</button>
+                    <button type="button" (click)="cancelTeacherAssign()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" (click)="confirmTeacherAssign()" class="btn btn-primary transition-hover">Save changes</button>
                 </div>
             </div>
         </div>
