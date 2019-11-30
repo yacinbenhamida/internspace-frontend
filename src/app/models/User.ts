@@ -28,8 +28,7 @@ export class User{
     // password: string;
     fypFile: FypFile;
     preferedCategories: FypCategory[];
-
     constructor(){
-
+        
     }
 }

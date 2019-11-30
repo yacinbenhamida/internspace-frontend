@@ -37,11 +37,11 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   ngOnInit() {
     this.acceptedSheetsOptions = {  
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 4
     }
     this.pendingSheetsOptions = {  
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 4
     }
     this.fypservice.getAcceptedFYPFiles(this.auth.currentUserValue.department.id).subscribe((file:FypFile[])=>{
       this.acceptedSheets = file
@@ -59,10 +59,10 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
     this.pendingSheetsTrigger.unsubscribe()
     this.acceptedSheetsTrigger.unsubscribe()
   }
-  affectTeacher(file:any){
+  affectTeacher(file:FypFile){
     this.selectedFile = file
   }
-  affectSupervisor(file:any){
+  affectSupervisor(file:FypFile){
     this.selectedFile = file
   }
 
@@ -133,7 +133,7 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
     return 0
   }
   cancelTeacherAssign(){
-    this.teachertoBeAssigned = null
+    this.teachertoBeAssigned = new User()
     this.teacherTargetedRole = null
     this.preloadedIntervention = []
     this.selectedFile = null
@@ -141,7 +141,8 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   }
   confirmTeacherAssign(){
     if(this.teacherTargetedRole && this.teachertoBeAssigned){
-        this.interventionService.assignTeacherToFYPSheetWithRole(this.teachertoBeAssigned,this.selectedFile,this.teacherTargetedRole)
+        this.interventionService.
+        assignTeacherToFYPSheetWithRole(this.teachertoBeAssigned.id,this.selectedFile,this.teacherTargetedRole)
         .subscribe(res=>{ 
           alert("teacher assigned to this sheet")
           this.cancelTeacherAssign()

@@ -128,7 +128,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Role</label>        
-                                            <select #select [ngModel]="teacherTargetedRole" (change)="roleVerification($event.target.value)" class="form-control form-control-sm">
+                                            <select #select [(ngModel)]="teacherTargetedRole" (change)="roleVerification($event.target.value)" class="form-control form-control-sm">
                                                 <option selected></option>
                                                 <option value="supervisor">Supervision</option>
                                                 <option value="preValidator">Pre validation</option>
@@ -143,7 +143,7 @@
                                                         <label>Teacher</label>
                                                         <select [(ngModel)]="teachertoBeAssigned"  class="form-control form-control-sm">
                                                             <option selected disabled></option>
-                                                            <option *ngFor="let t of teachersList" [value]="t.Value">{{t.firstName}} {{t.lastName}}</option>                                                         
+                                                            <option *ngFor="let t of teachersList" [ngValue]="t">{{t.firstName}} {{t.lastName}}</option>                                                         
                                                         </select>
                                             </div>
                                         <div class="form-group">

@@ -16,8 +16,9 @@ export class FypFileInterventionService {
     getInterventionsOfSheet(sheetId:number){
         return this.http.get<FypIntervention[]>("/api/interventions/getInterventions/"+sheetId)
     }
-    assignTeacherToFYPSheetWithRole(teacher : User,file:FypFile,role:string){
-      return this.http.get<FypIntervention[]>("/api/interventions/assign/"+teacher.id+"/"+file.id+"/"+role)
+    assignTeacherToFYPSheetWithRole(idTeacher : number,file:FypFile,role:string){
+      console.log(idTeacher)
+      return this.http.get<FypIntervention[]>("/api/interventions/assign/"+idTeacher+"/"+file.id+"/"+role)
     }
     private extractData(res: Response) {
       let body = res.json();

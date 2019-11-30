@@ -19,10 +19,9 @@ export class FypfileHistoryComponent implements OnInit,OnDestroy {
   constructor(private authserv:AuthenticationService,
     private fyps:FypFileService,
     private fyphistory : FypFileHistoryService) {
-      this.fyps.getFypFilesOfDepartment(this.authserv.currentUserValue.department.id)
+      this.fyps.getAcceptedFYPFiles(this.authserv.currentUserValue.department.id)
       .subscribe((val:FypFile[])=>{
-        console.log(val) 
-          this.fypFiles.push(val)
+          this.fypFiles = val
           this.fypFilesTriggers.next()
           console.log(this.fypFiles)
         },
