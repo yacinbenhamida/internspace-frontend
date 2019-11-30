@@ -28,7 +28,7 @@ export class FypfileHistoryComponent implements OnInit,OnDestroy {
     }
     this.fyps.getFypFilesOfDepartment(this.authserv.currentUserValue.department.id)
     .subscribe((x:FypFile[])=>{   
-        this.fypFiles.push(x)
+        this.fypFiles = x
         this.fypFilesTriggers.next()
       },
       error=>console.log("oups, all fyp files service failed"))

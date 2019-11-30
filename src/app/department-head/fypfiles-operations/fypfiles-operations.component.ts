@@ -3,6 +3,10 @@ import { FypFile } from 'src/app/models/fyp/fyp-file';
 import { Subject } from 'rxjs';
 import { FypFileService } from 'src/app/services/fyp-file/fypfile.service';
 import { AuthenticationService } from 'src/app/services/security/authentication.service';
+import { User } from 'src/app/models/User';
+import { FypFileInterventionService } from 'src/app/services/fyp-file/fypfile-intervention.service';
+import { FypIntervention } from 'src/app/models/fyp/fyp-intervention';
+import { UserService } from 'src/app/services/security/user.service';
 
 @Component({
   selector: 'app-fypfiles-operations',
@@ -16,9 +20,18 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   pendingSheetsOptions: DataTables.Settings = {};
   pendingSheetsTrigger: Subject<FypFile> = new Subject();
   pendingSheets : any[] = []
+  // dialog related stuff
+  teachertoBeAssigned : User;
+  selectedFile : FypFile;
+  preloadedIntervention : any
+  // show details of affectation
+  informations : boolean = false;
+  teachersList:any [] = []
 
+  //teacher assigning not yet done...
   constructor(private fypservice:FypFileService,
-    private auth:AuthenticationService) { }
+    private auth:AuthenticationService,private interventionService:FypFileInterventionService,
+    private userv:UserService) { }
 
   ngOnInit() {
     this.acceptedSheetsOptions = {  
@@ -37,16 +50,49 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
       this.pendingSheets = file
       this.pendingSheetsTrigger.next()
     })
+    this.userv.getDepartmentTeachers(this.auth.currentUserValue.department.id)
+    .subscribe(teacher=>this.teachersList = teacher)
+
   }
   ngOnDestroy(){
     this.pendingSheetsTrigger.unsubscribe()
     this.acceptedSheetsTrigger.unsubscribe()
   }
-  affectTeacher(id:number){
-
+  affectTeacher(file:any){
+    this.selectedFile = file
   }
-  affectSupervisor(id:number){
+  affectSupervisor(file:any){
+    this.selectedFile = file
+  }
 
+  roleVerification(val:any){
+    if(val){
+      if(this.selectedFile){
+        this.interventionService.getInterventionsOfSheet(this.selectedFile.id)
+        .subscribe(intv=>{
+          this.preloadedIntervention = intv
+        })
+        console.log(this.preloadedIntervention)
+          if(val == "Supervision" && this.collectTeacherWithRole("supervisor",this.preloadedIntervention) != null){
+            this.informations = false
+          }
+          else if(val == "Pre validation" && this.collectTeacherWithRole("preValidator",this.preloadedIntervention ) != null){
+            this.informations = false
+          }
+          else if(val == "Reporting" && this.collectTeacherWithRole("reporter",this.preloadedIntervention) != null){
+            this.informations = false
+          }
+          else if(val == "Jury President" && this.collectTeacherWithRole("juryPresident",this.preloadedIntervention) != null){
+            this.informations = false
+          }else{
+            this.informations = true
+          }      
+      }
+    }
+  }
+
+  collectTeacherWithRole(role:string,tab:FypIntervention[]){
+    return role!="" && tab ? tab.filter(val=>val.teacherRole == role) : null
   }
   determineAdvancement(input:FypFile,type:string){
     let width : number = 0

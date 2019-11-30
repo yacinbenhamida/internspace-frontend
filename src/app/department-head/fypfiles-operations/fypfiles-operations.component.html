@@ -45,7 +45,7 @@
                                                       <td>{{file.description}}</td>
                                                       <td><span class="badge badge-pill badge-success">approved</span></td>
                                                       <td>
-                                                          <button type="button" (click)="affectTeacher(file.id)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign">assign</button>
+                                                          <button type="button" (click)="affectTeacher(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign">assign</button>
                                                       </td>
                                                     </tr>
                                                   </tbody>
@@ -85,7 +85,7 @@
                                                   <td><div class="progress" style="width: 10rem;">
                                                         <div class="progress-bar" role="progressbar" [ngStyle]="determineAdvancement(file,css)" aria-valuenow="determineAdvancement(file,int)" aria-valuemin="0" aria-valuemax="100">{{parseState(file)}}</div>
                                                     </div></td>
-                                                  <td><button type="button" (click)="affectSupervisor(file.id)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-fix">fix</button>
+                                                  <td><button type="button" (click)="affectSupervisor(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-fix">fix</button>
                                                   </td>
                                                 </tr>
                                               </tbody>
@@ -104,6 +104,72 @@
 
 
 <div class="modal fade" id="modal-assign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-long" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!--<div class="alert alert-danger">
+                        Please notice that this modal has <code>.modal-long</code> class name added to <code>.modal-dialog</code>.
+                    </div>-->
+                    <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                            <div class="container">
+                                <header class="mb-6">
+                                    <h2>Assign a teacher </h2>
+                                    <hr>
+                                    <p class="lead-1">Assign a teacher to be in charge of the </p>
+                                </header>
+
+                                <div class="row gap-y">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Role</label>        
+                                            <select (change)="roleVerification($event.target.value)" class="form-control form-control-sm">
+                                                        <option selected></option>
+                                                        <option>Supervision</option>
+                                                        <option>Pre validation</option>
+                                                        <option>Reporting</option>
+                                                    </select>
+                                        </div>
+                                        <div *ngIf="!informations" class="alert alert-danger">
+                                                This FYP sheet already has a teacher with that role
+                                            </div>
+                                        <div *ngIf="informations">
+                                                <div class="form-group">
+                                                        <label>Teacher</label>
+                                                        <select  class="form-control form-control-sm">
+                                                            <option selected></option>
+                                                            <option *ngFor="let t of teachersList">{{t.firstName}} {{t.lastName}}</option>
+                                                            
+                                                        </select>
+                                            </div>
+                                        <div class="form-group">
+                                            <label>N° of actions allowed</label>
+                                            <input class="form-control form-control-lg" type="text" disabled placeholder="The remaining actions...">
+                                        </div>
+                                        </div>
+                                        
+                                </div> 
+                            </div> 
+                        </div>                         
+                        </section>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary transition-hover">Save changes</button>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+<!-- Modal fix - Large -->
+<div class="modal fade" id="modal-fix" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-long" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -162,30 +228,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-<!-- Modal fix - Large -->
-<section id="modal" class="px-6 py-6 bg-gray mb-9">
-        <div class="container mb-9">
-            <div class="modal fade" id="modal-fix" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="row"> 
-                                <div class="alert alert-danger" role="alert">
-                                       No changes were recorded.
-                                </div>                               
-                            </div>   
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
 
 
