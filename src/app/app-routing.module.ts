@@ -51,9 +51,12 @@ const routes: Routes = [
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
   {path: 'fyp/create', component:  FypPFECreateComponent},
+  {path : 'student/fypfile', component : IntershipCreateComponent},
+  //
   {path: 'uniDash', component: UniversityStatsComponent},
   { path: 'create-category', component: FypCategorieComponent },
   {path: 'internshipDirector', component: FypFileComponent},
+  
   {path : 'fypfile/history', component : FypfileHistoryComponent, canActivate : [AuthGuard]},
   {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
   {path : 'notifications/history', component : NoitificationsHistoryComponent},

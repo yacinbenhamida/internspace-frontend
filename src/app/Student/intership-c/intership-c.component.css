@@ -2,7 +2,7 @@
 ul {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     overflow: hidden;
     background-color: #333;
     position: -webkit-sticky; /* Safari */
@@ -12,13 +12,14 @@ ul {
   
   li {
     float: left;
+    padding: 20px;
   }
   
   li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 16px 14px 14px;
     text-decoration: none;
   }
   
@@ -48,7 +49,7 @@ ul {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 16px 12px 12px;
     text-decoration: none;
   }
   
