@@ -49,7 +49,7 @@ export class StudentsAbroadComponent implements OnInit, OnDestroy {
     // Set data
     let selected;
 
-    let types = [{
+    const types = [{
       type: 'Abroad',
       percent: this.abroadPercentage * 100,
       color: chart.colors.getIndex(0),
@@ -127,9 +127,11 @@ export class StudentsAbroadComponent implements OnInit, OnDestroy {
     }
 
     pieSeries.slices.template.events.on('hit', function (event) {
+      /*
       if (event.target.dataItem.dataContext.id != undefined) {
         selected = event.target.dataItem.dataContext.id;
-      } else {
+      } else*/
+      {
         selected = undefined;
       }
       chart.data = generateChartData();

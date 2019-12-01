@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AuthenticationService } from '../services/security/authentication.service';
-import { FypFileService } from '../services/fyp-file/fypfile.service';
-import { FypFile } from '../models/fyp/fyp-file';
-import { FypFileHistoryService } from '../services/fyp-file/fypfile-history.service';
-import { FypFileHistory } from '../models/fyp/fyp-file-history';
+import { AuthenticationService } from '../../services/security/authentication.service';
+import { FypFileService } from '../../services/fyp-file/fypfile.service';
+import { FypFile } from '../../models/fyp/fyp-file';
+import { FypFileHistoryService } from '../../services/fyp-file/fypfile-history.service';
+import { FypFileHistory } from '../../models/fyp/fyp-file-history';
 import { Subject } from 'rxjs';
 @Component({
   selector: 'app-fypfile-history',
@@ -12,28 +12,34 @@ import { Subject } from 'rxjs';
 })
 export class FypfileHistoryComponent implements OnInit,OnDestroy {
 
-  fypFilesOptions: DataTables.Settings = {};
-  fypFiles : FypFile[] = [];
-  history : FypFileHistory [] = [];
+  fypFiles : any[] =[]
+  history : any [] = [];
   fypFilesTriggers: Subject<FypFile> = new Subject();
-
+  fypFilesOptions: DataTables.Settings = {};
   constructor(private authserv:AuthenticationService,
     private fyps:FypFileService,
-    private fyphistory : FypFileHistoryService) {}
+    private fyphistory : FypFileHistoryService) {
+      this.fyps.getAcceptedFYPFiles(this.authserv.currentUserValue.department.id)
+      .subscribe((val:FypFile[])=>{
+          this.fypFiles = val
+          this.fypFilesTriggers.next()
+          console.log(this.fypFiles)
+        },
+        error=>console.log("oups, all fyp files service failed"))
+
+    }
+    
+
+    
   ngOnInit() {
-    this.fypFiles = [];
     this.fypFilesOptions = {  
       pagingType: 'full_numbers',
       pageLength: 2
     }
-    this.fyps.getFypFilesOfDepartment(this.authserv.currentUserValue.department.id)
-    .subscribe(x=>{
-      this.fypFiles = x
-      this.fypFilesTriggers.next()
-      console.log(x)
-        }
-      )
-  }  
+  
+      }
+      
+    
   ngOnDestroy(): void {
     this.fypFilesTriggers.unsubscribe()
   }

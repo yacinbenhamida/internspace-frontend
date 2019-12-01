@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from 'src/app/models/User';
 import { InternshipDirectorService } from 'src/app/services/InternShipDirector/internship-director.service';
 import { Subject } from 'rxjs';
@@ -10,7 +10,7 @@ import { AuthenticationService } from 'src/app/services/security/authentication.
   templateUrl: './student-management.component.html',
   styleUrls: ['./student-management.component.css']
 })
-export class StudentManagementComponent implements OnInit {
+export class StudentManagementComponent implements OnInit,OnDestroy {
 
   dtOptions: DataTables.Settings = {};
   students : User[];
@@ -20,7 +20,6 @@ export class StudentManagementComponent implements OnInit {
   dtTrigger: Subject<User>= new Subject();
  
   constructor(private _internShipDirector : InternshipDirectorService,private auth:AuthenticationService) { }
-
 
   ngOnInit() {
     
@@ -42,6 +41,11 @@ export class StudentManagementComponent implements OnInit {
   }
   studentInfo = (data)=>{
     console.log(data[0])
+  }
+
+  
+  ngOnDestroy(){
+    this.dtTrigger.unsubscribe();
   }
 }
 

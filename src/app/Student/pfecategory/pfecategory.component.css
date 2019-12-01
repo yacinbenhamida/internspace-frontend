@@ -1,0 +1,130 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.container{
+    position: relative;
+    width: 2000px;
+    height: 1000px;
+    margin: 80px auto 0;
+    
+}
+.container .box{
+    position: relative;
+    width: calc(400px - 30px);
+    height: calc(300px - 30px);
+    background: rgb(214, 201, 201);
+    float: left;
+    margin: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-sizing: 0 5px 10px rgba(0, 0, 0, 0.897);
+    cursor: pointer;
+}
+
+.container .box:before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transform: scaleX(0);
+    opacity: 0;
+
+
+
+}
+
+.container .box:hover:before{
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.container .box:after{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transform: scaleY(0);
+    opacity: 0;
+    z-index: 1;
+
+
+
+}
+
+.container .box:hover:after{
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.container .box .imgBox{
+
+    position: relative;
+
+}
+.container .box .imgBox img{
+
+    width: 100%;
+    transition: 0.5s;
+}
+
+.container .box:hover .imgBox img{
+    opacity: .2;
+    transform: scale(1.2);
+}
+
+.container .box .content{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+.container .box .content h2{ 
+    margin: 0;
+    padding: 0 ;
+    color: #fff;
+    transition: 0.5s;
+    transform: translateY(-50px);
+    opacity: 0;
+    visibility: hidden;
+}
+.container .box .content p{ 
+    margin: 0;
+    padding: 0 ;
+    color: #fff;
+    transition: 0.5s;
+    transform: translateY(-50px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.container .box:hover .content h2,
+.container .box:hover .content p
+{ 
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+  transition-delay: 0.2s;
+}
+
+.pointerCursor{
+    cursor: pointer;
+}

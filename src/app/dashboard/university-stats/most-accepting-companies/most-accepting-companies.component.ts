@@ -65,7 +65,7 @@ export class MostAcceptingCompaniesComponent implements OnInit, OnDestroy {
 
   PlotData() {
 
-    console.log(this.companiesCache);
+    //console.log(this.companiesCache);
 
   }
 

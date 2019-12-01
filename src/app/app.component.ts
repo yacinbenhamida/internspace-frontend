@@ -21,6 +21,11 @@ export class AppComponent implements OnInit {
    * so we can hide the navbar and footer of the application
    */
   ngOnInit() {
+    if(this.auth.currentUserValue.role == "admin"){
+      this.router.navigateByUrl("/admin")
+      this.appservice.hideFooter();
+      this.appservice.hideNavbar();
+    }
     this.router.events.subscribe(
       (event: any) => {
         if (event instanceof NavigationEnd) {

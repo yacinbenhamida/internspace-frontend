@@ -19,15 +19,15 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
-import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
+import { FypfileHistoryComponent } from './department-head/fypfile-history/fypfile-history.component';
 import { DataTablesModule } from 'angular-datatables';
 import {PerTypeSearchComponent} from './intership-director-module/components/per-type-search/per-type-search.component';
 import {TabelComponent} from './intership-director-module/components/tabel/tabel.component';
 import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
-import { FypfileHistoryCardComponent } from './fypfile-history/fypfile-history-card/fypfile-history-card.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { NotificationElementComponent } from './notifications/notification-element/notification-element.component';
-import { NoitificationsHistoryComponent } from './notifications/noitifications-history/noitifications-history.component';
+import { FypfileHistoryCardComponent } from './department-head/fypfile-history/fypfile-history-card/fypfile-history-card.component';
+import { NotificationsComponent } from './department-head/notifications/notifications.component';
+import { NotificationElementComponent } from './department-head/notifications/notification-element/notification-element.component';
+import { NoitificationsHistoryComponent } from './department-head/notifications/noitifications-history/noitifications-history.component';
 import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-convention-s.component';
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
@@ -47,10 +47,18 @@ import { AgmCoreModule } from '@agm/core';
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
 import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.component';
+import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
+
 import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
 import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
+
+import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
+import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
+import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
+import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
+
 
 
 
@@ -89,10 +97,19 @@ import { AccountManagementComponent } from './intership-director-module/account-
     IntershipUpdateComponent,
     FypPFECreateComponent,
     FypPFEUpdateComponent,
+    FypfilesOperationsComponent,
+    
     LateStudentListComponent,
     FypFileManagementComponent,
+
     StudentProfileComponent,
-    AccountManagementComponent
+    AccountManagementComponent,
+
+    FypFilesModificationComponent,
+    PFECategoryComponent,
+    PFECategoryDetailsComponent,
+    SuggestedCategoriesComponent,
+
 
   ],
   imports: [

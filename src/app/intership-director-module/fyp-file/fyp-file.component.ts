@@ -38,9 +38,11 @@ export class FypFileComponent implements OnInit {
       
     })
     this.allFYPFiles.forEach(element => {
+
       if(element.fileStatus==="confirmed")
       
       this._internshipDirectorService.CompanyCordinates(element.subject.company.id).subscribe(data=>{this.myRes.push({fyp:element,cords:data})})
+
     });
   
   })
