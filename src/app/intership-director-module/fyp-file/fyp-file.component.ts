@@ -36,8 +36,9 @@ export class FypFileComponent implements OnInit {
       
     })
     this.allFYPFiles.forEach(element => {
-      if(element.fileStatus==="confirmed")
-      this._internshipDirectorService.CompanyCordinates(element.subject.company.id).subscribe(data=>{this.myRes.push({fyp:element,cords:data})})
+     // if(element.fileStatus==="confirmed")
+      //erreur :company not exist 
+    //  this._internshipDirectorService.CompanyCordinates(element.subject.company.id).subscribe(data=>{this.myRes.push({fyp:element,cords:data})})
     });
     console.log(this.myRes)
   })

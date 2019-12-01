@@ -30,6 +30,9 @@ import { FypfilesOperationsComponent } from './department-head/fypfiles-operatio
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
+import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
+import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
+
 
 
 
@@ -55,11 +58,14 @@ const routes: Routes = [
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
   {path: 'fyp/create', component:  FypPFECreateComponent},
-  {path : 'student/fypfile', component : IntershipCreateComponent},
+  {path: 'student/fypfile', component : IntershipCreateComponent},
+  {path: 'student/skills', component: PFECategoryComponent},
+  {path: 'student/skills/find/:id', component: PFECategoryDetailsComponent},
   //
   {path: 'uniDash', component: UniversityStatsComponent},
   { path: 'create-category', component: FypCategorieComponent },
   {path: 'internshipDirector', component: FypFileComponent},
+    {path: 'internshipDirector', component: FypFileComponent},
   
   {path : 'fypfile/history', component : FypfileHistoryComponent, canActivate : [AuthGuard]},
   {path : 'fypfile/tracking', component : FypfilesOperationsComponent, canActivate : [AuthGuard]},

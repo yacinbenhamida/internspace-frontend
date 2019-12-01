@@ -51,6 +51,8 @@ import { FypfilesOperationsComponent } from './department-head/fypfiles-operatio
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
+import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
+import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
 
 
 
@@ -94,6 +96,8 @@ import { FypFilesModificationComponent } from './fyp-files-modification/fyp-file
     LateStudentListComponent,
     FypFileManagementComponent,
     FypFilesModificationComponent,
+    PFECategoryComponent,
+    PFECategoryDetailsComponent,
 
   ],
   imports: [
