@@ -62,6 +62,13 @@ export class TeacherServiceService {
     this.http.put(this.baseurl+'/prevalidate/'+id,{headers: this.headers});
     console.log("okay");
   }
+  //PUT
+  approveMajorModification(id:number,id2:number)
+  {
+    this.http.put(this.baseurl+'/edit/'+id+'/'+id2,{headers: this.headers});
+    console.log("okay");
+
+  }
   
 
 }

@@ -26,5 +26,11 @@ export class FypFilesModificationComponent implements OnInit {
       console.log(this.FypFileModification);
 
   }
+  approve(id:number,id2:number)
+  {
+    
+    this.restApi.approveMajorModification(id,id2);
+
+  }
 
 }
