@@ -30,6 +30,8 @@ import { FypfilesOperationsComponent } from './department-head/fypfiles-operatio
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
+import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
+import { RoleGuardService as RoleGuard } from './services/security/roleguard.service';
 
 
 
@@ -41,7 +43,12 @@ import { FypFilesModificationComponent } from './fyp-files-modification/fyp-file
 const routes: Routes = [
   {path : '', component : HomepageComponent},
   // start of administration components
-  {path : 'admin', component : AdminHomepageComponent, canActivate : [AuthGuard]},
+  {path : 'admin', component : AdminHomepageComponent, 
+    canActivate: [RoleGuard], 
+    data: { 
+      expectedRole: 'admin'
+    } 
+},
   // end administration components
   // start of login,profiles  and registration
   {path : 'login', component : AuthenticationComponent},
@@ -55,11 +62,28 @@ const routes: Routes = [
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
   {path: 'fyp/create', component:  FypPFECreateComponent},
+  {path : 'student/fypfile', component : IntershipCreateComponent},
+  //
   {path: 'uniDash', component: UniversityStatsComponent},
   { path: 'create-category', component: FypCategorieComponent },
-  {path: 'internshipDirector', component: FypFileComponent},
-  {path : 'fypfile/history', component : FypfileHistoryComponent, canActivate : [AuthGuard]},
-  {path : 'fypfile/tracking', component : FypfilesOperationsComponent, canActivate : [AuthGuard]},
+  {path: 'internshipDirector', component: FypFileComponent}, 
+  {path : 'fypfile/history', component : FypfileHistoryComponent, 
+  canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'departmentHead'
+  } },
+  {path : 'fypfile/tracking', component : FypfilesOperationsComponent,  canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'departmentHead'
+  }},
+  {path : 'categories/suggestions', component : SuggestedCategoriesComponent,  canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'departmentHead'
+  }},
+  {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'departmentHead'
+  }},
   {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
   {path : 'notifications/history', component : NoitificationsHistoryComponent},
   {path : 'internshipDirector/fypFileBycategory', component : FypFileByCategoryComponent},
@@ -68,7 +92,6 @@ const routes: Routes = [
   {path : 'internshipDirector/fypFileByCountry', component : FypFileByCountryComponent},
   {path: 'teacherFypFiles',component:TeacherFypfilesComponent},
   {path: 'majormodif',component:FypFilesModificationComponent},
-  {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate : [AuthGuard]},
   {path: 'internshipDirector/lateStudents',component:LateStudentListComponent},
   {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent},
   {path: '404', component: NotfoundComponent},
