@@ -98,6 +98,7 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
     FypFilesModificationComponent,
     PFECategoryComponent,
     PFECategoryDetailsComponent,
+    SuggestedCategoriesComponent,
 
   ],
   imports: [
