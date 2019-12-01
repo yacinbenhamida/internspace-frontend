@@ -10,7 +10,4 @@ export interface FYPSubject {
   company: any;
   studentSubjects: any[];
   categories: any[];
-
-
-
 }
