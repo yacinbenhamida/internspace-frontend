@@ -35,9 +35,10 @@ export class FypFileByCountryComponent implements OnInit, OnChanges {
       this.FYPFiles=data
       this.allFYPFiles.forEach((element) => {
         this.FYPFiles.forEach(x=>{
-        if(x.id===element.id){
+        
+       /* if(x.id===element.id){
             this.results.push(element)
-        }
+        }*/
       })
       });
     });

@@ -1,8 +1,9 @@
 
 export interface FypCategory {
-   id : number
+   id:number;
    name:string;
    description : string
    approved:boolean;
+   subjects: any[]
   }
   

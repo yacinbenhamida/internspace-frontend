@@ -33,7 +33,7 @@ httpOptions = {
     return this.http.get<FYPSubject[]>('/api/company/subjects/all');
     }
   GetFyp():Observable<FypFile[]>{
-      return this.http.get<FypFile[]>('/api/company/subjects/all');
+      return this.http.get<FypFile[]>('/api/fypsheet/');
       }
   createIntership(data:FypFile ,id:string):Observable<FypFile[]>{
   //const param = new HttpParams().set('isArchived',isArchived).set('isPrevalidated',isPrevalidated);

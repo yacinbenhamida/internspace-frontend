@@ -42,21 +42,22 @@ export class FypPFECreateComponent implements OnInit {
   }
   GetFypSubject() {
    
-      const subject = [
-        {
-          'id': 0,
-          'title': 'title',
-          'content': 'title',
-          'maxApplicants': '0',
-          'country': 'f',
-          'fypFile': null,
-          'company': null,
-          'studentSubjects': null,
-      
-          'categories': null,
-        }
-   
-    ];
+    const subject = [
+      {
+        'id': 0,
+        'title': 'title',
+        'content': 'title',
+        'maxApplicants': '0',
+        'country': 'f',
+        'fypFile': null,
+        'company': null,
+        'studentSubjects': null,
+    
+        'categories': null,
+        'FYPCategory':null
+      }
+ 
+  ];
 
     return { id: 0, title: 'Untitled', description: 'Untitled', problematic :'Untitled' , fileStatus :'Untitled', finalMark :0, isCanceled :false,
     isArchived :false, isPrevalidated :false, isConfirmed :false, subject , features :null, interventions :null, keywords :null, categories :null};
