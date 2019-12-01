@@ -28,6 +28,8 @@ import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.co
 import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
+import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
+import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
 
 
 
@@ -67,6 +69,9 @@ const routes: Routes = [
   {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate : [AuthGuard]},
   {path: 'internshipDirector/lateStudents',component:LateStudentListComponent},
   {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent},
+  {path: 'internshipDirector/studentProfile/:cin',component:StudentProfileComponent},
+  {path: 'internshipDirector/AccountManagement',component:AccountManagementComponent},
+
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

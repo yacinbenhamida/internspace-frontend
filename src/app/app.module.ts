@@ -49,7 +49,8 @@ import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.com
 import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
-import { fypFileManagement } from './intership-director-module/fyp-file-management/fyp-file-management.module';
+import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
+import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
 
 
 
@@ -90,6 +91,8 @@ import { fypFileManagement } from './intership-director-module/fyp-file-manageme
     FypPFEUpdateComponent,
     LateStudentListComponent,
     FypFileManagementComponent,
+    StudentProfileComponent,
+    AccountManagementComponent
 
   ],
   imports: [
