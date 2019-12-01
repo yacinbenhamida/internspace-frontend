@@ -53,6 +53,7 @@ import { FypFileManagementComponent } from './intership-director-module/fyp-file
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
+import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 
 
 
