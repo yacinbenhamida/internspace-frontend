@@ -43,6 +43,7 @@ export class FypFileManagementComponent implements OnInit {
     this.chosedFYP=data;
     console.log(this.chosedFYP);
     // ta3mel fi erreur sala7ha 
+    
   // this._internshipDirectorService.LinksOfChoosenCompany(data.subject.company.id).subscribe(data=>{this.companyLinks=data,console.log(this.companyLinks)});
   }
 
