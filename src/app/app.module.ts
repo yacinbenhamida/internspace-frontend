@@ -50,11 +50,16 @@ import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.com
 import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
+
+import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
+import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
+
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
+
 
 
 
@@ -97,11 +102,16 @@ import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.componen
     
     LateStudentListComponent,
     FypFileManagementComponent,
+
+    StudentProfileComponent,
+    AccountManagementComponent,
+
     FypFilesModificationComponent,
     PFECategoryComponent,
     PFECategoryDetailsComponent,
     SuggestedCategoriesComponent,
     PaymentPaypalComponent,
+
 
   ],
   imports: [

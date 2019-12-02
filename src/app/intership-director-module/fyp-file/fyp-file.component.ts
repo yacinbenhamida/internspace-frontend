@@ -31,16 +31,20 @@ export class FypFileComponent implements OnInit {
   //this._internshipDirectorService.ListLateStudents("2018").subscribe(data=>console.log(data))
   this._internshipDirectorService.getAllStudents(this.auth.currentUserValue.department.site.university.id).subscribe(data=>{this.allStudents=data,this.allStudents.map(
     x=>{
-      if(x.isCreated)
+      if(x.isCreated){
       this.allFYPFiles.push(x.fypFile)
+      console.log(x);
+    }
       
     })
     this.allFYPFiles.forEach(element => {
-     // if(element.fileStatus==="confirmed")
-      //erreur :company not exist 
-    //  this._internshipDirectorService.CompanyCordinates(element.subject.company.id).subscribe(data=>{this.myRes.push({fyp:element,cords:data})})
+
+      if(element.fileStatus==="confirmed")
+      
+      this._internshipDirectorService.CompanyCordinates(element.subject.company.id).subscribe(data=>{this.myRes.push({fyp:element,cords:data})})
+
     });
-    console.log(this.myRes)
+  
   })
 
   

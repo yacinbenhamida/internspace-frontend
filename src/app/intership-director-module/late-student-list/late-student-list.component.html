@@ -6,7 +6,7 @@
                         
                         <div class="media-body">
                             <h3 class="h5 mt-0 mb-2 text-primary">Students thats doesn't create thier Sheets</h3>
-                            <p class="mb-4"> you can send them an email .. </p>
+                            <p class="mb-4"> you can send them a reminder mail .. </p>
                             <a href="#" class="btn btn-primary btn-pill btn-sm transition-hover pr-3 pl-4" data-toggle="modal" data-target="#modal-default">Send email now <span class="fas fa-angle-right align-middle ml-2"></span></a>
                         </div>
                     </div>
@@ -82,46 +82,63 @@
     </div>
 
 
-    <div class="mini-card-grid" *ngFor="let x of students">
+    <div class="mini-card-grid">
 
-        <article class="mini-card module module-article article">
-            <header class="mini-article-card-header">
-                <div class="mini-article-card-title">
-                    <div class="mini-article-subhead">
-                      
-                        <time class="text-light" datetime="2019-01-21">
-                            Finale year project sheet state :
-                        </time>
-                    </div>
-                    <h2>
-                        <a href="#" class="article-card-header read-article anim-link-2 anim-link-2-primary" *ngIf="x.isCreated===false">
-                            doesnt create a sheet
-                        </a>
-                    </h2>
-                </div>
+        <div class="popular-articles">
+
+            <header class="popular-header header-card white-underline-links">
+                <h2 class="text-white">
+                    Students that <br>doesn't <br>create their sheets this year
+                </h2>
+                
             </header>
-
-            <div class="mini-article-meta">
-                <div class="mini-article-byline">
-                    <div class="author-avatar">
-                        <a class="author-name" href="#">
-                            <img alt="" src="../assets/img/avatar/avatar2.jpg" class="avatar" height="80" width="80">
-                        </a>
-                    </div>
-                    <div class="author-name-area">
-                        <div class="author-name-prefix text-light">
-                            Author
+    
+            <div class="mini-card-grid"  >
+    
+                <article class="mini-card module module-article article" *ngFor="let x of students">
+                    <header class="mini-article-card-header">
+                        <div class="mini-article-card-title">
+                            <div class="mini-article-subhead">
+                              
+                                <time class="text-light" datetime="2019-01-21">
+                                    Finale year project sheet state :
+                                </time>
+                            </div>
+                            <h2>
+                                <a href="#" class="article-card-header read-article anim-link-2 anim-link-2-primary" *ngIf="x.isCreated===false">
+                                    doesn't create it ..
+                                </a>
+                            </h2>
                         </div>
-                        <a class="author-name" href="#">
-                            Chris Coyier
-                        </a>
+                    </header>
+        
+                    <div class="mini-article-meta">
+                        <div class="mini-article-byline">
+                            <div class="author-avatar">
+                                <a class="author-name" href="#">
+                                    <img alt="" src="../assets/img/avatar/avatar2.jpg" class="avatar" height="80" width="80">
+                                </a>
+                            </div>
+                            <div class="author-name-area">
+                                <div class="author-name-prefix text-light">
+                                    {{x.firstName}}
+                                </div>
+                                <a class="author-name" href="#">
+                                    {{x.lastName}}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="tags">
+                            <a href="#" rel="tag" class="label label--sm label--secondary">{{x.userType}}</a>
+                        </div>
                     </div>
-                </div>
-                <div class="tags">
-                    <a href="#" rel="tag" class="label label--sm label--secondary">{{x.userType}}</a>
-                </div>
+                </article>
+    
+                
             </div>
-        </article>
+        </div>
 
-      
     </div>
+
+
+    

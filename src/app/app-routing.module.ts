@@ -29,6 +29,10 @@ import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.com
 import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
+
+import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
+import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
+
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
@@ -36,6 +40,7 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 import { RoleGuardService as RoleGuard } from './services/security/roleguard.service';
 import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
+
 
 
 
@@ -101,6 +106,9 @@ const routes: Routes = [
   {path: 'majormodif',component:FypFilesModificationComponent},
   {path: 'internshipDirector/lateStudents',component:LateStudentListComponent},
   {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent},
+  {path: 'internshipDirector/studentProfile/:cin',component:StudentProfileComponent},
+  {path: 'internshipDirector/AccountManagement',component:AccountManagementComponent},
+
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 
