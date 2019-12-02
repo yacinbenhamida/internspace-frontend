@@ -1,4 +1,5 @@
 import { FypFile } from "./fyp-file";
+import { Company } from "../users/Company";
 
 export interface FYPSubject {
   id:number;
@@ -7,7 +8,7 @@ export interface FYPSubject {
   maxApplicants: string;
   country: string;
   fypFile: FypFile;
-  company: any;
+  company: Company;
   studentSubjects: any[];
   categories: any[];
   FYPCategory:any[]

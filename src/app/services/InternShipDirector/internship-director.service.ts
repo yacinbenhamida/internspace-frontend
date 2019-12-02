@@ -11,7 +11,7 @@ import { Department } from 'src/app/models/department';
 export class InternshipDirectorService {
 
    // Base url
-   baseurl = '/api/internspace/internship';
+   baseurl = '/api/internship';
   constructor(private http : HttpClient) { }
 
   getCurrentFYPFileList():Observable<FypFile[]>{
