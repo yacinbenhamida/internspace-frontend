@@ -7,7 +7,7 @@
                     <th>features</th>
                     <th>Changed</th>
                     <th>Confirmed</th>
-                    <th>fypfile</th>
+                    <th>problematic</th>
                     <th> Approve</th>
                 </tr>
         </thead>
@@ -17,8 +17,8 @@
                 <td>{{x.features}}</td>
                 <td>{{x.isChanged}}</td>
                 <td>{{x.isConfirmed}}</td>
-                <td>{{x.fypfile.title}}</td>
-                <td><button [hidden]='hide' (click)="approve(x.id,x.fypfile.id)">Approve</button></td>
+                <td>{{x.problematic}}</td>
+                <td><button [hidden]='hide' (click)="approve(x,x.id)">Approve</button></td>
 
             </tr>
         </tbody>

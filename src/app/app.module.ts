@@ -54,6 +54,7 @@ import { FypFilesModificationComponent } from './fyp-files-modification/fyp-file
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
+import { PaymentPaypalComponent } from './payment-paypal/payment-paypal.component';
 
 
 
@@ -100,6 +101,7 @@ import { SuggestedCategoriesComponent } from './department-head/suggested-catego
     PFECategoryComponent,
     PFECategoryDetailsComponent,
     SuggestedCategoriesComponent,
+    PaymentPaypalComponent,
 
   ],
   imports: [
