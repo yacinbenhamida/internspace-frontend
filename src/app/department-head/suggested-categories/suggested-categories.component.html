@@ -16,8 +16,8 @@
                                     Waiting approval
                                 </span>
                                 <span class="col-sm-2 text-primary text-sm-right">
-                                   <a href="#"><i class="fas fa-vote-yea"></i></a><br/>
-                                   <a href="#"><i class="fas fa-trash"></i></a>
+                                   <a (click)="acceptSuggestion(c)"> <i class="icon-check-2 fs-24 text-primary mr-2"></i></a><br/>
+                                   <a (click)="refuseSuggestion(c,1)"> <i class="far fa-trash-alt fs-24 text-primary mr-2"></i></a>
                                 </span>
                             </span>
                         </div>
@@ -39,60 +39,19 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <ul class="list-unstyled">
-                                    <li class="list-inline-item m-1">
+                                    <li *ngFor="let c of allCategories" class="list-inline-item m-1">
                                         <div class="media border rounded-10rem p-2 px-5 align-items-center">
                                             <i class="icon-check-2 fs-24 text-primary mr-2"></i>
                                             <div class="media-body">
-                                                <span>Empathy</span>
+                                                <span>{{c.name}}</span>
+                                                
                                             </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item m-1">
-                                        <div class="media border rounded-10rem p-2 px-5 align-items-center">
-                                            <i class="icon-check-2 fs-24 text-primary mr-2"></i>
-                                            <div class="media-body">
-                                                <span>Courtasy</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item m-1">
-                                        <div class="media border rounded-10rem p-2 px-5 align-items-center">
-                                            <i class="icon-check-2 fs-24 text-primary mr-2"></i>
-                                            <div class="media-body">
-                                                <span>Thriving</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item m-1">
-                                        <div class="media border rounded-10rem p-2 px-5 align-items-center">
-                                            <i class="icon-check-2 fs-24 text-primary mr-2"></i>
-                                            <div class="media-body">
-                                                <span>Craftsmanship</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item m-1">
-                                        <div class="media border rounded-10rem p-2 px-5 align-items-center">
-                                            <i class="icon-check-2 fs-24 text-primary mr-2"></i>
-                                            <div class="media-body">
-                                                <span>Playfulness</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item m-1">
-                                        <div class="media border rounded-10rem p-2 px-5 align-items-center">
-                                            <i class="icon-check-2 fs-24 text-primary mr-2"></i>
-                                            <div class="media-body">
-                                                <span>Solidarity</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="list-inline-item m-1">
-                                        <div class="media border rounded-10rem p-2 px-5 align-items-center">
-                                            <i class="icon-check-2 fs-24 text-primary mr-2"></i>
-                                            <div class="media-body">
-                                                <span>Happiness</span>
-                                            </div>
+                                            <button data-toggle="modal" data-target="#modal-fix" (click)="editRecord(c)" type="button" class="btn btn-icon btn-primary rounded-circle transition-hover ml-2">
+                                                <i class="fas fa-cog"></i>
+                                            </button>
+                                            <button (click)="refuseSuggestion(c,2)" type="button" class="btn btn-icon btn-danger rounded-circle transition-hover ml-2">
+                                                <i class="fas fa-minus-circle"></i>
+                                            </button>
                                         </div>
                                     </li>
                                 </ul>
@@ -102,3 +61,44 @@
                 </div>
             </div>
 </section>
+
+<!-- Modal fix - Large -->
+<div class="modal fade" id="modal-fix" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-long" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit a category</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                        <div class="container">
+                            <header class="mb-6">
+                                <h2>Category Info</h2>
+                                <hr>
+                            </header>
+                            <div class="row gap-y">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>name</label>
+                                        <input *ngIf="toBeEdited"  [(ngModel)]="toBeEdited.name" class="form-control form-control-sm" type="text" placeholder="name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>description</label>
+                                        <input *ngIf="toBeEdited" [(ngModel)]="toBeEdited.description" class="form-control form-control-sm" type="text" placeholder="description">
+                                    </div>                       
+                                </div>
+                            </div> 
+                        </div> 
+                    </section>
+                    </div>  
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button (click)="editCategory()" type="button" class="btn btn-primary transition-hover">Save changes</button>
+                        </div>                       
+                </div>
+            
+        </div>
+    </div>

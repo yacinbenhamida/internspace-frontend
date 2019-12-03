@@ -60,6 +60,7 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
+import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
 
 
 
@@ -113,7 +114,9 @@ import { PayPalComponent } from './pay-pal/pay-pal.component';
     SuggestedCategoriesComponent,
     
     PayPalComponent,
-
+    
+    FypfileEditActorsComponent,
+    
 
   ],
   imports: [

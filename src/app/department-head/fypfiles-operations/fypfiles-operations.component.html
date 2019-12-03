@@ -36,6 +36,7 @@
                                                       <th>description</th>
                                                       <th>status</th>
                                                       <th></th>
+                                                      <th></th>
                                                     </tr>
                                                   </thead>
                                                   <tbody>
@@ -47,6 +48,9 @@
                                                       <td>
                                                           <button type="button" (click)="affectTeacher(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign">assign</button>
                                                       </td>
+                                                      <td>
+                                                            <button type="button" (click)="displayStatus(file)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-large">status</button>
+                                                      </td>
                                                     </tr>
                                                   </tbody>
                                               </table>
@@ -55,7 +59,7 @@
                         </div>
                     </div>       
             </div>
-             <div class="accordion" id="accordionExample">
+            <!--<div class="accordion" id="accordionExample">
                     <div class="card mb-3">
                         <div class="card-header" id="headingTwo">
                             <h2 class="mb-0">
@@ -99,9 +103,8 @@
 </div>
 </main>
 </div>
-
+-->
 <!-- Modal assign - Large -->
-
 
 <div class="modal fade" id="modal-assign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-long" role="document">
@@ -168,65 +171,105 @@
 
 
 <!-- Modal fix - Large -->
-<div class="modal fade" id="modal-fix" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-long" role="document">
+
+
+<div class="modal fade" id="modal-large" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <div class="modal-body">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <!--<div class="alert alert-danger">
-                        Please notice that this modal has <code>.modal-long</code> class name added to <code>.modal-dialog</code>.
-                    </div>-->
-                    <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
-                            <div class="container">
-                                <header class="mb-6">
-                                    <h2>Inputs</h2>
-                                    <hr>
-                                    <p class="lead-1">Text inputs, selects and textarea in three different sizes</p>
-                                </header>
-
-                                <div class="row gap-y">
-                                    <div class="col-md-12">
-                                        <h5 class="mb-3">Text inputs</h5>
-                                        <div class="form-group">
-                                            <label>Small</label>
-                                            <input class="form-control form-control-sm" type="text" placeholder="First name">
+                    <!--content-->
+                    <div class="col-md-12 v-icon-box-grid" data-columns="2" data-colour="dark">
+                            <div class="spb_icon_box col-sm-12">
+                                <a class="box-link" href="#" target="_self"></a>
+                                <div class="v-icon-box-content-wrap clearfix">
+                                    <div class="v-icon-box-inner-wrap clearfix">
+                                        <div class="grid-icon-wrap clearfix">
+                                            <a>
+                                                <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                    <img src="assets/img/svg/book.svg">
+                                                </div>
+                                            </a>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Normal</label>
-                                            <input class="form-control" type="text" placeholder="Last name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Large</label>
-                                            <input class="form-control form-control-lg" type="text" placeholder="Email address">
-                                        </div>
-
-                                        <br><br>
-                                        <h5 class="mb-3">Select inputs</h5>
-                                        <div class="form-group">
-                                            <label>Small</label>
-                                            <select class="form-control form-control-sm">
-                                                <option>Personal</option>
-                                                <option>Startup</option>
-                                                <option>Business</option>
-                                                <option>Enterprise</option>
-                                            </select>
+                                        <div class="divider-line"></div>
+                                        <h6 *ngIf="statusData.reporter">
+                                           Reporter is {{statusData.reporter.teacher.firstName}} {{statusData.reporter.teacher.lastName}} 
+                                        </h6>
+                                        <h6 *ngIf="!statusData.reporter">
+                                                Dosen't have a reporter yet.
+                                             </h6>
                                     </div>
-                                </div> 
-                            </div> 
-                        </div>                         
-                        </section>
-                    </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary transition-hover">Save changes</button>
+                                </div>
+                            </div>
+                            <div class="spb_icon_box col-sm-12">
+                                <div class="v-icon-box-content-wrap clearfix">
+                                    <div class="v-icon-box-inner-wrap clearfix">
+                                        <div class="grid-icon-wrap clearfix">
+                                            <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                    <img src="assets/img/svg/file.svg">
+                                            </div>
+                                        </div>
+                                        <div class="divider-line"></div>
+                                        <h6 *ngIf="statusData.preValidator">Pre validated by {{statusData.preValidator.teacher.firstName}}  {{statusData.preValidator.teacher.lastName}}</h6>
+                                        <h6 *ngIf="!statusData.preValidator">Dosen't have a pre validator yet. </h6>
+          
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spb_icon_box col-sm-12">
+                                <div class="v-icon-box-content-wrap clearfix">
+                                    <div class="v-icon-box-inner-wrap clearfix">
+                                        <div class="grid-icon-wrap clearfix">
+                                            <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                <img src="assets/img/svg/customer-service.svg">
+                                            </div>
+                                        </div>
+                                        <div class="divider-line"></div>
+                                        <h6  *ngIf="statusData.supervisor">Supervised by {{statusData.supervisor.teacher.firstName}} {{statusData.supervisor.teacher.lastName}}  </h6>
+                                        <h6  *ngIf="!statusData.supervisor">Dosen't have a supervisor yet. </h6>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spb_icon_box col-sm-12">
+                                <div class="v-icon-box-content-wrap clearfix">
+                                    <div class="v-icon-box-inner-wrap clearfix">
+                                        <div class="grid-icon-wrap clearfix">
+                                            <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                    <img src="assets/img/svg/document.svg">
+                                            </div>
+                                        </div>
+                                        <div class="divider-line"></div>
+                                        <h6 *ngIf="statusData.juryPresident">President of the jury is {{statusData.juryPresident.teacher.firstName}} {{statusData.juryPresident.teacher.lastName}} </h6>
+                                        <h6 *ngIf="!statusData.juryPresident">Dosen't have a jury president yet. </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="spb_icon_box col-sm-12">
+                                    <div class="v-icon-box-content-wrap clearfix">
+                                        <div class="v-icon-box-inner-wrap clearfix">
+                                            subject 
+                                            <div class="divider-line"></div>
+                                            <h6 *ngIf="statusFypFile">{{statusFypFile.title}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spb_icon_box col-sm-12">
+                                        <div class="v-icon-box-content-wrap clearfix">
+                                            <div class="v-icon-box-inner-wrap clearfix">
+                                                Student
+                                                <div class="divider-line"></div>
+                                                <h6 *ngIf="student">{{student.firstName}} {{student.lastName}} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                    <!--end content-->
                 </div>
             </div>
         </div>
-</div>
+    </div>
 
 

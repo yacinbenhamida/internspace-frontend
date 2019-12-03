@@ -28,8 +28,10 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   // show details of affectation
   informations : boolean = false;
   teachersList:any [] = []
-
-  //teacher assigning not yet done...
+  // checking status
+  statusFypFile: FypFile
+  statusData = {}
+  student : User
   constructor(private fypservice:FypFileService,
     private auth:AuthenticationService,private interventionService:FypFileInterventionService,
     private userv:UserService) { }
@@ -175,6 +177,22 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
       if(input.finalMark > 0) return "completed"
       if(input.isConfirmed || input.fileStatus == "confirmed") return "confirmed"
       else return "archieved"
+  }
+  displayStatus(file:FypFile){
+    this.statusFypFile = file
+    this.userv.getStudentOfSheet(file.id).subscribe(res=>{
+      this.student = res
+    })
+    this.interventionService.getInterventionsOfSheet(file.id).subscribe(
+      (result:FypIntervention[]) =>{        
+        this.statusData = {
+            "reporter" : result.filter(x=>x.teacherRole=="reporter")[0],
+            "juryPresident" : result.filter(x=>x.teacherRole=="juryPresident")[0],
+            "supervisor" : result.filter(x=>x.teacherRole=="supervisor")[0],
+            "preValidator" : result.filter(x=>x.teacherRole=="preValidator")[0]
+        }
+      }
+    )
   }
 
 }
