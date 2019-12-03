@@ -57,11 +57,12 @@
                                                 </li>
                                             
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'teacher'" class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle"routerLink="/teacherFypFiles" href="#"> teacherFypFiles <i class="fas fa-chevron-down"></i></a>
+                                                <a class="dropdown-item dropdown-toggle"routerLink="/teacherFypFiles" href="#"> teacherFypFiles <i class="fas fa-chevron-down"></i></a><ul></ul>
                                                 </li>
                                             
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'teacher'" class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle"routerLink="/teacherFypFiles" href="#"> teacherFypFiles <i class="fas fa-chevron-down"></i></a>
+                                                    <ul class="dropdown-menu">
+                                                <a class="dropdown-item dropdown-toggle"routerLink="/teacherFypFiles" href="#"> teacherFypFiles <i class="fas fa-chevron-down"></i></a></ul>
                                                 </li>
                                             
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'teacher'" class="dropdown">
