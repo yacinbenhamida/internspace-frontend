@@ -34,9 +34,12 @@
                                 <i class="fas fa-user-graduate text-primary fa-sm"></i><p>{{selectedUser.userType}} </p>
                             
                             <i class="fas fa-paper-plane text-primary fa-sm"></i><p>{{selectedUser.email}}</p>
+                            <br>
+                            <p><b>Company : </b>{{selectedUser.fypFile.subject.company.name}}</p>
                         </div>
                     </div>
-                    <a [routerLink]="['/internshipDirector/studentProfile',selectedUser.cin]">View profile</a>
+                    
+                    <a [routerLink]="['/internshipDirector/studentProfile',selectedUser.cin]"><button type="button" class="btn btn-link mb-4">View profile</button></a>
                 </div>
 
         </agm-info-window>

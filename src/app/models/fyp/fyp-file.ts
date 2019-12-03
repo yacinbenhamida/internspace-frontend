@@ -12,7 +12,7 @@ export interface FypFile {
   isArchived: boolean;
   isPrevalidated: boolean;
   isConfirmed: boolean;
-  subject: FYPSubject[];
+  subject: FYPSubject;
   features: any[];
   interventions: any[];
   keywords: any[];

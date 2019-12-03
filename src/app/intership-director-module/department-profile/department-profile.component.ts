@@ -15,7 +15,11 @@ selectedRole :string=null;
 selected;
 fixedNumber:number=0;
 oldNumber:number=0;
-  constructor(private _Activatedroute:ActivatedRoute,private _interShipDService :InternshipDirectorService) { }
+
+
+  constructor(private _Activatedroute:ActivatedRoute,private _interShipDService :InternshipDirectorService) { 
+    
+  }
 
   ngOnInit() {
     this.id=this._Activatedroute.snapshot.paramMap.get("id");
@@ -47,8 +51,8 @@ oldNumber:number=0;
 
   UpdateTabelWithNewNumber=()=>{
     if(this.selected==="preV"){
-   
     this._interShipDService.FixNumberAsPreValidator(this.fixedNumber.toString(),this.id).subscribe(data=>console.log("done "));
+
   } if(this.selected==="pres"){
   
    this._interShipDService.FixNumberAsJuryPresident(this.fixedNumber.toString(),this.id).subscribe(data=>console.log("done "));
@@ -58,6 +62,10 @@ oldNumber:number=0;
   }if(this.selected==="super"){
    
     this._interShipDService.FixNumberAsSupervisor(this.fixedNumber.toString(),this.id).subscribe(data=>console.log("done "));
-  }}
+  }
+  setTimeout(function(){
+    window.location.reload();
+ }, 2000);
+}
 
 }
