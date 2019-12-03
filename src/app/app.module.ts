@@ -32,7 +32,7 @@ import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-conventi
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
 import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.component';
-
+import { NgxPayPalModule } from 'ngx-paypal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FypFileByCategoryComponent } from './intership-director-module/fyp-file-by-category/fyp-file-by-category.component';
 import { FypFileByYearComponent } from './intership-director-module/fyp-file-by-year/fyp-file-by-year.component';
@@ -58,6 +58,8 @@ import { FypFilesModificationComponent } from './fyp-files-modification/fyp-file
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
+
+import { PayPalComponent } from './pay-pal/pay-pal.component';
 
 
 
@@ -109,6 +111,8 @@ import { SuggestedCategoriesComponent } from './department-head/suggested-catego
     PFECategoryComponent,
     PFECategoryDetailsComponent,
     SuggestedCategoriesComponent,
+    
+    PayPalComponent,
 
 
   ],
@@ -125,6 +129,7 @@ import { SuggestedCategoriesComponent } from './department-head/suggested-catego
     DashboardModule,
     DataTablesModule,
     BrowserAnimationsModule,
+    NgxPayPalModule,
 
  
   ],

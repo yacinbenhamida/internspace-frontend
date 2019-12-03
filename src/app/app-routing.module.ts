@@ -39,6 +39,8 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
 
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 import { RoleGuardService as RoleGuard } from './services/security/roleguard.service';
+import { PayPalComponent } from './pay-pal/pay-pal.component';
+
 
 
 
@@ -76,6 +78,7 @@ const routes: Routes = [
   //
   {path: 'uniDash', component: UniversityStatsComponent},
   { path: 'create-category', component: FypCategorieComponent },
+ { path: 'pay', component: PayPalComponent},
   {path: 'internshipDirector', component: FypFileComponent}, 
   {path : 'fypfile/history', component : FypfileHistoryComponent, 
   canActivate: [RoleGuard], 
