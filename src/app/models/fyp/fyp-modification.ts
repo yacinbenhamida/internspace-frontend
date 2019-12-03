@@ -5,6 +5,7 @@ export interface FypFileModification {
     isChanged: boolean;
     isConfirmed: boolean;
     features: any[];
-    fypFile : FypFile;
+    fyp : FypFile;
+    problematic:string;
   }
   

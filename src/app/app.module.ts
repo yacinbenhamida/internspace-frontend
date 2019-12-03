@@ -32,7 +32,7 @@ import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-conventi
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
 import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.component';
-
+import { NgxPayPalModule } from 'ngx-paypal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FypFileByCategoryComponent } from './intership-director-module/fyp-file-by-category/fyp-file-by-category.component';
 import { FypFileByYearComponent } from './intership-director-module/fyp-file-by-year/fyp-file-by-year.component';
@@ -60,6 +60,8 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
+
+import { PayPalComponent } from './pay-pal/pay-pal.component';
 
 
 
@@ -114,6 +116,8 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
     MaxActionNumberOfTeacherPerDepartmentComponent,
     DepartmentProfileComponent,
 
+    PayPalComponent,
+
 
   ],
   imports: [
@@ -129,6 +133,7 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
     DashboardModule,
     DataTablesModule,
     BrowserAnimationsModule,
+    NgxPayPalModule,
 
 
  

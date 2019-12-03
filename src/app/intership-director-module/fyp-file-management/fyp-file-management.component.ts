@@ -43,7 +43,9 @@ export class FypFileManagementComponent implements OnInit {
   checkAction =(data:FypFile)=>{
     this.chosedFYP=data;
     console.log(this.chosedFYP);
-   this._internshipDirectorService.LinksOfChoosenCompany(data.subject.company.id).subscribe(data=>{this.companyLinks=data,console.log(this.companyLinks)});
+    
+    
+  this._internshipDirectorService.LinksOfChoosenCompany(data.subject.company.id).subscribe(data=>{this.companyLinks=data,console.log(this.companyLinks)});
   }
 
   OpenLinks =(link)=>{

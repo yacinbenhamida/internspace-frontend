@@ -6,6 +6,8 @@ import { FypTemplate } from '../../models/fyp/fyp-template';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import { FypCategory } from 'src/app/models/fyp/fyp-category';
 import { FypFileModification } from 'src/app/models/fyp/fyp-modification';
+import { catchError } from 'rxjs/operators';
+import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -63,9 +65,9 @@ export class TeacherServiceService {
     console.log("okay");
   }
   //PUT
-  approveMajorModification(id:number,id2:number)
+  approveMajorModification(id:number,id2:number):Observable<FypFileModification>
   {
-    this.http.put(this.baseurl+'/edit/'+id+'/'+id2,{headers: this.headers});
+    return this.http.put<FypFileModification>(this.baseurl +'/edit/'+id+'/'+id2,{headers: this.headers});
     console.log("okay");
 
   }
