@@ -62,6 +62,7 @@ import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-dire
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
+import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
 
 
 
@@ -117,7 +118,9 @@ import { PayPalComponent } from './pay-pal/pay-pal.component';
     DepartmentProfileComponent,
 
     PayPalComponent,
-
+    
+    FypfileEditActorsComponent,
+    
 
   ],
   imports: [
