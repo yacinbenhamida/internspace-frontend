@@ -19,6 +19,7 @@ export class FypFileManagementComponent implements OnInit {
   textAnnulation:string;
   textRefuse:string;
   chosedFYP:FypFile;
+  empty:boolean=true;
   constructor(private _internshipDirectorService : InternshipDirectorService, private auth:AuthenticationService) { }
 
 
@@ -79,6 +80,13 @@ export class FypFileManagementComponent implements OnInit {
   refuseAnnulation =() =>{
     this._internshipDirectorService.DeclineFYPFileCancellingDemande(this.chosedFYP.id.toString(),this.textAnnulation).subscribe(data=>window.location.reload(true))
 
+  }
+
+  verif=(x)=>{
+    if(x.length>=15)
+        this.empty=false;
+        else
+        this.empty=true;
   }
 
 

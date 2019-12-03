@@ -58,6 +58,8 @@ import { FypFilesModificationComponent } from './fyp-files-modification/fyp-file
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
+import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
+import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
 
 
@@ -109,6 +111,8 @@ import { SuggestedCategoriesComponent } from './department-head/suggested-catego
     PFECategoryComponent,
     PFECategoryDetailsComponent,
     SuggestedCategoriesComponent,
+    MaxActionNumberOfTeacherPerDepartmentComponent,
+    DepartmentProfileComponent,
 
 
   ],
@@ -125,6 +129,7 @@ import { SuggestedCategoriesComponent } from './department-head/suggested-catego
     DashboardModule,
     DataTablesModule,
     BrowserAnimationsModule,
+
 
  
   ],

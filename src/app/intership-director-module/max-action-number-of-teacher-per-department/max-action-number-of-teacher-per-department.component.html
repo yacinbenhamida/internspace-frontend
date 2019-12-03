@@ -1,0 +1,23 @@
+<br><br>
+<div class="w-md-80 w-lg-50 text-center mx-md-auto mb-9">
+    <h2 class="fw-300 text-primary"><mark data-aos="highlight-text" data-aos-delay="250" class="aos-init fw-600 aos-animate">Departments</mark>  list</h2>
+    <p>Our goal is to power innovation, wherever that may be.</p>
+</div>
+
+
+<div class="container">
+
+    <div class="row gap-y">
+        <div class="col-md-4" *ngFor="let x of ListDep">
+            <div class="uikit-example" >
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{x.name}}</h5>
+                        <h6>site :<p>{{x.site.name}}</p></h6>
+                        <a class="fs-13 fw-600" [routerLink]="['/internshipDirector/DepartmentProfile',x.id]">Edit allowed action number<i class="fa fa-angle-right pl-1"></i></a>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>

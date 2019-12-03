@@ -104,6 +104,9 @@
                                                     <li><a class="dropdown-item" routerLink="internshipDirector/fypFileByYear">Sheets by Year</a></li>
                                                 </ul>  
                                             </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/DepartmentMan">Departments</a>                
+                                                </li>
                                         </ul>
                                     </nav>
                                 </div>

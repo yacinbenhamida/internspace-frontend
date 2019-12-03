@@ -70,12 +70,12 @@
                        You will send to all of them an email for reminding them ! 
                         add your text here : 
                         <br>
-                        <textarea [(ngModel)]="textInput"  class="form-control" rows="4" placeholder="Email content"></textarea>
+                        <textarea [(ngModel)]="textInput"  class="form-control" rows="4" placeholder="Email content" (ngModelChange)="verif($event)"></textarea>
                     </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary transition-hover" (click)="sendEmail()" data-dismiss="modal" >Yes , send to them</button>
+                    <button type="button" class="btn btn-primary transition-hover" (click)="sendEmail()" data-dismiss="modal" [disabled]="empty">Yes , send to them</button>
                 </div>
             </div>
         </div>
@@ -130,8 +130,13 @@
                         </div>
                         <div class="tags">
                             <a href="#" rel="tag" class="label label--sm label--secondary">{{x.userType}}</a>
+                            
                         </div>
-                    </div>
+                        <a [routerLink]="['/internshipDirector/studentProfile',x.cin]">
+                            <button type="button" class="btn btn-link mb-2">View profile</button>
+                        </a>
+                        
+                        </div>
                 </article>
     
                 

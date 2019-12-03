@@ -1,0 +1,47 @@
+
+<br><br><br><br>
+<div class="clearfix pl-4">
+        <h2 class="mb-4">
+            Choose one of them :
+        </h2>
+</div>
+<div id="js-filters-masonry-projects" class="cbp-l-filters-buttonCenter">
+    <div data-filter=".identity" class="cbp-filter-item" (click)="changeNumberAllowed('preV')">
+        <h4>As pre-validator</h4><div class="cbp-filter-counter">{{department.numberOfActionsAllowedForPreValidators}}</div>
+    </div>
+    <div data-filter=".web-design" class="cbp-filter-item" (click)="changeNumberAllowed('pres')">
+        <h4>As President</h4> <div class="cbp-filter-counter">{{department.numberOfActionsAllowedForPresidents}}</div>
+    </div>
+    <div data-filter=".graphic" class="cbp-filter-item " (click)="changeNumberAllowed('prot')">
+        <h4>As protractor </h4><div class="cbp-filter-counter">{{department.numberOfActionsAllowedForProtractors}}</div>
+    </div>
+    <div data-filter=".logos" class="cbp-filter-item" (click)="changeNumberAllowed('super')">
+       <h4> As supervisor</h4> <div class="cbp-filter-counter">{{department.numberOfActionsAllowedForSupervisors}}</div>
+    </div>
+
+</div>
+
+<br><br><br><br>
+<section id="LineInputs" class="px-6 py-6 bg-gray mb-9" *ngIf="selectedRole!==null">
+
+        <div class="clearfix pl-4">
+                <h4 class="mb-5">
+                    Allowed number of times  <mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate">{{selectedRole}} : </mark>
+                </h4>
+               
+                <div class="row pt-4">
+                    <div class="col-sm-4">
+                        <div class="clearfix text-aling-left">
+                            <h2 class="fs-50 font-weight-medium text-primary counted" data-provide="countup" data-from="0" data-to="120">{{oldNumber}}</h2>
+                            <h6 class="v-counter-text">Allowed times currently</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+    <!---->
+        <input class="form-control" type="number"  [(ngModel)]="fixedNumber">
+        <br>
+        <button type="button" class="btn btn-sleek-primary" (click)="UpdateTabelWithNewNumber()">Set the new number</button>
+</section>
+

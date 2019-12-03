@@ -39,6 +39,8 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
 
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 import { RoleGuardService as RoleGuard } from './services/security/roleguard.service';
+import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
+import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
 
 
@@ -94,18 +96,53 @@ const routes: Routes = [
   data: { 
     expectedRole: 'departmentHead'
   }},
-  {path: 'internshipDirector/studentManagement', component: StudentManagementComponent},
+  {path: 'internshipDirector/studentManagement', component: StudentManagementComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
   {path : 'notifications/history', component : NoitificationsHistoryComponent},
-  {path : 'internshipDirector/fypFileBycategory', component : FypFileByCategoryComponent},
-  {path : 'internshipDirector/fypFileByYear', component : FypFileByYearComponent},
-  {path : 'internshipDirector/fypFileByState', component : FypFileByStateComponent},
-  {path : 'internshipDirector/fypFileByCountry', component : FypFileByCountryComponent},
+  {path : 'internshipDirector/fypFileBycategory', component : FypFileByCategoryComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path : 'internshipDirector/fypFileByYear', component : FypFileByYearComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path : 'internshipDirector/fypFileByState', component : FypFileByStateComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path : 'internshipDirector/fypFileByCountry', component : FypFileByCountryComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
   {path: 'teacherFypFiles',component:TeacherFypfilesComponent},
   {path: 'majormodif',component:FypFilesModificationComponent},
-  {path: 'internshipDirector/lateStudents',component:LateStudentListComponent},
-  {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent},
-  {path: 'internshipDirector/studentProfile/:cin',component:StudentProfileComponent},
-  {path: 'internshipDirector/AccountManagement',component:AccountManagementComponent},
+  {path: 'internshipDirector/lateStudents',component:LateStudentListComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/studentProfile/:cin',component:StudentProfileComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/AccountManagement',component:AccountManagementComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/DepartmentMan',component:MaxActionNumberOfTeacherPerDepartmentComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
 
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
