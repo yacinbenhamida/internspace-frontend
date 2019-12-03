@@ -15,10 +15,12 @@ export class FypFileByYearComponent implements OnInit {
   results:FypFile[];
   searchInput:string="";
   selectValue:string="";
+  clicked=false;
   constructor(private _internshipDirectorService : InternshipDirectorService, private auth:AuthenticationService) { 
     this.allFYPFiles = [];
     this.FYPFiles = [];
     this.results = [];
+
   }
   
   ngOnInit() {
@@ -34,8 +36,11 @@ export class FypFileByYearComponent implements OnInit {
   }
   ClickHandler =(xx)=>{
     this.results=[];
+    this.clicked=true;
+  
     this._internshipDirectorService.FypFileByYear(this.searchInput).subscribe(data=>{
       this.FYPFiles=data
+      console.log(this.allFYPFiles);
       this.allFYPFiles.forEach((element) => {
         this.FYPFiles.forEach(x=>{
         if(x.id===element.id){

@@ -58,6 +58,8 @@ import { FypFilesModificationComponent } from './fyp-files-modification/fyp-file
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
+import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
+import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
@@ -112,7 +114,9 @@ import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actor
     PFECategoryComponent,
     PFECategoryDetailsComponent,
     SuggestedCategoriesComponent,
-    
+    MaxActionNumberOfTeacherPerDepartmentComponent,
+    DepartmentProfileComponent,
+
     PayPalComponent,
     
     FypfileEditActorsComponent,
@@ -133,6 +137,7 @@ import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actor
     DataTablesModule,
     BrowserAnimationsModule,
     NgxPayPalModule,
+
 
  
   ],

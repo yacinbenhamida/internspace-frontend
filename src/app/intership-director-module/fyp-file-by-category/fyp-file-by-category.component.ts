@@ -13,6 +13,7 @@ export class FypFileByCategoryComponent implements OnInit {
   constructor(private _internshipDirectorService : InternshipDirectorService, private auth:AuthenticationService) { }
   allFYPFiles:FypFile[]=[];
   selectedFYPFiles: FypFile[]=[];
+  clicked=false;
   ngOnInit() {
     this._internshipDirectorService.getAllStudents(this.auth.currentUserValue.department.site.university.id).subscribe(
       data=>{data.forEach((item)=>this.allFYPFiles.push(item.fypFile))}
@@ -27,6 +28,8 @@ export class FypFileByCategoryComponent implements OnInit {
   selectValue:string="";
   
   ClickHandler =(xx)=>{
+    this.clicked=true;
+   
     this.selectedFYPFiles=[];
     //this._internshipDirectorService.FypFileByCategory(this.selectValue).subscribe(data=>this.FYPFiles=data);
     this.allFYPFiles.forEach((item)=>{

@@ -18,4 +18,19 @@
 
         
     </div>
-    <app-tabel [tab]="selectedFYPFiles.length>0?selectedFYPFiles:allFYPFiles" [hidden]="state"></app-tabel>
+    <div *ngIf="selectedFYPFiles.length>0; else empty">
+                <app-tabel [tab]="selectedFYPFiles"></app-tabel>
+            </div>
+    <ng-template #empty>
+                <div class="container" *ngIf="clicked">
+    
+                        <!-- Info -->
+                        <div class="info" >
+                            <h1>Opps! <br>there is no files <br>with this category</h1>
+                           
+                        </div>
+               
+                    </div>
+                
+                <app-tabel [tab]="allFYPFiles"></app-tabel>
+        </ng-template>
