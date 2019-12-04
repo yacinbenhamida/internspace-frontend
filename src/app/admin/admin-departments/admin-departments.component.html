@@ -87,26 +87,55 @@
                                             <!-- End Input -->
                     
                                             <div class="text-center">
-                                                <button type="submit" class="btn btn-primary btn-wide transition-3d-hover mb-4">Send Message</button>
-                                                <p class="small">We'll get back to you in 1-2 business days.</p>
-                    
-                                                <div class="social social-bg-gray social-lg text-center">
-                                                    <a class="social-facebook" href="#"><i class="fab fa-facebook"></i></a>
-                                                    <a class="social-twitter" href="#"><i class="fab fa-twitter"></i></a>
-                                                    <a class="social-gplus" href="#"><i class="fab fa-google-plus"></i></a>
-                                                    <a class="social-instagram" href="#"><i class="fab fa-instagram"></i></a>
-                                                    <a class="social-linkedin" href="#"><i class="fab fa-linkedin"></i></a>
-                                                    <a class="social-git" href="#"><i class="fab fa-git"></i></a>
-                                                </div>
+                                                <button type="submit" class="btn btn-primary btn-wide transition-3d-hover mb-4">Add department</button>
                                             </div>
                                         </form>
                                         <!-- End Contacts Form -->
                                     </div>
-                                </div>
+                            </div>
+                            <div class="contianer m-gab-3">
+                                    <div class="w-md-80 w-lg-50 text-center mx-md-auto mb-9" *ngIf="listeDepartments.length > 0">
+                                            <h2 class="text-primary">Active departments</h2>
+                                            <p>
+                                                There is <a href="">{{listeDepartments.length}} </a>  active departments in your university
+                                            </p>
+                                            <br/>
+                                            <div>
+                                                    <div class="custom-file">
+                                                            <input (change)="fileChangeListener($event)" type="file" class="custom-file-input" id="customFile" accept=".csv">
+                                                            <label class="custom-file-label" for="customFile">Import from file</label>
+                                                        </div>    
+                                            </div>
+                                    </div>
+                                    <div class="w-md-80 w-lg-50 text-center mx-md-auto mb-9" *ngIf="listeDepartments.length == 0">
+                                            <h2 class="text-primary">Oops ! </h2>
+                                            <p>
+                                                No active departments found in your app, start by uploading some
+                                            </p>
+                                            <div class="custom-file">
+                                                    <input (change)="fileChangeListener($event)" type="file" class="custom-file-input" id="customFile" accept=".csv">
+                                                    <label class="custom-file-label" for="customFile">Import from file</label>
+                                            </div> 
+                                            <br/>
+                                    </div>
+                                    <div class="row gap-y">
+                                            <div class="col-md-6 col-lg-3" *ngFor="let a of listeDepartments">
+                                                <a class="card text-white text-center bg-img py-6 shadow-11 hover-shadow-9 transition-hover" href="#" style="background-image: url(assets/img/thumb/marketing.jpg);" data-overlay="7">
+                                                    <div class="position-relative">
+                                                        <p><i class="fas fa-chalkboard-teacher"></i></p>
+                                                        <h5 class="mb-0">{{a.name}}</h5>
+                                                        <small class="opacity-70">department</small>
+                                                    </div>
+                                                </a>
+                                            </div>  
+                                        </div>
+                            </div>
                     </div>
                 </div>
             </section>
-
+            <section class="pt-12">
+                
+            </section>
 
         </main>
 
