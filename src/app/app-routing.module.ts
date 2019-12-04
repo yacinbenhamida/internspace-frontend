@@ -44,6 +44,7 @@ import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-dire
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
+import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 
 
 
@@ -62,7 +63,13 @@ const routes: Routes = [
     data: { 
       expectedRole: 'admin'
     } 
-},
+  },
+  {path : 'admin/departments', component : AdminDepartmentsComponent, 
+    canActivate: [RoleGuard], 
+    data: { 
+      expectedRole: 'admin'
+    } 
+  },
   // end administration components
   // start of login,profiles  and registration
   {path : 'login', component : AuthenticationComponent},

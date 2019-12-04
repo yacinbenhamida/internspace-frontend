@@ -63,6 +63,7 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 
 
 
@@ -120,6 +121,8 @@ import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actor
     PayPalComponent,
     
     FypfileEditActorsComponent,
+    
+    AdminDepartmentsComponent,
     
 
   ],
