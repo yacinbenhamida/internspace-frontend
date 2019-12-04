@@ -71,6 +71,11 @@ export class TeacherServiceService {
     console.log("okay");
 
   }
+  //GET
+  Getprotractoredfypfiles(id:number):Observable<FypFile[]>
+  {
+    return this.http.get<FypFile[]>(this.baseurl+'/pr/'+id,{headers:this.headers});
+  }
   
 
 }

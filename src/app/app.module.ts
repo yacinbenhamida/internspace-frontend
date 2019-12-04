@@ -59,7 +59,7 @@ import { PFECategoryComponent } from './Student/pfecategory/pfecategory.componen
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 
-import { PayPalComponent } from './pay-pal/pay-pal.component';
+import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 
 
 

@@ -39,7 +39,7 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
 
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 import { RoleGuardService as RoleGuard } from './services/security/roleguard.service';
-import { PayPalComponent } from './pay-pal/pay-pal.component';
+import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 
 
 
