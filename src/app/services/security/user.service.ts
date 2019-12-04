@@ -11,6 +11,9 @@ export class UserService {
   constructor(private http:HttpClient) {  }
   getDepartmentTeachers(sheetId:number){
     return this.http.get<User[]>("/api/users/teachers/ofdepartment/"+sheetId)
-}
+  }
+  getStudentOfSheet(sheetId:number){
+    return this.http.get<User>("/api/users/studentsBySheet/"+sheetId)
+  }
   
 }

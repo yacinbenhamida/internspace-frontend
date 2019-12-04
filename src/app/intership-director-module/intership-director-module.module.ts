@@ -12,10 +12,12 @@ import { LateStudentListComponent } from './late-student-list/late-student-list.
 import { FypFileManagementComponent } from './fyp-file-management/fyp-file-management.component';
 import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { AccountManagementComponent } from './account-management/account-management.component';
+import { MaxActionNumberOfTeacherPerDepartmentComponent } from './max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
+import { DepartmentProfileComponent } from './department-profile/department-profile.component';
 
 
 @NgModule({
-  declarations: [FypFileComponent, PerTypeSearchComponent, TabelComponent, StudentManagementComponent, FypFileByCategoryComponent, FypFileByYearComponent, FypFileByStateComponent, FypFileByCountryComponent, LateStudentListComponent, FypFileManagementComponent, StudentProfileComponent, AccountManagementComponent,],
+  declarations: [FypFileComponent, PerTypeSearchComponent, TabelComponent, StudentManagementComponent, FypFileByCategoryComponent, FypFileByYearComponent, FypFileByStateComponent, FypFileByCountryComponent, LateStudentListComponent, FypFileManagementComponent, StudentProfileComponent, AccountManagementComponent, MaxActionNumberOfTeacherPerDepartmentComponent, DepartmentProfileComponent,],
   imports: [
     CommonModule
   ]

@@ -159,14 +159,14 @@
                                            If you Refuse the annulation of this file , you need to write a justification 
                                             <br>
                                         </p>
-                                        <textarea class="form-control" [(ngModel)]="textAnnulation" placeholder="Your message" rows="5"></textarea>
+                                        <textarea class="form-control" [(ngModel)]="textAnnulation" placeholder="Your message" rows="5" (ngModelChange)="verif($event)"></textarea>
                                         
                 
                 
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary transition-hover" (click)="refuseAnnulation(x)" data-dismiss="modal" >Yes , refuse</button>
+                                        <button type="button" class="btn btn-primary transition-hover" (click)="refuseAnnulation(x)" data-dismiss="modal" [disabled]="empty">Yes , refuse</button>
                                     </div>
                                 </div>
                             </div>
@@ -188,11 +188,11 @@
                                Write here the reason why you refused this file : 
                                 <br>
                             </p>
-                            <textarea class="form-control" rows="4" [(ngModel)]="textRefuse" placeholder="Textarea"></textarea>
+                            <textarea class="form-control" rows="4" [(ngModel)]="textRefuse" placeholder="Textarea" (ngModelChange)="verif($event)"></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-warning transition-hover" (click)="RefuseFile()" data-dismiss="modal" >Refuse this file</button>
+                            <button type="button" class="btn btn-warning transition-hover" (click)="RefuseFile()" data-dismiss="modal" [disabled]="empty">Refuse this file</button>
                         </div>
                     </div>
                 </div>
