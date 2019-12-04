@@ -24,7 +24,7 @@ export class FypCategorieComponent implements OnInit {
   addFypcat() {
    
     this.restApi.AddFypCategory(this.name,this.fypcategory).subscribe((data: {}) => {
-      this.router.navigate([])
+      this.router.navigate([]);
     })
   }
 

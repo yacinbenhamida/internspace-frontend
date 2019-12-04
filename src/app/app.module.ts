@@ -61,7 +61,9 @@ import { SuggestedCategoriesComponent } from './department-head/suggested-catego
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
-import { PayPalComponent } from './pay-pal/pay-pal.component';
+import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
+import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 
@@ -115,6 +117,12 @@ import { AdminDepartmentsComponent } from './admin/admin-departments/admin-depar
     PFECategoryComponent,
     PFECategoryDetailsComponent,
     SuggestedCategoriesComponent,
+    
+    PayPalComponent,
+    
+    FypPfeUpdateComponent,
+    
+    FypPFEComponent,
     MaxActionNumberOfTeacherPerDepartmentComponent,
     DepartmentProfileComponent,
 

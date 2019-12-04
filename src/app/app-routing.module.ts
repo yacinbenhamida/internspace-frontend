@@ -39,12 +39,15 @@ import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfeca
 
 import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
 import { RoleGuardService as RoleGuard } from './services/security/roleguard.service';
+import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
+import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+
 
 
 
@@ -83,6 +86,8 @@ const routes: Routes = [
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
   {path: 'fyp/create', component:  FypPFECreateComponent},
+  {path: 'fyp/update/:id', component: FypPfeUpdateComponent},
+  {path: 'fyp/delete/:id', component: FypPFECreateComponent},
   {path: 'student/fypfile', component : IntershipCreateComponent},
   {path: 'student/skills', component: PFECategoryComponent},
   {path: 'student/skills/find/:id', component: PFECategoryDetailsComponent},

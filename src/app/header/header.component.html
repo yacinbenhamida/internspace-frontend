@@ -69,7 +69,8 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" routerLink="/teacherFypFiles" href="#"><i class="icon-list-1 menu-icon"></i> Teacher</a></li>
                                                 <li><a class="dropdown-item" routerLink="/majormodif" href="#"><i class="icon-list-2 menu-icon"></i> Major Modification section</a></li>
-                                                    <li><a class="dropdown-item" routerLink="/pay" href="#"><i class="icon-arrange-4-1 menu-icon"></i> payment</a></li>
+                                                <li><a class="dropdown-item" routerLink="create-category">Category</a></li>
+                                                    
                                                 </ul>
                                             </li>                           
                                             <li class="dropdown">
@@ -79,7 +80,7 @@
                                                     <ul class="dropdown-menu">
                                                         <li><a class="dropdown-item" routerLink="fypTemplate">Template Editor</a></li>
                                                         <li><a class="dropdown-item" routerLink="uniDash">University Dashboard</a></li>
-                                                        <li><a class="dropdown-item" routerLink="create-category">Category</a></li>
+                                                        
                                                     </ul>
                                             </li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
