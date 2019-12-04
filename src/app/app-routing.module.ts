@@ -44,7 +44,6 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
-import { PayPalComponent } from './pay-pal/pay-pal.component';
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 
