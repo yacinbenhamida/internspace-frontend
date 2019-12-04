@@ -7,16 +7,17 @@
     <br>
     
     <ul>
-        <li><a class="active" href="#home">Fiche</a></li>
-        <li><a href="#contact">Update</a></li>
+        <li><a  [routerLink]="['/student/inter']">Intership Convention</a></li>
+        <li><a   class="active" [routerLink]="['/fyp/create']">FypPFE</a></li>
         <router-outlet></router-outlet>
-        <li><a href="#contact">FypPFE</a></li>
-   </ul>
+        <li><a href="#contact">Reclamation</a></li>
+        <li><a [routerLink]="['/student/skills']">Subject</a></li>
+</ul>
  <br>
-   <h2 style="padding-left: 100px;">Create Fyp PFE</h2>
+   <h2 style="padding-left: 100px;">{{text}}</h2>
    <div class="container">
-     <div>
-        <form [formGroup]="pfeForm"> 
+     <div  *ngIf="show">
+        <form [formGroup]="pfeForm" > 
             <div class="row">
                 <div class="col-25">
                 <label for="fname">Title</label>
@@ -63,7 +64,7 @@
       </li>-->
       <select (change)="onChange_FYPSubjectIndex($event.target.value)" class="col-75" formControlName="subject">
        <option value="">Choose your subject</option>
-        <option *ngFor="let x of ff; let index = index;" 
+        <option *ngFor="let x of fYPSubject; let index = index;" 
        [selected]="x == currFYPSubject" [ngValue]="x" >{{x.title}}</option>
 
          </select>
@@ -84,6 +85,41 @@
        <div style="padding-left: 900px; padding-top: 50px;">
       <button (click)="getInfo()" class="button button1" > Create</button></div>
         </form>
+</div>
+
+<div *ngIf="showPFE" >
+  <div >
+<h1>  </h1>
+
+   <p> </p>  
+   <h2></h2> 
+  
+   
+  </div>
+  <table>
+      <tr>
+        <th>Title</th>
+        <th>description</th>
+        <th>problematic</th>   
+        <th>finalMark</th>
+        <th>subject</th>
+        <th>Status</th>
+        <th>Actions</th>
+       
+      </tr>
+      <tr *ngFor="let element of ffView;">
+        <td>{{element.title}}</td>
+        <td>{{element.description}}</td>
+        <td>{{element.problematic}}</td>
+        <td>{{element.finalMark}}</td>
+        <td>{{element.subject.title}}</td>
+        <td [style.color]="element.fileStatus==='pending' ? 'red' : 'green' " >{{element.fileStatus}}</td>
+        <td><a [routerLink]="['/fyp/update',element.id]" (click)="Update()" >Update</a></td>
+      
+      </tr>
+      
+    </table>
+ 
 </div>
 <br>
 <br>

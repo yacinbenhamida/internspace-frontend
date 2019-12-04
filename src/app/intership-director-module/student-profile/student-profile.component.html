@@ -1,7 +1,9 @@
 <section class="section">
-    <div class="container">
+       <a routerLink="/internshipDirector"> <button type="button" class="btn btn-dark mb-2">Go back</button></a>
 
+    <div class="container">
         <div class="row justify-content-center">
+               
             <div class="col-md-11">
                 <div class="row">
                     <div class="col-md-6">
@@ -12,14 +14,16 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-
+                            
                         <div class="pt-6 slick-initialized slick-slider slick-dotted" data-provide="slider" data-slides-to-show="1" data-slides-to-scroll="1" data-dots="true"><div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2050px; transform: translate3d(-410px, 0px, 0px);"><div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" tabindex="-1" style="width: 410px;"><div><div style="width: 100%; display: inline-block;">
                                
                             </div></div></div><div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" role="tabpanel" id="slick-slide00" style="width: 410px;" aria-describedby="slick-slide-control00"><div><div style="width: 100%; display: inline-block;">
                                 <div class="card border-0">
                                     <h2 class="text-primary" >{{student.firstName}} {{student.lastName}}</h2>
+                                    <h5><b>class : </b>{{student.studyClass.name}}</h5>
+                                    <h5><b>identity number : </b>{{student.cin}}</h5>
                                     <blockquote class="fs-28">
-                                        <p><h3 *ngIf="student.hasSubmittedAReport===true ; else submited">Has submitted a report : yes </h3>
+                                        <p><h3 *ngIf="student.hasSubmittedAReport===true ; else submited"><b>Has submitted a report</b> <b>::</b> yes </h3>
                                         
                                     </blockquote>
                                     <blockquote class="fs-28">

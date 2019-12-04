@@ -210,5 +210,9 @@ sendMail(year:string,text:string,id:string):Observable<any>{
   return this.http.get<any>(`http://localhost:9080/internspace-web/internspace/internship/listmailing?`,{params:param})
 }
 
+departmentInfo(id:string):Observable<Department>{
+  const param = new HttpParams().set('id',id);
+  return this.http.get<Department>(`http://localhost:9080/internspace-web/internspace/internship/departementInfo?`,{params:param})
+}
 
 }

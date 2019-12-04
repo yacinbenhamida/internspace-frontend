@@ -43,4 +43,20 @@ httpOptions = {
       return this.http.post<FypFile[]>('/api/student/create?id='+id, JSON.stringify(data), this.httpOptions);
   
     }
+
+    //view his FypFile
+
+    ViewFypFile(cin:string):Observable<FypFile[]>{
+      return this.http.get<FypFile[]>('/api/student/ci?cin='+cin);
+      }
+
+//edit
+    editFile(data:FypFile ,id:string):Observable<FypFile[]>{
+        //const param = new HttpParams().set('isArchived',isArchived).set('isPrevalidated',isPrevalidated);
+      
+         // let url = `http://localhost:9080/internspace-web/internspace/intership/add?id=${id}`
+        
+            return this.http.put<FypFile[]>('/api/fypsheet/edittstd?id='+id, JSON.stringify(data), this.httpOptions);
+        
+          }
 }

@@ -17,6 +17,7 @@ export class LateStudentListComponent implements OnInit {
   connectedUser : any;
   dtTrigger: Subject<User>= new Subject();
   state=true;
+  empty:boolean=true;
  
   constructor(private _internShipDirector : InternshipDirectorService,private auth:AuthenticationService) { }
 
@@ -45,6 +46,13 @@ export class LateStudentListComponent implements OnInit {
   sendEmail =()=>{
   this._internShipDirector.sendMail(new Date().getFullYear().toString(),this.textInput,this.auth.currentUserValue.department.site.university.id.toString()).subscribe(data=>console.log("done"))
 
+}
+
+verif=(x)=>{
+  if(x.length>=15)
+      this.empty=false;
+      else
+      this.empty=true;
 }
 
 }
