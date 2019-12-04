@@ -9,9 +9,9 @@ export interface FYPSubject {
   country: string;
   fypFile: FypFile;
   company: Company;
-  studentSubjects: any[];
-  categories: FypCategory[];
-  FYPCategory:any[]
+  //studentSubjects: any[];
+  //categories: FypCategory[];
+ // FYPCategory:any[]
   
 
 

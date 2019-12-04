@@ -17,10 +17,17 @@ export class FypPFECreateComponent implements OnInit {
   currFYPSubject: FYPSubject;
   currFypFile: FypFile;
   ff: FypFile[];
+  ffView:FypFile[];
+
   index :number
+  show:boolean=true;
+  showPFE:boolean=false;
+  text:String="Create Fyp PFE";
+
   constructor(private fypPfeService: FypPFEService, private router: Router) { }
 
   ngOnInit() {
+    this.getFilee();
     this.fypPfeService.GetFyp().subscribe(fypts => {
       this.ff = fypts as FypFile[];
       this.ff.push;
@@ -29,7 +36,9 @@ export class FypPFECreateComponent implements OnInit {
       if (this.ff === null || this.ff.length === 0) {
 
         this.currFypFile = this.GetFypSubject();
-
+        
+        this.fYPSubject = this.getFilee();
+        console.log(this.fYPSubject);
 
       } else {
         this.currFypFile = this.ff[0];
@@ -57,10 +66,38 @@ export class FypPFECreateComponent implements OnInit {
         'FYPCategory':null
       }
  
-  ];
+    ];
 
     return { id: 0, title: 'Untitled', description: 'Untitled', problematic :'Untitled' , fileStatus :'Untitled', finalMark :0, isCanceled :false,
     isArchived :false, isPrevalidated :false, isConfirmed :false, subject , features :null, interventions :null, keywords :null, categories :null};
+  }
+
+
+  GetSubject() {
+   
+      
+    
+
+    return { id: 0, title: 'Untitled', content: 'Untitled', maxApplicants :'Untitled' , country :'Untitled', fypFile :null, company :null,
+    studentSubjects :null, categories :null};
+  }
+
+
+
+  getFilee(){
+    this.fypPfeService.GetFypSubject().subscribe(
+      (fypts => {
+        this.fYPSubject = fypts as FYPSubject[];
+       
+        console.log();
+        this.fYPSubject.push ;
+        
+        console.log(this.currFYPSubject);
+       
+      }))
+
+     return  this.fYPSubject;
+     
   }
   onChange_FYPSubjectIndex(index: number) {
     this.fypPfeService.GetFypSubject().subscribe(
@@ -96,14 +133,20 @@ export class FypPFECreateComponent implements OnInit {
     {
     console.log(this.pfeForm); 
     this.create();
-    this.router.navigate(['/create']);
+    this.viewFilePFE();
+    if(this.show ==true){
+     
+      this.text="Your Fyp File";
+    }
+   
+    
   } 
     
     
 
     create(){
      
-      this.fypPfeService.createIntership(this.pfeForm.value,"10").subscribe(
+      this.fypPfeService.createIntership(this.pfeForm.value,"12").subscribe(
         (data: any) => {
          
           console.log(data);
@@ -111,6 +154,14 @@ export class FypPFECreateComponent implements OnInit {
         //this.currFYPSubject = data[index];
         
         console.log(this.currFYPSubject);
+        if(this.show ==true){
+      
+          this.show=false; 
+          this.showPFE=true;
+          this.text="Your Fyp File";
+        }
+      
+        //this.router.navigate(['/create']);
         });
         
       }
@@ -123,6 +174,18 @@ export class FypPFECreateComponent implements OnInit {
           
      }
     
+     viewFilePFE(){
+      this.fypPfeService.ViewFypFile("1100").subscribe(
+        (fypts => {
+          this.ffView = fypts as FypFile[];
+          this.ffView.push;
+         
+           
+          console.log(fypts);
+        }));
+        
+
+     }
 
 
       get title()

@@ -1,3 +1,21 @@
+
+
+
+<br>
+<br>
+
+    <br>
+          
+  
+    <br>
+    <ul>
+            <li><a [routerLink]="['/student/inter']">Intership Convention</a></li>
+            <li><a [routerLink]="['/fyp/create']">FypPFE</a></li>
+            <router-outlet></router-outlet>
+            <li><a href="#contact">Reclamation</a></li>
+            <li><a class="active" [routerLink]="['/student/skills']">Subject</a></li>
+  </ul>
+ <br>
 <div class="bb"   >
 <div class="container" >
 <div  class="box" (click)="onClick(x.id)"  *ngFor="let x of AllfypSubject let index = index;">
@@ -6,11 +24,11 @@
             height: calc(300px - 30px); " >--> 
     <div class="imgBox">
         
-     <img src="assets/img/pfe/s{{x.id}}.png" >
+     <img src="assets/img/pfe/{{x.id}}.png" >
 
     </div>
     <div class="content">
-        <h2>Image1  {{x.name}}</h2>
+        <h2> {{x.title}}</h2>
         <p>hello ...</p>
     </div>
 

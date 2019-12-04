@@ -8,7 +8,7 @@
     
     <ul>
         <li><a  [routerLink]="['/student/inter']">Intership Convention</a></li>
-        <li><a   class="active" [routerLink]="['/fyp/create']">FypPFE</a></li>
+        <li><a class="active" [routerLink]="['/fyp/create']">FypPFE</a></li>
         <router-outlet></router-outlet>
         <li><a href="#contact">Reclamation</a></li>
         <li><a [routerLink]="['/student/skills']">Subject</a></li>
@@ -16,19 +16,16 @@
  <br>
    <h2 style="padding-left: 100px;">{{text}}</h2>
    <div class="container">
-     <div  *ngIf="show">
+     <div  >
         <form [formGroup]="pfeForm" > 
             <div class="row">
-                <div class="col-25">
+                <div class="col-25" > 
                 <label for="fname">Title</label>
               </div>
               <div class="col-75">
                 <input type="text" formControlName="title" name="title" placeholder="title ...">
               </div>
-      <div *ngIf="title.touched && title.invalid">
-      
-        Start Date est obligatoire 
-      </div>
+    
             </div>
       <div class="row">
         <div class="col-25">
@@ -37,10 +34,7 @@
         <div class="col-75">
            
             <textarea formControlName="description" placeholder="description ..."></textarea>
-            <div *ngIf="description.touched && description.invalid">
-      
-                description  est obligatoire 
-              </div>
+            
         </div>
     
       </div>
@@ -86,42 +80,3 @@
       <button (click)="getInfo()" class="button button1" > Create</button></div>
         </form>
 </div>
-
-<div *ngIf="showPFE" >
-  <div >
-<h1>  </h1>
-
-   <p> </p>  
-   <h2></h2> 
-  
-   
-  </div>
-  <table>
-      <tr>
-        <th>Title</th>
-        <th>description</th>
-        <th>problematic</th>   
-        <th>finalMark</th>
-        <th>subject</th>
-        <th>Status</th>
-        <th>Actions</th>
-       
-      </tr>
-      <tr *ngFor="let element of ffView;">
-        <td>{{element.title}}</td>
-        <td>{{element.description}}</td>
-        <td>{{element.problematic}}</td>
-        <td>{{element.finalMark}}</td>
-        <td>{{element.subject.title}}</td>
-        <td [style.color]="element.fileStatus==='pending' ? 'red' : 'green' " >{{element.fileStatus}}</td>
-        <td><a [routerLink]="['/fyp/update',element.id]" (click)="Update()" >Update</a></td>
-      
-      </tr>
-      
-    </table>
- 
-</div>
-<br>
-<br>
-      
-      
