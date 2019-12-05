@@ -100,6 +100,7 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
 
       // Remove Antarctica
       polygonSeries.exclude = ['AQ'];
+      polygonSeries.exclude = ['IL'];
 
       // Add zoom control
       this.chartChache.zoomControl = new am4maps.ZoomControl();
@@ -109,7 +110,7 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
 
   onMapCountryClick(ev: any) {
 
-    let data: any; // {'id': '', 'name': '', 'description': ''};
+    let data: any;
     data = ev.target.dataItem.dataContext;
 
     this.countryNameCache = data.name + ' (' + data.id + ')';
@@ -117,19 +118,9 @@ export class CountryStudentsMapComponent implements OnInit, AfterViewInit, OnDes
 
     if (data.students) {
       this.studentsCache = data.students;
-      console.log(this.studentsCache);
     } else {
       this.studentsCache = null;
     }
-
-    /*
-    info.innerHTML = '<h3>' + data.name + '(' + data.id + ')</h3>';
-    if (data.description) {
-      info.innerHTML += data.description;
-    } else {
-      info.innerHTML += '<i>No internships found.</i>';
-    }
-    */
   }
 
 }

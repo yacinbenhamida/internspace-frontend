@@ -1,0 +1,201 @@
+<br><br>
+
+<div class="row justify-content-lg-center">
+        <div class="col-md-6 col-lg-5 mb-7 border-right">
+            <div class="media pr-lg-5">
+                
+                <div class="media-body">
+                    <h3 class="h5 mt-0 mb-2 text-primary">Annulation demandes</h3>
+                    <p class="mb-4"> Files that waiting for confirmation </p>
+                    <a href="#" class="btn btn-primary btn-pill btn-sm transition-hover pr-3 pl-4" (click)="pendingFiles()">Explore now <span class="fas fa-angle-right align-middle ml-2"></span></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-5 mb-7">
+            <div class="media pl-lg-5">
+               
+                <div class="media-body">
+                    <h3 class="h5 mt-0 mb-2 text-primary">Pending Files</h3>
+                    <p class="mb-4"> files that have an annulation demandes</p>
+                    <a href="#" class="btn btn-primary btn-pill btn-sm transition-hover pr-3 pl-4" (click)="annuledlist()">Explore now <span class="fas fa-angle-right align-middle ml-2"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br>
+
+
+<table class="table table-hover" [hidden]="stateA">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>FileStatus</th>
+                <th>FinalMark</th>
+                <th>Archived</th>
+                <th>Canceled</th>
+                <th>Confirmed</th>
+                <th>Prevalidated</th>
+                <th>Verfie action</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let x of allFYPFiles , let i = index">
+            <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{x.title}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.fileStatus}}</td>
+                <td>{{x.finalMark}}</td>
+                <td>{{x.isArchived}}</td>
+                <td>{{x.isCanceled}}</td>
+                <td>{{x.isConfirmed}}</td>
+                <td>{{x.isPrevalidated}}</td>
+                <td><button type="button" class="btn btn-warning" (click)="checkAction(x)" data-toggle="modal" data-target="#modal-default">Check it </button></td>
+                
+            </tr>
+            <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Verification</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="lead-1">
+                                   You recived the first three links of the company of this sheet from GOOGLE : 
+                                    <br>
+                                </p>
+                                <div class="row justify-content-lg-center" > 
+                              
+                                    <button *ngFor="let x of companyLinks" type="button"  class="btn btn-link" (click)="OpenLinks(x)">Link</button>
+                                  
+                                </div>
+                                
+        
+        
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary transition-hover" (click)="confrimFile()" data-dismiss="modal" >Yes , Accept it</button>
+                                <button type="button" class="btn btn-warning transition-hover" data-toggle="modal" data-target="#modal-defaultTT" data-dismiss="modal" >Refuse this file</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </tbody>
+        
+    </table>
+
+
+    <table class="table table-hover" [hidden]="stateH">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>FileStatus</th>
+                    <th>FinalMark</th>
+                    <th>Archived</th>
+                    <th>Canceled</th>
+                    <th>Confirmed</th>
+                    <th>Prevalidated</th>
+                    <th>Accept action</th>
+                    <th>Refuse action</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let x of annuledFiles , let i = index">
+                <tr>
+                    <th scope="row">{{i}}</th>
+                    <td>{{x.title}}</td>
+                    <td>{{x.description}}</td>
+                    <td>{{x.fileStatus}}</td>
+                    <td>{{x.finalMark}}</td>
+                    <td>{{x.isArchived}}</td>
+                    <td>{{x.isCanceled}}</td>
+                    <td>{{x.isConfirmed}}</td>
+                    <td>{{x.isPrevalidated}}</td>
+                    <td><button type="button" class="btn btn-success" (click)="clickedOne(x)" data-toggle="modal" data-target="#modal-default1">Accept </button></td>
+                    <td><button type="button" class="btn btn-danger" (click)="clickedOne(x)" data-toggle="modal" data-target="#modal-defaultR">Refuse </button></td>
+                    
+                </tr>
+                <div class="modal fade" id="modal-default1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Accept Annulation</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="lead-1">
+                                       If you Accept the annulation of this file , it will be archived 
+                                        <br>
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary transition-hover" (click)="acceptAnnulation(x)" data-dismiss="modal" >Yes , accept</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  refuse modal-->
+                    <div class="modal fade" id="modal-defaultR" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Refuse Annulation</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="lead-1">
+                                           If you Refuse the annulation of this file , you need to write a justification 
+                                            <br>
+                                        </p>
+                                        <textarea class="form-control" [(ngModel)]="textAnnulation" placeholder="Your message" rows="5" (ngModelChange)="verif($event)"></textarea>
+                                        
+                
+                
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary transition-hover" (click)="refuseAnnulation(x)" data-dismiss="modal" [disabled]="empty">Yes , refuse</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </tbody>
+            
+        </table>
+        <div class="modal fade" id="modal-defaultTT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Verification</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p class="lead-1">
+                               Write here the reason why you refused this file : 
+                                <br>
+                            </p>
+                            <textarea class="form-control" rows="4" [(ngModel)]="textRefuse" placeholder="Textarea" (ngModelChange)="verif($event)"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-warning transition-hover" (click)="RefuseFile()" data-dismiss="modal" [disabled]="empty">Refuse this file</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    

@@ -1,0 +1,296 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.container{
+    position: relative;
+    width: 2000px;
+    height: 1000px;
+    margin: 80px auto 0;
+    
+}
+.container .box{
+    position: relative;
+    width: calc(400px - 30px);
+    height: calc(300px - 30px);
+    background: rgb(214, 201, 201);
+    float: left;
+    margin: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-sizing: 0 5px 10px rgba(0, 0, 0, 0.897);
+    cursor: pointer;
+}
+
+.container .box:before{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transform: scaleX(0);
+    opacity: 0;
+
+
+
+}
+
+.container .box:hover:before{
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.container .box:after{
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    box-sizing: border-box;
+    transition: 0.5s;
+    transform: scaleY(0);
+    opacity: 0;
+    z-index: 1;
+
+
+
+}
+
+.container .box:hover:after{
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.container .box .imgBox{
+
+    position: relative;
+
+}
+.container .box .imgBox img{
+
+    width: 100%;
+    transition: 0.5s;
+}
+
+.container .box:hover .imgBox img{
+    opacity: .2;
+    transform: scale(1.2);
+}
+
+.container .box .content{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+.container .box .content h2{ 
+    margin: 0;
+    padding: 0 ;
+    color: #fff;
+    transition: 0.5s;
+    transform: translateY(-50px);
+    opacity: 0;
+    visibility: hidden;
+}
+.container .box .content p{ 
+    margin: 0;
+    padding: 0 ;
+    color: #fff;
+    transition: 0.5s;
+    transform: translateY(-50px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.container .box:hover .content h2,
+.container .box:hover .content p
+{ 
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+  transition-delay: 0.2s;
+}
+
+.pointerCursor{
+    cursor: pointer;
+}
+* {
+    box-sizing: border-box;
+  }
+  
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 12px;
+    display: inline-block;
+    text-align: right;
+    
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+  
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+    padding-right: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #87CEFA;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #87CEFA;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+}
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button1:hover {
+  background-color: #555555;
+  color: white;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#f5f5f5;}
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }

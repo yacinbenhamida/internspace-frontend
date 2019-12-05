@@ -4,6 +4,10 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FypTemplate } from '../../models/fyp/fyp-template';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
+import { FypCategory } from 'src/app/models/fyp/fyp-category';
+import { FypFileModification } from 'src/app/models/fyp/fyp-modification';
+import { catchError } from 'rxjs/operators';
+import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +16,7 @@ export class TeacherServiceService {
 
   
   // Base url
-  baseurl = '/api/template';
+  baseurl = '/api/teachers';
 
   constructor(private http: HttpClient) { }
 
@@ -29,37 +33,49 @@ export class TeacherServiceService {
   };
 
   // POST
-  AddFypCategory(data: FypTemplate): Observable<FypTemplate> {
-    return this.http.post<FypTemplate>(this.baseurl + '/create/' + data.templateName, JSON.stringify(data), this.httpOptions);
+  AddFypCategory(name: string,data:FypCategory): Observable<FypCategory> {
+    return this.http.post<FypCategory>(this.baseurl+'/add?name='+ name, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
-  GetFypTemplatesForEditor(editorId: number): Observable<FypTemplate[]> {
-    const params = new HttpParams().set('editorId', editorId.toString());
+  GetPrevalidatedFyp(TeacherId: number): Observable<FypFile[]> {
+    //const params = new HttpParams().set('', TeacherId.toString());
 
-    return this.http.get<FypTemplate[]>(this.baseurl + '/editor/all', { headers: this.headers, params: params });
+    return this.http.get<FypFile[]>(this.baseurl + '/pre_valid/'+TeacherId, { headers: this.headers, });
   }
+   // GET
+   GetSupervisedFyp(TeacherId: number): Observable<FypFile[]> {
+    //const params = new HttpParams().set('', TeacherId.toString());
 
-  // GET
-  UpdateTemplateElement(element: FypTemplateElement): Observable<Object> {
-
-    const params = new HttpParams()
-      .set('id', element.id.toString())
-      .set('h', element.height.toString())
-      .set('w', element.weight.toString())
-      .set('x', element.x_coord.toString())
-      .set('y', element.y_coord.toString());
-
-    return this.http.get<Object>(this.baseurl + '/update/element', { headers: this.headers, params: params });
+    return this.http.get<FypFile[]>(this.baseurl + '/supervised/'+TeacherId, { headers: this.headers, });
   }
+  //GET
+  GetFYPFILEPending():Observable<FypFile[]>{
+    return this.http.get<FypFile[]>(this.baseurl +'/pending', { headers: this.headers});
 
-  // GET
-  GetSimilarFypFileByName(name: string): Observable<FypFile[]> {
-    const params = new HttpParams()
-      .set('name', name)
-      .set('n', '10')
-      .set('like', 'true');
-
-    return this.http.get<FypFile[]>(this.baseurl + '/find-file/name', { headers: this.headers, params: params });
   }
+    //GET
+    GetFYPFIemodifications():Observable<FypFileModification[]>{
+      return this.http.get<FypFileModification[]>(this.baseurl +'/allfypMod', { headers: this.headers});
+  
+    }
+  //PUT
+  PrevalidateFypFile(id:number){
+    this.http.put(this.baseurl+'/prevalidate/'+id,{headers: this.headers});
+    console.log("okay");
+  }
+  //PUT
+  approveMajorModification(id:number,id2:number):Observable<FypFileModification>
+  {
+    return this.http.put<FypFileModification>(this.baseurl +'/edit/'+id+'/'+id2,{headers: this.headers});
+    console.log("okay");
+
+  }
+  //GET
+  Getprotractoredfypfiles(id:number):Observable<FypFile[]>
+  {
+    return this.http.get<FypFile[]>(this.baseurl+'/pr/'+id,{headers:this.headers});
+  }
+  
+
 }

@@ -1,0 +1,38 @@
+<br>
+<br>
+<br>
+<br>
+
+    <br>
+          
+  
+    <br>
+    <ul>
+            <li><a class="active" [routerLink]="['/student/inter']">Intership Convention</a></li>
+            <li><a [routerLink]="['/fyp/create']">FypPFE</a></li>
+            <router-outlet></router-outlet>
+            <li><a href="#contact">Reclamation</a></li>
+            <li><a [routerLink]="['/student/skills']">Subject</a></li>
+  </ul>
+ <br>
+<h2  style="padding-left: 100px;">View List Of Subject </h2>
+<div class="container">
+
+<table>
+        <tr>
+          <th>title</th>
+          <th>content</th>
+          <th>maxApplicants</th>
+          <th>country</th>
+        </tr>
+        <tr  *ngFor="let x of AllfypSubject">
+          <td> {{x.title}}</td>
+          <td>{{x.content}}</td>
+          <td>{{x.maxApplicants}}</td>
+          <td>{{x.country}}</td>
+
+        </tr>
+        
+      </table>
+
+</div>

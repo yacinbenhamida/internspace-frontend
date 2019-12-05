@@ -1,0 +1,53 @@
+<br><br>
+<div class="row justify-content-lg-center">
+                
+    <div class="media pr-lg-5">
+        
+        <div class="media-body">
+            <h3 class="h5 mt-0 mb-2 text-primary">Late students list</h3>
+            <p class="mb-4"> here you can find the students that doesnt create their sheets.. </p>
+            <a routerLink="/internshipDirector/lateStudents" class="btn btn-primary btn-pill btn-sm transition-hover pr-3 pl-4" >Show me <span class="fas fa-angle-right align-middle ml-2"></span></a>
+        </div>
+    </div>
+    <h2>OR</h2>
+    <div class="col-md-6 col-lg-5 mb-7">
+        <div class="media pl-lg-5">
+           
+            <div class="media-body">
+                <h3 class="h5 mt-0 mb-2 text-primary">you want to disable the account of an student ?</h3>
+                <p class="mb-4"> here u can do that </p>
+                <a href="/internshipDirector/AccountManagement" class="btn btn-primary btn-pill btn-sm transition-hover pr-3 pl-4" >Go for it<span class="fas fa-angle-right align-middle ml-2"></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+  <br><br>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Carte identité</th>
+        <th>submited report</th>
+        <th>Final year project file</th>
+        <th>authorized to pass a Project</th>
+        <th>account disabled</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of students">
+        <td>{{x.id}}</td>
+        <td>{{x.firstName}}</td>
+        <td>{{x.lastName}}</td>
+        <td>{{x.cin}}</td>
+        <td>{{x.hasSubmittedAReport}}</td>
+        <td>{{x.isCreated}}</td>
+        <td>{{x.isAutorised}}</td>
+        <td>{{x.isDisabled}}</td>
+      </tr>
+    </tbody>
+    </table>
+    </div>

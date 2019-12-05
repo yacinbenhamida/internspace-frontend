@@ -1,0 +1,37 @@
+<br><br>
+<div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-9 text-center mb-8">
+              
+                <form class="input-round" novalidate="novalidate" >
+                    <div class="form-group input-group shadow-sm bg-white">
+                                    <input [(ngModel)]="searchInput" type="text"  class="form-control height-inherit pl-4" placeholder="Type to search" [ngModelOptions]="{standalone: true}">
+                        <div class="input-group-append p-2">
+                            <button (click)="ClickHandler()"class="btn btn-primary"  type="button">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+           
+        </div>
+
+        
+    </div>
+    <div *ngIf="results.length>0; else empty">
+        <app-tabel [tab]="results"></app-tabel>
+    </div>
+
+    <ng-template #empty>
+            <div class="container" *ngIf="clicked">
+
+                    <!-- Info -->
+                    <div class="info" >
+                        <h1>Opps! <br>You have some <br>problems</h1>
+                        <p>The country that you entered ,is unavailable.</p>
+                    </div>
+           
+                </div>
+            
+            <app-tabel [tab]="allFYPFiles"></app-tabel>
+    </ng-template>

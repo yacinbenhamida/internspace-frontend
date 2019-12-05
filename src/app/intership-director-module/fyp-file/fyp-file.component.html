@@ -1,55 +1,80 @@
-<div class="navBar">
-<h6 (click)="CritHandler('cin')">CIN</h6>
-<h6 (click)="CritHandler('year')">YEAR</h6>     
-<h5>Fiche PFE</h5>
-<h6 (click)="CritHandler('State')">FILE STATE</h6> 
-<h6 (click)="CritHandler('Country')">COUNTRY</h6>  
+<br><br>
+ <div class="row justify-content-lg-center">
+                
+        <div class="media pr-lg-5">
+            
+            <div class="media-body">
+                <h3 class="h5 mt-0 mb-2 text-primary">Manage the files of the final year projects</h3>
+                
+                <a routerLink="/internshipDirector/FypFileManagment" class="btn btn-primary btn-pill btn-sm transition-hover pr-3 pl-4"> Go to File management <span class="fas fa-angle-right align-middle ml-2"></span></a>
+            </div>
+        </div>
+
 </div>
-<div>
+<h1 class="divider mt-8">INTERNSHIPS THAT ARE PROGRESSING NOW</h1>
+<br>
+<agm-map [latitude]="centerLat" [longitude]="canterLng">
+    <agm-marker *ngFor="let x of myRes" [latitude]="x.cords.latitude" [longitude]="x.cords.longitude" (markerClick)="openWindow(x,x,infoWindow)" >
+        
+        <agm-info-window [disableAutoPan]="true" #infoWindow >
+
+            <div>
+                <h3></h3>
+            </div>
+            <div class="col-md-6">
+                    <div class="media">
+                        <div class="w-60px mr-4">
+                            <i class="fas fa-user fs-45"></i>
+                        </div>
+                        <div class="media-body">
+                            
+                            <h3 class="h5 mt-0 mb-2 " >{{selectedUser.firstName}} {{selectedUser.lastName}}</h3>
+                            <b>{{selectedUser.studyClass.name}}</b><br>
+                            <i class="fas fa-id-card text-primary fa-sm"></i><p class="mb-1">{{selectedUser.cin}} </p>
+                                <i class="fas fa-user-graduate text-primary fa-sm"></i><p>{{selectedUser.userType}} </p>
+                            
+                            <i class="fas fa-paper-plane text-primary fa-sm"></i><p>{{selectedUser.email}}</p>
+                            <br>
+                            <p><b>Company : </b>{{selectedUser.fypFile.subject.company.name}}</p>
+                        </div>
+                    </div>
+                    
+                    <a [routerLink]="['/internshipDirector/studentProfile',selectedUser.cin]"><button type="button" class="btn btn-link mb-4">View profile</button></a>
+                </div>
+
+        </agm-info-window>
+    </agm-marker>
+  </agm-map>
+
+
+<h1 class="divider mt-8">All The Final Year Project File</h1>
+<br>
 <table class="table table-hover">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>FileStatus</th>
-            <th>FinalMark</th>
-            <th>IsArchived</th>
-            <th>IsCanceled</th>
-            <th>IsConfirmed</th>
-            <th>IsPrevalidated</th>
-            <th>Problematic</th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let x of allFYPFiles , let i = index">
-        <tr>
-            <th scope="row">{{i+1}}</th>
-            <td>{{x.title}}</td>
-            <td>{{x.description}}</td>
-            <td>{{x.fileStatus}}</td>
-            <td>{{x.finalMark}}</td>
-            <td>{{x.isArchived}}</td>
-            <td>{{x.isCanceled}}</td>
-            <td>{{x.isConfirmed}}</td>
-            <td>{{x.isPrevalidated}}</td>
-            <td>{{x.problematic}}</td>
-        </tr>
-    </tbody>
-</table>
-
-<div class="byCIN">
- by CIN
-</div>
-
-<div class="byCIN">
-    by year
-</div>
-
-<div class="byCIN">
-    by State
-</div>
-
-<div class="byCIN">
-    by country
-</div>
-</div>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>FileStatus</th>
+                <th>FinalMark</th>
+                <th>Archived</th>
+                <th>Canceled</th>
+                <th>Confirmed</th>
+                <th>Prevalidated</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let x of allFYPFiles , let i = index">
+            <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{x.title}}</td>
+                <td>{{x.description}}</td>
+                <td>{{x.fileStatus}}</td>
+                <td>{{x.finalMark}}</td>
+                <td>{{x.isArchived}}</td>
+                <td>{{x.isCanceled}}</td>
+                <td>{{x.isConfirmed}}</td>
+                <td>{{x.isPrevalidated}}</td>
+                
+            </tr>
+        </tbody>
+    </table>

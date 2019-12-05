@@ -1,0 +1,36 @@
+<br><br>
+<div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-9 text-center mb-8">
+              
+               
+                    <div class="form-group input-group shadow-sm bg-white">
+                            <select name="input" (change)=" ClickHandler($event.target.value)" class="form-control" placeholder="Select input" id="inputPT">
+                                    <option  *ngFor="let x of option2">{{x}}</option>
+                                    </select>
+                    
+                    </div>
+         
+            </div>
+
+           
+        </div>
+
+        
+    </div>
+    <div *ngIf="selectedFYPFiles.length>0; else empty">
+                <app-tabel [tab]="selectedFYPFiles"></app-tabel>
+            </div>
+    <ng-template #empty>
+                <div class="container" *ngIf="clicked">
+    
+                        <!-- Info -->
+                        <div class="info" >
+                            <h1>Opps! <br>there is no files <br>with this state</h1>
+                           
+                        </div>
+               
+                    </div>
+                
+                <app-tabel [tab]="allFYPFiles"></app-tabel>
+        </ng-template>

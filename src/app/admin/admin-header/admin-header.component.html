@@ -1,0 +1,103 @@
+<!--Header-->
+<div *ngIf="auth.currentUserValue.role == 'admin' || auth.currentUserValue.role == 'superAdmin' ">
+<div class="sticky-wrapper sticky-wrapper-transparent sticky-wrapper-effect-1 sticky-wrapper-border-bottom d-none d-lg-block d-xl-none" data-plugin-sticky data-plugin-options="{'minWidth': 0, 'stickyStartEffectAt': 100, 'padding': {'top': 0}}">
+    <div class="sticky-body">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-9">
+                    <div class="py-4">
+                        <a href="index-2.html">
+                            <img class="ml-2" alt="Vertex" width="82" height="40" data-change-src="assets/img/logo.png" src="assets/img/logo.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-3 text-right">
+                    <button class="hamburguer-btn hamburguer-btn-light hamburguer-btn-sticky-dark" data-set-active="false">
+                        <span class="hamburguer">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header id="header" class="side-header d-flex">
+    <div class="header-body">
+        <div class="header-container container d-flex h-100">
+            <div class="header-column flex-row flex-lg-column justify-content-center h-100">
+                <div class="header-row flex-row justify-content-start justify-content-lg-center py-lg-5">
+                    <div class="header-logo">
+                        <a routerLink="/admin">
+                            <img alt="Vertex" width="140" height="35" src="assets/img/logo.png">
+                        </a>
+                    </div>
+                </div>
+                <div class="header-row header-row-side-header flex-row h-100 pb-lg-5">
+                    <div class="header-nav header-nav-links header-nav-links-side-header header-nav-links-vertical header-nav-links-vertical-columns align-self-center">
+                        <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders">
+                            <nav class="collapse">
+                                <!-- admin nabar components -->
+                                <ul *ngIf="auth.currentUserValue.role == 'admin'" class="nav nav-pills" id="mainNav">
+                                    <li >
+                                        <a class="dropdown-item dropdown-toggle active" href="#">
+                                            Home
+                                        </a>
+                                        <a class="dropdown-item" routerLink="/pay" href="#"><i class="icon-arrange-4-1 menu-icon"></i> payment</a>
+                                    </li>
+                                    <li class="dropdown">
+                                   
+                                        <a class="dropdown-item dropdown-toggle" href="#">
+                                            <i class="icon-list-1 menu-icon"></i> Schools
+                                        </a>
+                                        
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="index-2.html"><i class="icon-list-1 menu-icon"></i>Schools</a></li>
+                                            <li><a class="dropdown-item current" href="index-3.html"><i class="icon-list-1 menu-icon"></i>sites</a></li>
+                                            <li><a class="dropdown-item" routerLink="/admin/departments"><i class="icon-list-1 menu-icon"></i>Departments</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#">
+                                            <i class="icon-list-1 menu-icon"></i>   Classes
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="index-2.html"><i class="icon-list-1 menu-icon"></i>Classes</a></li>
+                                            <li><a class="dropdown-item current" href="index-3.html"><i class="icon-list-1 menu-icon"></i>Class options</a></li>
+                                            <li><a class="dropdown-item" href="index-4.html"><i class="icon-list-1 menu-icon"></i>Universitary years</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a class="dropdown-item dropdown-toggle" href="#">
+                                            <i class="icon-list-1 menu-icon"></i> Staff
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="portfolio/agency.html"><i class="icon-list-1 menu-icon"></i>Students</a></li>
+                                            <li><a class="dropdown-item" href="portfolio/mosaic-projects.html"><i class="icon-list-1 menu-icon"></i>Working staff</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-row justify-content-end pb-lg-3">
+                    <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean d-sm-0">
+                        <li>
+                                <a (click)="logoutAction()" class="social-facebook m-0 transition-hover" href="#"><i class="fas fa-sign-out-alt"></i></a>
+                            </li>
+                        </ul>
+                    <p class="d-none d-lg-block fs-15 pt-3 text-center">© 2019 DeepCode</p>
+                    <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</div>
+<!--End Header-->

@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/assets/vendor/bootstrap/css/bootstrap.css",
               "src/assets/vendor/font-awesome/css/all.min.css",
               "src/assets/vendor/font-awesome/css/fontawesome.min.css",
@@ -52,6 +53,7 @@
               "src/assets/js/page.js",
               "src/assets/js/script.js",
               "src/assets/js/custom.js",
+              "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js"
             ]
           },
