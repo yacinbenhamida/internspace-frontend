@@ -101,7 +101,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     FYPDefenseComponent,
     DefenseCalendarComponent,
     UniversityFormComponent,
-    UploadFileComponent
+    UploadFileComponent,
     PerTypeSearchComponent,
     TabelComponent,
     StudentManagementComponent,
@@ -129,27 +129,18 @@ import { FileUploadModule } from 'ng2-file-upload';
 
     StudentProfileComponent,
     AccountManagementComponent,
-
     FypFilesModificationComponent,
     PFECategoryComponent,
     PFECategoryDetailsComponent,
-    SuggestedCategoriesComponent,
-    
-    PayPalComponent,
-    
-    FypPfeUpdateComponent,
-    
+    SuggestedCategoriesComponent,   
+    PayPalComponent,   
+    FypPfeUpdateComponent,   
     FypPFEComponent,
     MaxActionNumberOfTeacherPerDepartmentComponent,
     DepartmentProfileComponent,
-
     PayPalComponent,
-    
     FypfileEditActorsComponent,
-    
-    AdminDepartmentsComponent
-    
-
+    AdminDepartmentsComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

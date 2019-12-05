@@ -12,7 +12,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './services/security/authguard.service';
 import { FypCategorieComponent } from './fyp-categorie/fyp-categorie.component';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
-import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
 import { UniversityComponent } from './university/university.component';
 import { SiteComponent } from './site/site.component';
 import { FYPDefenseComponent } from './fypdefense/fypdefense.component';
