@@ -12,6 +12,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './services/security/authguard.service';
 import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
+import { UniversityComponent } from './university/university.component';
+import { SiteComponent } from './site/site.component';
+import { FYPDefenseComponent } from './fypdefense/fypdefense.component';
+import { DefenseCalendarComponent } from './defense-calendar/defense-calendar.component';
+import { UniversityFormComponent } from './university-form/university-form.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
 
 const routes: Routes = [
@@ -22,6 +28,13 @@ const routes: Routes = [
   {path: 'fypConvention', component: FypConventionComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: 'uniDash', component: UniversityStatsComponent},
+  {path: 'upload', component: UploadFileComponent},
+  {path: 'university', component: UniversityComponent},
+  {path: 'university/update/:id', component: UniversityFormComponent},
+  {path: 'university/update', component: UniversityFormComponent},
+  {path: 'site', component: SiteComponent},
+  {path: 'defenseCalendar', component: DefenseCalendarComponent},
+  {path: 'fypDefense', component: FYPDefenseComponent},
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent},
   {path: '404', component: NotfoundComponent},

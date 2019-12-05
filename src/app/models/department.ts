@@ -5,4 +5,6 @@ export class Department{
     numberOfActionsAllowedForPresidents: number
     numberOfActionsAllowedForProtractors: number
     numberOfActionsAllowedForSupervisors: number
+
+    
 }

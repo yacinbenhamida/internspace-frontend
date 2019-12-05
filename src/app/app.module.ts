@@ -23,7 +23,17 @@ import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
 import { FypfileHistoryComponent } from './fypfile-history/fypfile-history.component';
 import { DataTablesModule } from 'angular-datatables';
+import { UniversityComponent } from './university/university.component';
+import { SiteComponent } from './site/site.component';
+import { DepartmentComponent } from './department/department.component';
+import { FYPDefenseComponent } from './fypdefense/fypdefense.component';
+import { DefenseCalendarComponent } from './defense-calendar/defense-calendar.component';
+import { UniversityFormComponent } from './university-form/university-form.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -37,7 +47,14 @@ import { DataTablesModule } from 'angular-datatables';
     ProfileComponent,
     FypFileComponent,
     FypConventionComponent,
-    FypfileHistoryComponent
+    FypfileHistoryComponent,
+    UniversityComponent,
+    SiteComponent,
+    DepartmentComponent,
+    FYPDefenseComponent,
+    DefenseCalendarComponent,
+    UniversityFormComponent,
+    UploadFileComponent
 
   ],
   imports: [
@@ -49,7 +66,9 @@ import { DataTablesModule } from 'angular-datatables';
     AdminModule,
     FypTemplateModule,
     DashboardModule,
-    DataTablesModule
+    DataTablesModule,
+    FileUploadModule,
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration)
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]

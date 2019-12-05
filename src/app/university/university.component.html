@@ -1,0 +1,27 @@
+<main class="main-content">
+    <section class="pt-2">
+        <div class="container">
+            <div class="row gap-y">
+                <div class="col-12 col-lg-4 uikit-example" *ngFor="let u of universities; trackBy: trackByFunction">
+                    <div class="card d-block">
+                        <div class="card-img-top">
+                            <img src="{{u.logoUrl}}" class="w-100" alt="Card image cap">
+
+                        </div>
+                        <div class="card-body p-5">
+                            <h5 class="card-title">{{u.name}}</h5>
+                            <ul>
+                                <li>Owner : {{u.owner}}</li>
+                                <li>Location : {{u.location}}</li>
+                                <li>Final Year Project Class Year : {{u.fypClassYear}}</li>
+                            </ul>
+                            <button [routerLink]="['/university/update', u.id]" (click)="searchUniversity(u)"  type="button" class="btn btn-primary mb-2">Update</button>
+                            <button (click)="deleteUniversity(u)"  type="button" class="btn btn-danger mb-2">Delete</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
