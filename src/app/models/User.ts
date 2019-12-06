@@ -2,6 +2,7 @@ import { FypCategory } from './fyp/fyp-category';
 import { Department } from "./department"
 import { FypFile } from "./fyp/fyp-file"
 import { StudyClass } from './studyClass';
+import { FypIntervention } from './fyp/fyp-intervention';
 
 export class User{
 
@@ -30,6 +31,7 @@ export class User{
     // password: string;
     fypFile: FypFile;
     preferedCategories: FypCategory[];
+    interventions : FypIntervention[] = []
     constructor(){
         
     }

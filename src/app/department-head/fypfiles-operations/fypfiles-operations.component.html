@@ -59,53 +59,7 @@
                         </div>
                     </div>       
             </div>
-            <!--<div class="accordion" id="accordionExample">
-                    <div class="card mb-3">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collpaseTwo" aria-expanded="true" aria-controls="collpaseTwo">
-                                    FYP Sheets confirmed but not yet supervised
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collpaseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                                    <div class="uikit-example">
-                                        <table datatable [dtOptions]="pendingSheetsOptions" [dtTrigger]="pendingSheetsTrigger"  class="row-border hover">
-                                            <thead>
-                                                <tr>
-                                                  <th>#</th>
-                                                  <th>title</th>
-                                                  <th>description</th>
-                                                  <th >status</th>
-                                                  <th></th>
-                                                </tr>
-                                              </thead>
-                                              <tbody>
-                                                <tr *ngFor="let file of pendingSheets;let i = index">
-                                                  <td>{{ i+1 }}</td>
-                                                  <td>{{file.title}}</td>
-                                                  <td>{{file.description}}</td>
-                                                  <td><div class="progress" style="width: 10rem;">
-                                                        <div class="progress-bar" role="progressbar" [ngStyle]="determineAdvancement(file,css)" aria-valuenow="determineAdvancement(file,int)" aria-valuemin="0" aria-valuemax="100">{{parseState(file)}}</div>
-                                                    </div></td>
-                                                  <td><button type="button" (click)="affectSupervisor(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-fix">fix</button>
-                                                  </td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                     </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-</div>
-</div>
-</main>
-</div>
--->
 <!-- Modal assign - Large -->
-
 <div class="modal fade" id="modal-assign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-long" role="document">
             <div class="modal-content">
@@ -167,12 +121,13 @@
             </div>
         </div>
 </div>
+<!-- Modal assign - Large  end -->
 
 
 
-<!-- Modal fix - Large -->
 
 
+<!-- Modal show - Large -->
 <div class="modal fade" id="modal-large" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -183,15 +138,19 @@
                     <!--content-->
                     <div class="col-md-12 v-icon-box-grid" data-columns="2" data-colour="dark">
                             <div class="spb_icon_box col-sm-12">
-                                <a class="box-link" href="#" target="_self"></a>
                                 <div class="v-icon-box-content-wrap clearfix">
                                     <div class="v-icon-box-inner-wrap clearfix">
                                         <div class="grid-icon-wrap clearfix">
-                                            <a>
-                                                <div class="v-svg-icon-holder v-svg-icon-animate">
-                                                    <img src="assets/img/svg/book.svg">
-                                                </div>
+                                            <a *ngIf="statusData.reporter && statusData.reporter.givenMark == 0" class="edit" data-toggle="modal" data-target="#modal-edit" (click)="editAssigning(statusData.reporter)">
+                                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                        <img src="assets/img/svg/book.svg">
+                                                    </div>
                                             </a>
+                                            <div *ngIf="!statusData.reporter || statusData.reporter.givenMark > 0" >
+                                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                    <img src="assets/img/svg/book.svg">
+                                            </div>
+                                            </div>
                                         </div>
                                         <div class="divider-line"></div>
                                         <h6 *ngIf="statusData.reporter">
@@ -207,8 +166,16 @@
                                 <div class="v-icon-box-content-wrap clearfix">
                                     <div class="v-icon-box-inner-wrap clearfix">
                                         <div class="grid-icon-wrap clearfix">
+                                            <a *ngIf="statusData.preValidator" class="edit" data-toggle="modal" data-target="#modal-edit" (click)="editAssigning(statusData.preValidator)">
                                             <div class="v-svg-icon-holder v-svg-icon-animate">
                                                     <img src="assets/img/svg/file.svg">
+                                            </div>
+                                            </a>
+
+                                            <div *ngIf="!statusData.preValidator">
+                                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                            <img src="assets/img/svg/file.svg">
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="divider-line"></div>
@@ -222,14 +189,21 @@
                                 <div class="v-icon-box-content-wrap clearfix">
                                     <div class="v-icon-box-inner-wrap clearfix">
                                         <div class="grid-icon-wrap clearfix">
+                                        <a *ngIf="statusData.supervisor" class="edit" data-toggle="modal" data-target="#modal-edit" (click)="editAssigning(statusData.supervisor)">
                                             <div class="v-svg-icon-holder v-svg-icon-animate">
                                                 <img src="assets/img/svg/customer-service.svg">
                                             </div>
+                                        </a>
+                                        <div *ngIf="!statusData.supervisor">
+                                                <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                        <img src="assets/img/svg/customer-service.svg">
+                                                    </div>
+                                        </div>
                                         </div>
                                         <div class="divider-line"></div>
                                         <h6  *ngIf="statusData.supervisor">Supervised by {{statusData.supervisor.teacher.firstName}} {{statusData.supervisor.teacher.lastName}}  </h6>
                                         <h6  *ngIf="!statusData.supervisor">Dosen't have a supervisor yet. </h6>
-
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -237,8 +211,15 @@
                                 <div class="v-icon-box-content-wrap clearfix">
                                     <div class="v-icon-box-inner-wrap clearfix">
                                         <div class="grid-icon-wrap clearfix">
+                                            <a *ngIf="statusData.juryPresident" class="edit" data-toggle="modal" data-target="#modal-edit" (click)="editAssigning(statusData.juryPresident)">
                                             <div class="v-svg-icon-holder v-svg-icon-animate">
                                                     <img src="assets/img/svg/document.svg">
+                                            </div>
+                                            </a>
+                                            <div *ngIf="!statusData.juryPresident">
+                                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                            <img src="assets/img/svg/document.svg">
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="divider-line"></div>
@@ -270,6 +251,47 @@
                 </div>
             </div>
         </div>
-    </div>
+</div>
+<!--modal show end -->
+
+<!-- Modal edit - Large -->
+<div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-long" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                            <div class="container">
+                                <header class="mb-6">
+                                    <h2>Edit the teacher </h2>
+                                    <hr>
+                                    <p class="lead-1" *ngIf="interventionToBeEdit">Edit the teacher {{interventionToBeEdit.teacher.firstName}} {{interventionToBeEdit.teacher.lastName}}</p>
+                                </header>
+
+                                <div class="row gap-y">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>You will edit the {{newRole}} of this sheet.</label>        
+                                        </div>                   
+                                        <div >
+                                            <div *ngIf="interventionToBeEdit" class="form-group">
+                                                <label>Teacher</label>
+                                                <select [compareWith]="compareFn"  name="edition" [(ngModel)]="interventionToBeEdit.teacher"  class="form-control form-control-sm"> 
+                                                        <option  *ngFor="let t of teachersList" [ngValue]="t" >{{t.firstName}} {{t.lastName}}</option>                                                         
+                                                </select>
+                                            </div>
+                                        </div>                                     
+                                </div> 
+                            </div> 
+                        </div>                         
+                        </section>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" (click)="cancelTeacherAssign()" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" (click)="editTeacherRole()" class="btn btn-primary transition-hover">Save changes</button>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- Modal edit - Large  end -->
 
 

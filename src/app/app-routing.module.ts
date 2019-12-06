@@ -52,6 +52,7 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+import { TeachersComponent } from './department-head/teachers/teachers.component';
 
 
 
@@ -108,7 +109,7 @@ const routes: Routes = [
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent},
   { path: 'create-category', component: FypCategorieComponent },
- { path: 'pay', component: PayPalComponent},
+ { path: 'admin/pay', component: PayPalComponent},
   {path: 'internshipDirector', component: FypFileComponent}, 
   {path : 'fypfile/history', component : FypfileHistoryComponent, 
   canActivate: [RoleGuard], 
@@ -124,6 +125,10 @@ const routes: Routes = [
     expectedRole: 'departmentHead'
   }},
   {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'departmentHead'
+  }},
+  {path : 'dptteachers', component : TeachersComponent, canActivate: [RoleGuard], 
   data: { 
     expectedRole: 'departmentHead'
   }},
