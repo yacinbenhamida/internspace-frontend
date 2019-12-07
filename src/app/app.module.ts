@@ -65,6 +65,13 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+import { ReclamationComponent } from './Student/reclamation/reclamation.component';
+import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
+
+
+
+
+
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
@@ -73,7 +80,7 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { UserItemComponent } from './chat/user-item/user-item.component';
 import { UserListComponent } from './chat/user-list/user-list.component';
 import { ChatFormComponent } from './chat/chat-form/chat-form.component';
@@ -81,6 +88,8 @@ import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 import { FeedComponent } from './chat/feed/feed.component';
 import { MessageComponent } from './chat/message/message.component';
 import { environment } from 'src/environments/environment';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,6 +146,10 @@ import { environment } from 'src/environments/environment';
     DepartmentProfileComponent,
     PayPalComponent,
     FypfileEditActorsComponent,
+    
+    ReclamationComponent,
+    
+    FypFileDetailsComponent,
     AdminDepartmentsComponent,
     TeachersComponent,
     UserItemComponent,
@@ -145,7 +158,7 @@ import { environment } from 'src/environments/environment';
     ChatroomComponent,
     FeedComponent,
     MessageComponent,
-   
+    CompanyProfileComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

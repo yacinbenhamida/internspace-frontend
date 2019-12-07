@@ -1,3 +1,4 @@
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { UniversityStatsComponent } from './dashboard/university-stats/university-stats.component';
 import { FypTemplateManagementComponent } from './fyp-template/fyp-template-management/fyp-template-management.component';
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
@@ -52,38 +53,41 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+import { ReclamationComponent } from './Student/reclamation/reclamation.component';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
 import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 
+import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 
 
 
 
 
 /**
- * for admin & superAdmin routes please register them below with the prefix 
+ * for admin & superAdmin routes please register them below with the prefix
  * /admin/* to ensure the use of the second header layout
  */
 
 const routes: Routes = [
   {path : '', component : HomepageComponent},
   // start of administration components
-  {path : 'admin', component : AdminHomepageComponent, 
-    canActivate: [RoleGuard], 
-    data: { 
+  {path : 'admin', component : AdminHomepageComponent,
+    canActivate: [RoleGuard],
+    data: {
       expectedRole: 'admin'
-    } 
+    }
   },
-  {path : 'admin/departments', component : AdminDepartmentsComponent, 
-    canActivate: [RoleGuard], 
-    data: { 
+  {path : 'admin/departments', component : AdminDepartmentsComponent,
+    canActivate: [RoleGuard],
+    data: {
       expectedRole: 'admin'
-    } 
+    }
   },
   // end administration components
   // start of login,profiles  and registration
   {path : 'login', component : AuthenticationComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
+  {path: 'company-profile', component: CompanyProfileComponent, canActivate : [AuthGuard]},
   // end login and registration
   {path: 'fypTemplate', component: FypTemplateManagementComponent},
   {path: 'fypConvention', component: FypConventionComponent},
@@ -92,12 +96,17 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent},
+  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'Student'
+  } },
   {path: 'fyp/update/:id', component: FypPfeUpdateComponent},
   {path: 'fyp/delete/:id', component: FypPFECreateComponent},
   {path: 'student/fypfile', component : IntershipCreateComponent},
   {path: 'student/skills', component: PFECategoryComponent},
   {path: 'student/skills/find/:id', component: PFECategoryDetailsComponent},
+  {path: 'student/reclamation', component: ReclamationComponent},
+  {path: 'student/up', component : IntershipUpdateComponent},
   //
   {path: 'uniDash', component: UniversityStatsComponent},
   {path: 'upload', component: UploadFileComponent},
@@ -111,80 +120,79 @@ const routes: Routes = [
   {path : 'fypfile/history', component : FypfileHistoryComponent},
   { path: 'create-category', component: FypCategorieComponent },
  { path: 'admin/pay', component: PayPalComponent},
-  {path: 'internshipDirector', component: FypFileComponent}, 
-  {path : 'fypfile/history', component : FypfileHistoryComponent, 
-  canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector', component: FypFileComponent},
+  {path : 'fypfile/history', component : FypfileHistoryComponent,
+  canActivate: [RoleGuard],
+  data: {
     expectedRole: 'departmentHead'
   } },
-  {path : 'fypfile/tracking', component : FypfilesOperationsComponent,  canActivate: [RoleGuard], 
-  data: { 
+  {path : 'fypfile/tracking', component : FypfilesOperationsComponent,  canActivate: [RoleGuard],
+  data: {
     expectedRole: 'departmentHead'
   }},
-  {path : 'categories/suggestions', component : SuggestedCategoriesComponent,  canActivate: [RoleGuard], 
-  data: { 
+  {path : 'categories/suggestions', component : SuggestedCategoriesComponent,  canActivate: [RoleGuard],
+  data: {
     expectedRole: 'departmentHead'
   }},
-  {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate: [RoleGuard], 
-  data: { 
+  {path : 'notifications/history', component : NoitificationsHistoryComponent, canActivate: [RoleGuard],
+  data: {
     expectedRole: 'departmentHead'
   }},
-  {path : 'dptteachers', component : TeachersComponent, canActivate: [RoleGuard], 
-  data: { 
+  {path : 'dptteachers', component : TeachersComponent, canActivate: [RoleGuard],
+  data: {
     expectedRole: 'departmentHead'
   }},
-  {path: 'internshipDirector/studentManagement', component: StudentManagementComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/studentManagement', component: StudentManagementComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
   {path : 'notifications/history', component : NoitificationsHistoryComponent},
-  {path : 'internshipDirector/fypFileBycategory', component : FypFileByCategoryComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path : 'internshipDirector/fypFileBycategory', component : FypFileByCategoryComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path : 'internshipDirector/fypFileByYear', component : FypFileByYearComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path : 'internshipDirector/fypFileByYear', component : FypFileByYearComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path : 'internshipDirector/fypFileByState', component : FypFileByStateComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path : 'internshipDirector/fypFileByState', component : FypFileByStateComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path : 'internshipDirector/fypFileByCountry', component : FypFileByCountryComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path : 'internshipDirector/fypFileByCountry', component : FypFileByCountryComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
   {path: 'teacherFypFiles',component:TeacherFypfilesComponent},
   {path: 'majormodif',component:FypFilesModificationComponent},
-  {path: 'internshipDirector/lateStudents',component:LateStudentListComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/lateStudents',component:LateStudentListComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/FypFileManagment',component:FypFileManagementComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path: 'internshipDirector/studentProfile/:cin',component:StudentProfileComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/studentProfile/:cin',component:StudentProfileComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path: 'internshipDirector/AccountManagement',component:AccountManagementComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/AccountManagement',component:AccountManagementComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path: 'internshipDirector/DepartmentMan',component:MaxActionNumberOfTeacherPerDepartmentComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/DepartmentMan',component:MaxActionNumberOfTeacherPerDepartmentComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
   {path: 'chat',component:ChatroomComponent,canActivate: [RoleGuard], 
   data: { 
     expectedRole: 'departmentHead'
   }},
-  {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 
