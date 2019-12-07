@@ -60,7 +60,7 @@ import { FypFileManagementComponent } from './intership-director-module/fyp-file
 
 import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
 import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
-
+import { NotifierModule } from "angular-notifier";
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
@@ -81,6 +81,7 @@ import { AdminDepartmentsComponent } from './admin/admin-departments/admin-depar
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
+
 
 @NgModule({
   declarations: [
@@ -141,11 +142,13 @@ import { FileUploadModule } from 'ng2-file-upload';
     PayPalComponent,
     FypfileEditActorsComponent,
     AdminDepartmentsComponent,
+    
   ],
   imports: [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAixiqoD1TaG9f3EQhGMKGZpZLIFVuUQYQ'
     }),
+    NotifierModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
