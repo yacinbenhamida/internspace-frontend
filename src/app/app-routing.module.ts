@@ -53,6 +53,7 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
+import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 
 
 
@@ -174,6 +175,10 @@ const routes: Routes = [
   {path: 'internshipDirector/DepartmentMan',component:MaxActionNumberOfTeacherPerDepartmentComponent,canActivate: [RoleGuard], 
   data: { 
     expectedRole: 'internshipsDirector'
+  }},
+  {path: 'chat',component:ChatroomComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'departmentHead'
   }},
   {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard], 
   data: { 

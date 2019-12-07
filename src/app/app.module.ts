@@ -70,7 +70,17 @@ import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule, AngularFireAuth } from '@angular/fire/auth';
+import { UserItemComponent } from './chat/user-item/user-item.component';
+import { UserListComponent } from './chat/user-list/user-list.component';
+import { ChatFormComponent } from './chat/chat-form/chat-form.component';
+import { ChatroomComponent } from './chat/chatroom/chatroom.component';
+import { FeedComponent } from './chat/feed/feed.component';
+import { MessageComponent } from './chat/message/message.component';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -112,10 +122,8 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
     FypPFECreateComponent,
     FypPFEUpdateComponent,
     FypfilesOperationsComponent,
-    
     LateStudentListComponent,
     FypFileManagementComponent,
-
     StudentProfileComponent,
     AccountManagementComponent,
     FypFilesModificationComponent,
@@ -131,6 +139,13 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
     FypfileEditActorsComponent,
     AdminDepartmentsComponent,
     TeachersComponent,
+    UserItemComponent,
+    UserListComponent,
+    ChatFormComponent,
+    ChatroomComponent,
+    FeedComponent,
+    MessageComponent,
+   
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -147,10 +162,11 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
     FileUploadModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration),
     BrowserAnimationsModule,
-    NgxPayPalModule
-
-
- 
+    NgxPayPalModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]
