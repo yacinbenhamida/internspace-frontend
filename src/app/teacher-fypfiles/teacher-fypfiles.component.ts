@@ -42,7 +42,7 @@ export class TeacherFypfilesComponent implements OnInit {
     if (document.querySelector('select').value=="prevalidated")
     {
       this.state=true;
-      this.restApi.GetPrevalidatedFyp(106).subscribe(files => {
+      this.restApi.GetPrevalidatedFyp(this.auth.currentUserValue.id).subscribe(files => {
         this.fypllist = files as FypFile[]});
         console.log(document.querySelector('select').value);
         console.log(this.fypllist);
@@ -50,7 +50,15 @@ export class TeacherFypfilesComponent implements OnInit {
     if (document.querySelector('select').value=="supervised")
     {
       this.state=true;
-      this.restApi.GetSupervisedFyp(35).subscribe(files => {
+      this.restApi.GetSupervisedFyp(this.auth.currentUserValue.id).subscribe(files => {
+        this.fypllist = files as FypFile[]});
+        console.log(document.querySelector('select').value);
+        console.log(this.fypllist);
+    }
+    if (document.querySelector('select').value=="protractored")
+    {
+      this.state=true;
+      this.restApi.Getprotractoredfypfiles(this.auth.currentUserValue.id).subscribe(files => {
         this.fypllist = files as FypFile[]});
         console.log(document.querySelector('select').value);
         console.log(this.fypllist);

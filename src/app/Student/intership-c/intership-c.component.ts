@@ -18,6 +18,7 @@ export class IntershipCComponent implements OnInit {
   id:number
   show:boolean=true;
   showb:boolean=true;
+  text:String="cancellation request"
 
   constructor( private fypConventionService: FypConventionService,private ar:ActivatedRoute,private router: Router) {
     
@@ -47,5 +48,13 @@ export class IntershipCComponent implements OnInit {
      
       this.router.navigate(['/create']);
   } 
+
+  demande(){
+    if(this.text == "cancellation request"){
+      
+      
+      this.text="Request sent";
+    }
+  }
 
 }

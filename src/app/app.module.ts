@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,6 +20,13 @@ import { FypFileComponent } from './intership-director-module/fyp-file/fyp-file.
 import { FypConventionComponent } from './fyp-convention/fyp-convention.component';
 import { FypfileHistoryComponent } from './department-head/fypfile-history/fypfile-history.component';
 import { DataTablesModule } from 'angular-datatables';
+import { UniversityComponent } from './university/university.component';
+import { SiteComponent } from './site/site.component';
+import { DepartmentComponent } from './department/department.component';
+import { FYPDefenseComponent } from './fypdefense/fypdefense.component';
+import { DefenseCalendarComponent } from './defense-calendar/defense-calendar.component';
+import { UniversityFormComponent } from './university-form/university-form.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
 import {PerTypeSearchComponent} from './intership-director-module/components/per-type-search/per-type-search.component';
 import {TabelComponent} from './intership-director-module/components/tabel/tabel.component';
 import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
@@ -32,28 +38,38 @@ import { FypConventionSComponent } from './Student/fyp-convention-s/fyp-conventi
 import { IntershipCComponent } from './Student/intership-c/intership-c.component';
 import { IntershipCreateComponent } from './Student/intership-create/intership-create.component';
 import { TeacherFypfilesComponent } from './teacher-fypfiles/teacher-fypfiles.component';
-
+import { NgxPayPalModule } from 'ngx-paypal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FypFileByCategoryComponent } from './intership-director-module/fyp-file-by-category/fyp-file-by-category.component';
 import { FypFileByYearComponent } from './intership-director-module/fyp-file-by-year/fyp-file-by-year.component';
 import { FypFileByStateComponent } from './intership-director-module/fyp-file-by-state/fyp-file-by-state.component';
 import { FypFileByCountryComponent } from './intership-director-module/fyp-file-by-country/fyp-file-by-country.component';
-
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 import { AdminHomepageComponent } from './admin/admin-homepage/admin-homepage.component';
-
 import { AgmCoreModule } from '@agm/core';
-
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 import { FypPFECreateComponent } from './Student/fyp-pfecreate/fyp-pfecreate.component';
 import { FypPFEUpdateComponent } from './Student/fyp-pfeupdate/fyp-pfeupdate.component';
 import { FypfilesOperationsComponent } from './department-head/fypfiles-operations/fypfiles-operations.component';
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
-
-
-
-
+import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
+import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
+import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
+import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
+import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
+import { SuggestedCategoriesComponent } from './department-head/suggested-categories/suggested-categories.component';
+import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
+import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
+import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
+import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
+import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+import { Cloudinary } from 'cloudinary-core';
+import { FileUploadModule } from 'ng2-file-upload';
+import { TeachersComponent } from './department-head/teachers/teachers.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +84,13 @@ import { FypFileManagementComponent } from './intership-director-module/fyp-file
     FypFileComponent,
     FypConventionComponent,
     FypfileHistoryComponent,
+    UniversityComponent,
+    SiteComponent,
+    DepartmentComponent,
+    FYPDefenseComponent,
+    DefenseCalendarComponent,
+    UniversityFormComponent,
+    UploadFileComponent,
     PerTypeSearchComponent,
     TabelComponent,
     StudentManagementComponent,
@@ -93,6 +116,21 @@ import { FypFileManagementComponent } from './intership-director-module/fyp-file
     LateStudentListComponent,
     FypFileManagementComponent,
 
+    StudentProfileComponent,
+    AccountManagementComponent,
+    FypFilesModificationComponent,
+    PFECategoryComponent,
+    PFECategoryDetailsComponent,
+    SuggestedCategoriesComponent,   
+    PayPalComponent,   
+    FypPfeUpdateComponent,   
+    FypPFEComponent,
+    MaxActionNumberOfTeacherPerDepartmentComponent,
+    DepartmentProfileComponent,
+    PayPalComponent,
+    FypfileEditActorsComponent,
+    AdminDepartmentsComponent,
+    TeachersComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -106,7 +144,11 @@ import { FypFileManagementComponent } from './intership-director-module/fyp-file
     FypTemplateModule,
     DashboardModule,
     DataTablesModule,
+    FileUploadModule,
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration),
     BrowserAnimationsModule,
+    NgxPayPalModule
+
 
  
   ],

@@ -1,6 +1,8 @@
 
+import { FYPSubject } from './fyp-subject';
+import { Company } from '../users/Company';
 export interface FypFile {
-  id:number;
+ id:number
   title: string;
   description: string;
   problematic: string;
@@ -10,11 +12,13 @@ export interface FypFile {
   isArchived: boolean;
   isPrevalidated: boolean;
   isConfirmed: boolean;
-
-  subject: any;
+  subject: FYPSubject;
   features: any[];
   interventions: any[];
   keywords: any[];
   categories: any[];
+ 
+
+
   
 }

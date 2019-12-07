@@ -19,6 +19,7 @@ export class FypFileManagementComponent implements OnInit {
   textAnnulation:string;
   textRefuse:string;
   chosedFYP:FypFile;
+  empty:boolean=true;
   constructor(private _internshipDirectorService : InternshipDirectorService, private auth:AuthenticationService) { }
 
 
@@ -42,7 +43,9 @@ export class FypFileManagementComponent implements OnInit {
   checkAction =(data:FypFile)=>{
     this.chosedFYP=data;
     console.log(this.chosedFYP);
-   this._internshipDirectorService.LinksOfChoosenCompany(data.subject.company.id).subscribe(data=>{this.companyLinks=data,console.log(this.companyLinks)});
+    
+    
+  this._internshipDirectorService.LinksOfChoosenCompany(data.subject.company.id.toString()).subscribe(data=>{this.companyLinks=data,console.log(this.companyLinks)});
   }
 
   OpenLinks =(link)=>{
@@ -79,6 +82,13 @@ export class FypFileManagementComponent implements OnInit {
   refuseAnnulation =() =>{
     this._internshipDirectorService.DeclineFYPFileCancellingDemande(this.chosedFYP.id.toString(),this.textAnnulation).subscribe(data=>window.location.reload(true))
 
+  }
+
+  verif=(x)=>{
+    if(x.length>=15)
+        this.empty=false;
+        else
+        this.empty=true;
   }
 
 

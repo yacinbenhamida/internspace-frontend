@@ -25,8 +25,9 @@ export class FypFileByStateComponent implements OnInit {
   FYPFiles:FypFile[];
   searchInput:string="";
   selectValue:string="";
-  
+  clicked=false;
   ClickHandler =(xx)=>{
+    this.clicked=true;
     this.selectedFYPFiles=[];
     //this._internshipDirectorService.FypFileByCategory(this.selectValue).subscribe(data=>this.FYPFiles=data);
     this.allFYPFiles.forEach((item)=>{

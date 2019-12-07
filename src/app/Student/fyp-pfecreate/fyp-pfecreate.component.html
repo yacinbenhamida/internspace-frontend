@@ -1,13 +1,29 @@
 <br>
 <br>
-<div class="container">
-        <form [formGroup]="pfeForm"> 
+
+    <br>
+          
+  
+    <br>
+    
+    <ul>
+        <li><a  [routerLink]="['/student/inter']">Intership Convention</a></li>
+        <li><a   class="active" [routerLink]="['/fyp/create']">FypPFE</a></li>
+        <router-outlet></router-outlet>
+        <li><a href="#contact">Reclamation</a></li>
+        <li><a [routerLink]="['/student/skills']">Subject</a></li>
+</ul>
+ <br>
+   <h2 style="padding-left: 100px;">{{text}}</h2>
+   <div class="container">
+     <div  *ngIf="show">
+        <form [formGroup]="pfeForm" > 
             <div class="row">
                 <div class="col-25">
                 <label for="fname">Title</label>
               </div>
               <div class="col-75">
-                <input type="text" formControlName="title" name="title" >
+                <input type="text" formControlName="title" name="title" placeholder="title ...">
               </div>
       <div *ngIf="title.touched && title.invalid">
       
@@ -19,7 +35,8 @@
           <label for="fname">description</label>
         </div>
         <div class="col-75">
-            <input type="text" formControlName="description" >
+           
+            <textarea formControlName="description" placeholder="description ..."></textarea>
             <div *ngIf="description.touched && description.invalid">
       
                 description  est obligatoire 
@@ -27,10 +44,84 @@
         </div>
     
       </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">problematic</label>
+        </div>
+        <div class="col-75">
+           
+           <textarea formControlName="problematic" placeholder="problematic ..."></textarea>
+        </div>
+    
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">  subject :</label>
+        </div>
+       <!----<li  *ngFor="let x of fYPSubject" ng-class="IsFiltered(document.Filtered)">
+          <span><input type="checkbox" name="docChecked" />{{x.title}}</span>
+          
+      </li>-->
+      <select (change)="onChange_FYPSubjectIndex($event.target.value)" class="col-75" formControlName="subject">
+       <option value="">Choose your subject</option>
+        <option *ngFor="let x of fYPSubject; let index = index;" 
+       [selected]="x == currFYPSubject" [ngValue]="x" >{{x.title}}</option>
+
+         </select>
+      <!--<select formControlName="subject"   >
+        <option *ngFor="let x of ff; let index = index;"  [value]="index"
+        [selected]="x == currFYPSubject">{{x.title}}</option>
+      </select>
+      <br>-->
+      <!--<select (change)="onChange_FYPSubjectIndex($event.target.value)" class="custom-select mr-4"
+    formControlName="subject">
+    <option value="">Choose your template</option>
+    <option *ngFor="let template of FYPSubject; let index = index;" [value]="index"
+      [selected]="template == currFYPSubject">{{template.title}}</option>
+
+           </select>-->
+      </div>
       
-       
-      <button (click)="getInfo()" > Create</button>
+       <div style="padding-left: 900px; padding-top: 50px;">
+      <button (click)="getInfo()" class="button button1" > Create</button></div>
         </form>
 </div>
+
+<div *ngIf="showPFE" >
+  <div >
+<h1>  </h1>
+
+   <p> </p>  
+   <h2></h2> 
+  
+   
+  </div>
+  <table>
+      <tr>
+        <th>Title</th>
+        <th>description</th>
+        <th>problematic</th>   
+        <th>finalMark</th>
+        <th>subject</th>
+        <th>Status</th>
+        <th>Actions</th>
+       
+      </tr>
+      <tr *ngFor="let element of ffView;">
+        <td>{{element.title}}</td>
+        <td>{{element.description}}</td>
+        <td>{{element.problematic}}</td>
+        <td>{{element.finalMark}}</td>
+        <td>{{element.subject.title}}</td>
+        <td [style.color]="element.fileStatus==='pending' ? 'red' : 'green' " >{{element.fileStatus}}</td>
+        <td><a [routerLink]="['/fyp/update',element.id]" (click)="Update()" >Update</a></td>
+      
+      </tr>
+      
+    </table>
+ 
+</div>
+<br>
+<br>
       
       

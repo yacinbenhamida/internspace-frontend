@@ -13,18 +13,18 @@
                     <div class="media align-items-center">
                         <div class="media-body fs-14">
                             <div class="text-light">
-                                Author
+                                Owner
                             </div>
-                            <div>
-                                <a class="anim-link-2 anim-link-2-primary" tabindex="0">Peter Parker</a>
+                            <div *ngIf="historyElement.fileOwner">
+                                <a class="anim-link-2 anim-link-2-primary" tabindex="0">{{historyElement.fileOwner.firstName}} {{historyElement.fileOwner.lastName}}</a>
                             </div>
                         </div>
                         <div class="media-body fs-14">
                             <div class="text-light">
-                                Owner
+                                Author
                             </div>
-                            <div>
-                                <a class="anim-link-2 anim-link-2-primary" tabindex="0">Peter Parker</a>
+                            <div *ngIf="historyElement.editionAuthor">
+                                <a class="anim-link-2 anim-link-2-primary" tabindex="0">{{historyElement.editionAuthor.firstName}} {{historyElement.editionAuthor.lastName}}</a>
                             </div>
                         </div>
                     </div>

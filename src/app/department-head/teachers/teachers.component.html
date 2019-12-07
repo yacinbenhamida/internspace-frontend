@@ -1,0 +1,80 @@
+<main class="main-content">
+        <section data-overlay="5" class="m-gab-3" data-parallax="assets/img/hero/h13.jpg">
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-sm-12 col-md-8 text-white">
+                        <div class="clearfix">
+                            <div class="div">
+                                <h2 class="mb-0">Search for a teacher</h2>
+                                <p class="lead mb-4">Tap his info below...</p>
+                                <form class="input-round" novalidate="novalidate">
+                                    <div class="form-group input-group bg-white shadow-4">
+                                        <input (keyup)="filterTeachers(val.value)" #val type="text" class="form-control height-inherit pl-4" placeholder="Teacher...">
+                                        <!--<div class="input-group-append p-2">
+                                            <button class="btn btn-warning" type="button">Filter</button>
+                                        </div>-->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="read-all" class="section bg-light">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-11">
+                            <p class="mnt-5 text-center">
+                                Your department teachers
+                            </p>
+                            <div class="row">
+                            <div *ngIf="teachersList.length == 0" class="alert alert-danger" role="alert">
+                                No Teachers were recorded.
+                            </div>
+                            <div *ngFor="let teacher of teachersList; let i = index">
+                                    <div class="cbp-item identity" style="width: 330px; left: 100px; top: 0px;" > 
+                                            <div class="cbp-item-wrapper">
+                                                    <div class="p-3" >
+                                                            <div  class="card shadow-1 hover-shadow-6 transition-hover">
+                                                                    <div class="card-body bg-white p-5">
+                                                                        <div class="fs-14 mb-3">Born in <time class="text-light mb-3">{{teacher.birthDate | date}}</time></div>
+                                                                        <h2 class="h5 mb-2">
+                                                                            <a href="#" class="fs-18 underline" tabindex="0">{{teacher.firstName}} {{teacher.lastName}}</a>
+                                                                        </h2>
+                                                                        <p *ngIf="teacher.interventions">has made {{teacher.interventions.length}} supervisions</p>
+                                                                        <p *ngIf="!teacher.interventions">hasn't made any supervisions yet. </p>
+                                                                    </div>
+                                                                    <div class="card-footer bg-white border-top-0 pb-4 pr-5 pl-5">
+                                                                        <div class="media align-items-center">
+                                                                            <div class="avatar-sm mr-3">
+                                                                                <img class="img-fluid rounded-circle" src="assets/img/avatar/avatar3.jpg" alt="Image Description">
+                                                                            </div>
+                                                                            <div class="media-body fs-14">
+                                                                                <div class="text-light">
+                                                                                    @{{teacher.username}}
+                                                                                </div>
+                                                                                <div>
+                                                                                    <a href="single-article-classic.html" class="underline" tabindex="0">{{teacher.email}}</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--<div class="custom-tags mt-4 mb-3">
+                                                                            <a href="#" rel="tag" class="label label--sm label--secondary">Design</a>
+                                                                            <a href="#" rel="tag" class="label label--sm label--secondary">Marketing</a>
+                                                                        </div>-->
+                                                                    </div>
+                                                                </div>
+                                                    </div>                                           
+                                            </div>
+                                    </div>
+                                    <br *ngIf="i%3==0"/>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+               
+                </div>
+        </section>
+    </main>

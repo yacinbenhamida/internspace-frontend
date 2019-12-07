@@ -13,6 +13,7 @@ export class FypFileByCountryComponent implements OnInit, OnChanges {
   results:FypFile[];
   searchInput:string="";
   selectValue:string="";
+  clicked:boolean=false;
   constructor(private _internshipDirectorService : InternshipDirectorService, private auth:AuthenticationService) { 
     this.allFYPFiles = [];
     this.FYPFiles = [];
@@ -31,11 +32,14 @@ export class FypFileByCountryComponent implements OnInit, OnChanges {
 
   }
   ClickHandler =()=>{
+    this.clicked=true;
+    this.results=[];
     this._internshipDirectorService.FypFileByCountry(this.searchInput).subscribe(data=>{
       this.FYPFiles=data
       this.allFYPFiles.forEach((element) => {
         this.FYPFiles.forEach(x=>{
-        if(x.id===element.id){
+        
+       if(x.id===element.id){
             this.results.push(element)
         }
       })

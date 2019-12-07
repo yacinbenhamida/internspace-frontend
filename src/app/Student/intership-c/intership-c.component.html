@@ -1,3 +1,22 @@
+
+
+<br>
+<br>
+<br>
+
+    <br>
+          
+  
+    <br>
+    
+    <ul>
+        <li><a class="active" [routerLink]="['/student/inter']">Intership Convention</a></li>
+        <li><a  [routerLink]="['/fyp/create']">FypPFE</a></li>
+        <router-outlet></router-outlet>
+        <li><a href="#contact">Reclamation</a></li>
+        <li><a [routerLink]="['/student/skills']">Subject</a></li>
+</ul>
+ <br>
 <div class="container">
         <br>
           
@@ -15,18 +34,13 @@
           </div>
           <br>
           <div *ngFor="let x of allStudent">
-          <ul>
-              <li><a class="active" href="#home">Fiche</a></li>
-              <li><a [routerLink]="['/update',x.id]" >Update</a></li>
-              <router-outlet></router-outlet>
-              <li><a href="#contact">FypPFE</a></li>
-         </ul>
+          
        
          <h2>Your Intership Convention</h2>
            
          <br>
          <button   (click)="affichage()" class="button button1">Create Convention</button>
-            <br>
+         <br>
           <div >
               <table class="table table-hover">
                   <thead>
@@ -44,7 +58,7 @@
                           <td>{{x.startDate}}</td>
                           <td>{{x.endDate}}</td>
                           <td>{{x.companySupervisorEmail}}</td>
-                          <td><a [routerLink]="['/delete',x.id]" (click)="delete()" >Delete</a><a [routerLink]="['/update',x.id]" >Update</a></td>
+                          <td><a [routerLink]="['/delete',x.id]" (click)="demande()" >{{text}}</a>  <a [routerLink]="['/update',x.id]" >           Update</a></td>
                           
                       </tr>
                   </tbody>

@@ -1,0 +1,65 @@
+<br><br>
+
+
+<h2 style="text-align: center;"><span class="font-weight-semi-bold">Active accounts list</span></h2>
+<h4 class="display-4" style="margin: 30px;">
+        <span class="text-primary" data-typing="do you want to disable an account?, it's simple !, just click on the student , and follow the instructions" data-back-speed="75"></span><span class="typed-cursor"></span>
+
+    </h4>
+<br><br>
+   
+
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Carte identité</th>
+            <th>submited report</th>
+            <th>Final year project file</th>
+            <th>authorized to pass a Project</th>
+            <th>account disabled</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            
+          <tr *ngFor="let x of students" data-toggle="modal" data-target="#modal-default">
+               
+            <td>{{x.id}}</td>
+            <td>{{x.firstName}}</td>
+            <td>{{x.lastName}}</td>
+            <td>{{x.cin}}</td>
+            <td>{{x.hasSubmittedAReport}}</td>
+            <td>{{x.isCreated}}</td>
+            <td>{{x.isAutorised}}</td>
+            <td>{{x.isDisabled}}</td>
+            <div class="modal fade" id="modal-default" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Disable an account</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="lead-1">
+                                    you will disable the account of <b>{{chosedStudent.firstName}} {{chosedStudent.lastName}}</b> , are you sure ? 
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary transition-hover" (click)="disableAcount()">Disable it</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </tr>
+        </tbody>
+        </table>
+        <br>
+
+ 
+     
