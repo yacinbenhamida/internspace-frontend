@@ -3,157 +3,436 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-10">
-        <div class="media align-items-center">
-          <div class="mr-5">
-              <img *ngIf='auth.currentUserValue.pictureUrl != null' src={{auth.currentUserValue.pictureUrl}} width="150" alt="Icon">
-              <img *ngIf='auth.currentUserValue.pictureUrl == null' src="assets/images/default-user-male.png" width="150" alt="Icon">
-            </div>
-          <div class="media-body">
 
+        <ngx-content-loading *ngIf='currentUserValue == null' [width]="650">
+          <svg:g ngx-facebook-preset></svg:g>
+        </ngx-content-loading>
+
+
+        <div *ngIf='currentUserValue' class="media align-items-center">
+          <div class="mr-5">
+            <img *ngIf='auth.currentUserValue.pictureUrl != null' src={{auth.currentUserValue.pictureUrl}} width="150"
+              alt="Icon">
+            <img *ngIf='auth.currentUserValue.pictureUrl == null' src="assets/images/default-user-male.png" width="150"
+              alt="Icon">
+          </div>
+          <div class="media-body">
             <p class="mb-1 fw-600 small text-light">{{ auth.currentUserValue.website }}</p>
-            <h3 class="h4 text-primary mb-0 fw-100">Company name: <span
-                class="fw-600">{{ auth.currentUserValue.username }}</span> </h3>
+            <h3 class="h4 text-primary mb-0 fw-100"><span class="fw-600">{{ auth.currentUserValue.username }}</span>
+            </h3>
             <p class="text-light mb-3 small">
               {{ auth.currentUserValue.slogan }}
             </p>
             <p class="mb-3">
               {{auth.currentUserValue.description}}
             </p>
-            <a href="{{auth.currentUserValue.website}}"
-              class="anim-link-2 anim-link-2-primary  common-Link--arrow common-BodyText">Learn more </a>
+            <a (click)='goToWebsite()' style="cursor: pointer"
+              class="anim-link-2 anim-link-2-primary  common-Link--arrow common-BodyText">Learn
+              more </a>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container mt-9">
-    <div class="row justify-content-center">
-      <div class="col-md-10">
-        <div data-provide="slider" data-slides-to-show="5" data-slides-to-scroll="3" data-autoplay="true"
-          data-dots="false" class="slick-initialized slick-slider">
-          <div class="slick-list draggable">
-            <div class="slick-track"
-              style="opacity: 1; width: 2618px; transform: translate3d(-1232px, 0px, 0px); transition: transform 1000ms ease 0s;">
-              <div class="slick-slide slick-cloned" data-slick-index="-5" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4"
-                      src="assets/img/client/microsoft.png"></div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
+    <br>
+
+    <!-- Panels Togglers Section -->
+    <ul [hidden]='true' class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="subjects-tab" data-toggle="tab" href="#subjects" role="tab"
+          aria-controls="subjects" aria-selected="true">Subjects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="management-tab" data-toggle="tab" href="#management" role="tab"
+          aria-controls="management" aria-selected="false">Management</a>
+      </li>
+    </ul>
+
+
+    <!-- Panels Section -->
+    <div class="tab-content" id="myTabContent">
+
+      <!-- Subjects Section -->
+
+      <div class="tab-pane fade show active pt-3" id="subjects" role="tabpanel" aria-labelledby="subjects-tab">
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="mb-9 mt-2">
+
+                <ul class="list-group">
+
+
+
+                  <div *ngIf='mySubjects == null'>
+
+                    <ngx-content-loading *ngFor='let x of [1, 1, 1]' [width]="300" [speed]="'1500ms'" [width]="1000"
+                      [height]="70">
+                      <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                      <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                    </ngx-content-loading>
+
                   </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/twitter.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/paypal.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 154px;">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4"
-                      src="assets/img/client/facebook.png"></div>
-                </div>
-              </div>
-              <div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 154px;">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4"
-                      src="assets/img/client/microsoft.png"></div>
-                </div>
-              </div>
-              <div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 154px;">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-current slick-active" data-slick-index="3" aria-hidden="false"
-                style="width: 154px;">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/twitter.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 154px;">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/paypal.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned slick-active" data-slick-index="6" aria-hidden="false"
-                style="width: 154px;" tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4"
-                      src="assets/img/client/facebook.png"></div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned slick-active" data-slick-index="7" aria-hidden="false"
-                style="width: 154px;" tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4"
-                      src="assets/img/client/microsoft.png"></div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="8" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="9" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/twitter.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="10" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/paypal.png">
-                  </div>
-                </div>
-              </div>
-              <div class="slick-slide slick-cloned" data-slick-index="11" aria-hidden="true" style="width: 154px;"
-                tabindex="-1">
-                <div>
-                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
-                  </div>
-                </div>
+
+                  <li *ngFor='let subject of mySubjects; let i = index'
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    <a class="text-dark anim-link-2" style="cursor: pointer" class="btn"
+                      (click)="openSubjectDetails(subjectContent, i)">{{subject.title}}</a>
+                    <span class="badge badge-primary badge-pill">{{subject.company.country}}</span>
+                  </li>
+
+
+
+
+
+                  <ng-template #subjectContent let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title">Subject Information</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div *ngIf='selectedSubject' class="modal-body">
+                      <!-- Portfolio Item Row -->
+
+                      <!-- Portfolio Item Heading -->
+                      <h1 class="my-4">
+                        <p> <span style="color: black"> {{selectedSubject.title}} </span>'s Profile
+                          Details</p>
+                      </h1>
+                      <h6>
+                        @{{selectedSubject.company.country}}
+                        <p>
+                          Max Applicants: {{selectedSubject.maxApplicants}}
+                        </p>
+                      </h6>
+                      <div class="ml-7 mr-7 row">
+
+                        <div class="col-md-4">
+                          <h3 class="my-3">Applicants</h3>
+
+
+                          <ngx-content-loading *ngIf='selectedSubject.studentsAppliances == null' [width]="400">
+                            <svg:g ngx-bullet-list-preset></svg:g>
+                          </ngx-content-loading>
+
+
+                          <ul *ngIf='selectedSubject.studentsAppliances != null'>
+                            <div *ngFor='let applicant of selectedSubject.studentsAppliances'>
+                              <li>
+                                <h4>
+
+                                  {{applicant.applianceStatus}}
+                                  <ng-template let-fill="fill" let-index="index">
+                                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                  </ng-template>
+                                </h4>
+
+                              </li>
+                              <hr>
+
+                            </div>
+                          </ul>
+                        </div>
+
+                        <div class="col-md-8">
+                          {{selectedSubject.content}}
+                        </div>
+                      </div>
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                    </div>
+                  </ng-template>
+
+
+
+
+
+
+
+
+
+                </ul>
               </div>
             </div>
+            <div class="col-lg-8">
+
+              <div class="cool-item">
+
+
+
+                <div *ngIf='selectedSubject == null && loadingSubjectDetails'>
+
+                  <div class='row'>
+                    <div class='col-md-4'>
+
+                      <ngx-content-loading [width]="300" [height]="100">
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                      </ngx-content-loading>
+
+
+                    </div>
+                    <div class='col-md-8'>
+
+                      <ngx-content-loading *ngFor='let x of [1, 1, 1]' [speed]="'1500ms'" [width]="300" [height]="100">
+                        <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                      </ngx-content-loading>
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <div *ngIf='selectedSubject == null && !loadingSubjectDetails'>
+                  <div class="clearfix bg-light rounded p-6">
+                    <i class="icon-direction-2 fs-55 text-primary"></i>
+                    <h3 class="h5 mb-3 mt-2">Select a subject to view.</h3>
+                    <p>
+                      You can always add new subjects!
+                    </p>
+                  </div>
+                </div>
+
+                <div *ngIf='selectedSubject != null'>
+
+
+
+
+                </div>
+                <div *ngIf='selectedSubject'>
+                  <!-- Portfolio Item Row -->
+
+                  <!-- Portfolio Item Heading -->
+                  <h2>
+                    <p> <span style="color: black"> {{selectedSubject.title}} </span>
+                    </p>
+                  </h2>
+                  <h5>
+                    @{{selectedSubject.company.country}}
+                    <p>
+                      Requires #{{selectedSubject.maxApplicants}}
+                      applicant{{selectedSubject.maxApplicants <= 1 ? '' : 's'}}
+                    </p>
+                  </h5>
+
+
+
+                  <div class="ml-7 mr-7 row">
+
+                    <div class="col-md-4">
+                      <h3 class="my-3">Applicants</h3>
+                      <ul>
+                        <div *ngFor='let applicant of selectedSubject.studentsAppliances'>
+                          <li>
+                            <h4>
+
+                              {{applicant.applianceStatus}}
+                              <ng-template let-fill="fill" let-index="index">
+                                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                              </ng-template>
+                            </h4>
+
+                          </li>
+                          <hr>
+
+                        </div>
+                      </ul>
+                    </div>
+
+                    <div class="col-md-8 table-wrapper-scroll-y card-body my-custom-scrollbar">
+
+                      <table class="table table-bordered table-striped mb-0">
+                        <thead>
+                          <tr>
+                            <th class="text-center">Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+
+                        </tbody>
+                        <tr>
+                          <td>
+                            {{selectedSubject.content}}
+                          </td>
+                        </tr>
+                      </table>
+
+                    </div>
+                  </div>
+
+
+
+
+                </div>
+
+
+              </div>
+
+
+
+            </div>
+
           </div>
+
+        </div>
+      </div>
+
+      <!-- Other Section -->
+
+      <div class="tab-pane fade show pt-3" id="management" role="tabpanel" aria-labelledby="management-tab">
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="mb-9 mt-2">
+
+                <ul class="list-group">
+                  <p>Manage subjects</p>
+                  <li *ngFor='let subject of mySubjects; let i = index'
+                    class="list-group-item d-flex justify-content-between align-items-center">
+                    <a class="text-dark anim-link-2" style="cursor: pointer" class="btn"
+                      (click)="openSubjectDetails(subjectContent, i)">{{subject.title}}</a>
+                    <span class="badge badge-primary badge-pill">{{subject.company.country}}</span>
+                  </li>
+
+
+
+
+
+                  <ng-template #subjectContent let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title">Subject Information</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div *ngIf='selectedSubject' class="modal-body">
+                      <!-- Portfolio Item Row -->
+
+                      <!-- Portfolio Item Heading -->
+                      <h1 class="my-4">
+                        <p> <span style="color: black"> {{selectedSubject.title}} </span>'s Profile
+                          Details</p>
+                      </h1>
+                      <h6>
+                        @{{selectedSubject.company.country}}
+                        <p>
+                          Max Applicants: {{selectedSubject.maxApplicants}}
+                        </p>
+                      </h6>
+                      <div class="ml-7 mr-7 row">
+
+                        <div class="col-md-4">
+                          <h3 class="my-3">Applicants</h3>
+                          <ul>
+                            <div *ngFor='let applicant of selectedSubject.studentsAppliances'>
+                              <li>
+                                <h4>
+
+                                  {{applicant.applianceStatus}}
+                                  <ng-template let-fill="fill" let-index="index">
+                                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                                  </ng-template>
+                                </h4>
+
+                              </li>
+                              <hr>
+
+                            </div>
+                          </ul>
+                        </div>
+
+                        <div class="col-md-8">
+                          {{selectedSubject.content}}
+                        </div>
+                      </div>
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                    </div>
+                  </ng-template>
+
+
+
+
+
+
+
+
+
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-8">
+
+              <div class="cool-item" style="height: 500px">
+
+
+                <div *ngIf='selectedSubject == null'>
+                  <div class="clearfix bg-light rounded p-6">
+                    <i class="icon-direction-2 fs-55 text-primary"></i>
+                    <h3 class="h5 mb-3 mt-2">Select a subject to view.</h3>
+                    <p>
+                      You can always add new subjects!
+                    </p>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+
+            </div>
+
+          </div>
+
         </div>
       </div>
     </div>
+
+
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </section>

@@ -35,6 +35,7 @@ export class User{
     interventions : FypIntervention[] = []
 
     // Company related
+    address: String;
     slogan: String;
     website: String;
     description: String;

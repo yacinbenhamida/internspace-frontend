@@ -5,14 +5,16 @@ export interface FYPSubject {
   id:number;
   title: string;
   content: string;
-  maxApplicants: string;
+  maxApplicants: number;
   country: string;
   fypFile: FypFile;
   company: Company;
+
+  studentsAppliances: any[];
   //studentSubjects: any[];
   //categories: FypCategory[];
  // FYPCategory:any[]
-  
+
 
 
 

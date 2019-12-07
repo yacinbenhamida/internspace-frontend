@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -71,6 +72,7 @@ import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { NgxContentLoadingModule } from 'ngx-content-loading';
 
 @NgModule({
   declarations: [
@@ -113,7 +115,7 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
     FypPFECreateComponent,
     FypPFEUpdateComponent,
     FypfilesOperationsComponent,
-    
+
     LateStudentListComponent,
     FypFileManagementComponent,
 
@@ -122,9 +124,9 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
     FypFilesModificationComponent,
     PFECategoryComponent,
     PFECategoryDetailsComponent,
-    SuggestedCategoriesComponent,   
-    PayPalComponent,   
-    FypPfeUpdateComponent,   
+    SuggestedCategoriesComponent,
+    PayPalComponent,
+    FypPfeUpdateComponent,
     FypPFEComponent,
     MaxActionNumberOfTeacherPerDepartmentComponent,
     DepartmentProfileComponent,
@@ -149,10 +151,12 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
     FileUploadModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration),
     BrowserAnimationsModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    NgbModule,
+    NgxContentLoadingModule
 
 
- 
+
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent]
