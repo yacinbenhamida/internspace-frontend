@@ -71,7 +71,31 @@
   </div>
 
   <ng-template #login>
-    <button class="btn btn-primary btn-pill transition-hover" (click)="auth.googleSignIn()">Login with Google</button>
+      <section class="pt-6 pt-md-8">
+          <div class="container pb-6 pb-md-8">
+              <div class="row align-items-center">
+                  <div class="col-12 col-md">
+
+                      <!-- Heading -->
+                      <h3 class="mb-1">
+                          Not yet linked with google?
+                      </h3>
+
+                      <!-- Text -->
+                      <p class="font-size-lg text-muted mb-5 mb-md-0">
+                          Link up your account and join the users of Internspace
+                      </p>
+
+                  </div>
+                  <div class="col-12 col-md-auto">
+
+                      <!-- Button -->
+                      <button class="btn btn-primary btn-pill transition-hover" (click)="auth.googleSignIn()">Login with Google</button>
+
+                  </div>
+              </div> <!-- / .row -->
+          </div> <!-- / .container -->
+      </section>
   </ng-template>
 
 </div>

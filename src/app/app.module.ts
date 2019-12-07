@@ -80,6 +80,9 @@ import { ChatFormComponent } from './chat/chat-form/chat-form.component';
 import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 import { environment } from 'src/environments/environment';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
+import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
+import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
 
 @NgModule({
   declarations: [
@@ -145,6 +148,9 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
     ChatFormComponent,
     ChatroomComponent,
     CompanyProfileComponent,
+    AdminStudentsComponent,
+    AdminEmployeesComponent,
+    AdminClassesComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
