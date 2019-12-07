@@ -1,36 +1,81 @@
-<br/>
-<br/>
 
-<h1>Welcome to Mega Chat</h1>
-
-<div class="login">
+<div class="wrapper">
+  <main class="main-content">
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+<div>
   <div *ngIf=" auth.user$ | async as user; else login">
-    <img [src]="user.photoURL" width="50px">
-    <p>
-      <span class="tag is-dark">{{ user.displayName }}</span>
-      <span class="tag is-light">{{ user.uid }}</span>
-    </p>
-
-
-    <button class="button is-small" (click)="auth.signOut()">Sign Out</button>
+    <div class="row justify-content-center m-gab-3-top">
+        <div class="col-lg-8">
+            <div class="media">
+                <img alt="" class="rounded-circle mr-5 mt-2" [src]="user.photoURL" style="width: 100px;">
+                <div class="media-body">
+                    <h5>Google account<mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate"> {{ user.displayName }}</mark></h5>
+                    <blockquote class="blockquote">
+                        <p class="lead">
+                           Connected
+                        </p>
+                        <footer class="blockquote-footer text-dark"><button  class="btn btn-primary btn-pill transition-hover" (click)="auth.signOut()">Sign Out</button></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="mb-9">
+        <a class="card card-frame card-text-dark mb-3 transition-hover" routerLink="/chat/UJrR0M10IK7VJDVCQIKF">
+            <div class="card-body py-3 px-4">
+                <span class="row justify-content-sm-between align-items-sm-center">
+                    <span class="col-sm-7 mb-1 mb-sm-0">
+                        <span class="fs-14 text-secondary">Internspace</span> <br>
+                        Mega chat🎪
+                    </span>
+                    <span class="col-sm-3 mb-2 mb-sm-0 fs-14 text-secondary">
+                        Everyone is <br>
+                        Welcome
+                    </span>
+                    <span class="col-sm-2 text-primary text-sm-right">
+                        Join →
+                    </span>
+                </span>
+            </div>
+        </a>
+    </div>
+    <div class="mb-9">
+        <div class="px-6 py-7 rounded text-white custom-section-4">
+            <h3 class="h5 mb-4">Create a new chatroom</h3>
+            <form class="input-round">
+                <div class="form-group input-group bg-white shadow-4">
+                    <input type="text" #title class="form-control form-control-sm height-inherit pl-4" placeholder="Chatroom name...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" (click)="createNewChatRoom(title.value)" type="button">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <hr>
 
-    <button class="button" routerLink="/chats/UJrR0M10IK7VJDVCQIKF">Join Mega Chat 🎪</button>
-    <button class="button is-info" (click)="cs.create()">Create New Chat</button>
+    <h3>Chatrooms</h3>
 
-    <hr>
-
-    <h3>My Chats</h3>
-
-    <ul>
-      <li *ngFor="let chat of userChats$ | async">
-        <a [routerLink]="'chats/' + chat.id">{{ chat.id }} - {{ chat.messages.length }} Messages </a>
-      </li>
-    </ul>
+    <div class="media align-items-center mb-4" *ngFor="let chat of userChats$ | async; let i = index">
+        <div class="w-200px mr-3 text-center" *ngIf="chat.id">
+            <i class="icon-bubble-conversation-2 fs-35"></i>
+        </div>
+        <div class="media-body" *ngIf="chat.id">
+            <a  [routerLink]="['chat/', {id : chat.id}]" class="mt-0 mb-2 text-dark anim-link-2 clearfix" > {{chat.name}} - {{ chat.messages.length }} Messages</a>
+            <span>{{chat.createdBy}} <span class="small">-</span> </span>
+            <span class="time small text-muted">{{chat.createdAt | date}}</span>
+        </div>
+    </div>
   </div>
 
   <ng-template #login>
-    <button class="button" (click)="auth.googleSignIn()">Login with Google</button>
+    <button class="btn btn-primary btn-pill transition-hover" (click)="auth.googleSignIn()">Login with Google</button>
   </ng-template>
 
+</div>
+</div>
+</div>
+</main>
 </div>

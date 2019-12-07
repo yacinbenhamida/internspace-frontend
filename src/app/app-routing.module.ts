@@ -58,6 +58,7 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
 import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
+import { ChatFormComponent } from './chat/chat-form/chat-form.component';
 
 
 
@@ -185,12 +186,10 @@ const routes: Routes = [
   data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path: 'chat',component:ChatroomComponent,canActivate: [RoleGuard], 
-  data: { 
-    expectedRole: 'departmentHead'
-  }},
+  { path: 'chat',component:ChatroomComponent,canActivate: [AuthGuard] },
+  { path: 'chat/:id', component: ChatFormComponent, canActivate: [AuthGuard] },
   {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard],
-  data: {
+  data: { 
     expectedRole: 'internshipsDirector'
   }},
   {path: '404', component: NotfoundComponent},

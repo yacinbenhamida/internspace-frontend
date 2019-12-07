@@ -5,6 +5,7 @@ import { firestore } from 'firebase/app';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable, combineLatest, of } from 'rxjs';
 import { GoogleAuthService } from '../security/google-auth.service';
+import { AuthenticationService } from '../security/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class ChatService {
   constructor(
     private afs: AngularFirestore,
     private auth: GoogleAuthService,
-    private router: Router
+    private router: Router,
+    private authServ:AuthenticationService
   ) {}
 
   get(chatId) {
@@ -32,13 +34,19 @@ export class ChatService {
     return this.auth.user$.pipe(
       switchMap(user => {
         return this.afs
-          .collection('chats', ref => ref.where('uid', '==', user.uid))
+          //.collection('chats', ref => ref.where('uid', '==', user.uid))
+          .collection('chats', ref => ref)
           .snapshotChanges()
           .pipe(
             map(actions => {
               return actions.map(a => {
-                const data: Object = a.payload.doc.data();
-                const id = a.payload.doc.id;
+                let data: Object
+                let id;
+                if(a.payload.doc.id != "UJrR0M10IK7VJDVCQIKF"){
+                  data = a.payload.doc.data()
+                  id = a.payload.doc.id;
+                  console.log(id)
+                }
                 return { id, ...data };
               });
             })
@@ -46,12 +54,14 @@ export class ChatService {
       })
     );
   }
-
-  async create() {
+  // creating a chatroom
+  async create(name:string,creator:string) {
     const { uid } = await this.auth.getUser();
 
     const data = {
       uid,
+      name,
+      createdBy :creator,
       createdAt: Date.now(),
       count: 0,
       messages: []
@@ -59,7 +69,7 @@ export class ChatService {
 
     const docRef = await this.afs.collection('chats').add(data);
 
-    return this.router.navigate(['chats', docRef.id]);
+    return this.router.navigate(['chat', docRef.id]);
   }
 
   async sendMessage(chatId, content) {
@@ -68,6 +78,7 @@ export class ChatService {
     const data = {
       uid,
       content,
+      sender : this.authServ.currentUserValue.username,
       createdAt: Date.now()
     };
 
@@ -101,8 +112,13 @@ export class ChatService {
       switchMap(c => {
         // Unique User IDs
         chat = c;
-        const uids = Array.from(new Set(c.messages.map(v => v.uid)));
-
+        let uids = Array.from(new Set())
+        if(c && c.messages){
+           uids = Array.from(new Set(c.messages.map(v =>{
+            if(v) return v.id
+          })));
+        }        
+        //const uids = Array.from(new Set(c.id));
         // Firestore User Doc Reads
         const userDocs = uids.map(u =>
           this.afs.doc(`users/${u}`).valueChanges()
@@ -111,11 +127,16 @@ export class ChatService {
         return userDocs.length ? combineLatest(userDocs) : of([]);
       }),
       map(arr => {
-        arr.forEach(v => (joinKeys[(<any>v).uid] = v));
-        chat.messages = chat.messages.map(v => {
-          return { ...v, user: joinKeys[v.uid] };
-        });
-
+        console.log(arr)
+        arr.forEach(v =>{
+         if(v) (joinKeys[(<any>v).uid] = v)
+        } );
+        if(chat && chat.messages){
+          chat.messages = chat.messages.map(v => {
+            if(v) return { ...v, user: joinKeys[v.uid] };
+          });
+        }
+        
         return chat;
       })
     );

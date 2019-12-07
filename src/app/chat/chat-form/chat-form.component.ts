@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./chat-form.component.css']
 })
 export class ChatFormComponent implements OnInit {
-  message : string;
   chat$: Observable<any>;
   newMsg: string;
 
