@@ -55,6 +55,7 @@ import { AdminDepartmentsComponent } from './admin/admin-departments/admin-depar
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { ReclamationComponent } from './Student/reclamation/reclamation.component';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
+import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
@@ -185,11 +186,14 @@ const routes: Routes = [
   data: {
     expectedRole: 'internshipsDirector'
   }},
+  {path: 'chat',component:ChatroomComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'departmentHead'
+  }},
   {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard],
   data: {
     expectedRole: 'internshipsDirector'
   }},
-
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

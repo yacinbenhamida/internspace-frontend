@@ -33,6 +33,7 @@ export class User{
     fypFile: FypFile;
     preferedCategories: FypCategory[];
     interventions : FypIntervention[] = []
+    status? : string
 
     // Company related
     slogan: String;
