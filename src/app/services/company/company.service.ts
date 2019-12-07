@@ -37,11 +37,20 @@ export class CompanyService {
     status: string, fetchAll: boolean): Observable<any[]> {
 
     const params = new HttpParams()
-    .set('subject', subjectId.toString())
-    // .set('status', status.toString())
-    .set('fetch-all', fetchAll.toString());
+      .set('subject', subjectId.toString())
+      // .set('status', status.toString())
+      .set('fetch-all', fetchAll.toString());
 
     return this.http.get<any[]>(this.baseurl + '/subjects/sfs/bysubject', { headers: this.headers, params: params });
   }
+
+  SetStudentApplianceToSubject(studentId: number, subjectId: number, action: string): any {
+    const params = new HttpParams()
+      .set('student', studentId.toString())
+      .set('subject', subjectId.toString());
+
+    return this.http.get<any>(this.baseurl + '/subjects/' + action, { headers: this.headers, params: params });
+  }
+
 
 }

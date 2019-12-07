@@ -1,8 +1,8 @@
-import { FypFile } from "./fyp-file";
-import { Company } from "../users/Company";
-import { FypCategory } from "./fyp-category";
+import { FypFile } from './fyp-file';
+import { Company } from '../users/Company';
+import { FypCategory } from './fyp-category';
 export interface FYPSubject {
-  id:number;
+  id: number;
   title: string;
   content: string;
   maxApplicants: number;
@@ -11,9 +11,9 @@ export interface FYPSubject {
   company: Company;
 
   studentsAppliances: any[];
-  //studentSubjects: any[];
-  //categories: FypCategory[];
- // FYPCategory:any[]
+  // studentSubjects: any[];
+  // categories: FypCategory[];
+  // FYPCategory:any[]
 
 
 

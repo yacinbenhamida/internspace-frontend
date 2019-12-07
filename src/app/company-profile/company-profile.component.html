@@ -10,12 +10,14 @@
 
 
         <div *ngIf='currentUserValue' class="media align-items-center">
-          <div class="mr-5">
-            <img *ngIf='auth.currentUserValue.pictureUrl != null' src={{auth.currentUserValue.pictureUrl}} width="150"
+          <div class=" transition-hover  mr-5">
+            <img *ngIf='auth.currentUserValue.logoUrl != null' src={{auth.currentUserValue.logoUrl}} width="150"
               alt="Icon">
-            <img *ngIf='auth.currentUserValue.pictureUrl == null' src="assets/images/default-user-male.png" width="150"
+            <img *ngIf='auth.currentUserValue.logoUrl == null' src="assets/images/default-user-male.png" width="150"
               alt="Icon">
+
           </div>
+
           <div class="media-body">
             <p class="mb-1 fw-600 small text-light">{{ auth.currentUserValue.website }}</p>
             <h3 class="h4 text-primary mb-0 fw-100"><span class="fw-600">{{ auth.currentUserValue.username }}</span>
@@ -36,35 +38,37 @@
 
     <br>
 
-    <!-- Panels Togglers Section -->
-    <ul [hidden]='true' class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-      <li class="nav-item">
-        <a class="nav-link active" id="subjects-tab" data-toggle="tab" href="#subjects" role="tab"
-          aria-controls="subjects" aria-selected="true">Subjects</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="management-tab" data-toggle="tab" href="#management" role="tab"
-          aria-controls="management" aria-selected="false">Management</a>
-      </li>
-    </ul>
-
 
     <!-- Panels Section -->
     <div class="tab-content" id="myTabContent">
 
       <!-- Subjects Section -->
 
-      <div class="tab-pane fade show active pt-3" id="subjects" role="tabpanel" aria-labelledby="subjects-tab">
+      <div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div>
+
+
+
 
           <div class="row">
             <div class="col-lg-4">
-              <div class="mb-9 mt-2">
+
+
+              <div class="card shadow-1 hover-shadow-6 ">
 
                 <ul class="list-group">
 
 
+                  <div class='row'>
+                    <div class='col-md-9 ml-2 mt-1'>
+
+                    </div>
+                    <div class='col-md-3 ml-2 mt-1'>
+                      <button (click)="openFormModal(formModalContent)" type=" button" style='font-weight: bold;'
+                        class="btn btn-primary"> +</button>
+                    </div>
+                  </div>
 
                   <div *ngIf='mySubjects == null'>
 
@@ -77,9 +81,9 @@
                   </div>
 
                   <li *ngFor='let subject of mySubjects; let i = index'
-                    class="list-group-item d-flex justify-content-between align-items-center">
+                    class="list-group-item transition-hover mt-1 mb-1 d-flex  align-items-center">
                     <a class="text-dark anim-link-2" style="cursor: pointer" class="btn"
-                      (click)="openSubjectDetails(subjectContent, i)">{{subject.title}}</a>
+                      (click)="openSubjectDetails(i)">{{subject.title}}</a>
                     <span class="badge badge-primary badge-pill">{{subject.company.country}}</span>
                   </li>
 
@@ -87,61 +91,92 @@
 
 
 
-                  <ng-template #subjectContent let-modal>
+                  <ng-template #formModalContent let-modal>
                     <div class="modal-header">
-                      <h4 class="modal-title">Subject Information</h4>
+                      <h4 class="modal-title">Create New Subject</h4>
                       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div *ngIf='selectedSubject' class="modal-body">
-                      <!-- Portfolio Item Row -->
-
-                      <!-- Portfolio Item Heading -->
-                      <h1 class="my-4">
-                        <p> <span style="color: black"> {{selectedSubject.title}} </span>'s Profile
-                          Details</p>
-                      </h1>
-                      <h6>
-                        @{{selectedSubject.company.country}}
-                        <p>
-                          Max Applicants: {{selectedSubject.maxApplicants}}
-                        </p>
-                      </h6>
-                      <div class="ml-7 mr-7 row">
-
-                        <div class="col-md-4">
-                          <h3 class="my-3">Applicants</h3>
+                    <div class="modal-body">
 
 
-                          <ngx-content-loading *ngIf='selectedSubject.studentsAppliances == null' [width]="400">
-                            <svg:g ngx-bullet-list-preset></svg:g>
-                          </ngx-content-loading>
 
 
-                          <ul *ngIf='selectedSubject.studentsAppliances != null'>
-                            <div *ngFor='let applicant of selectedSubject.studentsAppliances'>
-                              <li>
-                                <h4>
 
-                                  {{applicant.applianceStatus}}
-                                  <ng-template let-fill="fill" let-index="index">
-                                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                                  </ng-template>
-                                </h4>
 
-                              </li>
-                              <hr>
 
-                            </div>
-                          </ul>
+
+
+
+
+
+
+
+
+
+                      <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="input-line ml-3 mr-3 mb-3">
+
+                        <div class="form-group">
+                          <input formControlName='title' class="is-valid is-unvalid form-control" type="text"
+                            placeholder="Title">
+                          <span *ngIf="title.invalid">
+                            <div class="invalid-feedback">Provide a valid value.</div>
+                          </span>
+
+                          <div *ngIf="!title.invalid" class="valid-feedback">Looks good.</div>
                         </div>
 
-                        <div class="col-md-8">
-                          {{selectedSubject.content}}
-                        </div>
-                      </div>
 
+                        <div class="form-group input-group">
+                          <div class="input-group-prepend mr-4">
+                            <p>Max Applicants:</p>
+                          </div>
+                          <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="5" min="1" max="5">
+                          </mat-slider>
+                        </div>
+
+                        <div class="form-group">
+                          <textarea formControlName='description' class="form-control is-valid is-unvalid form-control"
+                            rows="4" placeholder="Description"></textarea>
+
+                          <span *ngIf="description.invalid">
+                            <div class="invalid-feedback">Provide a valid value.</div>
+                          </span>
+
+                          <div *ngIf="!description.invalid" class="valid-feedback">Looks good.</div>
+                        </div>
+
+
+
+
+
+
+                        <mat-form-field>
+                          <input type="text" matInput placeholder="Country Name" formControlName="stateGroup" required
+                            [matAutocomplete]="autoGroup">
+                          <mat-autocomplete #autoGroup="matAutocomplete">
+                            <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                              <mat-option *ngFor="let name of group.names" [value]="name"
+                                (click)="onChooseCategory(name)">
+                                {{name}}
+                              </mat-option>
+                            </mat-optgroup>
+                          </mat-autocomplete>
+                        </mat-form-field>
+
+
+
+
+
+                        <div class='d-flex justify-content-center'>
+                          <button class="btn btn-primary m-2" type="submit"
+                            [disabled]="!subjectForm.valid">Save</button>
+                          <button class="btn btn-primary m-2" type="reset" (click)="revert()">Revert</button>
+                        </div>
+
+
+                      </form>
 
 
 
@@ -172,46 +207,165 @@
 
                   <div class='row'>
                     <div class='col-md-4'>
-
+                      <ngx-content-loading *ngFor='let x of [1, 1, 1]' [speed]="'1500ms'" [width]="300" [height]="100">
+                        <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                      </ngx-content-loading>
+                    </div>
+                    <div class='col-md-8'>
                       <ngx-content-loading [width]="300" [height]="100">
                         <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
                         <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
                         <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
                         <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
                       </ngx-content-loading>
-
-
-                    </div>
-                    <div class='col-md-8'>
-
-                      <ngx-content-loading *ngFor='let x of [1, 1, 1]' [speed]="'1500ms'" [width]="300" [height]="100">
-                        <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
-                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
-                      </ngx-content-loading>
-
                     </div>
                   </div>
 
 
                 </div>
 
-                <div *ngIf='selectedSubject == null && !loadingSubjectDetails'>
-                  <div class="clearfix bg-light rounded p-6">
-                    <i class="icon-direction-2 fs-55 text-primary"></i>
-                    <h3 class="h5 mb-3 mt-2">Select a subject to view.</h3>
-                    <p>
-                      You can always add new subjects!
-                    </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div *ngIf='showCreateForm && !loadingSubjectDetails'>
+                  <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="input-line ml-3 mr-3 mb-3">
+
+                    <div class="form-group">
+                      <input formControlName='title' class="is-valid is-unvalid form-control" type="text"
+                        placeholder="Title">
+                      <span *ngIf="title.invalid">
+                        <div class="invalid-feedback">Provide a valid value.</div>
+                      </span>
+
+                      <div *ngIf="!title.invalid" class="valid-feedback">Looks good.</div>
+                    </div>
+
+
+                    <div class="form-group input-group">
+                      <div class="input-group-prepend mr-4">
+                        <p>Max Applicants:</p>
+                      </div>
+                      <mat-slider formControlName='maxApplicants' thumbLabel [displayWith]="formatLabel" tickInterval="5" min="1" max="5">
+                      </mat-slider>
+                    </div>
+
+                    <div class="form-group">
+                      <textarea formControlName='description' class="form-control is-valid is-unvalid form-control"
+                        rows="4" placeholder="Description"></textarea>
+
+                      <span *ngIf="description.invalid">
+                        <div class="invalid-feedback">Provide a valid value.</div>
+                      </span>
+
+                      <div *ngIf="!description.invalid" class="valid-feedback">Looks good.</div>
+                    </div>
+
+
+
+
+
+
+                    <mat-form-field>
+                      <input type="text" matInput placeholder="Select a Category" formControlName="category" required
+                        [matAutocomplete]="autoGroup">
+                      <mat-autocomplete #autoGroup="matAutocomplete">
+                        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
+                          <mat-option *ngFor="let name of group.names" [value]="name" (click)="onChooseCategory(name)">
+                            {{name}}
+                          </mat-option>
+                        </mat-optgroup>
+                      </mat-autocomplete>
+                    </mat-form-field>
+
+
+
+
+
+                    <div class='d-flex justify-content-center'>
+                      <button class="btn btn-primary m-2" type="submit" [disabled]="!subjectForm.valid">Save</button>
+                      <button class="btn btn-primary m-2" type="reset" (click)="revert()">Revert</button>
+                    </div>
+
+
+                  </form>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div *ngIf='selectedSubject == null && !loadingSubjectDetails && !showCreateForm'>
+
+                  <div class="card shadow-1 hover-shadow-6 transition-hover">
+                    <div class="card-body bg-white ">
+                      <h2 class="h5 mb-2">
+                        <a href="#" class="fs-18 anim-link-2 anim-link-2-primary" tabindex="0">Select a subject to
+                          view.</a>
+                      </h2>
+                      <p>You can always add new subjects!</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 pb-4 pr-5 pl-5">
+                      <div class="media align-items-center">
+                        <div class="avatar-sm mr-3">
+
+
+
+
+                          <img class="img-fluid rounded-circle" *ngIf='auth.currentUserValue.pictureUrl != null'
+                            src={{auth.currentUserValue.pictureUrl}} alt="Icon">
+                          <img class="img-fluid rounded-circle" *ngIf='auth.currentUserValue.pictureUrl == null'
+                            src="assets/images/default-user-male.png" alt="Icon">
+
+                        </div>
+                        <div class="media-body fs-14">
+                          <div class="text-light">
+                            CEO
+                          </div>
+                          <div>
+                            <a href="single-article-classic.html" class="anim-link-2 anim-link-2-primary"
+                              tabindex="0">{{ auth.currentUserValue.firstName }}
+                              {{ auth.currentUserValue.lastName }}</a>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="custom-tags mt-4 mb-3">
+                        <a href="#" rel="tag" class="label label--sm label--secondary">Design</a>
+                        <a href="#" rel="tag" class="label label--sm label--secondary">Marketing</a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div *ngIf='selectedSubject != null'>
-
-
-
 
                 </div>
-                <div *ngIf='selectedSubject'>
+
+                <div *ngIf='selectedSubject && !showCreateForm'
+                  class="card shadow-1 hover-shadow-6 transition-hover pt-3 pb-3 pl-7 pr-7">
                   <!-- Portfolio Item Row -->
 
                   <!-- Portfolio Item Heading -->
@@ -229,51 +383,139 @@
 
 
 
-                  <div class="ml-7 mr-7 row">
+                  <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="description-tab-just" data-toggle="tab" href="#description-just"
+                        role="tab" aria-controls="description-just" aria-selected="true">Description</a>
+                    </li>
+                    <li class="nav-item">
 
-                    <div class="col-md-4">
-                      <h3 class="my-3">Applicants</h3>
-                      <ul>
-                        <div *ngFor='let applicant of selectedSubject.studentsAppliances'>
-                          <li>
-                            <h4>
 
-                              {{applicant.applianceStatus}}
-                              <ng-template let-fill="fill" let-index="index">
-                                <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                              </ng-template>
-                            </h4>
 
-                          </li>
+                      <a class="nav-link " id="attendants-tab-just" data-toggle="tab" href="#attendants-just" role="tab"
+                        aria-controls="attendants-just" aria-selected="false">Attendants <span style="font-size: 15px;"
+                          class="badge badge-primary"> {{selectedSubject.studentsAppliances.length}} </span></a>
+                    </li>
+                    <li hidden class="nav-item">
+                      <a class="nav-link" id="management-tab-just" data-toggle="tab" href="#management-just" role="tab"
+                        aria-controls="management-just" aria-selected="false">Management</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content card pt-5" id="myTabContentJust">
+                    <div class="tab-pane fade show active" id="description-just" role="tabpanel"
+                      aria-labelledby="description-tab-just">
+                      <div class="">
+
+
+
+
+
+
+
+
+
+
+                        <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+                          {{selectedSubject.content}}
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="attendants-just" role="tabpanel"
+                      aria-labelledby="attendants-tab-just">
+
+                      <div *ngIf='selectedSubject.studentsAppliances'
+                        class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+
+                        <div class="row media d-flex justify-content-center align-items-center ml-2 mb-4"
+                          *ngFor='let applicant of selectedSubject.studentsAppliances; let a_index = index'>
+
+                          <div class="mr-1 ml-1">
+                            <img *ngIf='applicant.student.pictureUrl != null' class='img-fluid rounded-circle'
+                              src={{applicant.student.pictureUrl}} width="70" alt="Icon">
+                            <img *ngIf='applicant.student.pictureUrl == null' class='img-fluid rounded-circle'
+                              src="assets/images/default-user-male.png" width="70" alt="Icon">
+                          </div>
+
+                          <div class="col-md-8 media-body">
+                            <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">
+                              {{applicant.student.firstName}} {{applicant.student.lastName}} | University of <span
+                                style="font-weight: bold;">
+
+                                {{applicant.student.studyClass.classOption.departement.site.university.name}}
+                              </span>
+                            </a>
+
+                            <span>
+                              <div class="custom-tags">
+                                <a *ngFor='let cat of applicant.student.preferedCategories' href="#" rel="tag"
+                                  class="label label--sm label--primary">{{ cat.category.name }}</a>
+                              </div>
+
+
+                            </span>
+
+                            <span *ngIf="applicant.applianceStatus == 'refused'" class="time small text-muted">
+                            </span>
+                            <span *ngIf="applicant.applianceStatus == 'accepted'" style='color: rgb(46, 251, 46)'
+                              class="time small text-muted">
+                            </span>
+                            <span *ngIf="applicant.applianceStatus == 'pending'" style='color: gold'
+                              class="time small text-muted">
+                            </span>
+
+
+                          </div>
+
+
+                          <div *ngIf="applicant.applianceStatus == 'refused'" class="col-md-4 btn-group" role="group"
+                            aria-label="Basic example">
+                            You refused {{applicant.student.firstName}} {{applicant.student.lastName}}.
+                          </div>
+
+
+                          <div *ngIf="applicant.applianceStatus == 'accepted'" class="col-md-4 btn-group" role="group"
+                            aria-label="Basic example">
+                            You accepted {{applicant.student.firstName}} {{applicant.student.lastName}}.
+                          </div>
+
+                          <div *ngIf="applicant.applianceStatus == 'pending'" class="col-md-4 btn-group" role="group"
+                            aria-label="Basic example">
+
+                            <button type="button" (click)="setApplianceAction('accept', a_index)"
+                              class="btn btn-primary">Okay!</button>
+                            <button type="button" (click)="setApplianceAction('refuse', a_index)"
+                              class="btn btn-warning">Refuse</button>
+                          </div>
+
+
                           <hr>
 
                         </div>
-                      </ul>
+
+
+                      </div>
                     </div>
 
-                    <div class="col-md-8 table-wrapper-scroll-y card-body my-custom-scrollbar">
-
-                      <table class="table table-bordered table-striped mb-0">
-                        <thead>
-                          <tr>
-                            <th class="text-center">Description</th>
-                          </tr>
-                        </thead>
-                        <tbody>
 
 
-                        </tbody>
-                        <tr>
-                          <td>
-                            {{selectedSubject.content}}
-                          </td>
-                        </tr>
-                      </table>
+
+
+
+
+
+
+
+
+                    <!-- Management Section -->
+                    <div class="tab-pane fade" id="management-just" role="tabpanel"
+                      aria-labelledby="management-tab-just">
+
+
 
                     </div>
                   </div>
-
-
 
 
                 </div>
@@ -292,123 +534,98 @@
 
       <!-- Other Section -->
 
-      <div class="tab-pane fade show pt-3" id="management" role="tabpanel" aria-labelledby="management-tab">
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="mb-9 mt-2">
-
-                <ul class="list-group">
-                  <p>Manage subjects</p>
-                  <li *ngFor='let subject of mySubjects; let i = index'
-                    class="list-group-item d-flex justify-content-between align-items-center">
-                    <a class="text-dark anim-link-2" style="cursor: pointer" class="btn"
-                      (click)="openSubjectDetails(subjectContent, i)">{{subject.title}}</a>
-                    <span class="badge badge-primary badge-pill">{{subject.company.country}}</span>
-                  </li>
-
-
-
-
-
-                  <ng-template #subjectContent let-modal>
-                    <div class="modal-header">
-                      <h4 class="modal-title">Subject Information</h4>
-                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div *ngIf='selectedSubject' class="modal-body">
-                      <!-- Portfolio Item Row -->
-
-                      <!-- Portfolio Item Heading -->
-                      <h1 class="my-4">
-                        <p> <span style="color: black"> {{selectedSubject.title}} </span>'s Profile
-                          Details</p>
-                      </h1>
-                      <h6>
-                        @{{selectedSubject.company.country}}
-                        <p>
-                          Max Applicants: {{selectedSubject.maxApplicants}}
-                        </p>
-                      </h6>
-                      <div class="ml-7 mr-7 row">
-
-                        <div class="col-md-4">
-                          <h3 class="my-3">Applicants</h3>
-                          <ul>
-                            <div *ngFor='let applicant of selectedSubject.studentsAppliances'>
-                              <li>
-                                <h4>
-
-                                  {{applicant.applianceStatus}}
-                                  <ng-template let-fill="fill" let-index="index">
-                                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                                  </ng-template>
-                                </h4>
-
-                              </li>
-                              <hr>
-
-                            </div>
-                          </ul>
-                        </div>
-
-                        <div class="col-md-8">
-                          {{selectedSubject.content}}
-                        </div>
-                      </div>
-
-
-
-
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-                    </div>
-                  </ng-template>
-
-
-
-
-
-
-
-
-
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-8">
-
-              <div class="cool-item" style="height: 500px">
-
-
-                <div *ngIf='selectedSubject == null'>
-                  <div class="clearfix bg-light rounded p-6">
-                    <i class="icon-direction-2 fs-55 text-primary"></i>
-                    <h3 class="h5 mb-3 mt-2">Select a subject to view.</h3>
-                    <p>
-                      You can always add new subjects!
-                    </p>
-                  </div>
-                </div>
-
-
-              </div>
-
-
-
-            </div>
-
-          </div>
-
-        </div>
-      </div>
     </div>
 
+    <section id="getStarted" class="section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-4 border-right">
+            <div class="clearfix pl-8 pr-4">
+              <img src="../assets/img/client/microsoft.png" width="130" class="mb-2">
+              <div class="mb-4 testimonial-quote">
+                <blockquote class="fs-16 mb-0">
+                  This is the most robust template I've ever worked with. So much can be done with this multi-purpose
+                  package. Regular updates and enhancements add tremendous value.
+                </blockquote>
+                <div class="rating">
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="avatar">
+                  <img class="img-fluid rounded-circle" src="../assets/img/avatar/avatar1.jpg" alt="Image Description">
+                </div>
+                <div class="ml-3">
+                  <h4 class="h6 mb-0">Julia Robert</h4>
+                  <small class="text-muted">Head of IT department at Microsoft</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 pl-6 border-right">
+            <div class="clearfix pl-8 pr-4">
+              <img src="../assets/img/client/twitter.png" width="130" class="mb-2">
+              <div class="mb-4 testimonial-quote">
+                <blockquote class="fs-16 mb-0">
+                  I wish that I could choose more than one reason for my 5-star rating! The Design is great,
+                  the features are fantastic and from what I've read in the support forum the customer support is great.
+                  This is a great template.
+                </blockquote>
+                <div class="rating">
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="avatar">
+                  <img class="img-fluid rounded-circle" src="../assets/img/avatar/avatar2.jpg" alt="Image Description">
+                </div>
+                <div class="ml-3">
+                  <h4 class="h6 mb-0">Jhon Doe</h4>
+                  <small class="text-muted">Sales Manager at Twitter</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 pl-6">
+            <div class="clearfix pl-8 pr-4">
+              <img src="../assets/img/client/facebook.png" width="130" class="mb-2">
+              <div class="mb-4 testimonial-quote">
+                <blockquote class="fs-16 mb-0">
+                  I like Vertex because of all the features and their variations, such as the Portfolio.
+                  I can do so many different things with this theme, and I am already using it for my fourth website.
+                </blockquote>
+                <div class="rating">
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="avatar">
+                  <img class="img-fluid rounded-circle" src="../assets/img/avatar/avatar3.jpg" alt="Image Description">
+                </div>
+                <div class="ml-3">
+                  <h4 class="h6 mb-0">Ariol Doe</h4>
+                  <small class="text-muted">Lead Developer at Facebook</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </div>
 

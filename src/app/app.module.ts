@@ -28,8 +28,8 @@ import { FYPDefenseComponent } from './fypdefense/fypdefense.component';
 import { DefenseCalendarComponent } from './defense-calendar/defense-calendar.component';
 import { UniversityFormComponent } from './university-form/university-form.component';
 import { UploadFileComponent } from './upload-file/upload-file.component';
-import {PerTypeSearchComponent} from './intership-director-module/components/per-type-search/per-type-search.component';
-import {TabelComponent} from './intership-director-module/components/tabel/tabel.component';
+import { PerTypeSearchComponent } from './intership-director-module/components/per-type-search/per-type-search.component';
+import { TabelComponent } from './intership-director-module/components/tabel/tabel.component';
 import { StudentManagementComponent } from './intership-director-module/student-management/student-management.component';
 import { FypfileHistoryCardComponent } from './department-head/fypfile-history/fypfile-history-card/fypfile-history-card.component';
 import { NotificationsComponent } from './department-head/notifications/notifications.component';
@@ -73,6 +73,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
+import { MatSliderModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -149,16 +150,18 @@ import { NgxContentLoadingModule } from 'ngx-content-loading';
     DashboardModule,
     DataTablesModule,
     FileUploadModule,
-    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration),
+    CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration),
     BrowserAnimationsModule,
     NgxPayPalModule,
     NgbModule,
-    NgxContentLoadingModule
-
+    NgxContentLoadingModule,
+    MatSliderModule,
+    MatAutocompleteModule,
+    MatInputModule,
 
 
   ],
-  providers: [AppService,AuthGuard,AuthenticationService],
+  providers: [AppService, AuthGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

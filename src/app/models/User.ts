@@ -32,9 +32,10 @@ export class User{
     // password: string;
     fypFile: FypFile;
     preferedCategories: FypCategory[];
-    interventions : FypIntervention[] = []
+    interventions : FypIntervention[] = [];
 
     // Company related
+    logoUrl: String;
     address: String;
     slogan: String;
     website: String;
