@@ -2,6 +2,7 @@ import { FypCategory } from './fyp/fyp-category';
 import { Department } from "./department"
 import { FypFile } from "./fyp/fyp-file"
 import { StudyClass } from './studyClass';
+import { FypIntervention } from './fyp/fyp-intervention';
 
 export class User{
 
@@ -24,13 +25,21 @@ export class User{
     isAutorised: Boolean;
     isDisabled: Boolean;
     studyClass:StudyClass
+    pictureUrl: String;
 
     // Student Related Section
     hasSubmittedAreport: boolean;
     // password: string;
     fypFile: FypFile;
     preferedCategories: FypCategory[];
+    interventions : FypIntervention[] = []
+
+    // Company related
+    slogan: String;
+    website: String;
+    description: String;
+
     constructor(){
-        
+
     }
 }

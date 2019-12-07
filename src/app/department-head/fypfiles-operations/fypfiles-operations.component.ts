@@ -32,6 +32,9 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   statusFypFile: FypFile
   statusData = {}
   student : User
+  // edition
+  interventionToBeEdit : FypIntervention
+  newRole : string = ""
   constructor(private fypservice:FypFileService,
     private auth:AuthenticationService,private interventionService:FypFileInterventionService,
     private userv:UserService) { }
@@ -194,5 +197,25 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
       }
     )
   }
+  
+  editAssigning(statusData){
+    this.interventionToBeEdit = null;
+    if(statusData){  
+      console.log(statusData.teacherRole)
+      this.newRole = statusData.teacherRole
+      this.interventionToBeEdit = statusData
+    } 
+    else alert("no teachers were saved !")
+  }
+  compareFn(c1: User, c2: User): boolean {
+    return c1 && c2 ? c1.id == c2.id : false;
+}
+editTeacherRole(){
+  this.interventionService.editTeacherRole(this.interventionToBeEdit.id,
+    this.newRole,this.interventionToBeEdit.teacher.id).subscribe( x=>{
+    window.location.reload();
+  }
+  )
+}
 
 }

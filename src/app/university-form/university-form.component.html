@@ -1,0 +1,45 @@
+<main class="main-content">
+    <section class="pt-2">
+        <div class="container">
+            <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                <div class="container">
+                    <header class="mb-6">
+                        <h2>University</h2>
+                        
+                    </header>
+
+                    <div class="row gap-y">
+                        <div class="col-md-12" [formGroup]="universityForm">
+                            
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input formControlName="name" name="name" class="form-control form-control-sm" type="text" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Owner</label>
+                                <input formControlName="owner" name="owner" class="form-control" type="text" placeholder="Owner">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input formControlName="location" name="location" class="form-control form-control-lg" type="text" placeholder="Location">
+                            </div>
+
+                            <br /><br />
+                            <h5 class="mb-3">University Logo</h5>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile" accept=".png, .jpg, .jpeg">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                            <app-upload-file [filePath]="filePath()"></app-upload-file>
+                            <br/><br/>
+                            <button (click)="update()" type="button" class="btn btn-primary mb-2">Submit</button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </section>
+</main>

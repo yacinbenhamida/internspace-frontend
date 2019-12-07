@@ -1,3 +1,6 @@
+import { User } from "../User";
+import { FypFile } from "./fyp-file";
+
 export class FypFileHistory{
 	id : number
     editionDate : Date;
@@ -10,4 +13,7 @@ export class FypFileHistory{
 	oldIssue : string
 	oldMailPro : string
 	oldMail : string
+	changedFile : FypFile
+	editionAuthor? : User
+	fileOwner? :User
 }

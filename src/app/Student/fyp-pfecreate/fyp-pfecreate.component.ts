@@ -17,7 +17,7 @@ export class FypPFECreateComponent implements OnInit {
   @Input() fypfile:FypFile;
  fYPSubject:FYPSubject[];
   currFYPSubject: FYPSubject;
-  currFypFile: FypFile;
+  currFypFile: any;
   ff: FypFile[];
   ffView:FypFile[];
   emp:Employee;

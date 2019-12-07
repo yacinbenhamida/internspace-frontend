@@ -15,5 +15,7 @@ export class UserService {
   getStudentOfSheet(sheetId:number){
     return this.http.get<User>("/api/users/studentsBySheet/"+sheetId)
   }
-  
+  getUserById(id:number){
+    return this.http.get<User>("/api/users/"+id)
+  }
 }
