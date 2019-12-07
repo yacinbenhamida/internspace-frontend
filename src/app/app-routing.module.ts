@@ -57,7 +57,7 @@ import { ReclamationComponent } from './Student/reclamation/reclamation.componen
 import { TeachersComponent } from './department-head/teachers/teachers.component';
 
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
-
+import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
 
 
 
@@ -106,6 +106,7 @@ const routes: Routes = [
   {path: 'student/skills/find/:id', component: PFECategoryDetailsComponent},
   {path: 'student/reclamation', component: ReclamationComponent},
   {path: 'student/up', component : IntershipUpdateComponent},
+  {path: 'student/fyp/find/:id', component : FypFileDetailsComponent},
   //
   {path: 'uniDash', component: UniversityStatsComponent},
   {path: 'upload', component: UploadFileComponent},

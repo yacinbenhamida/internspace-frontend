@@ -198,6 +198,14 @@ export class FypPFECreateComponent implements OnInit {
         });
         
       }
+      onClickView(id: number){
+        
+        this.router.navigate(['student/fyp/find/',id]);
+      }
+      onClick(id: number){
+        
+        this.router.navigate(['fyp/update/',id]);
+      }
       getS(){
         this.fypPfeService.GetFypSubject().subscribe(
           (data: any) => {

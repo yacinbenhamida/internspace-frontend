@@ -293,9 +293,9 @@
                                                                 <button type="button" (click)="DirecteurFyp()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-large">status</button>
                                                           </td>
                                                           <td>
-                                                              <button type="button" (click)="DirecteurFyp()" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-large">View</button>
+                                                              <button type="button" (click)="onClickView(element.id)" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-large">View</button>
                                                         </td>
-                                                        <td> <button type="button" (click)="DirecteurFyp()" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-large">Update</button>
+                                                        <td> <button type="button" (click)="onClick(element.id)" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-large">Update</button>
                                                         </td>
                                                         </tr>
                                                       </tbody>
@@ -491,7 +491,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="spb_icon_box col-sm-12">
+                                    <div class="spb_icon_box col-sm-12" *ngFor="let element of ffView;let i = index">
                                             <div class="v-icon-box-content-wrap clearfix">
                                                 <div class="v-icon-box-inner-wrap clearfix">
                                                     <div class="grid-icon-wrap clearfix">
@@ -501,7 +501,7 @@
                                                     </div>
                                                   
                                                     <div class="divider-line"></div>
-                                                    <h6 ><a href="">View More About Your Fyp</a></h6>
+                                                    <h6 ><a [routerLink]="['/student/fyp/find/', element.id]">View More About Your Fyp</a></h6>
                                                 </div>
                                             </div>
                                         </div>
