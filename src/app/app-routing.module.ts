@@ -45,7 +45,9 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+import { ReclamationComponent } from './Student/reclamation/reclamation.component';
 
+import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 
 
 
@@ -77,12 +79,17 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent},
+  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'Student'
+  } },
   {path: 'fyp/update/:id', component: FypPfeUpdateComponent},
   {path: 'fyp/delete/:id', component: FypPFECreateComponent},
   {path: 'student/fypfile', component : IntershipCreateComponent},
   {path: 'student/skills', component: PFECategoryComponent},
   {path: 'student/skills/find/:id', component: PFECategoryDetailsComponent},
+  {path: 'student/reclamation', component: ReclamationComponent},
+  {path: 'student/up', component : IntershipUpdateComponent},
   //
   {path: 'uniDash', component: UniversityStatsComponent},
   { path: 'create-category', component: FypCategorieComponent },

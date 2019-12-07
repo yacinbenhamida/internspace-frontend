@@ -65,6 +65,8 @@ import { PayPalComponent } from './pay-pal/pay-pal.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+import { ReclamationComponent } from './Student/reclamation/reclamation.component';
+import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
 
 
 
@@ -128,6 +130,10 @@ import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actor
     PayPalComponent,
     
     FypfileEditActorsComponent,
+    
+    ReclamationComponent,
+    
+    FypFileDetailsComponent,
     
 
   ],
