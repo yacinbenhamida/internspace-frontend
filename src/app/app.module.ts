@@ -70,6 +70,7 @@ import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
+import { CompanyProfileComponent } from './company-profile/company-profile.component';
 
 @NgModule({
   declarations: [
@@ -131,6 +132,7 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
     FypfileEditActorsComponent,
     AdminDepartmentsComponent,
     TeachersComponent,
+    CompanyProfileComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

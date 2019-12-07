@@ -1,0 +1,159 @@
+<section class="m-gab-2">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div class="media align-items-center">
+          <div class="mr-5">
+              <img *ngIf='auth.currentUserValue.pictureUrl != null' src={{auth.currentUserValue.pictureUrl}} width="150" alt="Icon">
+              <img *ngIf='auth.currentUserValue.pictureUrl == null' src="assets/images/default-user-male.png" width="150" alt="Icon">
+            </div>
+          <div class="media-body">
+
+            <p class="mb-1 fw-600 small text-light">{{ auth.currentUserValue.website }}</p>
+            <h3 class="h4 text-primary mb-0 fw-100">Company name: <span
+                class="fw-600">{{ auth.currentUserValue.username }}</span> </h3>
+            <p class="text-light mb-3 small">
+              {{ auth.currentUserValue.slogan }}
+            </p>
+            <p class="mb-3">
+              {{auth.currentUserValue.description}}
+            </p>
+            <a href="{{auth.currentUserValue.website}}"
+              class="anim-link-2 anim-link-2-primary  common-Link--arrow common-BodyText">Learn more </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-9">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+        <div data-provide="slider" data-slides-to-show="5" data-slides-to-scroll="3" data-autoplay="true"
+          data-dots="false" class="slick-initialized slick-slider">
+          <div class="slick-list draggable">
+            <div class="slick-track"
+              style="opacity: 1; width: 2618px; transform: translate3d(-1232px, 0px, 0px); transition: transform 1000ms ease 0s;">
+              <div class="slick-slide slick-cloned" data-slick-index="-5" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4"
+                      src="assets/img/client/microsoft.png"></div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="-4" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/twitter.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/paypal.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide" data-slick-index="0" aria-hidden="true" style="width: 154px;">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4"
+                      src="assets/img/client/facebook.png"></div>
+                </div>
+              </div>
+              <div class="slick-slide" data-slick-index="1" aria-hidden="true" style="width: 154px;">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4"
+                      src="assets/img/client/microsoft.png"></div>
+                </div>
+              </div>
+              <div class="slick-slide" data-slick-index="2" aria-hidden="true" style="width: 154px;">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-current slick-active" data-slick-index="3" aria-hidden="false"
+                style="width: 154px;">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/twitter.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 154px;">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/paypal.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned slick-active" data-slick-index="6" aria-hidden="false"
+                style="width: 154px;" tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4"
+                      src="assets/img/client/facebook.png"></div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned slick-active" data-slick-index="7" aria-hidden="false"
+                style="width: 154px;" tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4"
+                      src="assets/img/client/microsoft.png"></div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="8" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="9" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/twitter.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="10" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/paypal.png">
+                  </div>
+                </div>
+              </div>
+              <div class="slick-slide slick-cloned" data-slick-index="11" aria-hidden="true" style="width: 154px;"
+                tabindex="-1">
+                <div>
+                  <div style="width: 100%; display: inline-block;"><img class="p-4" src="assets/img/client/youtube.png">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

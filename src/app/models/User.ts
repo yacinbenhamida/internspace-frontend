@@ -25,6 +25,7 @@ export class User{
     isAutorised: Boolean;
     isDisabled: Boolean;
     studyClass:StudyClass
+    pictureUrl: String;
 
     // Student Related Section
     hasSubmittedAreport: boolean;
@@ -32,7 +33,13 @@ export class User{
     fypFile: FypFile;
     preferedCategories: FypCategory[];
     interventions : FypIntervention[] = []
+
+    // Company related
+    slogan: String;
+    website: String;
+    description: String;
+
     constructor(){
-        
+
     }
 }

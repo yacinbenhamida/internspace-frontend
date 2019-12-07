@@ -46,7 +46,7 @@
                                               <a class="dropdown-item" routerLink="/company-profile">Profile </a>
                                             </li>
 
-                                            <li *ngIf="auth.currentUserValue.role == 'departmentHead'" class="dropdown dropdown-reverse">
+                                            <li *ngIf="auth.currentUserValue && auth.currentUserValue.role == 'departmentHead'" class="dropdown dropdown-reverse">
                                                     <a class="dropdown-item" routerLink="/dptteachers">Teachers </a>
                                                 </li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
