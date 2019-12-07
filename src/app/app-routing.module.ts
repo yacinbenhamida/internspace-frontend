@@ -59,7 +59,7 @@ import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
 import { ChatFormComponent } from './chat/chat-form/chat-form.component';
-
+import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
 
 
 
@@ -108,6 +108,7 @@ const routes: Routes = [
   {path: 'student/skills/find/:id', component: PFECategoryDetailsComponent},
   {path: 'student/reclamation', component: ReclamationComponent},
   {path: 'student/up', component : IntershipUpdateComponent},
+  {path: 'student/fyp/find/:id', component : FypFileDetailsComponent},
   //
   {path: 'uniDash', component: UniversityStatsComponent},
   {path: 'upload', component: UploadFileComponent},
