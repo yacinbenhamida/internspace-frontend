@@ -32,6 +32,9 @@ export class User {
   fypFile?: FypFile;
   preferedCategories?: FypCategory[];
   interventions?: FypIntervention[] = [];
+  // Student Related Section
+  // password: string;
+  status?: string
 
   // Company Related Section
   logoUrl?: String;

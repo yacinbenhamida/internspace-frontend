@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SubjectsService } from 'src/app/services/student/subjects.service';
 import { FypCategory } from 'src/app/models/fyp/fyp-category';
 import { FYPSubject } from 'src/app/models/fyp/fyp-subject';
+import { AuthenticationService } from 'src/app/services/security/authentication.service';
 
 @Component({
   selector: 'app-pfecategory-details',
@@ -15,7 +16,7 @@ export class PFECategoryDetailsComponent implements OnInit {
   AllfypSubject: FYPSubject[];
   fypSubject: FYPSubject;
 
-  constructor(private _route :ActivatedRoute, private subjectsService: SubjectsService) { }
+  constructor(private _route :ActivatedRoute, private subjectsService: SubjectsService,private auth:AuthenticationService) { }
 
 getFyp(id:number) :  any {
   this.subjectsService.Getcats().subscribe(fypts => {

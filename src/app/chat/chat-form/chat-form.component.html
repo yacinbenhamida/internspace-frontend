@@ -1,0 +1,60 @@
+<br />
+<br />
+<div class="wrapper">
+  <main class="main-content">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">          
+          <ng-container *ngIf="chat$ | async as chat">
+            <ng-container *ngIf=" auth.user$ | async as user">
+              <div class="top">
+                <p><a class="tag" routerLink="/chat">Back</a>   
+                </p>
+              </div>
+              <div class="alert rounded-lg bg-secondary d-inline-flex align-items-center">
+                  <div class="badge badge-pill badge-primary">Online</div>
+                  <div class="mx-3">
+                      This chatRoom is accessible at internpace/chat/{{route.snapshot.paramMap.get('id')}}
+                  </div>
+              </div>
+              <div #chatBox class="chat">
+                  <ul class="media-list m-0 p-0">
+                      <div *ngFor="let msg of chat.messages; trackBy: trackByCreated">
+                        <li class="media mt-5">
+                            <a href="#">
+                                <img [src]="msg.user?.photoURL || 'assets/images/default-user-male.png'" class="avatar mr-3 rounded-pill">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="h6 mb-1">{{ msg.sender }}<span class="small ml-2 text-muted">{{msg.createdAt | date}}</span></h4>
+                                <p class="mb-1">
+                                    {{ msg.content }}
+                                </p>
+                                <a class="text-primary anim-link-2 small" 
+                                *ngIf="chat.uid === user.uid || msg.uid === user.uid" 
+                                (click)="cs.deleteMessage(chat, msg)">Reply</a>
+                            </div>
+                        </li>
+                      </div>
+                    </ul>            
+                
+              <div class="form-group">
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <label>Message <span class="required">*</span></label>
+                          <textarea maxlength="5000" [(ngModel)]="newMsg" (keydown.enter)="submit(chat.id)"  rows="4" placeholder="Comment" class="form-control" name="comment" id="comment"></textarea>
+                      </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                      <div class="col-sm-12">
+                          <button [disabled]="!newMsg" (click)="submit(chat.id)" name="submit" type="submit" id="Button1" class="btn btn-primary transition-hover">Send message</button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+</div>
+</div>
+</main>
+</div>

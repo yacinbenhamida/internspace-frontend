@@ -53,9 +53,17 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+import { ReclamationComponent } from './Student/reclamation/reclamation.component';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
+import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 
-
+import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
+import { ChatFormComponent } from './chat/chat-form/chat-form.component';
+import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
+import { SheetsManagementComponent } from './Student/Directeur/sheets-management/sheets-management.component';
+import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
+import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
+import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
 
 
 
@@ -80,6 +88,24 @@ const routes: Routes = [
       expectedRole: 'admin'
     }
   },
+  {path : 'admin/students', component : AdminStudentsComponent,
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  {path : 'admin/employees', component : AdminEmployeesComponent,
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  {path : 'admin/classes', component : AdminClassesComponent,
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
   // end administration components
   // start of login,profiles  and registration
   {path : 'login', component : AuthenticationComponent},
@@ -93,12 +119,22 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent},
+  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'Student'
+  } },
   {path: 'fyp/update/:id', component: FypPfeUpdateComponent},
   {path: 'fyp/delete/:id', component: FypPFECreateComponent},
   {path: 'student/fypfile', component : IntershipCreateComponent},
   {path: 'student/skills', component: PFECategoryComponent},
   {path: 'student/skills/find/:id', component: PFECategoryDetailsComponent},
+  {path: 'student/reclamation', component: ReclamationComponent},
+  {path: 'student/up', component : IntershipUpdateComponent},
+  {path: 'student/fyp/find/:id', component : FypFileDetailsComponent},
+//SheetManagement
+{path: 'Directeur/sheetPending', component : SheetsManagementComponent},
+
+
   //
   {path: 'uniDash', component: UniversityStatsComponent},
   {path: 'upload', component: UploadFileComponent},
@@ -177,11 +213,12 @@ const routes: Routes = [
   data: {
     expectedRole: 'internshipsDirector'
   }},
+  { path: 'chat',component:ChatroomComponent,canActivate: [AuthGuard] },
+  { path: 'chat/:id', component: ChatFormComponent, canActivate: [AuthGuard] },
   {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard],
-  data: {
+  data: { 
     expectedRole: 'internshipsDirector'
   }},
-
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

@@ -9,7 +9,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/security/authguard.service';
 import { AuthenticationService } from './services/security/authentication.service';
@@ -66,15 +66,29 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+import { ReclamationComponent } from './Student/reclamation/reclamation.component';
+import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ChatFormComponent } from './chat/chat-form/chat-form.component';
+import { ChatroomComponent } from './chat/chatroom/chatroom.component';
+import { environment } from 'src/environments/environment';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
 import { MatSliderModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
 import { TagInputModule } from 'ngx-chips';
+import { SheetsManagementComponent } from './Student/Directeur/sheets-management/sheets-management.component';
+import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
+import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
+import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -119,7 +133,6 @@ import { TagInputModule } from 'ngx-chips';
 
     LateStudentListComponent,
     FypFileManagementComponent,
-
     StudentProfileComponent,
     AccountManagementComponent,
     FypFilesModificationComponent,
@@ -133,9 +146,18 @@ import { TagInputModule } from 'ngx-chips';
     DepartmentProfileComponent,
     PayPalComponent,
     FypfileEditActorsComponent,
+
+    ReclamationComponent,
+    FypFileDetailsComponent,
     AdminDepartmentsComponent,
     TeachersComponent,
+    ChatFormComponent,
+    ChatroomComponent,
     CompanyProfileComponent,
+    SheetsManagementComponent,
+    AdminStudentsComponent,
+    AdminEmployeesComponent,
+    AdminClassesComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -160,6 +182,10 @@ import { TagInputModule } from 'ngx-chips';
     MatInputModule,
     TagInputModule,
 
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   providers: [AppService, AuthGuard, AuthenticationService],
   bootstrap: [AppComponent]

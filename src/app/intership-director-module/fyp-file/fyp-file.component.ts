@@ -41,7 +41,7 @@ export class FypFileComponent implements OnInit {
 
       if(element.fileStatus==="confirmed")
       {
-        this._internshipDirectorService.CompanyCordinates(element.subject.company.id.toString()).subscribe(data=>{this.myRes.push({fyp:element,cords:data})})
+        //this._internshipDirectorService.CompanyCordinates(element.subject.company.id.toString()).subscribe(data=>{this.myRes.push({fyp:element,cords:data})})
 
       }
      

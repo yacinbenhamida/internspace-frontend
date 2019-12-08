@@ -19,8 +19,10 @@
                                             <li class="nav-item nav-item-anim-icon d-none d-md-block">
                                                 <span class="ws-nowrap m-list--link fs-15"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span>
                                             </li>
+                                            <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                                                  <!-- <span class="ws-nowrap m-list--link fs-15">{{auth.currentUserValue.role}} at {{auth.currentUserValue.department.site.university.name}}</span>--> 
                                             <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department != null" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
-                                                    <span class="ws-nowrap m-list--link fs-15">{{auth.currentUserValue.role}} at {{auth.currentUserValue.department.site.university.name}}</span>
+                                                    <!--<span class="ws-nowrap m-list--link fs-15">{{auth.currentUserValue.role}} at {{auth.currentUserValue.department.site.university.name}}</span>-->
                                                 </li>
                                             <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                 <div class="social social-bg-light social-sm mt-1">
@@ -45,6 +47,12 @@
                                             <li *ngIf="auth.currentUserValue && auth.currentUserValue.userType == 'company'" class="dropdown dropdown-reverse">
                                               <a class="dropdown-item" routerLink="/company-profile">Profile </a>
                                             </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'Student'" class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " routerLink="fyp/create">FypPFE</a>                
+                                        </li>
+                                        <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle " routerLink="Directeur/sheetPending">Intership Management</a>                
+                                    </li>
 
                                             <li *ngIf="auth.currentUserValue && auth.currentUserValue.role == 'departmentHead'" class="dropdown dropdown-reverse">
                                                     <a class="dropdown-item" routerLink="/dptteachers">Teachers </a>
@@ -94,9 +102,13 @@
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle active" routerLink="notifications/history"><i class="fas fa-bell"></i></a>
                                             </li>
-                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                            <li *ngIf="auth.currentUserValue" class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle active" routerLink="chat"><i class="fas fa-inbox"></i></a>                
+                                                </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'v'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector/studentManagement">Student Managment</a>
                                             </li>
+                                            
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector">Sheets</a>
                                                 <ul class="dropdown-menu">
@@ -109,6 +121,17 @@
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/DepartmentMan">Departments</a>
                                                 </li>
+
+                                                                                             
+                                                <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/DepartmentMan">Departments</a>                
+                                            </li>  
+                                            <li *ngIf="auth.currentUserValue" class="dropdown">
+                                                    <a class="social-gplus" routerLink="chat"><i class="fab fa-google-plus"></i></a>
+                                            </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector/studentManagement">Student Managment</a>
+                                            </li>                                             
                                         </ul>
                                     </nav>
                                 </div>

@@ -4,6 +4,7 @@ import { FypConventionService } from './../../services/fyp-convention/fyp-conven
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Company } from 'src/app/models/users/Company';
+import { AuthenticationService } from 'src/app/services/security/authentication.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class IntershipCreateComponent implements OnInit {
   //fypConventions:FypConvention[];
   router: Router;
   allFypConvention: FypConvention[];
-  constructor( private fypConventionService: FypConventionService, router: Router) { }
+  constructor( private fypConventionService: FypConventionService, router: Router,private auth:AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -60,7 +61,7 @@ export class IntershipCreateComponent implements OnInit {
 
 
     create(){
-      this.fypConventionService.createIntership(this.conForm.value,"8").subscribe(
+      this.fypConventionService.createIntership(this.conForm.value,this.auth.currentUserValue.id.toString()).subscribe(
         (data: any) => {
           console.log(data);
         });
