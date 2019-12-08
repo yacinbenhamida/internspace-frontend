@@ -3,6 +3,7 @@ import { Department } from "./department"
 import { FypFile } from "./fyp/fyp-file"
 import { StudyClass } from './studyClass';
 import { FypIntervention } from './fyp/fyp-intervention';
+import { Company } from './users/Company';
 
 export class User {
 
@@ -45,7 +46,7 @@ export class User {
   description?: String;
   supervisorEmail?: String;
   country?: String;
-
+company:Company;
   constructor() {
 
   }

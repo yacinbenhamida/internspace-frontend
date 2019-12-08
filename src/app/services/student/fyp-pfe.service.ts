@@ -90,7 +90,7 @@ ModifMajor(id: String):Observable<FypFile[]>{
 }
 
 StudentClass(id:number):Observable<User[]>{
-  return this.http.get<FypFile[]>('/api/student/profile/At?id='+id, this.httpOptions);
+  return this.http.get<User[]>('/api/student/profile/At?id='+id, this.httpOptions);
 }
 
 }

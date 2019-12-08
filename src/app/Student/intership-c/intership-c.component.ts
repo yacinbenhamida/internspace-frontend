@@ -4,6 +4,11 @@ import { FypConventionService } from './../../services/fyp-convention/fyp-conven
 import Student from 'src/app/models/Student';
 import{ActivatedRoute } from '@angular/router'; 
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/security/authentication.service';
+import { User } from 'src/app/models/User';
+import { FypPFEService } from 'src/app/services/student/fyp-pfe.service';
+import { FypFile } from 'src/app/models/fyp/fyp-file';
+import { StudyClass } from 'src/app/models/studyClass';
 
 @Component({
   selector: 'app-intership-c',
@@ -18,20 +23,47 @@ export class IntershipCComponent implements OnInit {
   id:number
   show:boolean=true;
   showb:boolean=true;
-  text:String="cancellation request"
+  text:String="cancellation request";
+  Std:User;
+  Stds:User[];
 
-  constructor( private fypConventionService: FypConventionService,private ar:ActivatedRoute,private router: Router) {
+  constructor(private fypPfeService:FypPFEService, private fypConventionService: FypConventionService,private ar:ActivatedRoute,private router: Router,private auth:AuthenticationService) {
     
    }
 
   ngOnInit() { 
    // this.getList();
-    this.fypConventionService.findStudentConvention('2').subscribe(fypts => {
+    this.fypConventionService.findStudentConvention(this.auth.currentUserValue.id.toString()).subscribe(fypts => {
       this.allStudent = fypts as Student[];
       console.log(this.allStudent);})
       this.ar.paramMap.subscribe(res=>this.id=Number(res.get('id')));
+
+      this.auth.currentUserValue;
+      this.Std = this.Stu();
+      console.log(this.Std);
+     // this.StuClass();
+      console.log(this.Std);
+
+      this.allStudent;
   }
-   
+
+
+  Stu(){
+    this.Std=this.auth.currentUserValue;
+    return this.Std
+  }
+ 
+  
+   getStd(){
+    this.fypConventionService.findStudentConvention(this.auth.currentUserValue.id.toString()).subscribe(fypts => {
+      this.allStudent = fypts as Student[];
+      console.log(this.allStudent);
+      this.allStudent.push;
+    
+    })
+    return this.allStudent;
+      //this.ar.paramMap.subscribe(res=>this.id=Number(res.get('id')));
+   }
   getList(){
     this.fypConventionService.GetFypConvention().subscribe((x:FypConvention[])=>{
       this.allFypConvention =x});

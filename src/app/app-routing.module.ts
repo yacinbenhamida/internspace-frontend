@@ -114,7 +114,7 @@ const routes: Routes = [
   {path : 'login', component : AuthenticationComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: 'company/profile', component: CompanyProfileComponent, canActivate : [AuthGuard]},
-  {path: 'student/profile', component: StudentProfileComponent, canActivate : [AuthGuard]},
+  {path: 'student/profil', component: StudentProfileComponent, canActivate : [AuthGuard]},
 
   // Quiz Section
   {path: 'student/quiz/selection', component: QuizSelectionComponent, canActivate : [AuthGuard]},
@@ -132,7 +132,10 @@ const routes: Routes = [
   data: {
     expectedRole: 'Student'
   } },
-  {path: 'fyp/update/:id', component: FypPfeUpdateComponent},
+  {path: 'fyp/update/:id', component: FypPfeUpdateComponent,canActivate: [RoleGuard],
+  data: {
+    expectedRole: 'Student'
+  } },
   {path: 'fyp/delete/:id', component: FypPFECreateComponent},
   {path: 'student/fypfile', component : IntershipCreateComponent},
   {path: 'student/skills', component: PFECategoryComponent},
@@ -140,7 +143,10 @@ const routes: Routes = [
   {path: 'student/reclamation', component: ReclamationComponent},
   {path: 'student/up', component : IntershipUpdateComponent},
   {path: 'student/fyp/find/:id', component : FypFileDetailsComponent},
-  {path: 'student/profile', component : ProfileStudentComponent},
+  {path: 'student/profile', component : ProfileStudentComponent,canActivate: [RoleGuard],
+  data: {
+    expectedRole: 'Student'
+  } },
 //SheetManagement
 {path: 'Directeur/sheetPending', component : SheetsManagementComponent},
 {path: 'Directeur/sheetModification', component : SheetsModificationComponent},

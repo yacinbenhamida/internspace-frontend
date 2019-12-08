@@ -20,7 +20,8 @@ export class SheetsModificationComponent implements OnInit {
 
   ngOnInit() {
     this.All =this.getFyps();
-    this.getFypAccept(this.index)
+    this.getFypAccept(this.index);
+    this.getFypCancel(this.index);
     console.log(this.All);
 
   }

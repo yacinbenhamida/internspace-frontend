@@ -1,10 +1,12 @@
+import { Company } from "../users/Company";
+
 export interface FypConvention {
    
     id: string
     startDate: string;
     endDate: string;
     companySupervisorEmail: string;
-    company: any;
+    company: Company;
     student: any;
     
   

@@ -60,6 +60,9 @@
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'Student'" class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle " routerLink="fyp/create">FypPFE</a>
                                         </li>
+                                        <li *ngIf="auth.currentUserValue && auth.currentUserValue.userType == 'student'" class="dropdown dropdown-reverse">
+                                                <a class="dropdown-item" routerLink="/student/inter">Intership Convention </a>
+                                        </li>
                                         <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="Directeur/sheetPending">Intership Management</a>
                                     </li>
