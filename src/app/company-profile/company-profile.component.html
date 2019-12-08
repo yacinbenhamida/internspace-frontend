@@ -81,8 +81,8 @@
                   </div>
 
                   <li *ngFor='let subject of mySubjects; let i = index'
-                    class="list-group-item transition-hover mt-1 mb-1 d-flex  align-items-center">
-                    <a class="text-dark anim-link-2" style="cursor: pointer" class="btn"
+                    class="list-group-item transition-hover mt-1 mb-1 d-flex justify-content-between  align-items-center">
+                    <a class="text-dark anim-link-2" style="cursor: pointer; text-align: left;" class="btn"
                       (click)="openSubjectDetails(i)">{{subject.title}}</a>
                     <span class="badge badge-primary badge-pill">{{subject.company.country}}</span>
                   </li>
@@ -108,75 +108,6 @@
 
 
 
-
-
-
-
-
-
-
-                      <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="input-line ml-3 mr-3 mb-3">
-
-                        <div class="form-group">
-                          <input formControlName='title' class="is-valid is-unvalid form-control" type="text"
-                            placeholder="Title">
-                          <span *ngIf="title.invalid">
-                            <div class="invalid-feedback">Provide a valid value.</div>
-                          </span>
-
-                          <div *ngIf="!title.invalid" class="valid-feedback">Looks good.</div>
-                        </div>
-
-
-                        <div class="form-group input-group">
-                          <div class="input-group-prepend mr-4">
-                            <p>Max Applicants:</p>
-                          </div>
-                          <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="5" min="1" max="5">
-                          </mat-slider>
-                        </div>
-
-                        <div class="form-group">
-                          <textarea formControlName='description' class="form-control is-valid is-unvalid form-control"
-                            rows="4" placeholder="Description"></textarea>
-
-                          <span *ngIf="description.invalid">
-                            <div class="invalid-feedback">Provide a valid value.</div>
-                          </span>
-
-                          <div *ngIf="!description.invalid" class="valid-feedback">Looks good.</div>
-                        </div>
-
-
-
-
-
-
-                        <mat-form-field>
-                          <input type="text" matInput placeholder="Country Name" formControlName="stateGroup" required
-                            [matAutocomplete]="autoGroup">
-                          <mat-autocomplete #autoGroup="matAutocomplete">
-                            <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-                              <mat-option *ngFor="let name of group.names" [value]="name"
-                                (click)="onChooseCategory(name)">
-                                {{name}}
-                              </mat-option>
-                            </mat-optgroup>
-                          </mat-autocomplete>
-                        </mat-form-field>
-
-
-
-
-
-                        <div class='d-flex justify-content-center'>
-                          <button class="btn btn-primary m-2" type="submit"
-                            [disabled]="!subjectForm.valid">Save</button>
-                          <button class="btn btn-primary m-2" type="reset" (click)="revert()">Revert</button>
-                        </div>
-
-
-                      </form>
 
 
 
@@ -243,76 +174,81 @@
 
 
 
-                <div *ngIf='showCreateForm && !loadingSubjectDetails'>
-                  <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="input-line ml-3 mr-3 mb-3">
 
-                    <div class="form-group">
-                      <input formControlName='title' class="is-valid is-unvalid form-control" type="text"
-                        placeholder="Title">
-                      <span *ngIf="title.invalid">
-                        <div class="invalid-feedback">Provide a valid value.</div>
-                      </span>
 
-                      <div *ngIf="!title.invalid" class="valid-feedback">Looks good.</div>
+
+                <section *ngIf='showCreateForm && !loadingSubjectDetails' id="Inputgroup"
+                  class="px-6 py-6 bg-gray mb-9">
+                  <div class="container">
+                    <header class="mb-6">
+                      <h2>Create a new internship opportunity.</h2>
+                      <hr>
+                      <p class="lead-1">
+                        Share your final year project subject suggestions, and attract promising interns now!
+                      </p>
+                    </header>
+                    <div class="row gap-y">
+
+                      <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="col-md-12">
+                        <h5 class="mb-3">Subject Details</h5>
+                        <div class="input-group is-valid is-invalid mb-3" [ngClass]="{'is-invalid': title.invalid}">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">></span>
+                          </div>
+                          <input formControlName='title' type="text" class="form-control" placeholder="Title">
+                        </div>
+                        <div *ngIf="!title.invalid" class="valid-feedback">Looks good.</div>
+                        <div *ngIf="title.invalid" class="invalid-feedback">Provide a valid value.</div>
+
+                        <div class="input-group is-valid  mb-3" [ngClass]="{'is-invalid': description.invalid}">
+                          <input formControlName='description' type="textarea" class="form-control"
+                            placeholder="Description">
+                          <div class="input-group-append">
+                            <span class="input-group-text">Define your requirements</span>
+                          </div>
+                        </div>
+                        <div *ngIf="!description.invalid" class="valid-feedback">Looks good.</div>
+                        <div *ngIf="description.invalid" class="invalid-feedback">Provide a valid value.</div>
+
+                        <br> <br>
+
+                        <h5 class="mb-3">Related Categories</h5>
+
+                        <tag-input theme='minimal' (onAdd)="onCategoryTagAdd($event)" [onlyFromAutocomplete]="true"
+                          formControlName="selectedCategoryTags">
+                          <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="categoryNamesDisplay">
+                          </tag-input-dropdown>
+                        </tag-input>
+
+                        <h5 class="mb-3">Application</h5>
+
+                        <div class="form-group input-group">
+                          <div class="input-group-prepend mr-4">
+                            <p>Max Applicants:</p>
+                          </div>
+                          <mat-slider formControlName='maxApplicants' thumbLabel [displayWith]="formatLabel"
+                            tickInterval="5" min="1" max="5">
+                          </mat-slider>
+                        </div>
+
+                        <br> <br>
+
+
+                        <hr>
+                        <br> <br>
+                        <div class='d-flex justify-content-center'>
+                          <button class="btn btn-primary m-2" type="submit"
+                            [disabled]="!subjectForm.valid">Save</button>
+                          <button class="btn btn-primary m-2" type="reset" (click)="revert()">Revert</button>
+                        </div>
+
+
+                      </form>
+
+
                     </div>
-
-
-                    <div class="form-group input-group">
-                      <div class="input-group-prepend mr-4">
-                        <p>Max Applicants:</p>
-                      </div>
-                      <mat-slider formControlName='maxApplicants' thumbLabel [displayWith]="formatLabel" tickInterval="5" min="1" max="5">
-                      </mat-slider>
-                    </div>
-
-                    <div class="form-group">
-                      <textarea formControlName='description' class="form-control is-valid is-unvalid form-control"
-                        rows="4" placeholder="Description"></textarea>
-
-                      <span *ngIf="description.invalid">
-                        <div class="invalid-feedback">Provide a valid value.</div>
-                      </span>
-
-                      <div *ngIf="!description.invalid" class="valid-feedback">Looks good.</div>
-                    </div>
-
-
-
-
-
-
-                    <mat-form-field>
-                      <input type="text" matInput placeholder="Select a Category" formControlName="category" required
-                        [matAutocomplete]="autoGroup">
-                      <mat-autocomplete #autoGroup="matAutocomplete">
-                        <mat-optgroup *ngFor="let group of stateGroupOptions | async" [label]="group.letter">
-                          <mat-option *ngFor="let name of group.names" [value]="name" (click)="onChooseCategory(name)">
-                            {{name}}
-                          </mat-option>
-                        </mat-optgroup>
-                      </mat-autocomplete>
-                    </mat-form-field>
-
-
-
-
-
-                    <div class='d-flex justify-content-center'>
-                      <button class="btn btn-primary m-2" type="submit" [disabled]="!subjectForm.valid">Save</button>
-                      <button class="btn btn-primary m-2" type="reset" (click)="revert()">Revert</button>
-                    </div>
-
-
-                  </form>
-                </div>
-
-
-
-
-
-
-
-
+                  </div>
+                </section>
 
 
 
@@ -364,24 +300,33 @@
 
                 </div>
 
-                <div *ngIf='selectedSubject && !showCreateForm'
-                  class="card shadow-1 hover-shadow-6 transition-hover pt-3 pb-3 pl-7 pr-7">
+                <div *ngIf='selectedSubject && !showCreateForm' class="card shadow-1 hover-shadow-6 transition-hover">
                   <!-- Portfolio Item Row -->
 
                   <!-- Portfolio Item Heading -->
-                  <h2>
-                    <p> <span style="color: black"> {{selectedSubject.title}} </span>
-                    </p>
-                  </h2>
-                  <h5>
-                    @{{selectedSubject.company.country}}
-                    <p>
-                      Requires #{{selectedSubject.maxApplicants}}
-                      applicant{{selectedSubject.maxApplicants <= 1 ? '' : 's'}}
-                    </p>
-                  </h5>
+                  <div class=" pt-3 pb-3 pl-7 pr-7">
 
+                    <h2>
+                      <p> <span style="color: black"> {{selectedSubject.title}} </span>
+                      </p>
+                    </h2>
+                    <hr>
 
+                    <span>
+                      <div class="custom-tags">
+                        <a *ngFor='let cat of selectedSubject.categories' href="#" rel="tag"
+                          class="label label--sm label--primary">{{ cat.name }}</a>
+                      </div>
+                    </span>
+
+                    <h5 class="mt-3">
+                      @{{selectedSubject.company.country}}
+                      <p>
+                        Requires #{{selectedSubject.maxApplicants}}
+                        applicant{{selectedSubject.maxApplicants <= 1 ? '' : 's'}}
+                      </p>
+                    </h5>
+                  </div>
 
                   <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
                     <li class="nav-item">
@@ -394,7 +339,7 @@
 
                       <a class="nav-link " id="attendants-tab-just" data-toggle="tab" href="#attendants-just" role="tab"
                         aria-controls="attendants-just" aria-selected="false">Attendants <span style="font-size: 15px;"
-                          class="badge badge-primary"> {{selectedSubject.studentsAppliances.length}} </span></a>
+                          class="badge badge-primary"> {{selectedSubject.studentSubjects.length}} </span></a>
                     </li>
                     <li hidden class="nav-item">
                       <a class="nav-link" id="management-tab-just" data-toggle="tab" href="#management-just" role="tab"
@@ -425,11 +370,11 @@
                     <div class="tab-pane fade" id="attendants-just" role="tabpanel"
                       aria-labelledby="attendants-tab-just">
 
-                      <div *ngIf='selectedSubject.studentsAppliances'
+                      <div *ngIf='selectedSubject.studentSubjects'
                         class="table-wrapper-scroll-y card-body my-custom-scrollbar">
 
                         <div class="row media d-flex justify-content-center align-items-center ml-2 mb-4"
-                          *ngFor='let applicant of selectedSubject.studentsAppliances; let a_index = index'>
+                          *ngFor='let applicant of selectedSubject.studentSubjects; let a_index = index'>
 
                           <div class="mr-1 ml-1">
                             <img *ngIf='applicant.student.pictureUrl != null' class='img-fluid rounded-circle'

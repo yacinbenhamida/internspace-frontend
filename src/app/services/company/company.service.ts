@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { FYPSubject } from './../../models/fyp/fyp-subject';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -52,5 +53,8 @@ export class CompanyService {
     return this.http.get<any>(this.baseurl + '/subjects/' + action, { headers: this.headers, params: params });
   }
 
+  CreateNewSubject(fypSubject: FYPSubject) {
+    return this.http.post<any>(this.baseurl + '/subjects/addobj', fypSubject, this.httpOptions);
+  }
 
 }

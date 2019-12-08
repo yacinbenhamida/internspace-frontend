@@ -42,10 +42,10 @@ export class CompanyProfileComponent implements OnInit {
 
   // Form section
   subjectForm: FormGroup = this._formBuilder.group({
-    category: '',
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
     maxApplicants: new FormControl('', [Validators.required]),
+    selectedCategoryTags: new FormControl('', [Validators.required]),
   });
 
   categoriesGroup: StateGroup[];
@@ -55,6 +55,12 @@ export class CompanyProfileComponent implements OnInit {
   categories: FypCategory[];
   selectedCategoryName: string;
   selectedMaxApplicants = 1;
+  categoryNamesDisplay = [];
+  toAddFypSubject: FYPSubject;
+
+  onCategoryTagAdd(item: any) {
+    console.log(item);
+  }
 
   constructor(private _formBuilder: FormBuilder,
     public auth: AuthenticationService,
@@ -73,75 +79,59 @@ export class CompanyProfileComponent implements OnInit {
 
       this.categoriesGroup = [];
       this.categories = data;
-      this.categories = this.categories.sort((a, b) => (a > b ? -1 : 1));
 
       for (let i = 0; i < this.categories.length; ++i) {
 
         if (!this.categories[i] || !this.categories[i].approved) {
           continue;
         }
-        const names = [];
-        const letter = this.categories[i].name.charAt(0);
 
-        while (i < this.categories.length && this.categories[i].name.charAt(0) === letter) {
-          names.push(this.categories[i++].name);
-        }
-
-        this.categoriesGroup.push({ letter: letter, names: names });
+        this.categoryNamesDisplay.push({ display: this.categories[i].name, value: this.categories[i].id });
       }
 
-      // console.log(this.countriesGroup);
-
-      // tslint:disable-next-line: no-non-null-assertion
-      this.stateGroupOptions = this.subjectForm.get('category')!.valueChanges
-        .pipe(
-          startWith(''),
-          map(value => this._filterGroup(value))
-        );
-
-      console.log(this.stateGroupOptions);
-
     });
 
-  }
-
-  createFormGroup() {
-    return new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      description: new FormControl('', [Validators.required]),
-      maxApplicants: new FormControl('')
-    });
-  }
-  
-  onChooseCategory(name: string) {
-    this.selectedCategoryName = name;
-  }
-
-  private _filterGroup(value: string): StateGroup[] {
-    // Set it to a true one.
-    // this.selectedCountryName = value;
-
-    if (value) {
-      return this.categoriesGroup
-        .map(group => ({ letter: group.letter, names: _filter(group.names, value) }))
-        .filter(group => group.names.length > 0);
-    }
-
-    return this.categoriesGroup;
   }
 
   revert() {
     this.subjectForm.reset();
   }
 
+
   onSubmit() {
     const newValue = this.subjectForm.value;
     // ...
+    const categories = [];
+
     console.log(newValue);
+
+    for (const c of newValue.selectedCategoryTags) {
+      categories.push({
+        id: c.value
+      });
+    }
+
+    this.toAddFypSubject = {
+      id: 0,
+      title: newValue.title,
+      content: newValue.description,
+      maxApplicants: newValue.maxApplicants,
+      categories: categories,
+      country: this.auth.currentUserValue.country.toString(),
+      company: {
+        id: this.auth.currentUserValue.id,
+      },
+    };
+
+    console.log(this.toAddFypSubject);
+
+    this.service.CreateNewSubject(this.toAddFypSubject).subscribe(e => {
+      console.log(e);
+      this.refreshFypSubjects();
+    });
 
     this.showCreateForm = false;
   }
-
 
   get title() {
     return this.subjectForm.get('title');
@@ -154,9 +144,6 @@ export class CompanyProfileComponent implements OnInit {
     this.selectedMaxApplicants = value;
     return value;
   }
-
-
-
 
   refreshFypSubjects() {
     this.service.GetFypSubjectsByCompanyId(this.auth.currentUserValue.id).subscribe(e => {
@@ -172,8 +159,6 @@ export class CompanyProfileComponent implements OnInit {
     );
   }
 
-
-
   openSubjectDetails(i) {
 
     this.loadingSubjectDetails = true;
@@ -188,7 +173,7 @@ export class CompanyProfileComponent implements OnInit {
         ).subscribe(timedItem => {
           this.loadingSubjectDetails = false;
           this.selectedSubject = this.mySubjects[i];
-          this.selectedSubject.studentsAppliances = data;
+          this.selectedSubject.studentSubjects = data;
         });
       }
     );
@@ -206,20 +191,20 @@ export class CompanyProfileComponent implements OnInit {
 
   setApplianceAction(actionStr: string, applicationIndex: number) {
 
-    const ap = this.selectedSubject.studentsAppliances[applicationIndex];
+    const ap = this.selectedSubject.studentSubjects[applicationIndex];
     if (!ap) { return; }
 
     const studentId = ap.student.id;
     if (actionStr === 'accept') {
 
-      this.selectedSubject.studentsAppliances[applicationIndex].applianceStatus = 'accepted';
+      this.selectedSubject.studentSubjects[applicationIndex].applianceStatus = 'accepted';
       this.service.SetStudentApplianceToSubject(studentId, this.selectedSubject.id, 'accept').subscribe(msg => msg);
       return;
     }
 
     if (actionStr === 'refuse') {
 
-      this.selectedSubject.studentsAppliances[applicationIndex].applianceStatus = 'refused';
+      this.selectedSubject.studentSubjects[applicationIndex].applianceStatus = 'refused';
       this.service.SetStudentApplianceToSubject(studentId, this.selectedSubject.id, 'refuse').subscribe(msg => msg);
       return;
     }

@@ -74,7 +74,7 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { NgxContentLoadingModule } from 'ngx-content-loading';
 import { MatSliderModule, MatAutocompleteModule, MatInputModule } from '@angular/material';
-
+import { TagInputModule } from 'ngx-chips';
 @NgModule({
   declarations: [
     AppComponent,
@@ -158,7 +158,7 @@ import { MatSliderModule, MatAutocompleteModule, MatInputModule } from '@angular
     MatSliderModule,
     MatAutocompleteModule,
     MatInputModule,
-
+    TagInputModule,
 
   ],
   providers: [AppService, AuthGuard, AuthenticationService],
