@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { FYPSubject } from 'src/app/models/fyp/fyp-subject';
 import { Employee } from 'src/app/models/users/Employee';
 import { FYPFeature } from 'src/app/models/fyp/fyp-features';
+import { User } from 'src/app/models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -86,6 +87,10 @@ ModifMajor(id: String):Observable<FypFile[]>{
 
   return this.http.get<FypFile[]>('/api/fypsheet/acceptPFE?id='+id, this.httpOptions);
  
+}
+
+StudentClass(id:number):Observable<User[]>{
+  return this.http.get<User[]>('/api/student/profile/At?id='+id, this.httpOptions);
 }
 
 }

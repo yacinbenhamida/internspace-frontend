@@ -68,6 +68,14 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+
+import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
+import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
+import { FilesByDiffCritComponent } from './intership-director-module/files-by-diff-crit/files-by-diff-crit.component';
+
+
+
+
 import { ReclamationComponent } from './Student/reclamation/reclamation.component';
 import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
@@ -90,6 +98,9 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
 import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
 import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
 import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+import { ProfileStudentComponent } from './Student/profile-student/profile-student.component';
+import { SheetsModificationComponent } from './Student/Directeur/sheets-modification/sheets-modification.component';
+import { ProfileStudentDetailComponent } from './Student/profile-student-detail/profile-student-detail.component';
 
 
 @NgModule({
@@ -150,6 +161,12 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     PayPalComponent,
     FypfileEditActorsComponent,
 
+    ValidateReportDepoComponent,
+    SoutenanceFilesComponent,
+    FilesByDiffCritComponent,
+    
+
+
     ReclamationComponent,
     FypFileDetailsComponent,
     AdminDepartmentsComponent,
@@ -162,6 +179,9 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     AdminStudentsComponent,
     AdminEmployeesComponent,
     AdminClassesComponent,
+    ProfileStudentComponent,
+    SheetsModificationComponent,
+    ProfileStudentDetailComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

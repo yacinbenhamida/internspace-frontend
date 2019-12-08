@@ -84,5 +84,8 @@ export class TeacherServiceService {
     return this.http.get<number>(this.baseurl+'/size/'+x+'/'+id,{headers:this.headers});
 
   }
+  getmodificationssize():Observable<number>{
+    return this.http.get<number>(this.baseurl+'/Mmsize',{headers:this.headers});
+  }
 
 }

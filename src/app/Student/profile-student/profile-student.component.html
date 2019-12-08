@@ -1,0 +1,128 @@
+<br>
+<br>
+
+<main class="main-content">
+    <header class="section-header">
+        
+                <div class="media align-items-center mb-4">
+                        <div class="w-60px mr-4 text-center">
+                            <i class="fas fa-user-graduate fs-35"></i>
+                        </div>
+                        <div class="media-body">
+                            <a class="mt-0 mb-2 text-dark anim-link-2 clearfix">Student Interface</a>
+                            <span><a class="text-dark small anim-link-2">Welcome To your Interface</a> </span>
+                        </div>
+                    </div>
+        
+    </header>
+    <div class="row uikit-example">
+        <div class="col-lg-10 mx-auto">
+                <div class="accordion" id="accordionExample">
+                        <div class="card mb-3">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    About Your Informations
+                                    </button>
+                                </h2>
+                            </div>       
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                        <div class="uikit-example">
+                                                <table datatable   class="row-border hover">
+                                                    <thead>
+                                                        <tr>
+                                                         
+                                                          <th>FirstName</th>
+                                                          <th>LastName</th>
+                                                          <th>Date Of Birth</th>
+                                                          <th> Calss Study</th>
+                                                          <th>Autorisation PFE</th>
+                                                          <th></th>
+                                                          <th></th>
+                                                        </tr>
+                                                      </thead>
+                                                      <tbody>
+                                                        <tr >
+                                                          <td>{{Std.firstName}}</td>
+                                                          <td>{{Std.lastName}}</td>
+                                                          <td>{{Std.birthDate.year}}-{{Std.birthDate.month}}-{{Std.birthDate.dayOfMonth}}</td>
+                                                          
+                                                         
+                                                            <td *ngFor="let element of Stds;let i = index">{{element}}</td>
+                                                          <td>   {{Std.isAutorised}} <td>
+                                                                <button type="button" (click)="DirecteurFyp()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-large">status</button>
+                                                          </td>
+                                                          
+                                                        </tr>
+                                                      </tbody>
+                                                  </table>
+                                         </div>
+                                </div>
+                            </div>
+                        </div>       
+                </div>
+</div>
+</div>
+
+
+
+            
+    <section class="section" id="getStarted">
+        <div class="container">
+            <div class="row uikit-example">
+                <div class="col-md-12 v-icon-box-grid" data-columns="3" data-colour="dark">
+                    <div class="spb_icon_box col-sm-12">
+                        
+                        <div class="v-icon-box-content-wrap clearfix">
+                            <div class="v-icon-box-inner-wrap clearfix">
+                                <div class="grid-icon-wrap clearfix">
+                                        <a [routerLink]="['/student/inter']">
+                                        <div class="v-svg-icon-holder v-svg-icon-animate">
+                                            <i class="fas fa-file-import"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="divider-line"></div>
+                                <h5>
+                                Intership <br>
+                                    Convention
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spb_icon_box col-sm-12">
+                        <div class="v-icon-box-content-wrap clearfix">
+                            <div class="v-icon-box-inner-wrap clearfix">
+                                <div class="grid-icon-wrap clearfix">
+                                        <a [routerLink]="['/fyp/create']">
+                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                        <i class="fas fa-file-code"></i>
+                                    </div>
+                                </a>
+                                </div>
+                                <div class="divider-line"></div>
+                                <h5>Intership File</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="spb_icon_box col-sm-12">
+                        <div class="v-icon-box-content-wrap clearfix">
+                            <div class="v-icon-box-inner-wrap clearfix">
+                                <div class="grid-icon-wrap clearfix">
+                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                        <i class="far fa-list-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="divider-line"></div>
+                                <h5>Subject File</h5>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
 import { Student } from 'src/app/models/users/student';
+import { FYPFileModification } from 'src/app/models/fyp/fyp-file-modification';
 @Injectable({
   providedIn: 'root'
 })
@@ -48,4 +49,18 @@ httpOptions = {
   MailRefus(cin:string,text:string){
     return this.http.get<any>('/api/student/mail?text='+text+'&cin='+cin, this.httpOptions);
   }
+
+//Sheets Updated
+SheetsUpdated():Observable<FYPFileModification[]>{
+  return this.http.get<FYPFileModification[]>('/api/FYPSFileModification/all');
+}
+
+AcceptSheet(id:number):Observable<FYPFileModification[]>{
+  return this.http.get<FYPFileModification[]>('/api/fypsheet/acceptModif?id='+id);
+}
+
+CancelSheet(id:number):Observable<FYPFileModification[]>{
+  return this.http.get<FYPFileModification[]>('/api/fypsheet/cancelModif?id='+id);
+}
+
 }
