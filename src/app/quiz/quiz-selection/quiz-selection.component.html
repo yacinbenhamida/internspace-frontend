@@ -1,0 +1,159 @@
+<br>
+<div class="container">
+  <div class="media-body">
+
+    <h2 class="anim-link-2 anim-link-2-secondary  common-Link--arrow common-BodyText h2 text-primary mb-0 fw-100">
+      <span class="fw-600">Select a quiz to start</span>
+    </h2>
+
+    <br>
+    <br>
+
+    <h5 class="anim-link-2 anim-link-2-primary  common-BodyText">
+      <span style="text-decoration: underline;">Prove</span> and <span
+        style="text-decoration: underline;">improve</span> your skills to enhance your internships opportunities!
+    </h5>
+
+    <br>
+    <br>
+
+
+    <div class="d-flex justify-content-between mt-1">
+
+      <form [formGroup]="categoryForm" (onSubmit)='onSumbit_GoToQuizSession()'>
+        <mat-form-field class="mr-2 ml-2" style="display:inline-block;">
+          <input type="text" matInput placeholder="Select a category" formControlName="categoryGroup" required
+            [matAutocomplete]="autoGroup">
+          <mat-autocomplete #autoGroup="matAutocomplete">
+            <mat-option *ngFor="let group of categoryDisplaysGroupOptions | async" [value]="group.name"
+              (click)="onClick_CategoryId(group.id)" (onSelectionChange)="onClick_CategoryId(group.id)">
+              {{group.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <div style="display:inline-block;">
+          <mat-spinner diameter="60" *ngIf='bIsLoadingQuizzes'></mat-spinner>
+          <button *ngIf='!bIsLoadingQuizzes'
+            [disabled]='!quizSelectionInfo.userQuiz || categoryGroup.invalid || quizSelectionInfo.bClickedOnHigherLevelQuiz' type="button"
+            class="btn btn-primary mr-2 ml-2">
+            Start! </button>
+        </div>
+      </form>
+    </div>
+    <hr>
+
+
+    <!-- Quiz Selection List Section -->
+    <div>
+
+
+      <div class="mini-card-grid">
+
+        <article
+          class="mini-card module module-article article gradient-half-primary-v1 transition-hover white-underline-links mr-3">
+
+          <h2 class="text-white header-card-title">
+            Your quiz <br>information <br>
+            <br>
+            <p *ngIf='!bIsLoadingUserQuiz && quizSelectionInfo.bClickedOnHigherLevelQuiz' style='color: red'> You need
+              higher level to pass for
+              this quiz.</p>
+
+
+            <h5
+              *ngIf='!bIsLoadingUserQuiz && quizSelectionInfo.userQuiz && !quizSelectionInfo.bIsAchieved && !quizSelectionInfo.bClickedOnHigherLevelQuiz'
+              class='text-white header-card-title'>
+              Last score: {{this.quizSelectionInfo.userQuiz.score}}%
+              <br>
+              Required percentage: {{this.quizSelectionInfo.quiz.minCorrectQuestionsPercentage}}%
+            </h5>
+
+            <h5
+              *ngIf='!bIsLoadingUserQuiz && quizSelectionInfo.userQuiz && quizSelectionInfo.bIsAchieved && !quizSelectionInfo.bClickedOnHigherLevelQuiz'
+              class='header-card-title' style="color:greenyellow">
+              You achieved this! with a score of {{this.quizSelectionInfo.userQuiz.score}}%. <span
+                style='color: goldenrod'>Congrats!</span>
+
+            </h5>
+
+
+          </h2>
+
+
+          <h6 class='text-white' *ngIf='quizSelectionInfo.categoryPreference'>
+            Your level in
+            <br>
+            {{quizSelectionInfo.categoryPreference.category.name + ': ' + quizSelectionInfo.categoryPreference.skillScore}}
+
+            <ngb-rating [readonly]="true" (max)='5' [(rate)]="quizSelectionInfo.categoryPreference.skillScore">
+            </ngb-rating>
+
+          </h6>
+
+          <p class="mb-0 text-white-50">
+            View quiz <a class="m-link-light" href="#">dashboard</a>
+          </p>
+        </article>
+
+
+        <div *ngFor='let quiz of quizSelectionInfo.quizzesList; let i = index'>
+
+          <article class="mini-card module module-article article">
+            <header class="mini-article-card-header">
+              <div class="mini-article-card-title">
+                <div class="mini-article-subhead">
+                  Required Level:
+                  <h5 style="display: inline-block;" class="text-dark">
+                    {{quiz.requiredMinLevel + 1}}
+                  </h5>
+                </div>
+                <h2>
+                  <a style="cursor: pointer;" (click)='onClick_QuizSelect(quiz)'
+                    class="article-card-header read-article anim-link-2 anim-link-2-primary">
+                    {{quiz.title}}
+                  </a>
+                </h2>
+                <br>
+                <h6>
+                  <a style="cursor: pointer;" (click)='onClick_QuizSelect(quiz)'
+                    class="article-card-header read-article anim-link-2 anim-link-2-primary ">
+                    {{quiz.description}}
+                  </a>
+                </h6>
+
+              </div>
+            </header>
+
+            <div class="mini-article-meta">
+              <div class="mini-article-byline">
+                <div class="author-avatar">
+                  <a class="author-name" href="#">
+                    <img alt="" src={{quiz.iconUrl}} class="avatar" height="80" width="80">
+                  </a>
+                </div>
+                <div class="author-name-area">
+                  <div class="author-name-prefix text-light">
+                    {{'Over ' + quiz.questions.length + (quiz.questions.length > 1 ? ' questions.' : ' question.')}}
+                  </div>
+                  <a class="author-name" href="#">
+                  </a>
+                </div>
+              </div>
+              <div class="tags">
+                <a href="#" rel="tag" class="label label--sm label--secondary"> {{quiz.category.name}}
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>

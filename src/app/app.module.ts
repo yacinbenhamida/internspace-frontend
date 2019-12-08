@@ -1,3 +1,4 @@
+import { QuizModule } from './quiz/quiz.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -56,6 +57,7 @@ import { LateStudentListComponent } from './intership-director-module/late-stude
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
 import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
+import { NotifierModule } from "angular-notifier";
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
@@ -91,6 +93,7 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
 import { ProfileStudentComponent } from './Student/profile-student/profile-student.component';
 import { SheetsModificationComponent } from './Student/Directeur/sheets-modification/sheets-modification.component';
 import { ProfileStudentDetailComponent } from './Student/profile-student-detail/profile-student-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -153,6 +156,7 @@ import { ProfileStudentDetailComponent } from './Student/profile-student-detail/
     ReclamationComponent,
     FypFileDetailsComponent,
     AdminDepartmentsComponent,
+    
     TeachersComponent,
     ChatFormComponent,
     ChatroomComponent,
@@ -169,6 +173,7 @@ import { ProfileStudentDetailComponent } from './Student/profile-student-detail/
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAixiqoD1TaG9f3EQhGMKGZpZLIFVuUQYQ'
     }),
+    NotifierModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -187,6 +192,7 @@ import { ProfileStudentDetailComponent } from './Student/profile-student-detail/
     MatAutocompleteModule,
     MatInputModule,
     TagInputModule,
+    QuizModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

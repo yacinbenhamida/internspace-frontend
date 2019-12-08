@@ -35,6 +35,7 @@
               "src/assets/css/utilities.css",
               "src/assets/css/skin/default.css",
               "src/assets/css/custom.css",
+              "node_modules/angular-notifier/styles.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css"
             ],
             "scripts": [
