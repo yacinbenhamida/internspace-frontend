@@ -11,7 +11,8 @@ import { FypFile } from 'src/app/models/fyp/fyp-file';
   [ ] ● CRUD des elements de la template de PFE & la convention de stage.
   [ ] ● Exporter en PDF le template de la fiche PFE.
   [ ] ● Exporter en PDF le template de la convention de stage.
-  [ ] ● Après avoir sélectionné un étudiant, exporter en PDF la fiche PFE de l’étudiant (conforme l’une des templates créé et avec les données associées à l’étudiant).
+  [ ] ● Après avoir sélectionné un étudiant, exporter en PDF la fiche PFE de l’étudiant
+    (conforme l’une des templates créé et avec les données associées à l’étudiant).
   [ ] ● Exporter en PDF une convention de stage d’un étudiant qui a déjà rempli sa fiche PFE
     (conforme au template crée et avec les données associées).
     ⇒ Dans cette partie, il faut avoir une sorte d’éditeur de text en ligne.

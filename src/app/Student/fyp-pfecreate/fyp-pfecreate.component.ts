@@ -4,6 +4,8 @@ import { FypPFEService } from 'src/app/services/student/fyp-pfe.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FYPSubject } from 'src/app/models/fyp/fyp-subject';
+import { AuthenticationService } from 'src/app/services/security/authentication.service';
+import { Employee } from 'src/app/models/users/Employee';
 
 @Component({
   selector: 'app-fyp-pfecreate',
@@ -18,16 +20,39 @@ export class FypPFECreateComponent implements OnInit {
   currFypFile: any;
   ff: FypFile[];
   ffView:FypFile[];
-
+  emp:Employee;
+  employes:Employee[];
   index :number
   show:boolean=true;
   showPFE:boolean=false;
   text:String="Create Fyp PFE";
+  viewCreate:boolean = true;
 
-  constructor(private fypPfeService: FypPFEService, private router: Router) { }
+  constructor(private fypPfeService: FypPFEService, private router: Router,private auth:AuthenticationService) { }
 
   ngOnInit() {
     this.getFilee();
+    this.fypPfeService.DirecteurFyp(this.auth.currentUserValue.id.toString()).subscribe(
+      (fypts => {
+        this.employes = fypts as Employee[];
+        this.employes.push;
+       
+        console.log(this.employes);
+        if ( this.employes.length > 0) {
+
+          this.emp = this.employes[0];
+         
+          console.log(this.emp);
+          console.log(this.emp.role);
+  
+        } 
+        
+      }));
+    
+    this.employes=this.DirecteurFyp();
+    console.log(this.employes);
+    this.viewFilePFE();
+  
     this.fypPfeService.GetFyp().subscribe(fypts => {
       this.ff = fypts as FypFile[];
       this.ff.push;
@@ -82,6 +107,14 @@ export class FypPFECreateComponent implements OnInit {
     studentSubjects :null, categories :null};
   }
 
+  GetEmp() {
+   
+      
+    
+
+    return { id: 0, birthDate: 'Untitled', role: 'Untitled', site :'Untitled' , interventions :null, department :null, firstName :'null',
+    email :'null'};
+  }
 
 
   getFilee(){
@@ -146,7 +179,7 @@ export class FypPFECreateComponent implements OnInit {
 
     create(){
      
-      this.fypPfeService.createIntership(this.pfeForm.value,"12").subscribe(
+      this.fypPfeService.createIntership(this.pfeForm.value,this.auth.currentUserValue.id.toString()).subscribe(
         (data: any) => {
          
           console.log(data);
@@ -165,6 +198,14 @@ export class FypPFECreateComponent implements OnInit {
         });
         
       }
+      onClickView(id: number){
+        
+        this.router.navigate(['student/fyp/find/',id]);
+      }
+      onClick(id: number){
+        
+        this.router.navigate(['fyp/update/',id]);
+      }
       getS(){
         this.fypPfeService.GetFypSubject().subscribe(
           (data: any) => {
@@ -175,18 +216,40 @@ export class FypPFECreateComponent implements OnInit {
      }
     
      viewFilePFE(){
-      this.fypPfeService.ViewFypFile("1100").subscribe(
+      this.fypPfeService.ViewFypFile(this.auth.currentUserValue.cin.toString()).subscribe(
         (fypts => {
           this.ffView = fypts as FypFile[];
           this.ffView.push;
          
-           
+          if(this.ffView.length == 0){
+            this.viewCreate = true;
+        }
+        else
+        {
+          this.viewCreate = false;
+          this.showPFE=true;
+        }
+        
           console.log(fypts);
         }));
         
+        
+        return this.ffView;
 
      }
-
+DirecteurFyp(){
+  console.log(this.employes);
+  this.fypPfeService.DirecteurFyp(this.auth.currentUserValue.id.toString()).subscribe(
+    (fypts => {
+      this.employes = fypts as Employee[];
+      this.employes.push;
+     
+     
+      console.log(this.employes);
+      
+    }));
+    return this.employes;
+}
 
       get title()
       {

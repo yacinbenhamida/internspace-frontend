@@ -1,0 +1,625 @@
+<section class="m-gab-2">
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10">
+
+        <ngx-content-loading *ngIf='currentUserValue == null' [width]="650">
+          <svg:g ngx-facebook-preset></svg:g>
+        </ngx-content-loading>
+
+
+        <div *ngIf='currentUserValue' class="media align-items-center">
+          <div class=" transition-hover  mr-5">
+            <img *ngIf='auth.currentUserValue.logoUrl != null' src={{auth.currentUserValue.logoUrl}} width="150"
+              alt="Icon">
+            <img *ngIf='auth.currentUserValue.logoUrl == null' src="assets/images/default-user-male.png" width="150"
+              alt="Icon">
+            <ul class="nav nav-pills d-flex justify-content-center">
+
+              <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                <div class="social social-brand social-sm mt-1">
+                  <a class="social-facebook m-0 transition-hover" href="#"><i class="fab fa-facebook"></i></a>
+                  <a class="social-twitter m-0 transition-hover" href="#"><i class="fab fa-twitter"></i></a>
+                  <!--<a class="social-instagram m-0 transition-hover" href="#"><i class="fab fa-instagram"></i></a>-->
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="media-body">
+            <p class="mb-1 fw-600 small text-light">{{ auth.currentUserValue.website }}</p>
+            <h3 class="h4 text-primary mb-0 fw-100"><span class="fw-600">{{ auth.currentUserValue.username }}</span>
+            </h3>
+            <ul class="nav nav-pills">
+
+              <li class="nav-item nav-item-anim-icon d-none d-md-block">
+                <a class="nav-link text-primary pl-0 m-list--link" href="#"><i class="icon-mail-2 fs-15 mr-1"></i>
+                  {{auth.currentUserValue.email}} </a>
+              </li>
+              <li class="nav-item nav-item-anim-icon d-none d-md-block">
+                <span class="ws-nowrap text-success m-list--link fs-15"><i class="icon-headphone"></i>
+                  {{auth.currentUserValue.phoneNumber}}</span>
+              </li>
+            </ul>
+            <p class="text-light mb-3 small">
+              {{ auth.currentUserValue.slogan }}
+            </p>
+            <p class="mb-3">
+              {{auth.currentUserValue.description}}
+            </p>
+            <a (click)='goToWebsite()' style="cursor: pointer"
+              class="anim-link-2 anim-link-2-primary  common-Link--arrow common-BodyText">Learn
+              more </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+
+    <!-- Panels Section -->
+    <div class="tab-content" id="myTabContent">
+
+      <!-- Subjects Section -->
+
+      <div>
+
+        <div>
+
+
+
+
+          <div class="row">
+            <div class="col-lg-4">
+
+
+              <div class="card shadow-1 hover-shadow-6 ">
+
+                <ul class="list-group">
+
+
+                  <div class='form-group m-2'>
+                    <form class="input-round" novalidate="novalidate">
+                      <div class="form-group input-group bg-white shadow-6">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text pl-4"><i class="fa fa-search"></i></span>
+                        </div>
+                        <input type="text" (keyup)="SetSubjectsSearchStr($event)"
+                          class="form-control height-inherit pl-3" placeholder="Search...">
+                        <button (click)="openFormModal(formModalContent)" type=" button" style='font-weight: bold;'
+                          class="btn btn-secondary"> +</button>
+                      </div>
+                    </form>
+
+                  </div>
+
+                  <div *ngIf='mySubjectsToShow == null'>
+
+                    <ngx-content-loading *ngFor='let x of [1, 1, 1]' [width]="300" [speed]="'1500ms'" [width]="1000"
+                      [height]="70">
+                      <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                      <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                    </ngx-content-loading>
+
+                  </div>
+
+                  <li *ngFor='let subject of mySubjectsToShow; let i = index'
+                    class="list-group-item transition-hover mt-1 mb-1 d-flex justify-content-between  align-items-center">
+                    <a class="text-dark anim-link-2" style="cursor: pointer; text-align: left;" class="btn"
+                      (click)="openSubjectDetails(i)">{{subject.title}}</a>
+                    <span class="badge badge-primary badge-pill">{{subject.company.country}}</span>
+                  </li>
+
+
+
+
+
+                  <ng-template #formModalContent let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title">Create New Subject</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                    </div>
+                  </ng-template>
+
+
+
+
+
+
+
+
+
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-8">
+
+              <div class="cool-item">
+
+
+
+                <div *ngIf='selectedSubject == null && loadingSubjectDetails'>
+
+                  <div class='row'>
+                    <div class='col-md-4'>
+                      <ngx-content-loading *ngFor='let x of [1, 1, 1]' [speed]="'1500ms'" [width]="300" [height]="100">
+                        <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                      </ngx-content-loading>
+                    </div>
+                    <div class='col-md-8'>
+                      <ngx-content-loading [width]="300" [height]="100">
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="90" height="10" y="40" x="70" rx="5" ry="5"></svg:g>
+                        <svg:g ngx-rect width="150" height="10" y="10" x="70" rx="5" ry="5"></svg:g>
+                      </ngx-content-loading>
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <section *ngIf='showCreateForm && !loadingSubjectDetails' id="Inputgroup"
+                  class="px-6 py-6 bg-gray mb-9">
+                  <div class="container">
+                    <header class="mb-6">
+                      <h2>Create a new internship opportunity.</h2>
+                      <hr>
+                      <p class="lead-1">
+                        Share your final year project subject suggestions, and attract promising interns now!
+                      </p>
+                    </header>
+                    <div class="row gap-y">
+
+                      <form [formGroup]="subjectForm" (ngSubmit)="onSubmit()" class="col-md-12">
+                        <h5 class="mb-3">Subject Details</h5>
+                        <div class="input-group is-valid is-invalid mb-3" [ngClass]="{'is-invalid': title.invalid}">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">></span>
+                          </div>
+                          <input formControlName='title' type="text" class="form-control" required placeholder="Title">
+                        </div>
+                        <div *ngIf="!title.invalid" class="valid-feedback">Looks good.</div>
+                        <div *ngIf="title.invalid" class="invalid-feedback">Provide a valid title.</div>
+
+                        <div class="input-group is-valid  mb-3" [ngClass]="{'is-invalid': description.invalid}">
+                          <input formControlName='description' type="textarea" class="form-control" required
+                            placeholder="Description">
+                          <div class="input-group-append">
+                            <span class="input-group-text">Define your requirements</span>
+                          </div>
+                        </div>
+                        <div *ngIf="!description.invalid" class="valid-feedback">Looks good.</div>
+                        <div *ngIf="description.invalid" class="invalid-feedback">Provide a valid description.</div>
+
+                        <br> <br>
+
+                        <h5 class="mb-3">Related Categories</h5>
+
+                        <tag-input theme='minimal' (onAdd)="onCategoryTagAdd($event)" [onlyFromAutocomplete]="true"
+                          formControlName="selectedCategoryTags">
+                          <tag-input-dropdown [showDropdownIfEmpty]="true" [autocompleteItems]="categoryNamesDisplay">
+                          </tag-input-dropdown>
+                        </tag-input>
+
+                        <h5 class="mb-3">Application</h5>
+
+                        <div class="form-group input-group">
+                          <div class="input-group-prepend mr-4">
+                            <p>Max Applicants:</p>
+                          </div>
+                          <mat-slider formControlName='maxApplicants' thumbLabel [displayWith]="formatLabel"
+                            tickInterval="5" min="1" max="5">
+                          </mat-slider>
+                        </div>
+
+                        <br> <br>
+
+
+                        <hr>
+                        <br> <br>
+                        <div class='d-flex justify-content-center'>
+                          <button class="btn btn-primary m-2" type="submit"
+                            [disabled]="!subjectForm.valid">Save</button>
+                          <button class="btn btn-primary m-2" type="reset" (click)="revert()">Revert</button>
+                        </div>
+
+
+                      </form>
+
+
+                    </div>
+                  </div>
+                </section>
+
+
+
+
+
+
+
+                <div *ngIf='selectedSubject == null && !loadingSubjectDetails && !showCreateForm'>
+
+                  <div class="card shadow-1 hover-shadow-6 transition-hover">
+                    <div class="card-body bg-white ">
+                      <h2 class="h5 mb-2">
+                        <a href="#" class="fs-18 anim-link-2 anim-link-2-primary" tabindex="0">Select a subject to
+                          view.</a>
+                      </h2>
+                      <p>You can always add new subjects!</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0 pb-4 pr-5 pl-5">
+                      <div class="media align-items-center">
+                        <div class="avatar-sm mr-3">
+
+
+
+
+                          <img class="img-fluid rounded-circle" *ngIf='auth.currentUserValue.pictureUrl != null'
+                            src={{auth.currentUserValue.pictureUrl}} alt="Icon">
+                          <img class="img-fluid rounded-circle" *ngIf='auth.currentUserValue.pictureUrl == null'
+                            src="assets/images/default-user-male.png" alt="Icon">
+
+                        </div>
+                        <div class="media-body fs-14">
+                          <div class="text-light">
+                            CEO
+                          </div>
+                          <div>
+                            <a href="single-article-classic.html" class="anim-link-2 anim-link-2-primary"
+                              tabindex="0">{{ auth.currentUserValue.firstName }}
+                              {{ auth.currentUserValue.lastName }}</a>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="custom-tags mt-4 mb-3">
+                        <a href="#" rel="tag" class="label label--sm label--secondary">Design</a>
+                        <a href="#" rel="tag" class="label label--sm label--secondary">Marketing</a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div *ngIf='selectedSubject && !showCreateForm' class="card shadow-1 hover-shadow-6 transition-hover">
+                  <!-- Portfolio Item Row -->
+
+                  <!-- Portfolio Item Heading -->
+                  <div class=" pt-3 pb-3 pl-7 pr-7">
+
+                    <h2>
+                      <p> <span style="color: black"> {{selectedSubject.title}} </span>
+                      </p>
+                    </h2>
+                    <hr>
+
+                    <span>
+                      <div class="custom-tags">
+                        <a *ngFor='let cat of selectedSubject.categories' href="#" rel="tag"
+                          class="label label--sm label--primary">{{ cat.name }}</a>
+                      </div>
+                    </span>
+
+                    <h5 class="mt-3">
+                      @{{selectedSubject.company.country}}
+                      <p>
+                        Requires #{{selectedSubject.maxApplicants}}
+                        applicant{{selectedSubject.maxApplicants <= 1 ? '' : 's'}}
+                      </p>
+                    </h5>
+                  </div>
+
+                  <ul class="nav nav-tabs nav-justified md-tabs indigo" id="myTabJust" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="description-tab-just" data-toggle="tab" href="#description-just"
+                        role="tab" aria-controls="description-just" aria-selected="true">Description</a>
+                    </li>
+                    <li class="nav-item">
+
+
+
+                      <a class="nav-link " id="attendants-tab-just" data-toggle="tab" href="#attendants-just" role="tab"
+                        aria-controls="attendants-just" aria-selected="false">Attendants <span style="font-size: 15px;"
+                          class="badge badge-primary"> {{selectedSubject.studentSubjects.length}} </span></a>
+                    </li>
+                    <li hidden class="nav-item">
+                      <a class="nav-link" id="management-tab-just" data-toggle="tab" href="#management-just" role="tab"
+                        aria-controls="management-just" aria-selected="false">Management</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content card pt-5" id="myTabContentJust">
+                    <div class="tab-pane fade show active" id="description-just" role="tabpanel"
+                      aria-labelledby="description-tab-just">
+                      <div class="">
+
+
+
+
+
+
+
+
+
+
+                        <div class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+                          {{selectedSubject.content}}
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="attendants-just" role="tabpanel"
+                      aria-labelledby="attendants-tab-just">
+
+                      <div *ngIf='selectedSubject.studentSubjects'
+                        class="table-wrapper-scroll-y card-body my-custom-scrollbar">
+
+                        <div class="row media d-flex justify-content-center align-items-center ml-2 mb-4"
+                          *ngFor='let applicant of selectedSubject.studentSubjects; let a_index = index'>
+
+                          <div class="mr-1 ml-1">
+                            <img *ngIf='applicant.student.pictureUrl != null' class='img-fluid rounded-circle'
+                              src={{applicant.student.pictureUrl}} width="70" alt="Icon">
+                            <img *ngIf='applicant.student.pictureUrl == null' class='img-fluid rounded-circle'
+                              src="assets/images/default-user-male.png" width="70" alt="Icon">
+                          </div>
+
+                          <div class="col-md-8 media-body">
+                            <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">
+                              {{applicant.student.firstName}} {{applicant.student.lastName}} | University of <span
+                                style="font-weight: bold;">
+
+                                {{applicant.student.studyClass.classOption.departement.site.university.name}}
+                              </span>
+                            </a>
+
+                            <span>
+                              <div class="custom-tags">
+                                <a *ngFor='let cat of applicant.student.preferedCategories' href="#" rel="tag"
+                                  class="label label--sm label--primary">{{ cat.category.name }}</a>
+                              </div>
+
+
+                            </span>
+
+                            <span *ngIf="applicant.applianceStatus == 'refused'" class="time small text-muted">
+                            </span>
+                            <span *ngIf="applicant.applianceStatus == 'accepted'" style='color: rgb(46, 251, 46)'
+                              class="time small text-muted">
+                            </span>
+                            <span *ngIf="applicant.applianceStatus == 'pending'" style='color: gold'
+                              class="time small text-muted">
+                            </span>
+
+
+                          </div>
+
+
+                          <div *ngIf="applicant.applianceStatus == 'refused'" class="col-md-4 btn-group" role="group"
+                            aria-label="Basic example">
+                            You refused {{applicant.student.firstName}} {{applicant.student.lastName}}.
+                          </div>
+
+
+                          <div *ngIf="applicant.applianceStatus == 'accepted'" class="col-md-4 btn-group" role="group"
+                            aria-label="Basic example">
+                            You accepted {{applicant.student.firstName}} {{applicant.student.lastName}}.
+                          </div>
+
+                          <div *ngIf="applicant.applianceStatus == 'pending'" class="col-md-4 btn-group" role="group"
+                            aria-label="Basic example">
+
+                            <button type="button" (click)="setApplianceAction('accept', a_index)"
+                              class="btn btn-primary">Okay!</button>
+                            <button type="button" (click)="setApplianceAction('refuse', a_index)"
+                              class="btn btn-warning">Refuse</button>
+                          </div>
+
+
+                          <hr>
+
+                        </div>
+
+
+                      </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <!-- Management Section -->
+                    <div class="tab-pane fade" id="management-just" role="tabpanel"
+                      aria-labelledby="management-tab-just">
+
+
+
+                    </div>
+                  </div>
+
+
+                </div>
+
+
+              </div>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Other Section -->
+
+
+    </div>
+
+    <section id="getStarted" class="section">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-4 border-right">
+            <div class="clearfix pl-8 pr-4">
+              <img src="../assets/img/client/microsoft.png" width="130" class="mb-2">
+              <div class="mb-4 testimonial-quote">
+                <blockquote class="fs-16 mb-0">
+                  This is the most robust template I've ever worked with. So much can be done with this multi-purpose
+                  package. Regular updates and enhancements add tremendous value.
+                </blockquote>
+                <div class="rating">
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="avatar">
+                  <img class="img-fluid rounded-circle" src="../assets/img/avatar/avatar1.jpg" alt="Image Description">
+                </div>
+                <div class="ml-3">
+                  <h4 class="h6 mb-0">Julia Robert</h4>
+                  <small class="text-muted">Head of IT department at Microsoft</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 pl-6 border-right">
+            <div class="clearfix pl-8 pr-4">
+              <img src="../assets/img/client/twitter.png" width="130" class="mb-2">
+              <div class="mb-4 testimonial-quote">
+                <blockquote class="fs-16 mb-0">
+                  I wish that I could choose more than one reason for my 5-star rating! The Design is great,
+                  the features are fantastic and from what I've read in the support forum the customer support is great.
+                  This is a great template.
+                </blockquote>
+                <div class="rating">
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="avatar">
+                  <img class="img-fluid rounded-circle" src="../assets/img/avatar/avatar2.jpg" alt="Image Description">
+                </div>
+                <div class="ml-3">
+                  <h4 class="h6 mb-0">Jhon Doe</h4>
+                  <small class="text-muted">Sales Manager at Twitter</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 pl-6">
+            <div class="clearfix pl-8 pr-4">
+              <img src="../assets/img/client/facebook.png" width="130" class="mb-2">
+              <div class="mb-4 testimonial-quote">
+                <blockquote class="fs-16 mb-0">
+                  I like Vertex because of all the features and their variations, such as the Portfolio.
+                  I can do so many different things with this theme, and I am already using it for my fourth website.
+                </blockquote>
+                <div class="rating">
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                  <label class="fa fa-star"></label>
+                </div>
+              </div>
+              <div class="d-flex align-items-center">
+                <div class="avatar">
+                  <img class="img-fluid rounded-circle" src="../assets/img/avatar/avatar3.jpg" alt="Image Description">
+                </div>
+                <div class="ml-3">
+                  <h4 class="h6 mb-0">Ariol Doe</h4>
+                  <small class="text-muted">Lead Developer at Facebook</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>

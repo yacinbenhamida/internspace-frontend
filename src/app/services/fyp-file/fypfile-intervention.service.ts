@@ -13,12 +13,17 @@ export class FypFileInterventionService {
 
     constructor(private http: HttpClient) { }
 
-    getInterventionsOfSheet(sheetId:number){
-        return this.http.get<FypIntervention[]>("/api/interventions/getInterventions/"+sheetId)
+    getInterventionsOfTeacher(tId:number){
+        return this.http.get<FypIntervention[]>("/api/interventions/getInterventionsOfTeacher/"+tId)
     }
+    getInterventionsOfSheet(sheetId:number){
+      return this.http.get<FypIntervention[]>("/api/interventions/getInterventions/"+sheetId)
+  }
     assignTeacherToFYPSheetWithRole(idTeacher : number,file:FypFile,role:string){
-      console.log(idTeacher)
       return this.http.get<FypIntervention[]>("/api/interventions/assign/"+idTeacher+"/"+file.id+"/"+role)
+    }
+    editTeacherRole(idIntervention : number,role:string, idTeacher :number){
+      return this.http.get<FypIntervention[]>("/api/interventions/edit/"+idIntervention+"/"+role+"/"+idTeacher)
     }
     private extractData(res: Response) {
       let body = res.json();

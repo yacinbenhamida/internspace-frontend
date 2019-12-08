@@ -1,0 +1,119 @@
+
+<div class="wrapper">
+  <main class="main-content">
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+<div>
+  <div *ngIf=" auth.user$ | async as user; else login">
+    <div class="row justify-content-center m-gab-3-top">
+        <div class="col-lg-8">
+            <div class="media">
+                <img alt="" class="rounded-circle mr-5 mt-2" [src]="user.photoURL" style="width: 100px;">
+                <div class="media-body">
+                    <h5>Google account<mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate"> {{ user.displayName }}</mark></h5>
+                    <blockquote class="blockquote">
+                        <p class="lead">
+                           Connected
+                        </p>
+                        <footer class="blockquote-footer text-dark"><button  class="btn btn-primary btn-pill transition-hover" (click)="auth.signOut()">Sign Out</button></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="mb-9">
+        <a class="card card-frame card-text-dark mb-3 transition-hover" routerLink="/chat/UJrR0M10IK7VJDVCQIKF">
+            <div class="card-body py-3 px-4">
+                <span class="row justify-content-sm-between align-items-sm-center">
+                    <span class="col-sm-7 mb-1 mb-sm-0">
+                        <span class="fs-14 text-secondary">Internspace</span> <br>
+                        Mega chat🎪
+                    </span>
+                    <span class="col-sm-3 mb-2 mb-sm-0 fs-14 text-secondary">
+                        Everyone is <br>
+                        Welcome
+                    </span>
+                    <span class="col-sm-2 text-primary text-sm-right">
+                        Join →
+                    </span>
+                </span>
+            </div>
+        </a>
+    </div>
+    <div class="mb-9">
+        <div class="px-6 py-7 rounded text-white custom-section-4">
+            <h3 class="h5 mb-4">Create a new chatroom</h3>
+            <form class="input-round">
+                <div class="form-group input-group bg-white shadow-4">
+                    <input type="text" #title class="form-control form-control-sm height-inherit pl-4" placeholder="Chatroom name...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" (click)="createNewChatRoom(title.value)" type="button">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <h3>Chatrooms</h3>
+    <div class="col-md-12 mx-auto mt-4 mb-2" *ngFor="let chat of userChats$ | async; let i = index">
+        <a class="card card-body shadow-3 hover-shadow-6 text-default p-5" *ngIf="chat.id" [routerLink]="['chat/', {id : chat.id}]">
+            <div class="media align-items-center" *ngIf="chat.id">
+                <div class="mr-5" *ngIf="chat.id">
+                    <span>
+                        <i class="fa fa-comments lead-7 text-primary text-primary"></i>
+                    </span>
+                </div>
+                <div class="media-body" *ngIf="chat.id">
+                    <a   class="mt-0 mb-2 text-dark anim-link-2 clearfix" > {{chat.name}}  
+                        
+                       </a>
+                       
+                    <span>{{chat.createdBy}} <span class="small">-</span> </span>
+                    <span class="time small text-muted">{{chat.createdAt | date}}</span>
+                    <span class="col-sm-2 text-primary text-sm-right">
+                        <span>
+                            <span class="badge badge-pale badge-primary">Messages</span>
+                            <span class="badge badge-number badge-warning">  {{ chat.messages.length }}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </a>
+    </div>
+  </div>
+
+  <ng-template #login>
+      <section class="pt-6 pt-md-8">
+          <div class="container pb-6 pb-md-8">
+              <div class="row align-items-center">
+                  <div class="col-12 col-md">
+
+                      <!-- Heading -->
+                      <h3 class="mb-1">
+                          Not yet linked with google?
+                      </h3>
+
+                      <!-- Text -->
+                      <p class="font-size-lg text-muted mb-5 mb-md-0">
+                          Link up your account and join the users of Internspace
+                      </p>
+
+                  </div>
+                  <div class="col-12 col-md-auto">
+
+                      <!-- Button -->
+                      <button class="btn btn-primary btn-pill transition-hover" (click)="auth.googleSignIn()">Login with Google</button>
+
+                  </div>
+              </div> <!-- / .row -->
+          </div> <!-- / .container -->
+      </section>
+  </ng-template>
+
+</div>
+</div>
+</div>
+</main>
+</div>
