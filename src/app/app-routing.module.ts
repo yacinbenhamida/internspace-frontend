@@ -1,3 +1,5 @@
+import { QuizSessionComponent } from './quiz/quiz-session/quiz-session.component';
+import { QuizSelectionComponent } from './quiz/quiz-selection/quiz-selection.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { UniversityStatsComponent } from './dashboard/university-stats/university-stats.component';
 import { FypTemplateManagementComponent } from './fyp-template/fyp-template-management/fyp-template-management.component';
@@ -110,7 +112,13 @@ const routes: Routes = [
   // start of login,profiles  and registration
   {path : 'login', component : AuthenticationComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
-  {path: 'company-profile', component: CompanyProfileComponent, canActivate : [AuthGuard]},
+  {path: 'company/profile', component: CompanyProfileComponent, canActivate : [AuthGuard]},
+  {path: 'student/profile', component: StudentProfileComponent, canActivate : [AuthGuard]},
+
+  // Quiz Section
+  {path: 'student/quiz/selection', component: QuizSelectionComponent, canActivate : [AuthGuard]},
+  {path: 'student/quiz/session', component: QuizSessionComponent, canActivate : [AuthGuard]},
+
   // end login and registration
   {path: 'fypTemplate', component: FypTemplateManagementComponent},
   {path: 'fypConvention', component: FypConventionComponent},
@@ -119,8 +127,8 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard], 
-  data: { 
+  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard],
+  data: {
     expectedRole: 'Student'
   } },
   {path: 'fyp/update/:id', component: FypPfeUpdateComponent},
@@ -216,7 +224,7 @@ const routes: Routes = [
   { path: 'chat',component:ChatroomComponent,canActivate: [AuthGuard] },
   { path: 'chat/:id', component: ChatFormComponent, canActivate: [AuthGuard] },
   {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard],
-  data: { 
+  data: {
     expectedRole: 'internshipsDirector'
   }},
   {path: '404', component: NotfoundComponent},
