@@ -15,13 +15,33 @@
               alt="Icon">
             <img *ngIf='auth.currentUserValue.logoUrl == null' src="assets/images/default-user-male.png" width="150"
               alt="Icon">
+            <ul class="nav nav-pills d-flex justify-content-center">
 
+              <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                <div class="social social-brand social-sm mt-1">
+                  <a class="social-facebook m-0 transition-hover" href="#"><i class="fab fa-facebook"></i></a>
+                  <a class="social-twitter m-0 transition-hover" href="#"><i class="fab fa-twitter"></i></a>
+                  <!--<a class="social-instagram m-0 transition-hover" href="#"><i class="fab fa-instagram"></i></a>-->
+                </div>
+              </li>
+            </ul>
           </div>
 
           <div class="media-body">
             <p class="mb-1 fw-600 small text-light">{{ auth.currentUserValue.website }}</p>
             <h3 class="h4 text-primary mb-0 fw-100"><span class="fw-600">{{ auth.currentUserValue.username }}</span>
             </h3>
+            <ul class="nav nav-pills">
+
+              <li class="nav-item nav-item-anim-icon d-none d-md-block">
+                <a class="nav-link text-primary pl-0 m-list--link" href="#"><i class="icon-mail-2 fs-15 mr-1"></i>
+                  {{auth.currentUserValue.email}} </a>
+              </li>
+              <li class="nav-item nav-item-anim-icon d-none d-md-block">
+                <span class="ws-nowrap text-success m-list--link fs-15"><i class="icon-headphone"></i>
+                  {{auth.currentUserValue.phoneNumber}}</span>
+              </li>
+            </ul>
             <p class="text-light mb-3 small">
               {{ auth.currentUserValue.slogan }}
             </p>
@@ -60,17 +80,22 @@
                 <ul class="list-group">
 
 
-                  <div class='row'>
-                    <div class='col-md-9 ml-2 mt-1'>
+                  <div class='form-group m-2'>
+                    <form class="input-round" novalidate="novalidate">
+                      <div class="form-group input-group bg-white shadow-6">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text pl-4"><i class="fa fa-search"></i></span>
+                        </div>
+                        <input type="text" (keyup)="SetSubjectsSearchStr($event)"
+                          class="form-control height-inherit pl-3" placeholder="Search...">
+                        <button (click)="openFormModal(formModalContent)" type=" button" style='font-weight: bold;'
+                          class="btn btn-secondary"> +</button>
+                      </div>
+                    </form>
 
-                    </div>
-                    <div class='col-md-3 ml-2 mt-1'>
-                      <button (click)="openFormModal(formModalContent)" type=" button" style='font-weight: bold;'
-                        class="btn btn-primary"> +</button>
-                    </div>
                   </div>
 
-                  <div *ngIf='mySubjects == null'>
+                  <div *ngIf='mySubjectsToShow == null'>
 
                     <ngx-content-loading *ngFor='let x of [1, 1, 1]' [width]="300" [speed]="'1500ms'" [width]="1000"
                       [height]="70">
@@ -80,7 +105,7 @@
 
                   </div>
 
-                  <li *ngFor='let subject of mySubjects; let i = index'
+                  <li *ngFor='let subject of mySubjectsToShow; let i = index'
                     class="list-group-item transition-hover mt-1 mb-1 d-flex justify-content-between  align-items-center">
                     <a class="text-dark anim-link-2" style="cursor: pointer; text-align: left;" class="btn"
                       (click)="openSubjectDetails(i)">{{subject.title}}</a>
@@ -195,20 +220,20 @@
                           <div class="input-group-prepend">
                             <span class="input-group-text">></span>
                           </div>
-                          <input formControlName='title' type="text" class="form-control" placeholder="Title">
+                          <input formControlName='title' type="text" class="form-control" required placeholder="Title">
                         </div>
                         <div *ngIf="!title.invalid" class="valid-feedback">Looks good.</div>
-                        <div *ngIf="title.invalid" class="invalid-feedback">Provide a valid value.</div>
+                        <div *ngIf="title.invalid" class="invalid-feedback">Provide a valid title.</div>
 
                         <div class="input-group is-valid  mb-3" [ngClass]="{'is-invalid': description.invalid}">
-                          <input formControlName='description' type="textarea" class="form-control"
+                          <input formControlName='description' type="textarea" class="form-control" required
                             placeholder="Description">
                           <div class="input-group-append">
                             <span class="input-group-text">Define your requirements</span>
                           </div>
                         </div>
                         <div *ngIf="!description.invalid" class="valid-feedback">Looks good.</div>
-                        <div *ngIf="description.invalid" class="invalid-feedback">Provide a valid value.</div>
+                        <div *ngIf="description.invalid" class="invalid-feedback">Provide a valid description.</div>
 
                         <br> <br>
 

@@ -26,6 +26,7 @@ export class User {
   isDisabled?: Boolean;
   studyClass?: StudyClass
   pictureUrl?: String;
+  phoneNumber?: String;
 
   // Student Related Section
   hasSubmittedAreport?: boolean;

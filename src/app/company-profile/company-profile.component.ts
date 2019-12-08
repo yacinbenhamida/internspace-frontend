@@ -36,6 +36,7 @@ export class CompanyProfileComponent implements OnInit {
   currentUserValue: User;
   mySubjects: FYPSubject[];
   selectedSubject: FYPSubject;
+  mySubjectsToShow: FYPSubject[];
 
   fakeDelay = 1;
   loadingSubjectDetails = false;
@@ -126,11 +127,15 @@ export class CompanyProfileComponent implements OnInit {
     console.log(this.toAddFypSubject);
 
     this.service.CreateNewSubject(this.toAddFypSubject).subscribe(e => {
-      console.log(e);
       this.refreshFypSubjects();
     });
 
     this.showCreateForm = false;
+  }
+
+  SetSubjectsSearchStr(event: any) {
+    this.mySubjectsToShow = this.mySubjects.filter(e => e.title.toLowerCase().includes(event.target.value.toLowerCase()));
+
   }
 
   get title() {
@@ -153,6 +158,7 @@ export class CompanyProfileComponent implements OnInit {
       ).subscribe(timedItem => {
         this.currentUserValue = this.auth.currentUserValue;
         this.mySubjects = e;
+        this.mySubjectsToShow = e;
       });
 
     }
