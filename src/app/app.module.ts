@@ -63,6 +63,9 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
+import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
+import { FilesByDiffCritComponent } from './intership-director-module/files-by-diff-crit/files-by-diff-crit.component';
 
 
 
@@ -120,6 +123,9 @@ import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actor
     PayPalComponent,
     
     FypfileEditActorsComponent,
+    ValidateReportDepoComponent,
+    SoutenanceFilesComponent,
+    FilesByDiffCritComponent,
     
 
   ],
@@ -137,6 +143,7 @@ import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actor
     DataTablesModule,
     BrowserAnimationsModule,
     NgxPayPalModule,
+    
 
 
  

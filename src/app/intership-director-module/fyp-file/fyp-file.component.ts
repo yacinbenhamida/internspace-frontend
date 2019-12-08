@@ -15,11 +15,12 @@ export class FypFileComponent implements OnInit {
   allFYPFiles:FypFile[]=[];
   allStudents:User[]=[];
   selectedUser :User= new User();
-  myRes=[];
+  myRes:any[]=[];
   constructor(private _internshipDirectorService : InternshipDirectorService, private auth:AuthenticationService) { }
 
   ngOnInit() {
 
+    
  // this._internshipDirectorService.getCurrentFYPFileList().subscribe(data=>console.log(data));
   //this._internshipDirectorService.getFileWithAnnulationDemande().subscribe(data=>console.log(data));
   //this._internshipDirectorService.getAllStudents().subscribe(data=>console.log(data));
@@ -73,7 +74,7 @@ export class FypFileComponent implements OnInit {
   //this._internshipDirectorService.PendingFYPFile().subscribe(data=>console.log(data));
     //this._internshipDirectorService.LinksOfChoosenCompany("55").subscribe(data=>console.log(data));
     
-   
+   console.log(this.myRes)
 }
 
 

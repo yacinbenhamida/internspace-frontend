@@ -44,6 +44,9 @@ import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-dire
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
 import { PayPalComponent } from './pay-pal/pay-pal.component';
+import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
+import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
+import { FilesByDiffCritComponent } from './intership-director-module/files-by-diff-crit/files-by-diff-crit.component';
 
 
 
@@ -145,6 +148,19 @@ const routes: Routes = [
     expectedRole: 'internshipsDirector'
   }},
   {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/reportValidation',component:ValidateReportDepoComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+
+  {path: 'internshipDirector/sountenance',component:SoutenanceFilesComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/filesWithDiffCrit',component:FilesByDiffCritComponent,canActivate: [RoleGuard], 
   data: { 
     expectedRole: 'internshipsDirector'
   }},

@@ -91,14 +91,20 @@
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector">Sheets</a>                
                                                 <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" routerLink="internshipDirector/sountenance">Files ready for defence</a></li>
+                                                    <li><a class="dropdown-item" routerLink="internshipDirector/filesWithDiffCrit">Sheets by many criteria</a></li>
                                                     <li><a class="dropdown-item" routerLink="internshipDirector/fypFileByCountry">Sheets by Country</a></li>
                                                     <li><a class="dropdown-item" routerLink="internshipDirector/fypFileBycategory">Sheets by Category</a></li>
                                                     <li><a class="dropdown-item" routerLink="internshipDirector/fypFileByState">Sheets by State</a></li>
                                                     <li><a class="dropdown-item" routerLink="internshipDirector/fypFileByYear">Sheets by Year</a></li>
                                                 </ul>  
                                             </li>
+                                           
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/DepartmentMan">Departments</a>                
+                                                </li>
+                                                <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/reportValidation">Reports Validation</a>                
                                                 </li>
                                         </ul>
                                     </nav>

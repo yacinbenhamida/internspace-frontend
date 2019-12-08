@@ -14,10 +14,13 @@ import { StudentProfileComponent } from './student-profile/student-profile.compo
 import { AccountManagementComponent } from './account-management/account-management.component';
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './department-profile/department-profile.component';
+import { ValidateReportDepoComponent } from './validate-report-depo/validate-report-depo.component';
+import { SoutenanceFilesComponent } from './soutenance-files/soutenance-files.component';
+import { FilesByDiffCritComponent } from './files-by-diff-crit/files-by-diff-crit.component';
 
 
 @NgModule({
-  declarations: [FypFileComponent, PerTypeSearchComponent, TabelComponent, StudentManagementComponent, FypFileByCategoryComponent, FypFileByYearComponent, FypFileByStateComponent, FypFileByCountryComponent, LateStudentListComponent, FypFileManagementComponent, StudentProfileComponent, AccountManagementComponent, MaxActionNumberOfTeacherPerDepartmentComponent, DepartmentProfileComponent,],
+  declarations: [FypFileComponent, PerTypeSearchComponent, TabelComponent, StudentManagementComponent, FypFileByCategoryComponent, FypFileByYearComponent, FypFileByStateComponent, FypFileByCountryComponent, LateStudentListComponent, FypFileManagementComponent, StudentProfileComponent, AccountManagementComponent, MaxActionNumberOfTeacherPerDepartmentComponent, DepartmentProfileComponent, ValidateReportDepoComponent, SoutenanceFilesComponent, FilesByDiffCritComponent,],
   imports: [
     CommonModule
   ]
