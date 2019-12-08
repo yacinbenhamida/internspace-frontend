@@ -58,8 +58,12 @@ import { TeachersComponent } from './department-head/teachers/teachers.component
 import { ChatroomComponent } from './chat/chatroom/chatroom.component';
 
 import { IntershipUpdateComponent } from './Student/intership-update/intership-update.component';
+import { ChatFormComponent } from './chat/chat-form/chat-form.component';
 import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
 import { SheetsManagementComponent } from './Student/Directeur/sheets-management/sheets-management.component';
+import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
+import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
+import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
 
 
 
@@ -79,6 +83,24 @@ const routes: Routes = [
     }
   },
   {path : 'admin/departments', component : AdminDepartmentsComponent,
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  {path : 'admin/students', component : AdminStudentsComponent,
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  {path : 'admin/employees', component : AdminEmployeesComponent,
+    canActivate: [RoleGuard],
+    data: {
+      expectedRole: 'admin'
+    }
+  },
+  {path : 'admin/classes', component : AdminClassesComponent,
     canActivate: [RoleGuard],
     data: {
       expectedRole: 'admin'
@@ -191,12 +213,10 @@ const routes: Routes = [
   data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path: 'chat',component:ChatroomComponent,canActivate: [RoleGuard], 
-  data: { 
-    expectedRole: 'departmentHead'
-  }},
+  { path: 'chat',component:ChatroomComponent,canActivate: [AuthGuard] },
+  { path: 'chat/:id', component: ChatFormComponent, canActivate: [AuthGuard] },
   {path: 'internshipDirector/DepartmentProfile/:id',component:DepartmentProfileComponent,canActivate: [RoleGuard],
-  data: {
+  data: { 
     expectedRole: 'internshipsDirector'
   }},
   {path: '404', component: NotfoundComponent},

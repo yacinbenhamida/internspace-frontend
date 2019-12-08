@@ -8,7 +8,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { HomepageComponent } from './homepage/homepage.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppService } from './app.service';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormControl } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './services/security/authguard.service';
 import { AuthenticationService } from './services/security/authentication.service';
@@ -67,29 +67,23 @@ import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
 import { ReclamationComponent } from './Student/reclamation/reclamation.component';
 import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
-
-
-
-
-
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { UserItemComponent } from './chat/user-item/user-item.component';
-import { UserListComponent } from './chat/user-list/user-list.component';
 import { ChatFormComponent } from './chat/chat-form/chat-form.component';
 import { ChatroomComponent } from './chat/chatroom/chatroom.component';
-import { FeedComponent } from './chat/feed/feed.component';
-import { MessageComponent } from './chat/message/message.component';
 import { environment } from 'src/environments/environment';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
 import { SheetsManagementComponent } from './Student/Directeur/sheets-management/sheets-management.component';
+import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
+import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
+import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
 
 @NgModule({
   declarations: [
@@ -149,18 +143,16 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
     FypfileEditActorsComponent,
     
     ReclamationComponent,
-    
     FypFileDetailsComponent,
     AdminDepartmentsComponent,
     TeachersComponent,
-    UserItemComponent,
-    UserListComponent,
     ChatFormComponent,
     ChatroomComponent,
-    FeedComponent,
-    MessageComponent,
     CompanyProfileComponent,
     SheetsManagementComponent,
+    AdminStudentsComponent,
+    AdminEmployeesComponent,
+    AdminClassesComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

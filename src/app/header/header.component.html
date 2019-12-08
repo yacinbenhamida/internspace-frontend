@@ -108,6 +108,7 @@
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'v'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector/studentManagement">Student Managment</a>
                                             </li>
+                                            
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector">Sheets</a>
                                                 <ul class="dropdown-menu">
@@ -122,6 +123,15 @@
                                                 </li>
 
                                                                                              
+                                                <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                    <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/DepartmentMan">Departments</a>                
+                                            </li>  
+                                            <li *ngIf="auth.currentUserValue" class="dropdown">
+                                                    <a class="social-gplus" routerLink="chat"><i class="fab fa-google-plus"></i></a>
+                                            </li>
+                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                                <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector/studentManagement">Student Managment</a>
+                                            </li>                                             
                                         </ul>
                                     </nav>
                                 </div>
