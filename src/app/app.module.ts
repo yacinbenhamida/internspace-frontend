@@ -89,6 +89,7 @@ import { FeedComponent } from './chat/feed/feed.component';
 import { MessageComponent } from './chat/message/message.component';
 import { environment } from 'src/environments/environment';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
+import { SheetsManagementComponent } from './Student/Directeur/sheets-management/sheets-management.component';
 
 @NgModule({
   declarations: [
@@ -159,6 +160,7 @@ import { CompanyProfileComponent } from './company-profile/company-profile.compo
     FeedComponent,
     MessageComponent,
     CompanyProfileComponent,
+    SheetsManagementComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
