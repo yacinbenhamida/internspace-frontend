@@ -57,16 +57,30 @@
     <hr>
 
     <h3>Chatrooms</h3>
-
-    <div class="media align-items-center mb-4" *ngFor="let chat of userChats$ | async; let i = index">
-        <div class="w-200px mr-3 text-center" *ngIf="chat.id">
-            <i class="icon-bubble-conversation-2 fs-35"></i>
-        </div>
-        <div class="media-body" *ngIf="chat.id">
-            <a  [routerLink]="['chat/', {id : chat.id}]" class="mt-0 mb-2 text-dark anim-link-2 clearfix" > {{chat.name}} - {{ chat.messages.length }} Messages</a>
-            <span>{{chat.createdBy}} <span class="small">-</span> </span>
-            <span class="time small text-muted">{{chat.createdAt | date}}</span>
-        </div>
+    <div class="col-md-12 mx-auto mt-4 mb-2" *ngFor="let chat of userChats$ | async; let i = index">
+        <a class="card card-body shadow-3 hover-shadow-6 text-default p-5" *ngIf="chat.id" [routerLink]="['chat/', {id : chat.id}]">
+            <div class="media align-items-center" *ngIf="chat.id">
+                <div class="mr-5" *ngIf="chat.id">
+                    <span>
+                        <i class="fa fa-comments lead-7 text-primary text-primary"></i>
+                    </span>
+                </div>
+                <div class="media-body" *ngIf="chat.id">
+                    <a   class="mt-0 mb-2 text-dark anim-link-2 clearfix" > {{chat.name}}  
+                        
+                       </a>
+                       
+                    <span>{{chat.createdBy}} <span class="small">-</span> </span>
+                    <span class="time small text-muted">{{chat.createdAt | date}}</span>
+                    <span class="col-sm-2 text-primary text-sm-right">
+                        <span>
+                            <span class="badge badge-pale badge-primary">Messages</span>
+                            <span class="badge badge-number badge-warning">  {{ chat.messages.length }}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </a>
     </div>
   </div>
 

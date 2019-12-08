@@ -57,6 +57,7 @@ import { LateStudentListComponent } from './intership-director-module/late-stude
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
 import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
+import { NotifierModule } from "angular-notifier";
 import { FypFilesModificationComponent } from './fyp-files-modification/fyp-files-modification.component';
 import { PFECategoryComponent } from './Student/pfecategory/pfecategory.component';
 import { PFECategoryDetailsComponent } from './Student/pfecategory-details/pfecategory-details.component';
@@ -89,6 +90,7 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
 import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
 import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
 import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+
 
 @NgModule({
   declarations: [
@@ -151,6 +153,7 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     ReclamationComponent,
     FypFileDetailsComponent,
     AdminDepartmentsComponent,
+    
     TeachersComponent,
     ChatFormComponent,
     ChatroomComponent,
@@ -164,6 +167,7 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAixiqoD1TaG9f3EQhGMKGZpZLIFVuUQYQ'
     }),
+    NotifierModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
