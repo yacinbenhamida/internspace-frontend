@@ -69,4 +69,42 @@ export class QuizService {
       this.baseurl + '/student/categories/preferences',
       { headers: this.headersJSON, params: params });
   }
+
+  GetStudentQuizQuestionResponseMap(studentId: number, quizId: number) {
+    // 	@Path("/student/quiz/responses-map/")
+    const params = new HttpParams()
+      .set('student', studentId.toString())
+      .set('quiz', quizId.toString());
+
+    return this.http.get<any>(
+      this.baseurl + '/student/quiz/responses-map',
+      { headers: this.headersJSON, params: params });
+  }
+
+  UpdateCurrentIndexQuestion(userQuestionId: number) {
+
+  }
+
+  UpdateUserQuestionResponse(studentId: any, responseId: any, toCheck: boolean) {
+    const params = new HttpParams()
+      .set('student', studentId.toString())
+      .set('response', responseId.toString())
+      .set('check', toCheck ? 'true' : 'false');
+
+    // from post to get
+    return this.http.get<any>(
+      this.baseurl + '/student/answer',
+      { headers: this.headersJSON, params: params });
+  }
+
+  RefreshStudentQuizScore(studentId: number, quizId: number) {
+    const params = new HttpParams()
+    .set('student', studentId.toString())
+    .set('quiz', quizId.toString());
+
+    // from post to get
+    return this.http.get<any>(
+      this.baseurl + '/student/finish-quiz',
+      { headers: this.headersJSON, params: params });
+  }
 }

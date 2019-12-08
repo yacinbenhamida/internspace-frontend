@@ -1,3 +1,4 @@
+import { QuizResultComponent } from './quiz/quiz-result/quiz-result.component';
 import { QuizSessionComponent } from './quiz/quiz-session/quiz-session.component';
 import { QuizSelectionComponent } from './quiz/quiz-selection/quiz-selection.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
@@ -118,6 +119,7 @@ const routes: Routes = [
   // Quiz Section
   {path: 'student/quiz/selection', component: QuizSelectionComponent, canActivate : [AuthGuard]},
   {path: 'student/quiz/session', component: QuizSessionComponent, canActivate : [AuthGuard]},
+  {path: 'student/quiz/result', component: QuizResultComponent, canActivate : [AuthGuard]},
 
   // end login and registration
   {path: 'fypTemplate', component: FypTemplateManagementComponent},

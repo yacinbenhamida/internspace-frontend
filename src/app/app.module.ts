@@ -153,7 +153,7 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     ReclamationComponent,
     FypFileDetailsComponent,
     AdminDepartmentsComponent,
-    
+
     TeachersComponent,
     ChatFormComponent,
     ChatroomComponent,
