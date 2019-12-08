@@ -72,18 +72,18 @@
 
 
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'teacher'" class="dropdown">
-                                                <a class="dropdown-item dropdown-toggle"routerLink="/teacherFypFiles" href="#"> teacherFypFiles <i class="fas fa-chevron-down"></i></a>
+                                                <a class="dropdown-item dropdown-toggle" href="#"> Suggestions <i class="fas fa-chevron-down"></i></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" routerLink="/fypfile/tracking"><i class="icon-list-1 menu-icon"></i> Suggestions</a></li>
                                                    </ul>
                                             </li>
 
                                         <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'teacher'" class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="#"> teacherFypFiles <i class="fas fa-chevron-down"></i></a>
+                                            <a class="dropdown-item dropdown-toggle" href="#"> teacher section <i class="fas fa-chevron-down"></i></a>
                                             <ul class="dropdown-menu">
-                                                <li><a class="dropdown-item" routerLink="/teacherFypFiles" href="#"><i class="icon-list-1 menu-icon"></i> Teacher</a></li>
+                                                <li><a class="dropdown-item" routerLink="/teacherFypFiles" href="#"><i class="icon-list-1 menu-icon"></i> Teacher Dashboard</a></li>
                                                 <li><a class="dropdown-item" routerLink="/majormodif" href="#"><i class="icon-list-2 menu-icon"></i> Major Modification section</a></li>
-                                                <li><a class="dropdown-item" routerLink="create-category">Category</a></li>
+                                                
 
                                                 </ul>
                                             </li>

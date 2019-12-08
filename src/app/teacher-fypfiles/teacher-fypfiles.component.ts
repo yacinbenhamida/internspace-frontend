@@ -33,9 +33,11 @@ export class TeacherFypfilesComponent implements OnInit {
   chartChache: any; 
 
   @ViewChild("customNotification", { static: true }) customNotificationTmpl;
- 
+  timeLeft: number = 10;
+  interval;
   private chartData: any;
-  
+  majo:number;
+  xx:number;
   constructor(zone: NgZone,notifierService: NotifierService,
     private auth:AuthenticationService,
      restApi: TeacherServiceService, 
@@ -43,6 +45,29 @@ export class TeacherFypfilesComponent implements OnInit {
   ) {this.restApi=restApi;
   this.router=router; this.zone = zone;
   this.notifier = notifierService;}
+  startTimer() {
+    
+   
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        this.restApi.getmodificationssize().subscribe(res =>{this.xx=res;});
+console.log(this.xx);
+
+        if (this.xx!=this.majo)
+        {
+          this.showNotification("you have "+this.xx+"  modification request")
+        }
+        this.timeLeft = 10;
+        console.log(this.timeLeft)
+      }
+    },10000)
+  }
+
+  pauseTimer() {
+    clearInterval(this.interval);
+  }
    notifierDefaultOptions: NotifierOptions = {
     position: {
         horizontal: {
@@ -84,6 +109,10 @@ export class TeacherFypfilesComponent implements OnInit {
     }
 };
   ngOnInit() {
+    this.restApi.getmodificationssize().subscribe(res =>{this.majo=res;
+    });
+    console.log(this.majo);
+    this.startTimer();
     this.restApi.getAllFypFiles(this.auth.currentUserValue.id).subscribe(files => {
       this.fypllist = files as FypFile[]});
   }
@@ -101,6 +130,9 @@ export class TeacherFypfilesComponent implements OnInit {
         template: this.customNotificationTmpl
     });
 }
+
+
+
   ngAfterViewInit() {
 
     this.ngOnDestroy(); // trying to destroy current chart
