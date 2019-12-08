@@ -71,6 +71,21 @@ export class TeacherServiceService {
     console.log("okay");
 
   }
-  
+  //GET
+  Getprotractoredfypfiles(id:number):Observable<FypFile[]>
+  {
+    return this.http.get<FypFile[]>(this.baseurl+'/pr/'+id,{headers:this.headers});
+  }
+  getAllFypFiles(id:number):Observable<FypFile[]>
+  {
+    return this.http.get<FypFile[]>(this.baseurl+'/allfyps/'+id,{headers:this.headers});
+  }
+  getfypsize(x:String,id:number):Observable<number>{
+    return this.http.get<number>(this.baseurl+'/size/'+x+'/'+id,{headers:this.headers});
+
+  }
+  getmodificationssize():Observable<number>{
+    return this.http.get<number>(this.baseurl+'/Mmsize',{headers:this.headers});
+  }
 
 }

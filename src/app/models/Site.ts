@@ -1,5 +1,6 @@
 import { University } from "./university/university";
 
-export class Site{
+export interface Site{
+    id : number
     university:University
 }

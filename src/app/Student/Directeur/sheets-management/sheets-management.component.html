@@ -1,0 +1,132 @@
+
+<br>
+<br>
+<main class="main-content">
+          <section class="section">
+                    <div class="container">
+                        <div class="row text-center justify-content-center">
+                            <div class="col-md-11">
+                                <h1 class="mb-4">Welcome to Pending Sheets <mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate">Interface.</mark></h1>
+                                <p class="mb-9 lead">
+                                  Hello Mr/Mrs Director  <br>
+                                   there is the list of Pending Sheets.
+                                </p>
+                                </div>
+                                </div>
+                                </div>
+           </section>
+    
+        <div class="row uikit-example">
+            <div class="col-lg-10 mx-auto">
+                    <div class="accordion" id="accordionExample">
+                            <div class="card mb-3">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                       Intership Sheets 
+                                        </button>
+                                    </h2>
+                                </div>       
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                            <div class="uikit-example">
+                                                    <table datatable   class="row-border hover">
+                                                        <thead>
+                                                            <tr>
+                                                             
+                                                              <th>Title</th>
+                                                              <th>Description</th>
+                                                              <th>Problematic</th>
+                                                              <th>Status</th>
+                                                              <th>Confirmation</th>
+                                                              <th>Archifed</th>
+                                                             
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr *ngFor="let x of AllPend let index = index;" >
+                                                              <td> {{x.title}}</td>
+                                                              <td>{{x.description}}</td>
+                                                              <td>{{x.problematic}}</td>
+                                                              <td><button type="button" (click)="onClick(x)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign" >{{x.fileStatus}}</button>
+                                                    
+                                                                </td>
+                                                              <td><button type="button" (click)="Accept(x)" class="btn btn-success btn-xs" data-toggle="modal"  >Accept</button>
+                                                                <td>
+                                                              <td><button type="button" (click)="Cancel(x)" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-assign"  >Cancel</button>
+                                                              </td>
+                                                                    
+                                                            <td> <button type="button" (click)="onClick(element.id)" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-large">Update</button>
+                                                            </td>
+                                                            </tr>
+                                                          </tbody>
+                                                      </table>
+                                             </div>
+                                    </div>
+                                </div>
+                            </div>       
+                    </div>
+                   
+    
+     </div>
+     </div>
+     </main>
+     
+      <!-- Modal assign - Large -->
+    
+    
+    <div class="modal fade" id="modal-assign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-long" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="alert alert-danger">
+                            Please notice that this modal has <code>.modal-long</code> class name added to <code>.modal-dialog</code>.
+                        </div>-->
+                        <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                                <div class="container">
+                                    <header class="mb-6">
+                                        <h2>File Status Canceled</h2>
+                                        <hr>
+                                        <p class="lead-1">File Status Canceled </p>
+                                    </header>
+        
+                                    <div class="row gap-y">
+                                        <div class="col-md-12">
+                                            <div class="form-group" >
+                                                
+                                                    <h5 class="mb-3">The Cause Of the refus</h5>
+                                                    <div class="form-group">
+                                                        <textarea class="form-control" placeholder="Your message" rows="5" id="text" name="text"></textarea>
+                                                    </div>
+                                                    <button type="button" (click)="RefusM(text)" class="btn btn-info btn-xs" data-toggle="popup" data-target="#popup-top-center" >Send Mail</button>
+                                                         
+                                            </div>
+                                            
+                                    </div> 
+                                </div> 
+                            </div>                         
+                            </section>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div id="popup-top-center" class="popup col-6 col-md-3 bg-primary" data-position="top-center">
+                <button type="button" class="close" data-dismiss="popup" aria-label="Close" >
+                    <span class="text-white" aria-hidden="true">&times;</span>
+                </button>
+                <div class="media">
+                    
+                    <div class="media-body text-white">
+                        <h5>Mail is Send</h5>
+                        <p class="mb-0">Sending Mail</p>
+                    </div>
+                </div>
+            </div>
