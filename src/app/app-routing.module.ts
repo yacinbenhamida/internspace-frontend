@@ -64,8 +64,9 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
 import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
 import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
 import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+import { ProfileStudentComponent } from './Student/profile-student/profile-student.component';
 
-
+import { SheetsModificationComponent } from './Student/Directeur/sheets-modification/sheets-modification.component';
 
 
 /**
@@ -131,9 +132,10 @@ const routes: Routes = [
   {path: 'student/reclamation', component: ReclamationComponent},
   {path: 'student/up', component : IntershipUpdateComponent},
   {path: 'student/fyp/find/:id', component : FypFileDetailsComponent},
+  {path: 'student/profile', component : ProfileStudentComponent},
 //SheetManagement
 {path: 'Directeur/sheetPending', component : SheetsManagementComponent},
-
+{path: 'Directeur/sheetModification', component : SheetsModificationComponent},
 
   //
   {path: 'uniDash', component: UniversityStatsComponent},

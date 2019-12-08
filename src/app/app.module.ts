@@ -88,6 +88,9 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
 import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
 import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
 import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+import { ProfileStudentComponent } from './Student/profile-student/profile-student.component';
+import { SheetsModificationComponent } from './Student/Directeur/sheets-modification/sheets-modification.component';
+import { ProfileStudentDetailComponent } from './Student/profile-student-detail/profile-student-detail.component';
 
 @NgModule({
   declarations: [
@@ -158,6 +161,9 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     AdminStudentsComponent,
     AdminEmployeesComponent,
     AdminClassesComponent,
+    ProfileStudentComponent,
+    SheetsModificationComponent,
+    ProfileStudentDetailComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

@@ -19,9 +19,9 @@
                                             <li class="nav-item nav-item-anim-icon d-none d-md-block">
                                                 <span class="ws-nowrap m-list--link fs-15"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span>
                                             </li>
-                                            <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department != null" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                                          <!--<li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department != null" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                     <span class="ws-nowrap m-list--link fs-15">{{auth.currentUserValue.role}} at {{auth.currentUserValue.department.site.university.name}}</span>
-                                                </li>
+                                                </li>-->
                                             <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                 <div class="social social-bg-light social-sm mt-1">
                                                     <a (click)="logoutAction()" class="social-facebook m-0 transition-hover" href="#"><i class="fas fa-sign-out-alt"></i></a>
@@ -127,9 +127,9 @@
                                             <li *ngIf="auth.currentUserValue" class="dropdown">
                                                     <a class="social-gplus" routerLink="chat"><i class="fab fa-google-plus"></i></a>
                                             </li>
-                                            <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
+                                           <!-- <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector/studentManagement">Student Managment</a>
-                                            </li>                                             
+                                            </li>  -->                                           
                                         </ul>
                                     </nav>
                                 </div>

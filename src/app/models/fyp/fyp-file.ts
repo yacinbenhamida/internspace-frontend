@@ -19,6 +19,7 @@ export interface FypFile {
   keywords: any[];
   categories: any[];
   student:Student;
+  up:boolean;
 
  
 
