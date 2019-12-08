@@ -1,3 +1,4 @@
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { StudentQuiz } from './../../models/quiz/student/student-quiz';
 import { StudentCategoryPreference } from './../../models/quiz/student/student-category-preference';
@@ -23,6 +24,9 @@ export interface QuizSelectionInfo {
   userQuiz?: StudentQuiz; // Change to UserQuiz type?
   quizzesList?: Quiz[];
   quiz?: Quiz;
+  maxLevel?: number;
+  bClickedOnHigherLevelQuiz?: boolean;
+  bIsAchieved?: boolean;
 }
 
 @Component({
@@ -43,16 +47,19 @@ export class QuizSelectionComponent implements OnInit {
 
   // Loading Quiz Section
   bIsLoadingQuizzes: boolean;
+  bIsLoadingUserQuiz: boolean;
   quizSelectionInfo: QuizSelectionInfo;
+  modalService: NgbModal;
 
   constructor(
     private _formBuilder: FormBuilder,
     public auth: AuthenticationService,
     private uniStatsService: UniStatsService,
     private quizService: QuizService,
-    private router: Router
+    private router: Router,
+    public inModalService: NgbModal
   ) {
-
+    this.modalService = inModalService;
 
   }
   ngOnInit() {
@@ -87,6 +94,9 @@ export class QuizSelectionComponent implements OnInit {
   onClick_CategoryId(categoryId: number) {
     this.bIsLoadingQuizzes = true;
     // Load...
+    this.quizSelectionInfo.bClickedOnHigherLevelQuiz = false;
+    this.quizSelectionInfo.userQuiz = null;
+
     this.quizService.GetOrCreateStudentCategoryPreference(this.auth.currentUserValue.id, categoryId).subscribe(
       e => {
         this.quizSelectionInfo.categoryPreference = e;
@@ -96,6 +106,14 @@ export class QuizSelectionComponent implements OnInit {
 
     this.quizService.GetAllQuizzesByCategory(categoryId).subscribe(e => {
       this.quizSelectionInfo.quizzesList = e;
+
+      let max = 1;
+      for (const elem of e) {
+        max = max < elem.requiredMinLevel + 1 ? elem.requiredMinLevel + 1 : max;
+      }
+
+      console.log(max);
+      this.quizSelectionInfo.maxLevel = max;
 
       this.bIsLoadingQuizzes = false;
     });
@@ -110,24 +128,50 @@ export class QuizSelectionComponent implements OnInit {
     if (!this.quizSelectionInfo.quiz) {
       return;
     }
-
-    // Check if our skill in the current category is enough to start this quiz.
-    if (this.quizSelectionInfo.quiz.requiredMinLevel > this.quizSelectionInfo.categoryPreference.skillScore) {
-      alert('You can\'t do that!');
-      return;
-    }
-
-    this.quizService.GetQuizByCategoryAndLevel(this.auth.currentUserValue.id, quiz.category.id, quiz.requiredMinLevel).subscribe(e => {
+    console.log(quiz);
+    /*
+    this.quizService.GetQuizByCategoryAndLevel(this.auth.currentUserValue.id, quiz.category.id, 3).subscribe(e => {
       console.log(e);
       this.quizSelectionInfo.userQuiz = e;
-      this.router.navigateByUrl('/student/quiz/session');
     });
+    */
+
+    this.quizSelectionInfo.bClickedOnHigherLevelQuiz = false;
+    this.bIsLoadingUserQuiz = true;
+
+    this.quizService.GetOrCreateStudentQuiz(this.auth.currentUserValue.id, quiz.id).subscribe(e => {
+      console.log(e);
+      this.quizSelectionInfo.userQuiz = e;
+
+      this.quizSelectionInfo.bClickedOnHigherLevelQuiz =
+        this.quizSelectionInfo.quiz.requiredMinLevel > this.quizSelectionInfo.categoryPreference.skillScore;
+
+      this.quizSelectionInfo.bIsAchieved =
+        this.quizSelectionInfo.userQuiz.score >= this.quizSelectionInfo.quiz.minCorrectQuestionsPercentage;
+
+      this.bIsLoadingUserQuiz = false;
+    });
+
 
     // Find user quiz with relevant one and show it.
   }
 
   onSumbit_GoToQuizSession() {
     const val = this.categoryForm.value;
+    this.router.navigateByUrl('/student/quiz/session');
+  }
+
+  isUserQuizValid() {
+    if (!this.quizSelectionInfo.userQuiz) {
+      return false;
+    }
+
+    // Check if our skill in the current category is enough to start this quiz.
+    if (this.quizSelectionInfo.quiz.requiredMinLevel > this.quizSelectionInfo.categoryPreference.skillScore) {
+      console.log(this.quizSelectionInfo.quiz.requiredMinLevel + '> ' + this.quizSelectionInfo.categoryPreference.skillScore);
+      alert('You can\'t do that!');
+      return;
+    }
   }
 
   get categoryGroup() {

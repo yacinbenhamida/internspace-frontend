@@ -49,7 +49,15 @@ export class QuizService {
       .set('category', categoryId.toString())
       .set('quizLevel', quizLevel.toString());
 
-    return this.http.get<StudentQuiz>(this.baseurl + '/student/student', { headers: this.headersJSON, params: params });
+    return this.http.get<StudentQuiz>(this.baseurl + '/student/quiz', { headers: this.headersJSON, params: params });
+  }
+
+  GetOrCreateStudentQuiz(studentId: number, quizId: number): Observable<StudentQuiz> {
+    const params = new HttpParams()
+      .set('student', studentId.toString())
+      .set('quiz', quizId.toString());
+
+    return this.http.get<StudentQuiz>(this.baseurl + '/student/start-quiz', { headers: this.headersJSON, params: params });
   }
 
   GetOrCreateStudentCategoryPreference(studentId: number, categoryId: number): Observable<StudentCategoryPreference> {

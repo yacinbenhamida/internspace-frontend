@@ -34,7 +34,8 @@
 
         <div style="display:inline-block;">
           <mat-spinner diameter="60" *ngIf='bIsLoadingQuizzes'></mat-spinner>
-          <button *ngIf='!bIsLoadingQuizzes' [disabled]='categoryGroup.invalid' type="button"
+          <button *ngIf='!bIsLoadingQuizzes'
+            [disabled]='!quizSelectionInfo.userQuiz || categoryGroup.invalid || quizSelectionInfo.bClickedOnHigherLevelQuiz' type="button"
             class="btn btn-primary mr-2 ml-2">
             Start! </button>
         </div>
@@ -51,18 +52,47 @@
 
         <article
           class="mini-card module module-article article gradient-half-primary-v1 transition-hover white-underline-links mr-3">
+
           <h2 class="text-white header-card-title">
-            Your quiz <br>information <br>month
+            Your quiz <br>information <br>
+            <br>
+            <p *ngIf='!bIsLoadingUserQuiz && quizSelectionInfo.bClickedOnHigherLevelQuiz' style='color: red'> You need
+              higher level to pass for
+              this quiz.</p>
+
+
+            <h5
+              *ngIf='!bIsLoadingUserQuiz && quizSelectionInfo.userQuiz && !quizSelectionInfo.bIsAchieved && !quizSelectionInfo.bClickedOnHigherLevelQuiz'
+              class='text-white header-card-title'>
+              Last score: {{this.quizSelectionInfo.userQuiz.score}}%
+              <br>
+              Required percentage: {{this.quizSelectionInfo.quiz.minCorrectQuestionsPercentage}}%
+            </h5>
+
+            <h5
+              *ngIf='!bIsLoadingUserQuiz && quizSelectionInfo.userQuiz && quizSelectionInfo.bIsAchieved && !quizSelectionInfo.bClickedOnHigherLevelQuiz'
+              class='header-card-title' style="color:greenyellow">
+              You achieved this! with a score of {{this.quizSelectionInfo.userQuiz.score}}%. <span
+                style='color: goldenrod'>Congrats!</span>
+
+            </h5>
+
+
           </h2>
-          <div *ngIf='quizSelectionInfo.userQuiz'>We have a user quiz info here!</div>
+
+
           <h6 class='text-white' *ngIf='quizSelectionInfo.categoryPreference'>
             Your level in
             <br>
             {{quizSelectionInfo.categoryPreference.category.name + ': ' + quizSelectionInfo.categoryPreference.skillScore}}
+
+            <ngb-rating [readonly]="true" (max)='5' [(rate)]="quizSelectionInfo.categoryPreference.skillScore">
+            </ngb-rating>
+
           </h6>
 
           <p class="mb-0 text-white-50">
-            Join our <a class="m-link-light" href="#">news</a>
+            View quiz <a class="m-link-light" href="#">dashboard</a>
           </p>
         </article>
 
@@ -84,6 +114,14 @@
                     {{quiz.title}}
                   </a>
                 </h2>
+                <br>
+                <h6>
+                  <a style="cursor: pointer;" (click)='onClick_QuizSelect(quiz)'
+                    class="article-card-header read-article anim-link-2 anim-link-2-primary ">
+                    {{quiz.description}}
+                  </a>
+                </h6>
+
               </div>
             </header>
 
@@ -91,7 +129,7 @@
               <div class="mini-article-byline">
                 <div class="author-avatar">
                   <a class="author-name" href="#">
-                    <img alt="" src="assets/img/avatar/avatar2.jpg" class="avatar" height="80" width="80">
+                    <img alt="" src={{quiz.iconUrl}} class="avatar" height="80" width="80">
                   </a>
                 </div>
                 <div class="author-name-area">

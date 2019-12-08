@@ -1,11 +1,12 @@
 import { QuizQuestion } from './quiz-question';
 import { FypCategory } from './../fyp/fyp-category';
 export interface Quiz {
-  id?: Number;
+  id?: number;
   title?: String;
   description?: String;
   category?: FypCategory;
   questions?: QuizQuestion[];
   requiredMinLevel?: number;
-  minCorrectQuestionsPercentage?: Number;
+  minCorrectQuestionsPercentage?: number;
+  iconUrl?: string;
 }
