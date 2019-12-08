@@ -1,3 +1,4 @@
+import { QuizModule } from './quiz/quiz.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -185,6 +186,7 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     MatAutocompleteModule,
     MatInputModule,
     TagInputModule,
+    QuizModule,
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
