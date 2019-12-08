@@ -1,7 +1,41 @@
 <br><br>
 
+<section data-overlay="5" class="bg-img" style="background-image:url(../assets/img/hero/h4.jpg); min-height:500px">
+    <div class="container border-bottom-muted">
+        <div class="row py-3">
+            <div class="col-md-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent text-white pr-0 pl-0 mb-0 fs-15">
+                        <li class="breadcrumb-item"><a class="anim-link-2" routerLink="/">Home</a></li>
+                        <li class="breadcrumb-item"><a class="anim-link-2" routerLink="/internshipDirector/studentManagement">Student management</a></li>
+                        <li class="breadcrumb-item active text-white-50" aria-current="page">Account Administration</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container m-gab-2-top">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <div class="clearfix">
+                    <h2 class="text-white font-weight-bold fs-40">
+                        Students Account Administrations
+                    </h2>
+                    <p class="text-white mt-3 mb-4">
+                            disabling a student account , will interrupt him from this plateform and will not be able to create his orject sheet
+                    </p>
+                    <a href="#tab" class="btn btn-outline-light pr-5 pl-5">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="oval-divider--bottom oval-divider--10"></div>
+</section>
 
-<h2 style="text-align: center;"><span class="font-weight-semi-bold">Active accounts list</span></h2>
+<h2 style="text-align: center;" id="tab"><span class="font-weight-semi-bold">Active accounts list</span></h2 >
 <h4 class="display-4" style="margin: 30px;">
         <span class="text-primary" data-typing="do you want to disable an account?, it's simple !, just click on the student , and follow the instructions" data-back-speed="75"></span><span class="typed-cursor"></span>
 
@@ -9,7 +43,7 @@
 <br><br>
    
 
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" >
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover"  >
         <thead>
           <tr>
             <th>ID</th>
@@ -62,4 +96,3 @@
         <br>
 
  
-     

@@ -68,6 +68,14 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { FypPFEComponent } from './Student/Director/fyp-pfe/fyp-pfe.component';
 import { FypfileEditActorsComponent } from './department-head/fypfile-edit-actors/fypfile-edit-actors.component';
+
+import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
+import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
+import { FilesByDiffCritComponent } from './intership-director-module/files-by-diff-crit/files-by-diff-crit.component';
+
+
+
+
 import { ReclamationComponent } from './Student/reclamation/reclamation.component';
 import { FypFileDetailsComponent } from './Student/fyp-file-details/fyp-file-details.component';
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
@@ -152,6 +160,12 @@ import { ProfileStudentDetailComponent } from './Student/profile-student-detail/
     DepartmentProfileComponent,
     PayPalComponent,
     FypfileEditActorsComponent,
+
+    ValidateReportDepoComponent,
+    SoutenanceFilesComponent,
+    FilesByDiffCritComponent,
+    
+
 
     ReclamationComponent,
     FypFileDetailsComponent,

@@ -29,7 +29,7 @@ export class FypFileByStateComponent implements OnInit {
   ClickHandler =(xx)=>{
     this.clicked=true;
     this.selectedFYPFiles=[];
-    //this._internshipDirectorService.FypFileByCategory(this.selectValue).subscribe(data=>this.FYPFiles=data);
+    this._internshipDirectorService.FypFileByCategory(this.selectValue).subscribe(data=>this.FYPFiles=data);
     this.allFYPFiles.forEach((item)=>{
         if(item.fileStatus == xx){
         this.selectedFYPFiles.push(item)

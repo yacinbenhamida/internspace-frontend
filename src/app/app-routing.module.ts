@@ -53,6 +53,11 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
+import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
+import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
+import { FilesByDiffCritComponent } from './intership-director-module/files-by-diff-crit/files-by-diff-crit.component';
+
+
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { ReclamationComponent } from './Student/reclamation/reclamation.component';
@@ -235,6 +240,22 @@ const routes: Routes = [
   data: {
     expectedRole: 'internshipsDirector'
   }},
+
+  {path: 'internshipDirector/reportValidation',component:ValidateReportDepoComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+
+  {path: 'internshipDirector/sountenance',component:SoutenanceFilesComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/filesWithDiffCrit',component:FilesByDiffCritComponent,canActivate: [RoleGuard], 
+  data: { 
+    expectedRole: 'internshipsDirector'
+  }},
+
+
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 
