@@ -12,9 +12,9 @@ import { FypPFEService } from 'src/app/services/student/fyp-pfe.service';
 export class ProfileStudentComponent implements OnInit {
 
 
-  Std:User;
-  Stds:User[];
-  constructor( private fypPfeService: FypPFEService,private router: Router,private auth:AuthenticationService) { }
+  Std: User;
+  Stds: User[];
+  constructor(private fypPfeService: FypPFEService, private router: Router, private auth: AuthenticationService) { }
 
   ngOnInit() {
     this.auth.currentUserValue;
@@ -24,22 +24,25 @@ export class ProfileStudentComponent implements OnInit {
     console.log(this.Std);
 
   }
-  Stu(){
-    this.Std=this.auth.currentUserValue;
+  Stu() {
+    this.Std = this.auth.currentUserValue;
     return this.Std
   }
-  StuClass(){
+  StuClass() {
     this.fypPfeService.StudentClass(this.auth.currentUserValue.id).subscribe(
       (fypts => {
         this.Stds = fypts as User[];
-       
-       
-        this.Stds.push ;
-        
+
+
+        this.Stds.push;
+
         console.log(this.Stds);
-       
+
       }))
-  
+
     return this.Stds
+  }
+  DirecteurFyp() {
+
   }
 }

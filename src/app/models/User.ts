@@ -46,7 +46,7 @@ export class User {
   description?: String;
   supervisorEmail?: String;
   country?: String;
-company:Company;
+  // company:Company;
   constructor() {
 
   }

@@ -27,19 +27,20 @@ export const _filter = (opt: string[], value: string): string[] => {
 };
 
 @Component({
-  selector: 'app-company-profile',
-  templateUrl: './company-profile.component.html',
-  styleUrls: ['./company-profile.component.css']
+  selector: 'app-internships-search',
+  templateUrl: './internships-search.component.html',
+  styleUrls: ['./internships-search.component.css']
 })
-export class CompanyProfileComponent implements OnInit {
+export class InternshipsSearchComponent implements OnInit {
 
   currentUserValue: User;
   mySubjects: FYPSubject[];
   selectedSubject: FYPSubject;
   mySubjectsToShow: FYPSubject[];
 
-  fakeDelay = 1000;
+  fakeDelay = 1;
   loadingSubjectDetails = false;
+  bShowInternshipDetails = false;
 
   // Form section
   subjectForm: FormGroup = this._formBuilder.group({
@@ -59,6 +60,11 @@ export class CompanyProfileComponent implements OnInit {
   categoryNamesDisplay = [];
   toAddFypSubject: FYPSubject;
 
+  currentApplianceStatus = 'unapplied'; // possible values: unapplied / accepted/ pending
+  refusalMessage = 'We weren\'t looking for this specific skillset';
+
+  suggestedSubjects: FYPSubject[];
+
   onCategoryTagAdd(item: any) {
     console.log(item);
   }
@@ -75,6 +81,10 @@ export class CompanyProfileComponent implements OnInit {
 
   ngOnInit() {
     this.refreshFypSubjects();
+    this.service.GetSuggestedSubjectsByStudent(this.auth.currentUserValue.id, false).subscribe(e => {
+      console.log(e);
+      this.suggestedSubjects = e;
+    });
 
     this.uniStatsService.GetCategories().subscribe(data => {
 
@@ -94,48 +104,49 @@ export class CompanyProfileComponent implements OnInit {
 
   }
 
+
+  // NEW!
+
   revert() {
     this.subjectForm.reset();
   }
 
 
-  onSubmit() {
-    const newValue = this.subjectForm.value;
-    // ...
-    const categories = [];
+  onClick_SelectedSubject() {
 
-    console.log(newValue);
-
-    for (const c of newValue.selectedCategoryTags) {
-      categories.push({
-        id: c.value
-      });
-    }
-
-    this.toAddFypSubject = {
-      id: 0,
-      title: newValue.title,
-      content: newValue.description,
-      maxApplicants: newValue.maxApplicants,
-      categories: categories,
-      country: this.auth.currentUserValue.country.toString(),
-      company: {
-        id: this.auth.currentUserValue.id,
-      },
-    };
-
-    console.log(this.toAddFypSubject);
-
-    this.service.CreateNewSubject(this.toAddFypSubject).subscribe(e => {
-      this.refreshFypSubjects();
-    });
-
-    this.showCreateForm = false;
   }
 
   SetSubjectsSearchStr(event: any) {
+    this.bShowInternshipDetails = false;
     this.mySubjectsToShow = this.mySubjects.filter(e => e.title.toLowerCase().includes(event.target.value.toLowerCase()));
+  }
 
+  applySubject(subjectId: number) {
+    const targetSubjectId = subjectId ? subjectId : this.selectedSubject.id;
+    this.currentApplianceStatus = 'pending';
+
+    this.service.ApplyToSubject(this.auth.currentUserValue.id, targetSubjectId).subscribe(e => {
+      console.log(e);
+    });
+  }
+
+  unapplySubject(subjectId: number) {
+    const targetSubjectId = subjectId ? subjectId : this.selectedSubject.id;
+    this.currentApplianceStatus = 'unapplied';
+
+    this.service.UnapplyToSubject(this.auth.currentUserValue.id, targetSubjectId).subscribe(e => {
+      console.log(e);
+    });
+  }
+
+
+  GetShortenedContent(content: string, maxLenght: number) {
+
+    let finalContent = content;
+
+    if (content.length > maxLenght) {
+      finalContent = content.substring(0, maxLenght) + '...';
+    }
   }
 
   get title() {
@@ -151,7 +162,24 @@ export class CompanyProfileComponent implements OnInit {
   }
 
   refreshFypSubjects() {
+
+    this.service.GetAllSubjects().subscribe(e => {
+      from(e).pipe(
+        concatMap(item => of(item).pipe(delay(this.fakeDelay)))
+      ).subscribe(timedItem => {
+        this.currentUserValue = this.auth.currentUserValue;
+        this.mySubjects = e;
+        this.mySubjectsToShow = e;
+
+
+      });
+    });
+
+
+    return;
+
     this.service.GetFypSubjectsByCompanyId(this.auth.currentUserValue.id).subscribe(e => {
+
 
       from(e).pipe(
         concatMap(item => of(item).pipe(delay(this.fakeDelay)))
@@ -168,6 +196,7 @@ export class CompanyProfileComponent implements OnInit {
   openSubjectDetails(i) {
 
     this.loadingSubjectDetails = true;
+    this.bShowInternshipDetails = false;
     this.showCreateForm = false;
     this.selectedSubject = null;
     const wantedId = this.mySubjects[i].id;
@@ -179,11 +208,75 @@ export class CompanyProfileComponent implements OnInit {
         ).subscribe(timedItem => {
           this.loadingSubjectDetails = false;
           this.selectedSubject = this.mySubjects[i];
+
+
+          // Set student btn:
+
+          this.currentApplianceStatus = 'unapplied';
           this.selectedSubject.studentSubjects = data;
+
+          console.log(this.selectedSubject.studentSubjects);
+          for (const elem of this.selectedSubject.studentSubjects) {
+            console.log(elem);
+            if (elem.student.id !== this.auth.currentUserValue.id) {
+              continue;
+            }
+
+            this.refusalMessage = elem.refusalReason;
+
+            this.currentApplianceStatus = elem.applianceStatus;
+            break;
+          }
+
+          this.bShowInternshipDetails = true;
+
         });
       }
     );
   }
+
+  openSuggestedSubjectDetails(i) {
+
+    this.loadingSubjectDetails = true;
+    this.bShowInternshipDetails = false;
+    this.showCreateForm = false;
+    this.selectedSubject = null;
+    const wantedId = this.mySubjects[i].id;
+
+    this.service.GetStudentFypSubjectsOfSubjectByStatus(wantedId, 'x', true).subscribe(
+      data => {
+        from('x').pipe(
+          concatMap(item => of(item).pipe(delay(this.fakeDelay)))
+        ).subscribe(timedItem => {
+          this.loadingSubjectDetails = false;
+          this.selectedSubject = this.suggestedSubjects[i];
+
+
+          // Set student btn:
+
+          this.currentApplianceStatus = 'unapplied';
+          this.selectedSubject.studentSubjects = data;
+
+          console.log(this.selectedSubject.studentSubjects);
+          for (const elem of this.selectedSubject.studentSubjects) {
+            console.log(elem);
+            if (elem.student.id !== this.auth.currentUserValue.id) {
+              continue;
+            }
+
+            this.refusalMessage = elem.refusalReason;
+
+            this.currentApplianceStatus = elem.applianceStatus;
+            break;
+          }
+
+          this.bShowInternshipDetails = true;
+
+        });
+      }
+    );
+  }
+
 
   openFormModal(formModalContent, i) {
     // this.studentDetails = i;
