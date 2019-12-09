@@ -1,3 +1,4 @@
+import { QuizResultComponent } from './quiz/quiz-result/quiz-result.component';
 import { QuizSessionComponent } from './quiz/quiz-session/quiz-session.component';
 import { QuizSelectionComponent } from './quiz/quiz-selection/quiz-selection.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
@@ -39,6 +40,7 @@ import { FypfilesOperationsComponent } from './department-head/fypfiles-operatio
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 
+//import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
 import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
 
@@ -119,11 +121,12 @@ const routes: Routes = [
   {path : 'login', component : AuthenticationComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: 'company/profile', component: CompanyProfileComponent, canActivate : [AuthGuard]},
-  {path: 'student/profil', component: StudentProfileComponent, canActivate : [AuthGuard]},
+  {path: 'student/profile', component: ProfileStudentComponent, canActivate : [AuthGuard]},
 
   // Quiz Section
   {path: 'student/quiz/selection', component: QuizSelectionComponent, canActivate : [AuthGuard]},
   {path: 'student/quiz/session', component: QuizSessionComponent, canActivate : [AuthGuard]},
+  {path: 'student/quiz/result', component: QuizResultComponent, canActivate : [AuthGuard]},
 
   // end login and registration
   {path: 'fypTemplate', component: FypTemplateManagementComponent},
@@ -133,10 +136,7 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard],
-  data: {
-    expectedRole: 'Student'
-  } },
+  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard]},
   {path: 'fyp/update/:id', component: FypPfeUpdateComponent,canActivate: [RoleGuard],
   data: {
     expectedRole: 'Student'
@@ -241,17 +241,17 @@ const routes: Routes = [
     expectedRole: 'internshipsDirector'
   }},
 
-  {path: 'internshipDirector/reportValidation',component:ValidateReportDepoComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/reportValidation',component:ValidateReportDepoComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
 
-  {path: 'internshipDirector/sountenance',component:SoutenanceFilesComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/sountenance',component:SoutenanceFilesComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
-  {path: 'internshipDirector/filesWithDiffCrit',component:FilesByDiffCritComponent,canActivate: [RoleGuard], 
-  data: { 
+  {path: 'internshipDirector/filesWithDiffCrit',component:FilesByDiffCritComponent,canActivate: [RoleGuard],
+  data: {
     expectedRole: 'internshipsDirector'
   }},
 

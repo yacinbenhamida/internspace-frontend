@@ -57,4 +57,32 @@ export class CompanyService {
     return this.http.post<any>(this.baseurl + '/subjects/addobj', fypSubject, this.httpOptions);
   }
 
+  GetAllSubjects() {
+    return this.http.get<any>(this.baseurl + '/subjects/all', this.httpOptions);
+  }
+
+  // Student & Subjects
+  ApplyToSubject(studentId: number, subjectId: number): any {
+    const params = new HttpParams()
+      .set('student', studentId.toString())
+      .set('subject', subjectId.toString());
+
+    return this.http.get<any>(this.baseurl + '/subjects/apply', { headers: this.headers, params: params });
+  }
+
+  UnapplyToSubject(studentId: number, subjectId: number): any {
+    const params = new HttpParams()
+      .set('student', studentId.toString())
+      .set('subject', subjectId.toString());
+
+    return this.http.get<any>(this.baseurl + '/subjects/unapply', { headers: this.headers, params: params });
+  }
+
+  GetSuggestedSubjectsByStudent(studentId: number, filterUntaken: boolean): any {
+    const params = new HttpParams()
+      .set('student', studentId.toString())
+      .set('filter-untaken', filterUntaken ? 'true' : 'false');
+
+    return this.http.get<any>(this.baseurl + '/subjects/suggestion/student', { headers: this.headers, params: params });
+  }
 }

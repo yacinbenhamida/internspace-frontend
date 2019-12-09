@@ -18,7 +18,7 @@
     <br>
 
 
-    <div class="d-flex justify-content-between mt-1">
+    <div class="d-flex justify-content-center mt-1">
 
       <form [formGroup]="categoryForm" (onSubmit)='onSumbit_GoToQuizSession()'>
         <mat-form-field class="mr-2 ml-2" style="display:inline-block;">
@@ -35,8 +35,8 @@
         <div style="display:inline-block;">
           <mat-spinner diameter="60" *ngIf='bIsLoadingQuizzes'></mat-spinner>
           <button *ngIf='!bIsLoadingQuizzes'
-            [disabled]='!quizSelectionInfo.userQuiz || categoryGroup.invalid || quizSelectionInfo.bClickedOnHigherLevelQuiz' type="button"
-            class="btn btn-primary mr-2 ml-2">
+            [disabled]='!quizSelectionInfo.userQuiz || categoryGroup.invalid || quizSelectionInfo.bClickedOnHigherLevelQuiz' type="submit"
+            class="btn btn-primary mr-2 ml-2" (click)='onSumbit_GoToQuizSession()'>
             Start! </button>
         </div>
       </form>

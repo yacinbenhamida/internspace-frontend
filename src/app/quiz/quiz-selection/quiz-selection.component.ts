@@ -112,7 +112,6 @@ export class QuizSelectionComponent implements OnInit {
         max = max < elem.requiredMinLevel + 1 ? elem.requiredMinLevel + 1 : max;
       }
 
-      console.log(max);
       this.quizSelectionInfo.maxLevel = max;
 
       this.bIsLoadingQuizzes = false;
@@ -128,7 +127,6 @@ export class QuizSelectionComponent implements OnInit {
     if (!this.quizSelectionInfo.quiz) {
       return;
     }
-    console.log(quiz);
     /*
     this.quizService.GetQuizByCategoryAndLevel(this.auth.currentUserValue.id, quiz.category.id, 3).subscribe(e => {
       console.log(e);
@@ -140,7 +138,6 @@ export class QuizSelectionComponent implements OnInit {
     this.bIsLoadingUserQuiz = true;
 
     this.quizService.GetOrCreateStudentQuiz(this.auth.currentUserValue.id, quiz.id).subscribe(e => {
-      console.log(e);
       this.quizSelectionInfo.userQuiz = e;
 
       this.quizSelectionInfo.bClickedOnHigherLevelQuiz =
@@ -158,7 +155,7 @@ export class QuizSelectionComponent implements OnInit {
 
   onSumbit_GoToQuizSession() {
     const val = this.categoryForm.value;
-    this.router.navigateByUrl('/student/quiz/session');
+    this.router.navigate(['/student/quiz/session', { 0: this.quizSelectionInfo.userQuiz.quiz.id }] );
   }
 
   isUserQuizValid() {
