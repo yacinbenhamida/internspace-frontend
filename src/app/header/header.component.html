@@ -19,9 +19,9 @@
                                             <li class="nav-item nav-item-anim-icon d-none d-md-block">
                                                 <span class="ws-nowrap m-list--link fs-15"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span>
                                             </li>
-                                          <!--<li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department != null" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                                          <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department != null" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                     <span class="ws-nowrap m-list--link fs-15">{{auth.currentUserValue.role}} at {{auth.currentUserValue.department.site.university.name}}</span>
-                                                </li>-->
+                                          </li>
                                             <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                 <div class="social social-bg-light social-sm mt-1">
                                                     <a (click)="logoutAction()" class="social-facebook m-0 transition-hover" href="#"><i class="fas fa-sign-out-alt"></i></a>
@@ -75,7 +75,6 @@
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" routerLink="/fypfile/tracking"><i class="icon-list-1 menu-icon"></i> Tracking</a></li>
                                                     <li><a class="dropdown-item active" routerLink="/fypfile/history"><i class="icon-list-2 menu-icon"></i> History</a></li>
-                                                    <li><a class="dropdown-item" href="#"><i class="icon-arrange-4-1 menu-icon"></i> Section</a></li>
                                                 </ul>
                                             </li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
@@ -115,9 +114,6 @@
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle" routerLink="notifications/history"><i class="fas fa-bell"></i></a>
                                             </li>
-                                            <li *ngIf="auth.currentUserValue" class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" routerLink="chat"><i class="fas fa-inbox"></i></a>
-                                                </li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="internshipDirector/studentManagement">Student Managment</a>
                                             </li>
@@ -168,7 +164,4 @@
                 </div>
             </div>
         </div>
-
-
     </header>
-    <br><br>
