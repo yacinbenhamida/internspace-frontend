@@ -120,7 +120,7 @@ export class CompanyProfileComponent implements OnInit {
       categories: categories,
       country: this.auth.currentUserValue.country.toString(),
       company: {
-        id: this.auth.currentUserValue.id.toString(),
+        id: this.auth.currentUserValue.id,
       },
     };
 
