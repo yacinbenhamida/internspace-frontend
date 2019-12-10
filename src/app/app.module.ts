@@ -219,7 +219,7 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
   bootstrap: [AppComponent],
-  exports: [CalendarComponent]
+  exports: [CalendarComponent,
     NgbModule,
     NgxContentLoadingModule,
     MatSliderModule,
@@ -227,13 +227,10 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     MatInputModule,
     TagInputModule,
     QuizModule,
-
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule,
-  ],
-  providers: [AppService, AuthGuard, AuthenticationService],
-  bootstrap: [AppComponent]
+    AngularFireStorageModule
+  ]
 })
 export class AppModule { }

@@ -55,8 +55,6 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
-import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
-import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
 import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
