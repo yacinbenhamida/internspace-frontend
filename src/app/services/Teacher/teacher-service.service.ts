@@ -8,6 +8,7 @@ import { FypCategory } from 'src/app/models/fyp/fyp-category';
 import { FypFileModification } from 'src/app/models/fyp/fyp-modification';
 import { catchError } from 'rxjs/operators';
 import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
+import { UniversitaryYear } from 'src/app/models/university/universitary-year';
 
 @Injectable({
   providedIn: 'root'
@@ -90,6 +91,9 @@ export class TeacherServiceService {
   getAllCategories():Observable<FypCategory[]>{
     return this.http.get<FypCategory[]>(this.baseurl+'/allCat',{headers:this.headers});
 
+  }
+  getAllUniYEars():Observable<UniversitaryYear[]>{
+    return this.http.get<UniversitaryYear[]>(this.baseurl+'/FypYears',{headers:this.headers});
   }
 
 }

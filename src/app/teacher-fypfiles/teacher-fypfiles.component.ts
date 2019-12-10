@@ -8,6 +8,8 @@ import * as am4charts from '@amcharts/amcharts4/charts';
 import am4themes_dataviz from '@amcharts/amcharts4/themes/dataviz';
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 import { NotifierService, NotifierOptions } from "angular-notifier";
+import { any, remove } from '@amcharts/amcharts4/.internal/core/utils/Array';
+import { UniversitaryYear } from '../models/university/universitary-year';
 /* Chart code */
 // Themes begin
 am4core.useTheme(am4themes_dataviz);
@@ -24,17 +26,23 @@ export class TeacherFypfilesComponent implements OnInit {
   hid:false;
   private lastSelectedCategory: FypFile;
   fypllist:FypFile[];
+  fypt:FypFile[];
+
   fypCache: string[]=['pending','prevalidated','supervised','protractored'];
   restApi: TeacherServiceService;
   router: Router;
   zone: NgZone;
   message:String;
-
+  selectedchoice:string;
+  selectedUY: UniversitaryYear;
+  selectedUYId: number;
+  cachedUYs: any;
   chartChache: any; 
 
   @ViewChild("customNotification", { static: true }) customNotificationTmpl;
   timeLeft: number = 10;
   interval;
+  Uniyear:any[];
   private chartData: any;
   majo:number;
   xx:number;
@@ -45,6 +53,12 @@ export class TeacherFypfilesComponent implements OnInit {
   ) {this.restApi=restApi;
   this.router=router; this.zone = zone;
   this.notifier = notifierService;}
+  i=0;
+  onChange_UY(uyIndex: number) {
+    this.selectedUYId = this.cachedUYs[uyIndex].id;
+    this.selectedUY = this.cachedUYs[uyIndex];
+  
+  }
   startTimer() {
     
    
@@ -114,7 +128,12 @@ console.log(this.xx);
     console.log(this.majo);
     this.startTimer();
     this.restApi.getAllFypFiles(this.auth.currentUserValue.id).subscribe(files => {
-      this.fypllist = files as FypFile[]});
+      this.fypllist = files as FypFile[];
+    
+    }
+      );
+      this.restApi.getAllUniYEars().subscribe(e=>{this.cachedUYs = e as UniversitaryYear[]});
+
   }
   ngOnDestroy() {
     this.zone.runOutsideAngular(() => {
@@ -178,10 +197,148 @@ console.log(this.xx);
     console.log(document.querySelector('select').value);
     if (document.querySelector('select').value=="pending")
     {
-      this.state=true;
-     this.restApi.GetFYPFILEPending().subscribe(files => {
-      this.fypllist = files as FypFile[]});
+      this.restApi.GetFYPFILEPending().subscribe(files => {
+        this.fypllist = files as FypFile[];
+      
+        for (let i=0;i<this.fypllist.length;++i){
+          if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+          {
+            console.log(this.fypllist[i].universitaryYear)
+            this.fypllist.splice(i,1);
+      }
+      }});
+  
+     this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
+      // return;
+      const newData = [];
 
+      if (res != null) {
+          newData.push(
+            { 'uy':document.querySelector('select').value ,
+              'amount': res ,
+              'res': res
+            });
+
+      }
+
+      this.chartChache.data = newData;
+
+      
+this.message=res+"";
+    });
+    this.showNotification("you have "+this.message+"pending fyp files")
+
+          
+    }
+    if (document.querySelector('select').value=="prevalidated")
+    {
+     
+      this.restApi.GetPrevalidatedFyp(this.auth.currentUserValue.id).subscribe(files => {
+        this.fypllist = files as FypFile[];
+       
+        for (let i=0;i<this.fypllist.length;++i){
+          if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+          {
+            console.log(this.fypllist.indexOf(this.fypllist[i]));
+        
+            this.fypllist.splice(i,1);
+    
+                }
+        } 
+      
+      }
+        
+        
+        );
+
+    this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
+      // return;
+      const newData = [];
+
+      if (res != null) {
+          newData.push(
+            { 'uy':document.querySelector('select').value ,
+              'amount': res ,
+              'res': res
+            });
+
+      }
+
+      this.chartChache.data = newData;
+
+      
+this.message=res+"";
+    });
+    this.showNotification("you have "+this.message+"prevalidated fyp files")
+
+          }
+
+  
+    if (document.querySelector('select').value=="supervised")
+    {
+      
+    
+      this.restApi.GetSupervisedFyp(this.auth.currentUserValue.id).subscribe(files => {
+        this.fypllist = files as FypFile[]
+        for (let i=0;i<this.fypllist.length;++i){
+          if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+          {
+            console.log(this.fypllist.indexOf(this.fypllist[i]));
+        
+            this.fypllist.splice(i,1);
+    
+                }
+        } 
+      
+      }
+        
+        
+        );
+    
+    this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
+      // return;
+      const newData = [];
+
+      if (res != null) {
+          newData.push(
+            { 'uy':document.querySelector('select').value ,
+              'amount': res ,
+              'res': res
+            });
+
+      }
+
+      this.chartChache.data = newData;
+
+      
+this.message=res+"";
+    });
+    this.showNotification("you have "+this.message+"supervised fyp files")
+
+          }
+
+  
+    if (document.querySelector('select').value=="protractored")
+    {
+     
+    
+        this.restApi.Getprotractoredfypfiles(this.auth.currentUserValue.id).subscribe(files => {
+          this.fypllist = files as FypFile[];
+          for (let i=0;i<this.fypllist.length;++i){
+            if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+            {
+              console.log(this.fypllist.indexOf(this.fypllist[i]));
+          
+              this.fypllist.splice(i,1);
+      
+                  }
+          } 
+        
+        }
+          
+          
+          );  
+       
       this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
         // return;
         const newData = [];
@@ -192,7 +349,7 @@ console.log(this.xx);
                 'amount': res ,
                 'res': res
               });
-
+  
         }
   
         this.chartChache.data = newData;
@@ -200,103 +357,14 @@ console.log(this.xx);
         
   this.message=res+"";
       });
-      this.showNotification("you have "+this.message+"pending fyp files")
-
-    }
-     if (document.querySelector('select').value=="prevalidated")
-    {
-      this.state=true;
-      this.restApi.GetPrevalidatedFyp(this.auth.currentUserValue.id).subscribe(files => {
-        this.fypllist = files as FypFile[]});
-        console.log(document.querySelector('select').value);
-        console.log(this.fypllist);
-        this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
-          // return;
-          const newData = [];
-    
-          if (res != null) {
-    
-          
-              newData.push(
-                { 'uy':document.querySelector('select').value ,
-                  'amount': res ,
-                  'res': res
-                });
-            
-    
-          }
-    
-          this.chartChache.data = newData;
-    
-          
-          this.message=res+"";
-        });
-        this.showNotification("you have "+this.message+"prevalidated fyp files")
-    }
-    if (document.querySelector('select').value=="supervised")
-    {
-      this.state=true;
-      this.restApi.GetSupervisedFyp(this.auth.currentUserValue.id).subscribe(files => {
-        this.fypllist = files as FypFile[]});
-        console.log(document.querySelector('select').value);
-        console.log(this.fypllist);
-        this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
-          // return;
-          const newData = [];
-    
-          if (res != null) {
-    
-          
-              newData.push(
-                { 'uy':document.querySelector('select').value ,
-                  'amount': res ,
-                  'res': res
-                });
-            
-    
-          }
-    
-          this.chartChache.data = newData;
-    
-          
-          this.message=res+"";
-        });
-        this.showNotification("you have "+this.message+"supervised fyp files")
-    }
-    if (document.querySelector('select').value=="protractored")
-    {
-      this.state=true;
-      this.restApi.Getprotractoredfypfiles(this.auth.currentUserValue.id).subscribe(files => {
-        this.fypllist = files as FypFile[]});
-        console.log(document.querySelector('select').value);
-        console.log(this.fypllist);
-        this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
-          // return;
-          const newData = [];
-    
-          if (res != null) {
-    
-          
-              newData.push(
-                { 'uy':document.querySelector('select').value ,
-                  'amount': res ,
-                  'res': res
-                });
-            
-    
-          }
-    
-          this.chartChache.data = newData;
-    
-          
-          this.message=res+"";
-        });
-        this.showNotification("you have "+this.message+"protractored fyp files")
-    }
- 
+      this.showNotification("you have "+this.message+"Proctracted fyp files")
+  
+            }
+  }
 
 
   
+
+
 }
-  }
 
