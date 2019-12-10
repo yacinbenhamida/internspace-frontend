@@ -62,7 +62,7 @@ export class TeacherFypfilesComponent implements OnInit {
   this.loadvalues(this.selectedfyp);
   
   }
-
+  
 }
   startTimer() {
     
@@ -156,7 +156,7 @@ console.log(this.xx);
 }
 
 loadvalues(selected:string){
-  console.log(selected);
+  console.log(document.querySelector('select').value);
   if (selected=="pending")
   {
     this.restApi.GetFYPFILEPending().subscribe(files => {
@@ -170,13 +170,13 @@ loadvalues(selected:string){
     }
     }});
 
-   this.restApi.getfypsize(selected,this.auth.currentUserValue.id).subscribe(res => {
+   this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
     // return;
     const newData = [];
 
     if (res != null) {
         newData.push(
-          { 'uy':selected,
+          { 'uy':document.querySelector('select').value ,
             'amount': res ,
             'res': res
           });
@@ -188,7 +188,7 @@ loadvalues(selected:string){
     
 this.message=res+"";
   });
-  this.showNotification("you have "+this.message+"  pending fyp files")
+  this.showNotification("you have "+this.message+"pending fyp files")
 
         
   }
@@ -213,13 +213,13 @@ this.message=res+"";
       
       );
 
-  this.restApi.getfypsize(selected,this.auth.currentUserValue.id).subscribe(res => {
+  this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
     // return;
     const newData = [];
 
     if (res != null) {
         newData.push(
-          { 'uy':selected ,
+          { 'uy':document.querySelector('select').value ,
             'amount': res ,
             'res': res
           });
@@ -229,7 +229,7 @@ this.message=res+"";
     this.chartChache.data = newData;
 
     
-this.message=res +"  ";
+this.message=res+"";
   });
   this.showNotification("you have "+this.message+"prevalidated fyp files")
 
@@ -257,13 +257,13 @@ this.message=res +"  ";
       
       );
   
-  this.restApi.getfypsize(selected,this.auth.currentUserValue.id).subscribe(res => {
+  this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
     // return;
     const newData = [];
 
     if (res != null) {
         newData.push(
-          { 'uy':selected ,
+          { 'uy':document.querySelector('select').value ,
             'amount': res ,
             'res': res
           });
@@ -301,13 +301,13 @@ this.message=res+"";
         
         );  
      
-    this.restApi.getfypsize(selected,this.auth.currentUserValue.id).subscribe(res => {
+    this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
       // return;
       const newData = [];
 
       if (res != null) {
           newData.push(
-            { 'uy':selected ,
+            { 'uy':document.querySelector('select').value ,
               'amount': res ,
               'res': res
             });
@@ -319,7 +319,7 @@ this.message=res+"";
       
 this.message=res+"";
     });
-    this.showNotification("you have "+this.message+" Proctracted fyp files")
+    this.showNotification("you have "+this.message+"Proctracted fyp files")
 
           }
 }
