@@ -1,1 +1,50 @@
-<p>quiz-session works!</p>
+<section class="custom-section-1 m-gab-2-top m-gab-10-bottom">
+  <div class="container">
+
+    <div class='mb-30' *ngIf='!userQuiz || !info.question'> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+      <br> <br> <br> <br> <br> <br> <br> <br> <br> </div>
+
+    <div *ngIf='userQuiz && info.question' class="row justify-content-md-center text-center">
+      <div class="col-sm-12 col-md-6">
+
+        <img alt="" src={{userQuiz.quiz.iconUrl}} class="" height="80" width="80">
+
+
+        <span class="label label--sm label--primary mb-2">{{userQuiz.quiz.category.name}}</span>
+        <h2 class="mb-0">{{info.question.content}}</h2>
+        <p class="lead mb-5">Keep in mind, This is a multi-choice quiz!</p>
+
+        <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+
+        <h2 class="label--primary mb-1" *ngIf='countDownInfo.bCounterStarted'>
+          {{ countDownInfo.minutes }}:{{countDownInfo.seconds}}</h2>
+        <h2 class="label--primary mb-1" *ngIf='!countDownInfo.bCounterStarted'>Get ready!</h2>
+
+        <div *ngIf='info.question && info.question.responses' class="flex-container align-items-center">
+
+          <div *ngFor='let response of info.question.responses; let i = index'
+            class='shadow-4 align-self-center d-flex justify-content-between m-3'>
+            <label>{{response.content}}</label>
+            <mat-checkbox [(checked)]="info.responses[i].isChecked" (change)="OnChange_SetResponseCheck(i, $event)"
+              (indeterminateChange)="OnChange_SetResponseCheck(i, $event)"></mat-checkbox>
+          </div>
+
+        </div>
+
+
+        <button [disabled]='info.bIsFirstQuestion' (click)='onClick_PreviousQuestion()' type="button" class='btn btn-secondary m-3'>
+          Previous
+        </button>
+        <button *ngIf='!info.bIsLastQuestion' (click)='onClick_NextQuestion()' type="button" class='btn btn-primary m-3'>
+          Next
+        </button>
+
+        <button *ngIf='info.bIsLastQuestion' (click)='onClick_FinishQuestion()' type="button" class='btn btn-warning m-3'>
+          Finish?
+        </button>
+
+        <p class="small">Need some help? <a class="m-link-muted" href="#">We can help!</a> </p>
+      </div>
+    </div>
+  </div>
+</section>

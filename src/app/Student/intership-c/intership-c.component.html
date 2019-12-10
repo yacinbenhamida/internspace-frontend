@@ -9,7 +9,7 @@
   
     <br>
     
-    <ul>
+ <!-- <ul>
         <li><a class="active" [routerLink]="['/student/inter']">Intership Convention</a></li>
         <li><a  [routerLink]="['/fyp/create']">FypPFE</a></li>
         <router-outlet></router-outlet>
@@ -64,4 +64,263 @@
                   </tbody>
               </table>
              </div>
+        </div>-->
+
+        
+<br>
+<br>
+<main class="main-content">
+          <section class="section">
+                    <div class="container">
+                        <div class="row text-center justify-content-center">
+                            <div class="col-md-11">
+                                <h1 class="mb-4">Intership<mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate"> Convetion.</mark></h1>
+                                
+                                </div>
+                                </div>
+                                </div>
+           </section>
+    
+        <div class="row uikit-example">
+            <div class="col-lg-10 mx-auto">
+                    <div class="accordion" id="accordionExample">
+                            <div class="card mb-3">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Intership Convention 
+                                        </button>
+                                    </h2>
+                                </div>       
+                                <div  aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                            <div class="uikit-example">
+                                                    <table datatable   class="row-border hover">
+                                                        <thead>
+                                                            <tr>
+                                                             
+                                                              <th>#</th>
+                                                              
+                                                              <th>startDate</th>
+                                                              <th>endDate</th>
+                                                              
+                                                              <th>companySupervisorEmail</th>
+                                                              <th>Company</th>
+                                                             
+                                                            </tr>
+                                                          </thead>
+                                                          <tbody>
+                                                            <tr *ngFor="let x of allStudent let index = index;" >
+                                                              <td> {{index}}</td>
+                                                              <td>{{x.startDate}}</td>
+                                                              <td>{{x.endDate}}</td>
+                                                             
+                                                              <td ></td>
+                                                              <td><button type="button" (click)="Cancel(x)" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-assign"  >Annuler</button>
+                                                              </td>
+                                                              <td><button type="button" (click)="Cancel(x)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-large"  >view</button>
+                                                              </td>
+                                                            
+                                                          
+                                                            </tr>
+                                                          </tbody>
+                                                      </table>
+                                             </div>
+                                    </div>
+                                </div>
+                            </div>       
+                    </div>
+
+   
+                   
+    
+     </div>
+     </div>
+     </main>
+     
+      <!-- Modal assign - Large -->
+    
+    
+    <div class="modal fade" id="modal-assign" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-long" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Status</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!--<div class="alert alert-danger">
+                            Please notice that this modal has <code>.modal-long</code> class name added to <code>.modal-dialog</code>.
+                        </div>-->
+                        <section id="Inputs" class="px-6 py-6 bg-gray mb-9">
+                                <div class="container">
+                                    <header class="mb-6">
+                                        <h2>Do You Want To annulate Your Convention ?</h2>
+                                        <hr>
+                                        <p class="lead-1">Intership Convention </p>
+                                    </header>
+        
+                                    <div class="row gap-y">
+                                        <div class="col-md-12">
+                                            <div class="form-group" >
+                                                    <div class="grid-icon-wrap clearfix">
+                                                            <button type="button" (click)="Cancel(x)" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-assign"  >Save</button>
+                                                              
+                                                        </div>
+                                                           
+                                            </div>
+                                            
+                                    </div> 
+                                </div> 
+                            </div>                         
+                            </section>
+                        </div>
+                    
+                </div>
+            </div>
         </div>
+        
+
+
+
+         <!-- Modal fix - Large -->
+    
+    
+    <div class="modal fade" id="modal-large" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <!--content-->
+                        <div class="col-md-12 v-icon-box-grid" data-columns="2" data-colour="dark">
+                                <div class="spb_icon_box col-sm-12">
+                                    <a class="box-link" href="#" target="_self"></a>
+                                    <div class="v-icon-box-content-wrap clearfix">
+                                        <div class="v-icon-box-inner-wrap clearfix">
+                                            <div class="grid-icon-wrap clearfix">
+                                                <a>
+                                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                        <img src="assets/img/svg/classroom.svg">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="divider-line"></div>
+                                           
+                                            <div  *ngFor="let emp ">
+                                                <div *ngIf="emp!=null">
+                                            <h6 > Your Company is: </h6> 
+                                          
+                                           <h6>
+                                              {{emp[1]}} his role is a {{emp[2]}}
+                                              there is his mail{{emp[3]}}
+                                                 </h6>
+                                              </div>
+                                              <div *ngIf="emp==null">
+                                                  <h6>
+                                                     you do't have a reporter
+                                                         </h6>
+                                              </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spb_icon_box col-sm-12">
+                                    <div class="v-icon-box-content-wrap clearfix">
+                                        <div class="v-icon-box-inner-wrap clearfix">
+                                            <div class="grid-icon-wrap clearfix">
+                                                <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                        <img src="assets/img/svg/file.svg">
+                                                </div>
+                                            </div>
+                                            <div class="divider-line"></div>
+                                            <h6 >Pre validated state   </h6>
+                                            <div *ngFor="let element of ffView;let i = index">
+                                              <div *ngIf="element.isPrevalidated == false">
+                                            <h6 >your file is not Prevalidated   </h6></div>
+                                            <div *ngIf="element.isPrevalidated == true">
+                                                <h6 >your file is is Prevalidated </h6>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spb_icon_box col-sm-12">
+                                    <div class="v-icon-box-content-wrap clearfix">
+                                        <div class="v-icon-box-inner-wrap clearfix">
+                                            <div class="grid-icon-wrap clearfix">
+                                                <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                    <img src="assets/img/svg/webpage.svg">
+                                                </div>
+                                            </div>
+                                            <div class="divider-line"></div>
+                                            <h6  >Fyp State  </h6>
+                                            <div *ngFor="let element of ffView;let i = index">
+                                            <h6  >Your File is {{element.fileStatus}}. </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spb_icon_box col-sm-12">
+                                    <div class="v-icon-box-content-wrap clearfix">
+                                        <div class="v-icon-box-inner-wrap clearfix">
+                                            <div class="grid-icon-wrap clearfix">
+                                                <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                        <img src="assets/img/svg/books.svg">
+                                                </div>
+                                            </div>
+                                            <div class="divider-line"></div>
+                                            <h6 >Subject of the Intership </h6>
+                                            <div *ngFor="let element of ffView;let i = index">
+                                            <h6 >your subject is {{element.subject.title}} </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="spb_icon_box col-sm-12">
+                                        <div class="v-icon-box-content-wrap clearfix">
+                                            <div class="v-icon-box-inner-wrap clearfix">
+                                                <div class="grid-icon-wrap clearfix">
+                                                    <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                            <img src="assets/img/svg/test.svg">
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="divider-line"></div>
+                                                <h6 >Final Mark</h6>
+                                                <div *ngFor="let element of ffView;let i = index">
+                                                  <div *ngIf="element.finalMark ==0">
+                                                    <h6 >your Fyp is not marked  </h6>
+                                                    </div>
+                                                    <div *ngIf="element.finalMark >0">
+                                                        <h6 >your Final Mark is {{element.finalMark}}  </h6>
+                                                        </div>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="spb_icon_box col-sm-12" *ngFor="let element of ffView;let i = index">
+                                            <div class="v-icon-box-content-wrap clearfix">
+                                                <div class="v-icon-box-inner-wrap clearfix">
+                                                    <div class="grid-icon-wrap clearfix">
+                                                        <div class="v-svg-icon-holder v-svg-icon-animate">
+                                                              <img src="assets/img/svg/visibility.svg">
+                                                        </div>
+                                                    </div>
+                                                  
+                                                    <div class="divider-line"></div>
+                                                    <h6 ><a [routerLink]="['/student/fyp/find/', element.id]">View More About Your Fyp</a></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                        <!--end content-->
+                    </div>
+                </div>
+            </div>
+        
+    

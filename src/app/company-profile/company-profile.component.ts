@@ -38,7 +38,7 @@ export class CompanyProfileComponent implements OnInit {
   selectedSubject: FYPSubject;
   mySubjectsToShow: FYPSubject[];
 
-  fakeDelay = 1;
+  fakeDelay = 1000;
   loadingSubjectDetails = false;
 
   // Form section

@@ -1,0 +1,41 @@
+<section class="m-gab-4-top">
+        <div class="col-lg-9 col-xl-7 d-none d-lg-block position-absolute top-0 right-0 pr-0" style="margin-top:-350px;margin-right:-100px">
+            <img src="../assets/img/svg/polygon.svg" alt="">
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 offset-lg-1 col-xl-4 offset-xl-1">
+                    <p class="text-uppercase h6 text-primary mt-6">Update the report state</p>
+                    <h2 class="h1">Explore the students with no reports</h2>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-7 col-xl-6 text-right">
+                    <img src="../assets/img/faq.png" width="246" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Carte identité</th>
+            <th>submited report</th>
+            <th>action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of students">
+            <td>{{x.elemet.id}}</td>
+            <td>{{x.elemet.firstName}}</td>
+            <td>{{x.elemet.lastName}}</td>
+            <td>{{x.elemet.cin}}</td>
+            <td>{{x.elemet.hasSubmittedAReport?'done':'not yet'}}</td>
+            <td><button type="button" class="btn btn-sleek-success" (click)="studentInfo(x)" [disabled]="x.etat">Submited</button></td>
+          </tr>
+        </tbody>
+        </table>

@@ -9,7 +9,7 @@ export class FypFileService {
     constructor(private http: HttpClient) { }
 
     getFypFilesOfDepartment(depId:number){
-        return this.http.get<FypFile[]>("/api/fypsheet/"+depId)
+        return this.http.get<FypFile[]>("/api/fypsheet/ofdepartment/"+depId)
         .pipe(map(data =>{return data}));
     }
     getAcceptedFYPFiles(idDep:number){

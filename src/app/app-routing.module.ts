@@ -1,3 +1,4 @@
+import { QuizResultComponent } from './quiz/quiz-result/quiz-result.component';
 import { QuizSessionComponent } from './quiz/quiz-session/quiz-session.component';
 import { QuizSelectionComponent } from './quiz/quiz-selection/quiz-selection.component';
 import { CompanyProfileComponent } from './company-profile/company-profile.component';
@@ -39,6 +40,7 @@ import { FypfilesOperationsComponent } from './department-head/fypfiles-operatio
 import { LateStudentListComponent } from './intership-director-module/late-student-list/late-student-list.component';
 import { FypFileManagementComponent } from './intership-director-module/fyp-file-management/fyp-file-management.component';
 
+//import { StudentProfileComponent } from './student-profile/student-profile.component';
 import { StudentProfileComponent } from './intership-director-module/student-profile/student-profile.component';
 import { AccountManagementComponent } from './intership-director-module/account-management/account-management.component';
 
@@ -53,6 +55,11 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
+import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
+import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
+import { FilesByDiffCritComponent } from './intership-director-module/files-by-diff-crit/files-by-diff-crit.component';
+
+
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
 import { ReclamationComponent } from './Student/reclamation/reclamation.component';
@@ -66,8 +73,9 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
 import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
 import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
 import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+import { ProfileStudentComponent } from './Student/profile-student/profile-student.component';
 
-
+import { SheetsModificationComponent } from './Student/Directeur/sheets-modification/sheets-modification.component';
 
 
 /**
@@ -113,11 +121,12 @@ const routes: Routes = [
   {path : 'login', component : AuthenticationComponent},
   {path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   {path: 'company/profile', component: CompanyProfileComponent, canActivate : [AuthGuard]},
-  {path: 'student/profile', component: StudentProfileComponent, canActivate : [AuthGuard]},
+  {path: 'student/profile', component: ProfileStudentComponent, canActivate : [AuthGuard]},
 
   // Quiz Section
   {path: 'student/quiz/selection', component: QuizSelectionComponent, canActivate : [AuthGuard]},
   {path: 'student/quiz/session', component: QuizSessionComponent, canActivate : [AuthGuard]},
+  {path: 'student/quiz/result', component: QuizResultComponent, canActivate : [AuthGuard]},
 
   // end login and registration
   {path: 'fypTemplate', component: FypTemplateManagementComponent},
@@ -127,11 +136,11 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard],
+  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard]},
+  {path: 'fyp/update/:id', component: FypPfeUpdateComponent,canActivate: [RoleGuard],
   data: {
     expectedRole: 'Student'
   } },
-  {path: 'fyp/update/:id', component: FypPfeUpdateComponent},
   {path: 'fyp/delete/:id', component: FypPFECreateComponent},
   {path: 'student/fypfile', component : IntershipCreateComponent},
   {path: 'student/skills', component: PFECategoryComponent},
@@ -139,9 +148,13 @@ const routes: Routes = [
   {path: 'student/reclamation', component: ReclamationComponent},
   {path: 'student/up', component : IntershipUpdateComponent},
   {path: 'student/fyp/find/:id', component : FypFileDetailsComponent},
+  {path: 'student/profile', component : ProfileStudentComponent,canActivate: [RoleGuard],
+  data: {
+    expectedRole: 'Student'
+  } },
 //SheetManagement
 {path: 'Directeur/sheetPending', component : SheetsManagementComponent},
-
+{path: 'Directeur/sheetModification', component : SheetsModificationComponent},
 
   //
   {path: 'uniDash', component: UniversityStatsComponent},
@@ -227,6 +240,22 @@ const routes: Routes = [
   data: {
     expectedRole: 'internshipsDirector'
   }},
+
+  {path: 'internshipDirector/reportValidation',component:ValidateReportDepoComponent,canActivate: [RoleGuard],
+  data: {
+    expectedRole: 'internshipsDirector'
+  }},
+
+  {path: 'internshipDirector/sountenance',component:SoutenanceFilesComponent,canActivate: [RoleGuard],
+  data: {
+    expectedRole: 'internshipsDirector'
+  }},
+  {path: 'internshipDirector/filesWithDiffCrit',component:FilesByDiffCritComponent,canActivate: [RoleGuard],
+  data: {
+    expectedRole: 'internshipsDirector'
+  }},
+
+
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '/404'}
 

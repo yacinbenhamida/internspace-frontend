@@ -1,20 +1,8 @@
-<br>
-<br>
 
     <br>
-          
-  
-    <br>
-    
-    <ul>
-        <li><a  [routerLink]="['/student/inter']">Intership Convention</a></li>
-        <li><a   class="active" [routerLink]="['/fyp/create']">FypPFE</a></li>
-        <router-outlet></router-outlet>
-        <li><a  [routerLink]="['/student/reclamation']">Reclamation</a></li>
-        <li><a [routerLink]="['/student/skills']">Subject</a></li>
-</ul>
+
  <br>
-   <h2 style="padding-left: 100px;">{{text}}</h2>
+
    <div class="container" *ngIf="viewCreate">
      <div   >
        <div  *ngIf="show">
@@ -272,7 +260,7 @@
                                                           <th>description</th>
                                                           <th>problematic</th>
                                                           <th> Status</th>
-                                                          <th>Update</th>
+                                                          <th>Changes</th>
                                                           <th></th>
                                                           <th></th>
                                                         </tr>
@@ -282,12 +270,14 @@
                                                           <td>{{element.title}}</td>
                                                           <td>{{element.description}}</td>
                                                           <td>{{element.problematic}}</td>
-                                                          
+                                                         
                                                           <td>
                                                            
                                                               <span class="badge badge-pill badge-light">{{element.fileStatus}}</span>
                                                               
                                                             </td>
+                                                            <td *ngIf="element.up == true">yes</td>
+                                                            <td *ngIf="element.up == false">No</td>
                                                           <td>  <button type="button" (click)="affectTeacher(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign">assign</button></td>
                                                           <td>
                                                                 <button type="button" (click)="DirecteurFyp()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-large">status</button>
@@ -295,7 +285,7 @@
                                                           <td>
                                                               <button type="button" (click)="onClickView(element.id)" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-large">View</button>
                                                         </td>
-                                                        <td> <button type="button" (click)="onClick(element.id)" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-large">Update</button>
+                                                        <td *ngIf="element.fileStatus == 'pending'"> <button type="button" (click)="onClick(element.id)" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal-large">Update</button>
                                                         </td>
                                                         </tr>
                                                       </tbody>
