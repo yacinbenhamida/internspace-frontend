@@ -17,7 +17,7 @@
                                 <nav class="header-nav-top">
                                     <ul class="nav nav-pills">
                                             <li class="nav-item nav-item-anim-icon d-none d-md-block">
-                                                <span class="ws-nowrap m-list--link fs-15"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span>
+                                                <span class="ws-nowrap m-list--link fs-15"><span class="badge badge-pill badge-light"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span></span>
                                             </li>
                                           <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department != null" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                   <!---  <span class="ws-nowrap m-list--link fs-15">{{auth.currentUserValue.role}} at {{auth.currentUserValue.department.site.university.name}}</span>-->
@@ -78,6 +78,7 @@
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" routerLink="/fypfile/tracking"><i class="icon-list-1 menu-icon"></i> Tracking</a></li>
                                                     <li><a class="dropdown-item active" routerLink="/fypfile/history"><i class="icon-list-2 menu-icon"></i> History</a></li>
+                                                    <li><a class="dropdown-item" routerLink="fypTemplate">Template Editor</a></li>
                                                 </ul>
                                             </li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
@@ -100,20 +101,9 @@
                                             <ul class="dropdown-menu">
                                                 <li><a class="dropdown-item" routerLink="/teacherFypFiles" href="#"><i class="icon-list-1 menu-icon"></i> Teacher Dashboard</a></li>
                                                 <li><a class="dropdown-item" routerLink="/majormodif" href="#"><i class="icon-list-2 menu-icon"></i> Major Modification section</a></li>
-
-
                                                 </ul>
                                             </li>
-                                            <li class="dropdown">
-                                                    <a class="dropdown-item dropdown-toggle" href="#">
-                                                        Debug <i class="fas fa-chevron-down"></i>
-                                                    </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li><a class="dropdown-item" routerLink="fypTemplate">Template Editor</a></li>
-                                                        <li><a class="dropdown-item" routerLink="uniDash">University Dashboard</a></li>
-
-                                                    </ul>
-                                            </li>
+                                                <li class="dropdown"><a class="dropdown-item" routerLink="uniDash">Dashboard</a></li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle" routerLink="notifications/history"><i class="fas fa-bell"></i></a>
                                             </li>

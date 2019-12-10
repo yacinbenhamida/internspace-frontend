@@ -49,11 +49,21 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
       pageLength: 4
     }
     this.fypservice.getAcceptedFYPFiles(this.auth.currentUserValue.department.id).subscribe((file:FypFile[])=>{
-      this.acceptedSheets = file
+      this.acceptedSheets = file.filter(x=>x.fileStatus == "confirmed")
+      this.acceptedSheets.forEach(element => {
+        this.userv.getStudentOfSheet(element.id).subscribe(res=>{
+          element.student = res
+        })
+      });
       this.acceptedSheetsTrigger.next()
     })
-    this.fypservice.getPendingFYPFiles(this.auth.currentUserValue.department.id).subscribe(file=>{
-      this.pendingSheets = file
+    this.fypservice.getFypFilesOfDepartment(this.auth.currentUserValue.department.id).subscribe(file=>{
+      this.pendingSheets = file.filter(x=>x.fileStatus == "pending")
+      this.pendingSheets.forEach(element => {
+        this.userv.getStudentOfSheet(element.id).subscribe(res=>{
+          element.student = res
+        })
+      });
       this.pendingSheetsTrigger.next()
     })
     this.userv.getDepartmentTeachers(this.auth.currentUserValue.department.id)
@@ -218,4 +228,19 @@ editTeacherRole(){
   )
 }
 
+parseStatus(file:FypFile){
+  if(file){
+    if(file.isPrevalidated) return "pre validated"
+    if(file.isCanceled) return "cancelled"
+    if(file.isConfirmed) return "confirmed"
+    if(file.isArchived) return "archieved"
+    if(file.finalMark > 0) return "validated"
+    return "pending"
+  }
+
+}
+minimize(str:string){
+  if(str.length > 80) return str.substr(0,80)+"..." 
+  return str
+}
 }

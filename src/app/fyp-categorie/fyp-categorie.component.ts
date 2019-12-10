@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { TeacherServiceService } from '../services/Teacher/teacher-service.service';
 import { Router } from '@angular/router';
 import { FypCategory } from '../models/fyp/fyp-category';
+import { UniStatsService } from '../services/dashboard/uni-stats.service';
 
 @Component({
   selector: 'app-fyp-categorie',
@@ -10,20 +11,27 @@ import { FypCategory } from '../models/fyp/fyp-category';
 })
 export class FypCategorieComponent implements OnInit {
   @Input() fypcategory: FypCategory;
+  fypcategorys:FypCategory[];
   name:string;
+  Descr:string;
   restApi: TeacherServiceService;
   router: Router;
-  constructor(
+  uniStatsService:UniStatsService;
+  constructor(uniStatsService: UniStatsService,
      restApi: TeacherServiceService, 
      router: Router
   ) {this.restApi=restApi;
-  this.router=router;}
+  this.router=router;
+  this.uniStatsService=uniStatsService;}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.uniStatsService.GetCategories().subscribe(e => this.fypcategorys = e);
+   console.log(this.fypcategorys+"ff");
+   }
 
   addFypcat() {
    
-    this.restApi.AddFypCategory(this.name,this.fypcategory).subscribe((data: {}) => {
+    this.restApi.AddFypCategory(this.name,this.fypcategory,this.Descr).subscribe((data: {}) => {
       this.router.navigate([]);
     })
   }

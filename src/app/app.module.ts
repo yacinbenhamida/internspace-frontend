@@ -98,6 +98,7 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
 import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
 import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
 import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+import { FavcategorieComponent } from './fy-categorie/favcategorie/favcategorie.component';
 import { ProfileStudentComponent } from './Student/profile-student/profile-student.component';
 import { SheetsModificationComponent } from './Student/Directeur/sheets-modification/sheets-modification.component';
 import { ProfileStudentDetailComponent } from './Student/profile-student-detail/profile-student-detail.component';
@@ -180,6 +181,7 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     AdminStudentsComponent,
     AdminEmployeesComponent,
     AdminClassesComponent,
+    FavcategorieComponent,
     ProfileStudentComponent,
     SheetsModificationComponent,
     ProfileStudentDetailComponent,

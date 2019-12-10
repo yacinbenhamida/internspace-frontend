@@ -1,14 +1,18 @@
-<div class="container custom-container">
+<div class="container custom-container justify-content-center">
     <div class="col-md-12">
       <h3 class="mb-3 text-center">Propose new category</h3>
   
-      <div class="form-group">
+      <div class="form-group cool-item">
         <input type="text" [(ngModel)]="name" class="form-control" placeholder="Name">
+        <input type="text" [(ngModel)]="Descr" class="form-control" placeholder="Description">
+
       </div>
   
-      <div class="form-group">
-        <button class="btn btn-success btn-lg btn-block" (click)="addFypcat()">Create category</button>
+      <div class="form-group cool-item justify-content-center">
+        
+          <button type="button" class="btn btn-primary" (click)="addFypcat()">Create category</button>
       </div>
   
     </div>
   </div>
+  <app-favcategorie  [tab]="fypcategorys" ></app-favcategorie>

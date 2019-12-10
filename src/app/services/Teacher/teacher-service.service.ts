@@ -33,8 +33,8 @@ export class TeacherServiceService {
   };
 
   // POST
-  AddFypCategory(name: string,data:FypCategory): Observable<FypCategory> {
-    return this.http.post<FypCategory>(this.baseurl+'/add?name='+ name, JSON.stringify(data), this.httpOptions);
+  AddFypCategory(name: string,data:FypCategory,desc:string): Observable<FypCategory> {
+    return this.http.post<FypCategory>(this.baseurl+'/add?name='+name+'&desc='+desc, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
@@ -86,6 +86,10 @@ export class TeacherServiceService {
   }
   getmodificationssize():Observable<number>{
     return this.http.get<number>(this.baseurl+'/Mmsize',{headers:this.headers});
+  }
+  getAllCategories():Observable<FypCategory[]>{
+    return this.http.get<FypCategory[]>(this.baseurl+'/allCat',{headers:this.headers});
+
   }
 
 }
