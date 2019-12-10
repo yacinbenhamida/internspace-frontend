@@ -40,7 +40,7 @@ export class TeacherFypfilesComponent implements OnInit {
   chartChache: any; 
 
   @ViewChild("customNotification", { static: true }) customNotificationTmpl;
-  timeLeft: number = 10;
+  timeLeft: number = 60;
   interval;
   Uniyear:any[];
   private chartData: any;
@@ -60,7 +60,6 @@ export class TeacherFypfilesComponent implements OnInit {
     if (!this.selectedUY)
     {
   this.loadvalues(this.selectedfyp);
-  
   }
   
 }
@@ -78,10 +77,10 @@ console.log(this.xx);
         {
           this.showNotification("you have "+this.xx+"  modification request")
         }
-        this.timeLeft = 10;
+        this.timeLeft = 60;
         console.log(this.timeLeft)
       }
-    },10000)
+    },1000)
   }
 
   pauseTimer() {
@@ -132,9 +131,10 @@ console.log(this.xx);
     });
     console.log(this.majo);
     this.startTimer();
+    
     this.restApi.getAllFypFiles(this.auth.currentUserValue.id).subscribe(files => {
       this.fypllist = files as FypFile[];
-    
+    console.log(this.fypllist);
     }
       );
       this.restApi.getAllUniYEars().subscribe(e=>{this.cachedUYs = e as UniversitaryYear[]});
@@ -156,8 +156,8 @@ console.log(this.xx);
 }
 
 loadvalues(selected:string){
-  console.log(document.querySelector('select').value);
-  if (selected=="pending")
+  console.log(selected);
+  if (selected=="pending" && this.selectedUY)
   {
     this.restApi.GetFYPFILEPending().subscribe(files => {
       this.fypllist = files as FypFile[];
@@ -192,7 +192,10 @@ this.message=res+"";
 
         
   }
-  if (selected=="prevalidated")
+    else 
+    {this.restApi.GetFYPFILEPending().subscribe(files => {
+      this.fypllist = files as FypFile[];});}
+  if (selected=="prevalidated"&& this.selectedUY)
   {
    
     this.restApi.GetPrevalidatedFyp(this.auth.currentUserValue.id).subscribe(files => {
@@ -234,14 +237,18 @@ this.message=res+"";
   this.showNotification("you have "+this.message+"prevalidated fyp files")
 
         }
+        else 
+        {
+          this.restApi.GetPrevalidatedFyp(this.auth.currentUserValue.id).subscribe(files => {
+            this.fypllist = files as FypFile[];});
+        }
 
-
-  if (selected=="supervised")
+  if (selected=="supervised"&& this.selectedUY)
   {
     
   
     this.restApi.GetSupervisedFyp(this.auth.currentUserValue.id).subscribe(files => {
-      this.fypllist = files as FypFile[]
+      this.fypllist = files as FypFile[];
       for (let i=0;i<this.fypllist.length;++i){
         if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
         {
@@ -278,9 +285,12 @@ this.message=res+"";
   this.showNotification("you have "+this.message+"supervised fyp files")
 
         }
+        else 
+        {this.restApi.GetSupervisedFyp(this.auth.currentUserValue.id).subscribe(files => {
+          this.fypllist = files as FypFile[];
+        });}
 
-
-  if (selected=="protractored")
+  if (selected=="protractored" && this.selectedUY)
   {
    
   
@@ -322,6 +332,9 @@ this.message=res+"";
     this.showNotification("you have "+this.message+"Proctracted fyp files")
 
           }
+          else 
+    { this.restApi.Getprotractoredfypfiles(this.auth.currentUserValue.id).subscribe(files => {
+      this.fypllist = files as FypFile[];});}
 }
 
   ngAfterViewInit() {
@@ -367,7 +380,7 @@ this.message=res+"";
   }
   onChange_fyp(){
     this.selectedfyp=document.querySelector('select').value;
-    this.loadvalues(this.selectedfyp);
+    //this.loadvalues(this.selectedfyp);
    
   }
 
