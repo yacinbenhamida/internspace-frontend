@@ -9,7 +9,8 @@
                     <th>Archived</th>
                     <th>Canceled</th>
                     <th>Confirmed</th>
-                    <th>Prevalidated</th>*
+                    <th>Prevalidated</th>
+                    <th>universitary Year</th>
                     <th [hidden]="hide"> Prevalidate</th>
                 </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td>{{x.isCanceled}}</td>
                 <td>{{x.isConfirmed}}</td>
                 <td>{{x.isPrevalidated}}</td>
+                <td>{{x.universitaryYear.startDate}}-{{x.universitaryYear.endDate}}-</td>
                 <td><button [hidden]='hide' (click)="Prevalidate(x.id)">prev</button></td>
 
             </tr>

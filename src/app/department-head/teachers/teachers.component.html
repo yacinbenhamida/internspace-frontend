@@ -1,26 +1,31 @@
 <main class="main-content">
-        <section data-overlay="5" class="m-gab-3" data-parallax="assets/img/hero/h13.jpg">
-            <div class="container">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-sm-12 col-md-8 text-white">
-                        <div class="clearfix">
-                            <div class="div">
-                                <h2 class="mb-0">Search for a teacher</h2>
-                                <p class="lead mb-4">Tap his info below...</p>
-                                <form class="input-round" novalidate="novalidate">
-                                    <div class="form-group input-group bg-white shadow-4">
-                                        <input (keyup)="filterTeachers(val.value)" #val type="text" class="form-control height-inherit pl-4" placeholder="Teacher...">
-                                        <!--<div class="input-group-append p-2">
-                                            <button class="btn btn-warning" type="button">Filter</button>
-                                        </div>-->
-                                    </div>
-                                </form>
-                            </div>
+    <section data-overlay="3" class="section m-gab-4 bg-primary">
+        <div class="container z-index-10">
+            <div class="w-md-80 w-lg-80 text-center text-white mx-md-auto mb-5 mt-2">
+                <h2> Search for a teacher </h2>
+            </div>
+
+            <div class="row mnb-3">
+                <div class="col-md-8 col-xl-7 mx-auto input-round">
+                    <div class="input-group bg-white">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text o-10"><i class="fa fa-search"></i></div>
                         </div>
+                        <input (keyup)="filterTeachers(val.value)" #val type="text" class="form-control height-inherit pl-4" placeholder="Teacher...">
                     </div>
                 </div>
+
+                <div class="col-md-12 text-center mt-5">
+                    <p class="small text-white o-7">
+                        tap whatever you want...
+                    </p>
+                </div>
             </div>
-        </section>
+        </div>
+        <div class="custom-section-3">
+            <img src="assets/img/sectionbg.png" alt="vertex">
+        </div>
+    </section>
         <section id="read-all" class="section bg-light">
                 <div class="container">
                     <div class="row justify-content-center">

@@ -55,6 +55,7 @@ import { PayPalComponent } from './admin/pay-pal/pay-pal.component';
 import { MaxActionNumberOfTeacherPerDepartmentComponent } from './intership-director-module/max-action-number-of-teacher-per-department/max-action-number-of-teacher-per-department.component';
 import { DepartmentProfileComponent } from './intership-director-module/department-profile/department-profile.component';
 
+import { CalendarComponent } from './calendar/calendar.component';
 import { ValidateReportDepoComponent } from './intership-director-module/validate-report-depo/validate-report-depo.component';
 import { SoutenanceFilesComponent } from './intership-director-module/soutenance-files/soutenance-files.component';
 import { FilesByDiffCritComponent } from './intership-director-module/files-by-diff-crit/files-by-diff-crit.component';
@@ -136,7 +137,7 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard]},
+  {path: 'fyp/create', component:  FypPFECreateComponent},
   {path: 'fyp/update/:id', component: FypPfeUpdateComponent,canActivate: [RoleGuard],
   data: {
     expectedRole: 'Student'
@@ -164,6 +165,7 @@ const routes: Routes = [
   {path: 'university/update', component: UniversityFormComponent},
   {path: 'site', component: SiteComponent},
   {path: 'defenseCalendar', component: DefenseCalendarComponent},
+  {path: 'calendar', component: CalendarComponent},
   {path: 'fypDefense', component: FYPDefenseComponent},
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent},
@@ -187,6 +189,7 @@ const routes: Routes = [
   data: {
     expectedRole: 'departmentHead'
   }},
+  {path : 'notifications', component : NotificationsComponent, canActivate: [AuthGuard]},
   {path : 'dptteachers', component : TeachersComponent, canActivate: [RoleGuard],
   data: {
     expectedRole: 'departmentHead'

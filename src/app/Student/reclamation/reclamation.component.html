@@ -1,20 +1,7 @@
 <br>
 <br>
 
-    <br>
-          
-  
-    <br>
-    
-    <ul>
-        <li><a  [routerLink]="['/student/inter']">Intership Convention</a></li>
-        <li><a   [routerLink]="['/fyp/create']">FypPFE</a></li>
-        <router-outlet></router-outlet>
-        <li><a class="active"[routerLink]="['/student/reclamation']">Reclamation</a></li>
-        <li><a [routerLink]="['/student/skills']">Subject</a></li>
-</ul>
- <br>
-   <h2 style="padding-left: 100px;">Your Reclamation</h2>
+  <!--- <h2 style="padding-left: 100px;">Your Reclamation</h2>
    <div class="container">
      <div  >
         <form [formGroup]="pfeForm" > 
@@ -41,12 +28,125 @@
       [selected]="template == currFYPSubject">{{template.title}}</option>
 
            </select>-->
-      </div>
+   <!--   </div>
       
        <div style="padding-left: 900px; padding-top: 50px;">
       <button (click)="getInfo()" class="button button1" > Send Reclamation</button></div>
         </form>
-</div>
- 
+</div>-->
+ <!-------------------------->
   
-   
+ <main class="main-content">
+
+    <section data-overlay="2" class="bg-img" style="background-image:url(../assets/img/hero/h15.jpg);padding-top:10rem;padding-bottom:10rem">
+        <div class="container z-index-10">
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="clearfix">
+                     
+                        <h2 class="fs-50 text-white">
+                            you can send your Reclamtion
+                        </h2>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-section-3"> 
+        </div>
+    </section>
+
+    <section class="m-gab-3-bottom" style="margin-top:-150px;">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <ul class="nav nav-tabs border-bottom-0 justify-content-center fw-500" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active bg-white" id="home-tab" data-toggle="tab" href="#mtab1" role="tab" aria-controls="home" aria-selected="true">Contact</a>
+                        </li>
+                       
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="mtab1" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row shadow-4 rounded bg-white justify-content-center">
+                                <div class="col-sm-12 col-md-5 bg-primary p-0 text-white">
+
+                                    <div class="card border-0 rounded text-white bg-img p-3 py-4 h-100" style="background-image: url(../assets/img/career-bg.jpg);" data-overlay="4">
+                                        <div class="row h-100 p-5">
+                                            <div class="col-12">
+                                                <p class="text-uppercase small o-7 font-weight-bold">Contact us</p>
+                                                <h5>Internspace</h5>
+                                                <br>
+                                            
+                                                <div class="media align-items-center mb-3">
+                                                    <i class="icon-mail-2 fs-20 o-7 mr-3"></i>
+                                                    <div class="media-body"><a href="#" class="anim-link-2 media-body"> Esprit@mail.com </a> </div>
+                                                </div>
+                                                <div class="media align-items-center mb-3">
+                                                    <i class="icon-headphone fs-20 o-7 mr-3"></i>
+                                                    <div class="media-body">+216 72 355 800</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 align-self-end">
+                                                <div>
+                                                    <h6>Follow Us</h6>
+                                                    <div class="social social-bg-dark">
+                                                        <a class="social-twitter" href="#"><i class="fab fa-twitter"></i></a>
+                                                        <a class="social-facebook" href="#"><i class="fab fa-facebook"></i></a>
+                                                        <a class="social-instagram" href="#"><i class="fab fa-instagram"></i></a>
+                                                        <a class="social-dribbble" href="#"><i class="fab fa-dribbble"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-7 p-8 py-7">
+                                    <h3 class="h5  mb-8">Send Us Your Reclamation</h3>
+
+                                    <form class="input-line " [formGroup]="pfeForm" novalidate>
+                                        <div class="contact-form-success alert alert-success d-none">
+                                            <strong>Success!</strong> Your message has been sent to us.
+                                        </div>
+                                        <div class="contact-form-error alert alert-danger d-none">
+                                            <strong>Error!</strong> There was an error sending your message.
+                                            <span class="mail-error-message d-block"></span>
+                                        </div>
+                                      
+                                     
+                                        <div class="form-row">
+                                            <div class="form-group input-group col">
+                                                <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5" class="form-control"  name="text" formControlName="text" id="message"  placeholder="Message" required #text></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-row mt-2">
+                                            <div class="col">
+                                                 <button (click)="getInfo(text)" class="btn btn-primary btn-block transition-hover" > Send Reclamation</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="mtab2" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="h-500"
+                                 data-provide="map"
+                                 data-lat="41.0187429"
+                                 data-lng="28.6390396"
+                                 data-marker-lat="41.0187429"
+                                 data-marker-lng="28.6390396"
+                                 data-info="Üçevler mah, Urfalılar Cd. No:71/C, 34513 Esenyurt/İstanbul"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+ 
+
+</main>
+

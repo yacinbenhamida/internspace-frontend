@@ -31,8 +31,12 @@ export class NoitificationsHistoryComponent implements OnInit,OnDestroy {
     }
     this.notifService.getEmployeesNotifications()
     .subscribe(x=>{
-      this.employeesNotifications = x.filter(a=>a.reciever.userType=='employee' && a.reciever.department == this.auth.currentUserValue.department)
-      this.studentsNotifications = x.filter(a=>a.reciever.userType=='student' && a.reciever.department == this.auth.currentUserValue.department)
+      console.log(x)
+      this.employeesNotifications = x.filter(a=>a.reciever.userType=='employee' && a.reciever.department  && a.reciever.department.id == this.auth.currentUserValue.department.id)
+      this.studentsNotifications = x.filter(a=>a.reciever.userType=='student' && a.reciever.studyClass.classOption.departement && a.reciever.studyClass.classOption.departement.id == this.auth.currentUserValue.department.id)
+      console.log(this.employeesNotifications)
+      console.log(this.studentsNotifications)
+
       this.employeesTriggers.next()
       this.studentsTriggers.next()
     })

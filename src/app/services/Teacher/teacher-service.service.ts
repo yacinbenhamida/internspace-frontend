@@ -8,6 +8,7 @@ import { FypCategory } from 'src/app/models/fyp/fyp-category';
 import { FypFileModification } from 'src/app/models/fyp/fyp-modification';
 import { catchError } from 'rxjs/operators';
 import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
+import { UniversitaryYear } from 'src/app/models/university/universitary-year';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,8 @@ export class TeacherServiceService {
   };
 
   // POST
-  AddFypCategory(name: string,data:FypCategory): Observable<FypCategory> {
-    return this.http.post<FypCategory>(this.baseurl+'/add?name='+ name, JSON.stringify(data), this.httpOptions);
+  AddFypCategory(name: string,data:FypCategory,desc:string): Observable<FypCategory> {
+    return this.http.post<FypCategory>(this.baseurl+'/add?name='+name+'&desc='+desc, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
@@ -86,6 +87,13 @@ export class TeacherServiceService {
   }
   getmodificationssize():Observable<number>{
     return this.http.get<number>(this.baseurl+'/Mmsize',{headers:this.headers});
+  }
+  getAllCategories():Observable<FypCategory[]>{
+    return this.http.get<FypCategory[]>(this.baseurl+'/allCat',{headers:this.headers});
+
+  }
+  getAllUniYEars():Observable<UniversitaryYear[]>{
+    return this.http.get<UniversitaryYear[]>(this.baseurl+'/FypYears',{headers:this.headers});
   }
 
 }

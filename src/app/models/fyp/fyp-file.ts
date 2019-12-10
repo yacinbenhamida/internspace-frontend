@@ -2,6 +2,7 @@
 import { FYPSubject } from './fyp-subject';
 import { Company } from '../users/Company';
 import { Student } from '../users/student';
+import { UniversitaryYear } from '../university/universitary-year';
 export interface FypFile {
  id:number
   title: string;
@@ -20,6 +21,7 @@ export interface FypFile {
   categories: any[];
   student:Student;
   up:boolean;
+  universitaryYear:UniversitaryYear;
 
  
 
