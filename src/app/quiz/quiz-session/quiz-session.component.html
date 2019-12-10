@@ -11,7 +11,7 @@
 
 
         <span class="label label--sm label--primary mb-2">{{userQuiz.quiz.category.name}}</span>
-        <h2 class="mb-0">{{info.question.content}}</h2>
+        <h4 class="mb-0">{{info.question.content}}</h4>
         <p class="lead mb-5">Keep in mind, This is a multi-choice quiz!</p>
 
         <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
@@ -23,8 +23,8 @@
         <div *ngIf='info.question && info.question.responses' class="flex-container align-items-center">
 
           <div *ngFor='let response of info.question.responses; let i = index'
-            class='shadow-4 align-self-center d-flex justify-content-between m-3'>
-            <label>{{response.content}}</label>
+            class='shadow-4 d-flex justify-content-between m-3'>
+            <h6>{{response.content}}</h6>
             <mat-checkbox [(checked)]="info.responses[i].isChecked" (change)="OnChange_SetResponseCheck(i, $event)"
               (indeterminateChange)="OnChange_SetResponseCheck(i, $event)"></mat-checkbox>
           </div>
@@ -48,3 +48,4 @@
     </div>
   </div>
 </section>
+<br> <br> <br> <br>

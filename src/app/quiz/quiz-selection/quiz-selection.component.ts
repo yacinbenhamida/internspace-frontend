@@ -105,6 +105,9 @@ export class QuizSelectionComponent implements OnInit {
 
 
     this.quizService.GetAllQuizzesByCategory(categoryId).subscribe(e => {
+
+      // Perform a sort by level first.
+      e.sort((a, b) => a.requiredMinLevel - b.requiredMinLevel);
       this.quizSelectionInfo.quizzesList = e;
 
       let max = 1;

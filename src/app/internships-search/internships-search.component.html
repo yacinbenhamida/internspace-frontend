@@ -134,12 +134,12 @@
 
             <div *ngIf="currentApplianceStatus != 'refused'">
               <a *ngIf="currentApplianceStatus != 'pending' && currentApplianceStatus != 'accepted'"
-                class="btn btn-primary transition-hover btn-wide" (click)='applySubject(selectedSubject.id)'>
+                class="btn btn-primary transition-hover btn-wide" style='cursor: pointer;' (click)='applySubject(selectedSubject.id)'>
                 Apply
               </a>
 
               <a *ngIf="currentApplianceStatus == 'pending'" class="btn btn-warning transition-hover btn-wide"
-                (click)='unapplySubject(selectedSubject.id)'>
+                (click)='unapplySubject(selectedSubject.id)' style='cursor: pointer;'>
                 Unapply
               </a>
 
