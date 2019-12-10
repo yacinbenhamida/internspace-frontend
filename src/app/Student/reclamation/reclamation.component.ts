@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FypPFEService } from 'src/app/services/student/fyp-pfe.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/services/security/authentication.service';
 
 @Component({
   selector: 'app-reclamation',
@@ -12,7 +13,7 @@ export class ReclamationComponent implements OnInit {
 
   text:string 
 
-  constructor(private fypPfeService: FypPFEService, private router: Router) { }
+  constructor(private fypPfeService: FypPFEService, private router: Router,private auth:AuthenticationService) { }
 
   ngOnInit() {
 
@@ -32,15 +33,12 @@ export class ReclamationComponent implements OnInit {
 
   send(){
      
-    this.fypPfeService.Reclamation(this.pfeForm.value,"12").subscribe(
+    this.fypPfeService.Reclamation(this.text,this.auth.currentUserValue.id.toString()).subscribe(
       (data: any) => {
        
         console.log(data);
       
       //this.currFYPSubject = data[index];
-     
-      
-      
     
       this.router.navigate(['/student/reclamation']);
       });

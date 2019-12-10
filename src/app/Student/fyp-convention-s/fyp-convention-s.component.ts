@@ -19,7 +19,7 @@ export class FypConventionSComponent implements OnInit {
 
   ngOnInit() {
    // this.getList();
-    this.fypConventionService.findStudentConvention('10').subscribe(fypts => {
+    this.fypConventionService.findStudentConvention(10).subscribe(fypts => {
       this.allStudent = fypts as Student[];
       console.log(this.allStudent);})
       this.ar.paramMap.subscribe(res=>this.id=Number(res.get('id')));

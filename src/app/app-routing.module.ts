@@ -136,7 +136,7 @@ const routes: Routes = [
   {path: 'update/:id', component: FypConventionComponent},
   {path: 'delete/:id', component:  IntershipCComponent},
   //fypPFE
-  {path: 'fyp/create', component:  FypPFECreateComponent, canActivate: [RoleGuard]},
+  {path: 'fyp/create', component:  FypPFECreateComponent},
   {path: 'fyp/update/:id', component: FypPfeUpdateComponent,canActivate: [RoleGuard],
   data: {
     expectedRole: 'Student'

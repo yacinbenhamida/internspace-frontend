@@ -32,6 +32,8 @@ export class FypPFECreateComponent implements OnInit {
 
   ngOnInit() {
     this.getFilee();
+    this.ffView;
+    console.log(this.ffView);
     this.fypPfeService.DirecteurFyp(this.auth.currentUserValue.id.toString()).subscribe(
       (fypts => {
         this.employes = fypts as Employee[];
@@ -51,8 +53,9 @@ export class FypPFECreateComponent implements OnInit {
 
     this.employes=this.DirecteurFyp();
     console.log(this.employes);
-    this.viewFilePFE();
+    this.ffView = this.viewFilePFE();
 
+     console.log(this.ffView);
     this.fypPfeService.GetFyp().subscribe(fypts => {
       this.ff = fypts as FypFile[];
       this.ff.push;
@@ -157,6 +160,8 @@ export class FypPFECreateComponent implements OnInit {
     'fileStatus':new FormControl('pending' ),
     'problematic':new FormControl('', ),
     'subject':new FormControl(''),
+   
+
 
 
 

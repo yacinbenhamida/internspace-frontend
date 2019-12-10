@@ -2,9 +2,24 @@
     <br>
 
  <br>
+ <main class="main-content">
+        <header class="section-header">
+            
+                    <div class="media align-items-center mb-4">
+                            <div class="w-60px mr-4 text-center">
+                                <i class="icon-document-1 fs-35"></i>
+                            </div>
+                            <div class="media-body">
+                                <a class="mt-0 mb-2 text-dark anim-link-2 clearfix">FYP Files</a>
+                                <span><a class="text-dark small anim-link-2">FYP Files status and treatment</a> </span>
+                            </div>
+                        </div>
+            
+        </header>
+ </main>
 
    <div class="container" *ngIf="viewCreate">
-     <div   >
+     <div>
        <div  *ngIf="show">
         <form [formGroup]="pfeForm" > 
             <div class="row">
@@ -16,12 +31,12 @@
               </div>
       <div *ngIf="title.touched && title.invalid">
       
-        Start Date est obligatoire 
+            title  est obligatoire 
       </div>
             </div>
       <div class="row">
         <div class="col-25">
-          <label for="fname">description</label>
+          <label for="fname">Features</label>
         </div>
         <div class="col-75">
            
@@ -76,6 +91,9 @@
         </form>
 </div>
 </div>
+   </div>
+   
+
 
 <!---
 <div *ngIf="showPFE" >
@@ -218,8 +236,12 @@
 <br>
 -->
       <!---- data-toggle-->
-   </div>
-   
+ 
+
+
+
+
+
 
 <div class="wrapper section" *ngIf="showPFE">
        
@@ -278,8 +300,8 @@
                                                             </td>
                                                             <td *ngIf="element.up == true">yes</td>
                                                             <td *ngIf="element.up == false">No</td>
-                                                          <td>  <button type="button" (click)="affectTeacher(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign">assign</button></td>
-                                                          <td>
+                                                            <td></td>
+                                                           <td>
                                                                 <button type="button" (click)="DirecteurFyp()" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-large">status</button>
                                                           </td>
                                                           <td>

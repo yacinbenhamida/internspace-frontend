@@ -72,7 +72,7 @@
 <main class="main-content">
           <section class="section">
                     <div class="container">
-                        <div class="row text-center justify-content-center">
+                        <div class="col-lg-10 mx-auto">
                             <div class="col-md-11">
                                 <h1 class="mb-4">Intership<mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate"> Convetion.</mark></h1>
                                 
@@ -115,9 +115,10 @@
                                                               <td>{{x.startDate}}</td>
                                                               <td>{{x.endDate}}</td>
                                                              
-                                                              <td ></td>
-                                                              <td><button type="button" (click)="Cancel(x)" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-assign"  >Annuler</button>
+                                                              <td >{{x.companySupervisorEmail}}</td>
+                                                              <td *ngIf='x.isCanceled == true'><button type="button" (click)="cancel(x.id)" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-assign"  >{{save}}</button>
                                                               </td>
+                                                              
                                                               <td><button type="button" (click)="Cancel(x)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-large"  >view</button>
                                                               </td>
                                                             
@@ -166,7 +167,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group" >
                                                     <div class="grid-icon-wrap clearfix">
-                                                            <button type="button" (click)="Cancel(x)" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-assign"  >Save</button>
+                                                            <button type="button" (click)="Canceeel()" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modal-assign"  >Save</button>
                                                               
                                                         </div>
                                                            

@@ -5,6 +5,7 @@ import Student from 'src/app/models/Student';
 import{ActivatedRoute } from '@angular/router'; 
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/security/authentication.service';
+
 import { User } from 'src/app/models/User';
 import { FypPFEService } from 'src/app/services/student/fyp-pfe.service';
 import { FypFile } from 'src/app/models/fyp/fyp-file';
@@ -26,6 +27,9 @@ export class IntershipCComponent implements OnInit {
   text:String="cancellation request";
   Std:User;
   Stds:User[];
+  allf:FypConvention[];
+  index:number;
+  save:string="cancel"
 
   constructor(private fypPfeService:FypPFEService, private fypConventionService: FypConventionService,private ar:ActivatedRoute,private router: Router,private auth:AuthenticationService) {
     
@@ -33,7 +37,7 @@ export class IntershipCComponent implements OnInit {
 
   ngOnInit() { 
    // this.getList();
-    this.fypConventionService.findStudentConvention(this.auth.currentUserValue.id.toString()).subscribe(fypts => {
+    this.fypConventionService.findStudentConvention(this.auth.currentUserValue.id).subscribe(fypts => {
       this.allStudent = fypts as Student[];
       console.log(this.allStudent);})
       this.ar.paramMap.subscribe(res=>this.id=Number(res.get('id')));
@@ -43,8 +47,12 @@ export class IntershipCComponent implements OnInit {
       console.log(this.Std);
      // this.StuClass();
       console.log(this.Std);
-
+      this.allStudent= this. getStd();
       this.allStudent;
+      console.log(this.allStudent);
+      console.log(this.allStudent);
+      this.cancel(this.index);
+
   }
 
 
@@ -55,7 +63,7 @@ export class IntershipCComponent implements OnInit {
  
   
    getStd(){
-    this.fypConventionService.findStudentConvention(this.auth.currentUserValue.id.toString()).subscribe(fypts => {
+    this.fypConventionService.findStudentConvention(this.auth.currentUserValue.id).subscribe(fypts => {
       this.allStudent = fypts as Student[];
       console.log(this.allStudent);
       this.allStudent.push;
@@ -87,6 +95,24 @@ export class IntershipCComponent implements OnInit {
       
       this.text="Request sent";
     }
+
   }
+
+
+  cancel(index:number){
+    this.fypConventionService.cancel(index).subscribe(fypts => {
+      this.allf = fypts as FypConvention[];
+      console.log(this.allf);
+      this.allf.push;
+  });
+}
+
+Canceeel(){
+
+if(this.save == "cancel"){
+  this.save ="canceled"
+}
+
+}
 
 }
