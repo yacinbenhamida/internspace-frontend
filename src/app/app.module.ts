@@ -215,13 +215,6 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
     
     AngularFireModule.initializeApp(environment.firebase),
-
-
- 
-  ],
-  providers: [AppService,AuthGuard,AuthenticationService],
-  bootstrap: [AppComponent],
-  exports: [CalendarComponent,
     NgbModule,
     NgxContentLoadingModule,
     MatSliderModule,
@@ -232,6 +225,13 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule
+
+
+ 
+  ],
+  providers: [AppService,AuthGuard,AuthenticationService],
+  bootstrap: [AppComponent],
+  exports: [CalendarComponent
   ]
 })
 export class AppModule { }
