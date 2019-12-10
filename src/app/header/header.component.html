@@ -20,7 +20,7 @@
                                                 <span class="ws-nowrap m-list--link fs-15"><span class="badge badge-pill badge-light"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span></span>
                                             </li>
                                           <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
-                                                    <span class="ws-nowrap m-list--link fs-15">{{convertRole(auth.currentUserValue.role)}} at {{auth.currentUserValue.department.site.university.name}}</span>
+                                                    <span class="ws-nowrap m-list--link fs-15"> <span class="badge badge-pill badge-primary"> {{convertRole(auth.currentUserValue.role)}} at {{auth.currentUserValue.department.site.university.name}}</span></span>
                                           </li>
                                             <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                 <div class="social social-bg-light social-sm mt-1">
