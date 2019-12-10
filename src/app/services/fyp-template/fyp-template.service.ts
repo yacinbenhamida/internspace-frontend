@@ -41,9 +41,11 @@ export class FypTemplateService {
   };
 
   // POST
+  /*
   CreateFypTemplate(data: FypTemplate): Observable<FypTemplate> {
     return this.http.post<FypTemplate>(this.baseurl + '/create/' + data.templateName, JSON.stringify(data), this.httpOptions);
   }
+  */
 
   // GET
   GetFypTemplatesForEditor(editorId: number): Observable<FypTemplate[]> {
@@ -73,5 +75,14 @@ export class FypTemplateService {
       .set('like', 'true');
 
     return this.http.get<FypFile[]>(this.baseurl + '/find-file/name', { headers: this.headers, params: params });
+  }
+
+  CreateFypTemplate(templateName: string, editorId: number): any {
+    const params = new HttpParams()
+      .set('name', templateName)
+      .set('is_fyp', 'true')
+      .set('editor', editorId.toString());
+
+    return this.http.get<any>(this.baseurl + '/create', { headers: this.headers, params: params });
   }
 }
