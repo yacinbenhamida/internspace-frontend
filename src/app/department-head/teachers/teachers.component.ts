@@ -57,7 +57,6 @@ export class TeachersComponent implements OnInit {
           else if(criteria1 < criteria2) return -1
           else return 0
         }else  return 1
-        
       })
     }
   }

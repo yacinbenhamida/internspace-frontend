@@ -57,8 +57,13 @@ export class TeacherFypfilesComponent implements OnInit {
   onChange_UY(uyIndex: number) {
     this.selectedUYId = this.cachedUYs[uyIndex].id;
     this.selectedUY = this.cachedUYs[uyIndex];
+    if (!this.selectedUY)
+    {
+  this.loadvalues(this.selectedfyp);
   
   }
+  
+}
   startTimer() {
     
    
@@ -150,7 +155,174 @@ console.log(this.xx);
     });
 }
 
+loadvalues(selected:string){
+  console.log(document.querySelector('select').value);
+  if (selected=="pending")
+  {
+    this.restApi.GetFYPFILEPending().subscribe(files => {
+      this.fypllist = files as FypFile[];
+    
+      for (let i=0;i<this.fypllist.length;++i){
+        if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+        {
+          console.log(this.fypllist[i].universitaryYear)
+          this.fypllist.splice(i,1);
+    }
+    }});
 
+   this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
+    // return;
+    const newData = [];
+
+    if (res != null) {
+        newData.push(
+          { 'uy':document.querySelector('select').value ,
+            'amount': res ,
+            'res': res
+          });
+
+    }
+
+    this.chartChache.data = newData;
+
+    
+this.message=res+"";
+  });
+  this.showNotification("you have "+this.message+"pending fyp files")
+
+        
+  }
+  if (selected=="prevalidated")
+  {
+   
+    this.restApi.GetPrevalidatedFyp(this.auth.currentUserValue.id).subscribe(files => {
+      this.fypllist = files as FypFile[];
+     
+      for (let i=0;i<this.fypllist.length;++i){
+        if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+        {
+          console.log(this.fypllist.indexOf(this.fypllist[i]));
+      
+          this.fypllist.splice(i,1);
+  
+              }
+      } 
+    
+    }
+      
+      
+      );
+
+  this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
+    // return;
+    const newData = [];
+
+    if (res != null) {
+        newData.push(
+          { 'uy':document.querySelector('select').value ,
+            'amount': res ,
+            'res': res
+          });
+
+    }
+
+    this.chartChache.data = newData;
+
+    
+this.message=res+"";
+  });
+  this.showNotification("you have "+this.message+"prevalidated fyp files")
+
+        }
+
+
+  if (selected=="supervised")
+  {
+    
+  
+    this.restApi.GetSupervisedFyp(this.auth.currentUserValue.id).subscribe(files => {
+      this.fypllist = files as FypFile[]
+      for (let i=0;i<this.fypllist.length;++i){
+        if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+        {
+          console.log(this.fypllist.indexOf(this.fypllist[i]));
+      
+          this.fypllist.splice(i,1);
+  
+              }
+      } 
+    
+    }
+      
+      
+      );
+  
+  this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
+    // return;
+    const newData = [];
+
+    if (res != null) {
+        newData.push(
+          { 'uy':document.querySelector('select').value ,
+            'amount': res ,
+            'res': res
+          });
+
+    }
+
+    this.chartChache.data = newData;
+
+    
+this.message=res+"";
+  });
+  this.showNotification("you have "+this.message+"supervised fyp files")
+
+        }
+
+
+  if (selected=="protractored")
+  {
+   
+  
+      this.restApi.Getprotractoredfypfiles(this.auth.currentUserValue.id).subscribe(files => {
+        this.fypllist = files as FypFile[];
+        for (let i=0;i<this.fypllist.length;++i){
+          if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
+          {
+            console.log(this.fypllist.indexOf(this.fypllist[i]));
+        
+            this.fypllist.splice(i,1);
+    
+                }
+        } 
+      
+      }
+        
+        
+        );  
+     
+    this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
+      // return;
+      const newData = [];
+
+      if (res != null) {
+          newData.push(
+            { 'uy':document.querySelector('select').value ,
+              'amount': res ,
+              'res': res
+            });
+
+      }
+
+      this.chartChache.data = newData;
+
+      
+this.message=res+"";
+    });
+    this.showNotification("you have "+this.message+"Proctracted fyp files")
+
+          }
+}
 
   ngAfterViewInit() {
 
@@ -194,172 +366,9 @@ console.log(this.xx);
     this.onChange_fyp();
   }
   onChange_fyp(){
-    console.log(document.querySelector('select').value);
-    if (document.querySelector('select').value=="pending")
-    {
-      this.restApi.GetFYPFILEPending().subscribe(files => {
-        this.fypllist = files as FypFile[];
-      
-        for (let i=0;i<this.fypllist.length;++i){
-          if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
-          {
-            console.log(this.fypllist[i].universitaryYear)
-            this.fypllist.splice(i,1);
-      }
-      }});
-  
-     this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
-      // return;
-      const newData = [];
-
-      if (res != null) {
-          newData.push(
-            { 'uy':document.querySelector('select').value ,
-              'amount': res ,
-              'res': res
-            });
-
-      }
-
-      this.chartChache.data = newData;
-
-      
-this.message=res+"";
-    });
-    this.showNotification("you have "+this.message+"pending fyp files")
-
-          
-    }
-    if (document.querySelector('select').value=="prevalidated")
-    {
-     
-      this.restApi.GetPrevalidatedFyp(this.auth.currentUserValue.id).subscribe(files => {
-        this.fypllist = files as FypFile[];
-       
-        for (let i=0;i<this.fypllist.length;++i){
-          if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
-          {
-            console.log(this.fypllist.indexOf(this.fypllist[i]));
-        
-            this.fypllist.splice(i,1);
-    
-                }
-        } 
-      
-      }
-        
-        
-        );
-
-    this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
-      // return;
-      const newData = [];
-
-      if (res != null) {
-          newData.push(
-            { 'uy':document.querySelector('select').value ,
-              'amount': res ,
-              'res': res
-            });
-
-      }
-
-      this.chartChache.data = newData;
-
-      
-this.message=res+"";
-    });
-    this.showNotification("you have "+this.message+"prevalidated fyp files")
-
-          }
-
-  
-    if (document.querySelector('select').value=="supervised")
-    {
-      
-    
-      this.restApi.GetSupervisedFyp(this.auth.currentUserValue.id).subscribe(files => {
-        this.fypllist = files as FypFile[]
-        for (let i=0;i<this.fypllist.length;++i){
-          if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
-          {
-            console.log(this.fypllist.indexOf(this.fypllist[i]));
-        
-            this.fypllist.splice(i,1);
-    
-                }
-        } 
-      
-      }
-        
-        
-        );
-    
-    this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
-      // return;
-      const newData = [];
-
-      if (res != null) {
-          newData.push(
-            { 'uy':document.querySelector('select').value ,
-              'amount': res ,
-              'res': res
-            });
-
-      }
-
-      this.chartChache.data = newData;
-
-      
-this.message=res+"";
-    });
-    this.showNotification("you have "+this.message+"supervised fyp files")
-
-          }
-
-  
-    if (document.querySelector('select').value=="protractored")
-    {
-     
-    
-        this.restApi.Getprotractoredfypfiles(this.auth.currentUserValue.id).subscribe(files => {
-          this.fypllist = files as FypFile[];
-          for (let i=0;i<this.fypllist.length;++i){
-            if (this.fypllist[i].universitaryYear.id!=this.selectedUYId)
-            {
-              console.log(this.fypllist.indexOf(this.fypllist[i]));
-          
-              this.fypllist.splice(i,1);
-      
-                  }
-          } 
-        
-        }
-          
-          
-          );  
-       
-      this.restApi.getfypsize(document.querySelector('select').value,this.auth.currentUserValue.id).subscribe(res => {
-        // return;
-        const newData = [];
-  
-        if (res != null) {
-            newData.push(
-              { 'uy':document.querySelector('select').value ,
-                'amount': res ,
-                'res': res
-              });
-  
-        }
-  
-        this.chartChache.data = newData;
-  
-        
-  this.message=res+"";
-      });
-      this.showNotification("you have "+this.message+"Proctracted fyp files")
-  
-            }
+    this.selectedfyp=document.querySelector('select').value;
+    this.loadvalues(this.selectedfyp);
+   
   }
 
 
