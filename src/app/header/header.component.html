@@ -19,8 +19,8 @@
                                             <li class="nav-item nav-item-anim-icon d-none d-md-block">
                                                 <span class="ws-nowrap m-list--link fs-15"><span class="badge badge-pill badge-light"><i class="fas fa-user"></i> {{auth.currentUserValue.username}}</span></span>
                                             </li>
-                                          <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department != null" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
-                                                    <span class="ws-nowrap m-list--link fs-15"><span class="badge badge-pale badge-primary">{{convertRole(auth.currentUserValue.role)}} at {{auth.currentUserValue.department.site.university.name}}</span></span>
+                                          <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department" class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                                                    <span class="ws-nowrap m-list--link fs-15"> <span class="badge badge-pill badge-primary"> {{convertRole(auth.currentUserValue.role)}} at {{auth.currentUserValue.department.site.university.name}}</span></span>
                                           </li>
                                             <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
                                                 <div class="social social-bg-light social-sm mt-1">
@@ -63,6 +63,9 @@
                                         <li *ngIf="auth.currentUserValue && auth.currentUserValue.userType == 'student'" class="dropdown dropdown-reverse">
                                                 <a class="dropdown-item" routerLink="/student/inter">Intership Convention </a>
                                         </li>
+                                        <li *ngIf="auth.currentUserValue && auth.currentUserValue.userType == 'student'" class="dropdown dropdown-reverse">
+                                                <a class="dropdown-item" routerLink="/student/reclamation">Reclamation </a>
+                                        </li>
                                         <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle " routerLink="Directeur/sheetPending">Intership Management</a>
                                     </li>
@@ -100,7 +103,7 @@
                                                 <li><a class="dropdown-item" routerLink="/majormodif" href="#"><i class="icon-list-2 menu-icon"></i> Major Modification section</a></li>
                                                 </ul>
                                             </li>
-                                                <li class="dropdown"><a class="dropdown-item" routerLink="uniDash">Dashboard</a></li>
+                                                <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown"><a class="dropdown-item" routerLink="uniDash">Dashboard</a></li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle" routerLink="notifications/history"><i class="fas fa-bell"></i></a>
                                             </li>
@@ -127,7 +130,9 @@
                                                 <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/reportValidation">Reports Validation</a>
                                                 </li>
-
+                                                <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role != 'departmentHead'" class="dropdown">
+                                                        <a class="dropdown-item dropdown-toggle" routerLink="notifications"><i class="fas fa-bell"></i></a>
+                                                </li>
 
 
 

@@ -17,6 +17,7 @@ class Student {
         isAutorised: Boolean
         isDisabled: Boolean
         studyClass?: StudyClass
+        isCanceled:boolean
 }
 
 export default Student;

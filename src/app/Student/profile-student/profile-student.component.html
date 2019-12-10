@@ -156,7 +156,7 @@
                                   <td>{{Std.firstName}}</td>
                                   <td>{{Std.lastName}}</td>
                                   <td *ngIf='Std.birthDate'>
-                                    {{Std.birthDate.getFullYear()}}-{{Std.birthDate.getMonth()}}-{{Std.birthDate.getDay()}}
+                                    {{Std.birthDate.year}}-{{Std.birthDate.month}}-{{Std.birthDate.day}}
                                   </td>
                                   <td *ngIf='!Std.birthDate'></td>
 
@@ -190,6 +190,7 @@
                         <div class="v-icon-box-content-wrap clearfix">
                           <div class="v-icon-box-inner-wrap clearfix">
                             <div class="grid-icon-wrap clearfix">
+                                <div *ngIf=''></div>
                               <a [routerLink]="['/student/inter']">
                                 <div class="v-svg-icon-holder v-svg-icon-animate">
                                   <i class="fas fa-file-import"></i>

@@ -82,6 +82,11 @@ import { AdminDepartmentsComponent } from './admin/admin-departments/admin-depar
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './calendar/calendar.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
 import { TeachersComponent } from './department-head/teachers/teachers.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -172,6 +177,7 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     ReclamationComponent,
     FypFileDetailsComponent,
     AdminDepartmentsComponent,
+    CalendarComponent,
 
     TeachersComponent,
     ChatFormComponent,
@@ -204,6 +210,11 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     CloudinaryModule.forRoot({ Cloudinary }, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration),
     BrowserAnimationsModule,
     NgxPayPalModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    
+    AngularFireModule.initializeApp(environment.firebase),
     NgbModule,
     NgxContentLoadingModule,
     MatSliderModule,
@@ -211,13 +222,16 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     MatInputModule,
     TagInputModule,
     QuizModule,
-
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireStorageModule,
+    AngularFireStorageModule
+
+
+ 
   ],
-  providers: [AppService, AuthGuard, AuthenticationService],
-  bootstrap: [AppComponent]
+  providers: [AppService,AuthGuard,AuthenticationService],
+  bootstrap: [AppComponent],
+  exports: [CalendarComponent
+  ]
 })
 export class AppModule { }

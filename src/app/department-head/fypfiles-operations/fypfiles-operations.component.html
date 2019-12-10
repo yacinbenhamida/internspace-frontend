@@ -45,7 +45,7 @@
                                                       <td>{{ i+1 }}</td>
                                                       <td>{{file.title}}</td>
                                                       <td>{{minimize(file.description)}}</td>
-                                                      <td>{{file.student.firstName}} {{file.student.lastName}}</td>
+                                                      <td>{{file.student?file.student.firstName : ""}} {{file.student?file.student.lastName:""}}</td>
                                                       <td>{{file.finalMark > 0 ? file.finalMark : "waiting"}}</td>
                                                       <td>
                                                           <button type="button" (click)="affectTeacher(file)" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-assign">assign</button>
@@ -89,7 +89,7 @@
                                                   <td>{{ i+1 }}</td>
                                                   <td>{{file.title}}</td>
                                                   <td>{{file.description}}</td>
-                                                  <td>{{file.student.firstName}} {{file.student.lastName}}</td>
+                                                  <td >{{file.student?file.student.firstName:""}} {{file.student?file.student.lastName:""}}</td>
                                                   <td><span class="badge badge-pill badge-danger">{{file.fileStatus}}</span></td>
                                                 </tr>
                                               </tbody>
