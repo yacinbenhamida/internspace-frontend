@@ -52,6 +52,7 @@ import { DepartmentProfileComponent } from './intership-director-module/departme
 
 import { AdminDepartmentsComponent } from './admin/admin-departments/admin-departments.component';
 import { FypPfeUpdateComponent } from './Student/fyp-pfe-update/fyp-pfe-update.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 
@@ -104,6 +105,7 @@ const routes: Routes = [
   {path: 'university/update', component: UniversityFormComponent},
   {path: 'site', component: SiteComponent},
   {path: 'defenseCalendar', component: DefenseCalendarComponent},
+  {path: 'calendar', component: CalendarComponent},
   {path: 'fypDefense', component: FYPDefenseComponent},
   {path: 'internshipDirector', component: FypFileComponent},
   {path : 'fypfile/history', component : FypfileHistoryComponent},

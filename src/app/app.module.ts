@@ -81,6 +81,11 @@ import { AdminDepartmentsComponent } from './admin/admin-departments/admin-depar
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { CalendarComponent } from './calendar/calendar.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 @NgModule({
   declarations: [
@@ -141,6 +146,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     PayPalComponent,
     FypfileEditActorsComponent,
     AdminDepartmentsComponent,
+    CalendarComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -157,12 +163,16 @@ import { FileUploadModule } from 'ng2-file-upload';
     FileUploadModule,
     CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dc9b3xgwe', upload_preset: 'jwihvh68' } as CloudinaryConfiguration),
     BrowserAnimationsModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
 
 
  
   ],
   providers: [AppService,AuthGuard,AuthenticationService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [CalendarComponent]
 })
 export class AppModule { }
