@@ -5,9 +5,9 @@
 
     <div *ngIf='auth.currentUserValue' class="media m-3 align-items-center">
       <div class=" transition-hover  mr-5">
-        <img *ngIf='auth.currentUserValue.pictureUrl == null' src={{auth.currentUserValue.pictureUrl}} width="150"
+        <img class='rounded-circle' *ngIf='auth.currentUserValue.pictureUrl != null' src={{auth.currentUserValue.pictureUrl}} width="150"
           alt="Icon">
-        <img *ngIf='auth.currentUserValue.pictureUrl != null' src="assets/images/default-user-male.png" width="150"
+        <img class='rounded-circle' *ngIf='auth.currentUserValue.pictureUrl == null' src="assets/images/default-user-male.png" width="150"
           alt="Icon">
         <ul class="nav nav-pills d-flex justify-content-center">
 

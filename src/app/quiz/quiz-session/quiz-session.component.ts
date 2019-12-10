@@ -8,8 +8,6 @@ import { AuthenticationService } from './../../services/security/authentication.
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
-import { map } from 'rxjs/operators'
 
 export interface UserQuizSessionInfo {
   question?: QuizQuestion;
@@ -20,12 +18,17 @@ export interface UserQuizSessionInfo {
 
 export class CountdownInfo {
   bCounterStarted = false;
-  timeLeft = 120; // in seconds
+  timeLeft = 10; // in seconds
   time = 0;
   minutes = 0;
   seconds = 0;
   private bIsStarted = false;
-  start() {
+
+  owner?: QuizSessionComponent;
+
+  start(owner: QuizSessionComponent) {
+    this.owner = owner;
+
     if (this.bIsStarted) {
       return;
     }
@@ -38,11 +41,21 @@ export class CountdownInfo {
     this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    setInterval(() => {
+    const timer = setInterval(() => {
+
+
       this.time--;
       distance = (this.timeLeft + this.time) * 1000;
       this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (this.timeLeft + this.time <= 0) {
+        clearInterval(timer);
+        this.owner.onClick_FinishQuestion();
+      }
+
+
+
     }, 1000);
 
   }
@@ -97,7 +110,7 @@ export class QuizSessionComponent implements OnInit {
             this.qrMap = e;
             this.refreshQuestionResponses(this.userQuiz.currentQuestionIndex);
 
-            this.countDownInfo.start();
+            this.countDownInfo.start(this);
           });
 
         });
@@ -115,11 +128,11 @@ export class QuizSessionComponent implements OnInit {
 
   }
 
-  onClick_FinishQuestion() {
+  public onClick_FinishQuestion() {
     this.quizService.RefreshStudentQuizScore(this.auth.currentUserValue.id, this.userQuiz.quiz.id).subscribe(e => {
       console.log(e);
 
-      this.router.navigate(['/student/quiz/result', { 0: this.userQuiz.quiz.id }] );
+      this.router.navigate(['/student/quiz/result', { 0: this.userQuiz.quiz.id }]);
     });
     //
   }
