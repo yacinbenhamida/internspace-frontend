@@ -199,7 +199,7 @@ export class InternshipsSearchComponent implements OnInit {
     this.bShowInternshipDetails = false;
     this.showCreateForm = false;
     this.selectedSubject = null;
-    const wantedId = this.mySubjects[i].id;
+    const wantedId = this.mySubjectsToShow[i].id;
 
     this.service.GetStudentFypSubjectsOfSubjectByStatus(wantedId, 'x', true).subscribe(
       data => {
@@ -207,7 +207,7 @@ export class InternshipsSearchComponent implements OnInit {
           concatMap(item => of(item).pipe(delay(this.fakeDelay)))
         ).subscribe(timedItem => {
           this.loadingSubjectDetails = false;
-          this.selectedSubject = this.mySubjects[i];
+          this.selectedSubject = this.mySubjectsToShow[i];
 
 
           // Set student btn:
