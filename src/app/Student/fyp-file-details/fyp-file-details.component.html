@@ -1,0 +1,100 @@
+
+<br>
+<br>
+<main class="main-content">
+        <div class="container" >
+
+ <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-wide transition-3d-hover" (click)="exportTemplate()">Export</button>
+    </div>
+    </div>
+</main>
+<main class="main-content" id="template-editor-window">
+
+
+    <section class="section m-gab-2-top">
+        <div class="container" >
+
+<div class="row justify-content-center" id="ApplyJobWrap">
+    <div class="col-md-10">
+
+        <div class="card shadow-sm py-8 px-7 border">
+
+            <div class="text-center mb-6" >
+                <span class="label label--sm label--primary mb-3">Fyp Intership</span>
+                <h2 class="h3 font-weight-normal">Student : {{Std.firstName}} {{Std.lastName}}</h2>
+                <h2 class="h3 font-weight-normal">Num Cin : {{Std.cin}}</h2>
+            </div>
+
+            <form action="#" method="post" role="form" >
+            <div *ngFor="let x of ffView; let index = index;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div >
+                            <div >
+                                <span>
+                                    <i class="fas fa-sticky-note mr-3 fs-14"></i>
+                                    <label class="m-0" >Title :</label>
+                                </span>
+                            </div>
+                            {{x.title}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div >
+                            <div >
+                                <span >
+                                    <i class="fas fa-align-justify mr-3 fs-14"></i>
+                                    <label class="m-0" >Description:</label>
+                                </span>
+                            </div>
+                            <p>{{x.description}}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div>
+                            <div >
+                                <span >
+                                    <i class="fas fa-file-word fs-14"></i>
+                                    <label class="m-0" >Subject</label>
+                                </span>
+                            </div>
+                            {{x.subject.content}}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div >
+                            <div >
+                                <span >
+                                    <i class="fas fa-times-circle fs-14"></i>
+                                    <label class="m-0">Problematic</label>
+                                </span>
+                            </div>
+                            <p>{{x.problematic}}</p>
+                           </div>
+                    </div>
+
+                    
+                     
+                </div>
+               
+                <input data-val="true" data-val-number="The field JobId must be a number." data-val-required="The JobId field is required." id="ApplyJob_JobId" name="ApplyJob.JobId" type="hidden" value="3">
+            </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+</main>

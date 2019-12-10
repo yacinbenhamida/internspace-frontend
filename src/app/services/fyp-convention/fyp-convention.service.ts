@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {FypConvention } from 'src/app/models/fyp/fyp-convention';
+import {Company } from 'src/app/models/users/Company';
 import Student from 'src/app/models/Student';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,9 +38,9 @@ httpOptions = {
     return this.http.get<FypConvention[]>(this.baseurl);
     }
 
-  findStudentConvention(id:string):Observable<Student[]>{
-      const params = new HttpParams().set('id', id);
-      return this.http.get<Student[]>(`${this.baseurl}/list`,{params:params})
+  findStudentConvention(id:number):Observable<Student[]>{
+     
+      return this.http.get<Student[]>('/api/intership/list?id='+id,this.httpOptions)
     }
   createIntership(data:FypConvention ,id:string):Observable<FypConvention[]>{
     //const param = new HttpParams().set('id',id);
@@ -52,5 +54,16 @@ httpOptions = {
       return this.http.delete<Student[]>(`${this.baseurl}/delete/`,{params:params})
     }
     constructor(private http: HttpClient) { }
+
+
+    cancel(id:number):Observable<FypConvention[]>{
+      return this.http.get<FypConvention[]>('/api/student/cancelInter?id='+id, this.httpOptions);
+    }
+
+    getCompany():Observable<Company[]>{
+     
+      return this.http.get<Company[]>('/api/company/all',this.httpOptions)
+    }
+
 
 }

@@ -1,0 +1,51 @@
+<br><br>
+<section data-scrim-top="9" class="m-gab-4 bg-img" style="background-image:url(../assets/img/hero/h23.jpg);">
+    <div class="container">
+        <div class="row align-items-center">
+           
+            <div class="col-md-12 text-center">
+                <h1 class="fs-60 fw-600 text-white">Last step to validate projects</h1>
+                <p class="mb-6 fs-20 text-white">
+                    
+                    project that have a mark from the reporter and supervisor and ready to pass for the defense ..
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="oval-divider--bottom oval-divider--8"></div>
+</section>
+
+<!---->
+
+<div class="mt-4 mt-lg-5">
+    <form class="input-round w-75" novalidate="novalidate">
+        <div class="form-group input-group bg-white">
+            <input #input type="text" class="form-control height-inherit pl-4" (keyup)="filter(input.value)" placeholder="Enter name or cin of student">
+            <div class="input-group-append p-1">
+                <button class="btn btn-primary" type="button">Search</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class="container">
+
+    <div class="row gap-y">
+        <div class="col-md-4" *ngFor="let x of selectedResults">
+            <div class="uikit-example" >
+                <div class="card p-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{x.firstName}} {{x.lastName}}</h5>
+                        <h6>class<p>{{x.studyClass.name}}</p></h6>
+                        <h6>final mark<p>{{x.fypFile.finalMark?x.fypFile.finalMark:"_"}}</p></h6>
+                        <span>
+                            <h6>Project title<p>{{x.fypFile.title}}</p></h6>
+                            
+                        </span>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+</div>
+</div>

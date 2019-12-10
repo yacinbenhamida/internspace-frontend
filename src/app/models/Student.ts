@@ -1,3 +1,5 @@
+import { StudyClass } from "./studyClass"
+
 class Student {
         id:number
         firstName: String
@@ -14,6 +16,8 @@ class Student {
         isSaved: Boolean
         isAutorised: Boolean
         isDisabled: Boolean
+        studyClass?: StudyClass
+        isCanceled:boolean
 }
 
 export default Student;

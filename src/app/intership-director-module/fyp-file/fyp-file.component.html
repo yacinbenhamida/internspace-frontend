@@ -14,7 +14,7 @@
 <h1 class="divider mt-8">INTERNSHIPS THAT ARE PROGRESSING NOW</h1>
 <br>
 <agm-map [latitude]="centerLat" [longitude]="canterLng">
-    <agm-marker *ngFor="let x of myRes" [latitude]="x.cords.latitude" [longitude]="x.cords.longitude" (markerClick)="openWindow(x,x,infoWindow)" >
+    <agm-marker *ngFor="let x of myRes" [latitude]="x.cords.latitude" [longitude]="x.cords.longitude" (markerClick)="openWindow(x,xx,infoWindow)">
         
         <agm-info-window [disableAutoPan]="true" #infoWindow >
 
@@ -28,14 +28,14 @@
                         </div>
                         <div class="media-body">
                             
-                            <h3 class="h5 mt-0 mb-2 " >{{selectedUser.firstName}} {{selectedUser.lastName}}</h3>
-                            <b>{{selectedUser.studyClass.name}}</b><br>
-                            <i class="fas fa-id-card text-primary fa-sm"></i><p class="mb-1">{{selectedUser.cin}} </p>
-                                <i class="fas fa-user-graduate text-primary fa-sm"></i><p>{{selectedUser.userType}} </p>
+                            <h3 class="h5 mt-0 mb-2 " >{{selectedUser?selectedUser.firstName:''}} {{selectedUser?selectedUser.lastName:''}}</h3>
+                           <b>{{selectedUser && selectedUser.studyClass?selectedUser.studyClass.name:''}}</b><br>
+                            <i class="fas fa-id-card text-primary fa-sm"></i><p class="mb-1">{{selectedUser?selectedUser.cin:''}} </p>
+                                <i class="fas fa-user-graduate text-primary fa-sm"></i><p>{{selectedUser && selectedUser.userType?selectedUser.userType:''}} </p>
                             
-                            <i class="fas fa-paper-plane text-primary fa-sm"></i><p>{{selectedUser.email}}</p>
+                            <i class="fas fa-paper-plane text-primary fa-sm"></i><p>{{selectedUser?selectedUser.email:''}}</p>
                             <br>
-                            <p><b>Company : </b>{{selectedUser.fypFile.subject.company.name}}</p>
+                           <p><b>Company : </b>{{selectedUser && selectedUser.fypFile && selectedUser.fypFile.subject && selectedUser.fypFile.subject.company?selectedUser.fypFile.subject.company.name:''}}</p>
                         </div>
                     </div>
                     

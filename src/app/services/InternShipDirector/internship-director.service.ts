@@ -83,25 +83,22 @@ FypFileByCategory(category: string):Observable<FypFile[]>{
   return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileByCategory`,{params:param})
 }
 
-FypFileByDiffSpecfique(category: string, state:string,year:string,location:string):Observable<FypFile[]>{
-  if(category && state && year && location){
-  const param = new HttpParams().set('category', category).set('state',state).set('year',year);
-  return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileBySpec`,{params:param})
-}
-else if(category.length === 0){
+FypFileByDiffSpecfique(state:string,year:string,location:string):Observable<FypFile[]>{
+  if(state && year && location){
   const param = new HttpParams().set('state',state).set('year',year).set('location',location);
   return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileBySpec`,{params:param})
 }
+
 else if(state.length === 0){
-  const param = new HttpParams().set('category',category).set('year',year).set('location',location);
+  const param = new HttpParams().set('year',year).set('location',location);
   return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileBySpec`,{params:param})
 }
 else if(year.length === 0){
-const param = new HttpParams().set('category',category).set('state',state).set('location',location);
+const param = new HttpParams().set('state',state).set('location',location);
   return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileBySpec`,{params:param})
 }
 else {
-  const param = new HttpParams().set('category',category).set('state',state).set('year',year);
+  const param = new HttpParams().set('state',state).set('year',year);
   return this.http.get<FypFile[]>(`${this.baseurl}/allFYPFileBySpec`,{params:param})
 }
 }

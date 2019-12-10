@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   constructor(private auth:AuthenticationService,
-    private router:Router) { }
+    private router:Router) {
+
+     }
 
   ngOnInit() {
   }
@@ -19,5 +21,12 @@ export class HeaderComponent implements OnInit {
     this.auth.logout();
     this.router.navigateByUrl("/login")
   }
-
+  convertRole(str:string){
+    switch (str) {
+      case "departmentHead": return "head of department"
+      case "internshipsDirector" : return "internships director"
+      default: return str
+        break;
+    }
+  }
 }

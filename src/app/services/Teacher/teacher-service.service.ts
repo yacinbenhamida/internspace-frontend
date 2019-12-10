@@ -33,8 +33,8 @@ export class TeacherServiceService {
   };
 
   // POST
-  AddFypCategory(name: string,data:FypCategory): Observable<FypCategory> {
-    return this.http.post<FypCategory>(this.baseurl+'/add?name='+ name, JSON.stringify(data), this.httpOptions);
+  AddFypCategory(name: string,data:FypCategory,desc:string): Observable<FypCategory> {
+    return this.http.post<FypCategory>(this.baseurl+'/add?name='+name+'&desc='+desc, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
@@ -76,6 +76,20 @@ export class TeacherServiceService {
   {
     return this.http.get<FypFile[]>(this.baseurl+'/pr/'+id,{headers:this.headers});
   }
-  
+  getAllFypFiles(id:number):Observable<FypFile[]>
+  {
+    return this.http.get<FypFile[]>(this.baseurl+'/allfyps/'+id,{headers:this.headers});
+  }
+  getfypsize(x:String,id:number):Observable<number>{
+    return this.http.get<number>(this.baseurl+'/size/'+x+'/'+id,{headers:this.headers});
+
+  }
+  getmodificationssize():Observable<number>{
+    return this.http.get<number>(this.baseurl+'/Mmsize',{headers:this.headers});
+  }
+  getAllCategories():Observable<FypCategory[]>{
+    return this.http.get<FypCategory[]>(this.baseurl+'/allCat',{headers:this.headers});
+
+  }
 
 }

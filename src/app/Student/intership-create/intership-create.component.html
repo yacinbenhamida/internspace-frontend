@@ -3,19 +3,7 @@
 <br>
 <br>
 
-    <br>
-          
-  
-    <br>
-    
-    <ul>
-        <li><a  [routerLink]="['/student/inter']">Intership Convention</a></li>
-        <li><a class="active" [routerLink]="['/fyp/create']">FypPFE</a></li>
-        <router-outlet></router-outlet>
-        <li><a href="#contact">Reclamation</a></li>
-        <li><a [routerLink]="['/student/skills']">Subject</a></li>
-</ul>
- <br>
+ <!--
 <div class="container">
         <form [formGroup]="conForm"> 
             <div class="row">
@@ -68,13 +56,107 @@
                 <option  ng-options="i for i in comp">{{i.name}} </option>
               </div>
               </select>-->
-              <select name="mySelect" id="mySelect"
+             <!--- <select name="mySelect" id="mySelect"
               ng-options="option.name for option in comp.availableOptions track by option.name"
               ng-model="comp.selectedOption"></select>
             </div>
           </div>
       <button (click)="getInfo()" > Test</button>
         </form>
+</div>-->
+<main class="main-content">
+    <header class="section-header">
+        
+        <div class="media align-items-center mb-4">
+                <div class="w-60px mr-4 text-center">
+                    <i class="icon-document-1 fs-35"></i>
+                </div>
+                <div class="media-body">
+                    <a class="mt-0 mb-2 text-dark anim-link-2 clearfix">FYP Convention</a>
+                    <span><a class="text-dark small anim-link-2">create your Fyp Convention</a> </span>
+                </div>
+            </div>
+
+</header>
+    <div >
+        <div class="row justify-content-center">
+<div >
+
+    <div class="container">
+        <header class="mb-6">
+            <h2>create Your Convention</h2>
+            <hr>
+            <p class="lead-1">This File Must be Created one Time</p>
+        </header>
+
+        <div class="row gap-x"  *ngIf="show" > 
+            <div class="mb-6">
+                <form [formGroup]="conForm">  
+                
+                <div class="form-group">
+                    <label>Start Date</label>
+                   
+                    <input  class="form-control form-control-sm"  type="date" formControlName="startDate"  placeholder="title">
+                   
+                </div>
+                <div class="form-group">
+                    <label>end Date</label>
+                    <input class="form-control form-control-lg" formControlName="endDate" type="date" placeholder="Email address">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control form-control-lg" formControlName="companySupervisorEmail" type="text" placeholder="Email address">
+                    <div *ngIf="companySupervisorEmail.touched && companySupervisorEmail.invalid">
+        
+                   
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                          <i class="icon-check2"></i>
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="fs-22">Warning</h4>
+                          <p>This Champs Is obligatoire est Obligatoire</p>
+                          </div>
+                               
+      
+                      </div>
+                </div>
+                <h5 class="mb-3">Company</h5>
+                <div class="form-group">
+                <select (change)="onChange_FYPSubjectIndex($event.target.value)" class="col-75" formControlName="company" class="form-control form-control-sm">
+                    <option value="">Choose your subject</option>
+                     <option *ngFor="let x of compagnies; let index = index;" 
+                    [selected]="x == currentCompany" [ngValue]="x" >{{x.id}}</option>
+             
+                      </select>
+                </div>
+            
+                <button class="btn btn-primary" (click)="getInfo()" [disabled]="conForm.invalid"> create</button>
+                
+</form>
+
+   </div>
+  
+        </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="showw" >
+            <i class="icon-check2"></i>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="fs-22">Success</h4>
+            <p>your convention is send . Thanks </p>
+          </div>
+                
+    </div>
+
 </div>
-      
-      
+</div>
+</div>
+
+</main>
+
+<!--
+|‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+| Input group
+|‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒‒
+!-->

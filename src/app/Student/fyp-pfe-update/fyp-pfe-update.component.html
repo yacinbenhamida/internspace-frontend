@@ -1,6 +1,6 @@
 <br>
 <br>
-
+<!--
     <br>
           
   
@@ -10,7 +10,7 @@
         <li><a  [routerLink]="['/student/inter']">Intership Convention</a></li>
         <li><a class="active" [routerLink]="['/fyp/create']">FypPFE</a></li>
         <router-outlet></router-outlet>
-        <li><a href="#contact">Reclamation</a></li>
+        <li><a  [routerLink]="['/student/reclamation']">Reclamation</a></li>
         <li><a [routerLink]="['/student/skills']">Subject</a></li>
 </ul>
  <br>
@@ -56,7 +56,7 @@
           <span><input type="checkbox" name="docChecked" />{{x.title}}</span>
           
       </li>-->
-      <select (change)="onChange_FYPSubjectIndex($event.target.value)" class="col-75" formControlName="subject">
+    <!--- <select (change)="onChange_FYPSubjectIndex($event.target.value)" class="col-75" formControlName="subject">
        <option value="">Choose your subject</option>
         <option *ngFor="let x of fYPSubject; let index = index;" 
        [selected]="x == currFYPSubject" [ngValue]="x" >{{x.title}}</option>
@@ -74,9 +74,146 @@
       [selected]="template == currFYPSubject">{{template.title}}</option>
 
            </select>-->
-      </div>
+     <!--</div>
       
        <div style="padding-left: 900px; padding-top: 50px;">
-      <button (click)="getInfo()" class="button button1" > Create</button></div>
+      <button (click)="getInfo()" class="button button1" > Update</button></div>
         </form>
+</div>-->
+<div class="wrapper" >
+<main class="main-content">
+
+
+    
+
+
+
+    <div class="container m-gab-3">
+        <!-- Title -->
+        <div class="w-md-80 w-lg-50 text-center mx-md-auto mb-9">
+
+            <h2 class="fw-500">Update Your <mark data-aos="highlight-text" data-aos-delay="200" class="aos-init aos-animate">Fyp File</mark></h2>
+            <p class="lead">you can update your fyp file while is not has started to be processed.</p>
+        </div>
+        <!-- End Title -->
+
+        <div class="w-lg-80 mx-auto">
+            <!-- Contacts Form -->
+            <form class="js-validate" novalidate [formGroup]="pfeForm" *ngFor="let element of ffView;let i = index">
+                <div class="row">
+                    <!-- Input -->
+                    <div class="col-sm-6 mb-6">
+                        <div class="js-form-message">
+                            <label class="form-label">
+                               Title
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <input type="text"  formControlName="title" class="form-control" name="name" placeholder="{{element.title}}" aria-label="Jhon Doe" required data-msg="Please enter your name." data-error-class="u-has-error" data-success-class="u-has-success">
+                        </div>
+                    </div>
+                    <!-- End Input -->
+                   
+
+                    <div class="w-100"></div>
+
+                    <!-- Input -->
+                    <div class="col-sm-6 mb-6">
+                        <div class="js-form-message">
+                            <label class="form-label">
+                                Subject
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select (change)="onChange_FYPSubjectIndex($event.target.value)" class="form-control" formControlName="subject" placeholder="Vertex design" aria-label="Vertex design" required data-msg="Please enter a subject." data-error-class="u-has-error" data-success-class="u-has-success">
+                                <option value="">Choose Your Subject</option>
+                                <option *ngFor="let x of fYPSubject; let index = index;" 
+                                [selected]="x == currFYPSubject" [ngValue]="x" >{{x.title}}</option>
+                         
+                         
+                                  </select>
+
+                                </div>
+                    </div>
+                    <!-- End Input -->
+                       <!-- Input -->
+                     <!-- <div class="col-sm-6 mb-6">
+                          <div class="js-form-message">
+                              <label class="form-label">
+                                  Features
+                                  <span class="text-danger">*</span>
+                              </label>
+                              <div *ngFor="let skill of currentFeatures.controls; let i=index">
+                                  <input type="checkbox" id="inlinecheckbok{{i}}" (change)="onChange_FYPFeaturesIndex(skill,$event.target.checked)" [value]="skill.content"  formControlName="features" [formControl]="skill"/> {{skill.content}}
+                                 
+                                  </div>
+  
+                                  </div>
+                      </div>--> 
+                      <!-- End Input -->
+                    
+                </div>
+
+                <!-- Input -->
+                <div class="js-form-message mb-6">
+                    <label class="form-label">
+                        Description
+                        <span class="text-danger">*</span>
+                    </label>
+
+                    <div class="input-group">
+                        <textarea class="form-control" formControlName="description" rows="4" name="text" placeholder="What can we help you with?" aria-label="What can we help you with?" required data-msg="Please enter a reason." data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
+                    </div>
+                </div>
+                <!-- End Input -->
+  <!-- Input -->
+  <div class="js-form-message mb-6">
+      <label class="form-label">
+          Problematic
+          <span class="text-danger">*</span>
+      </label>
+
+      <div class="input-group" >
+          <textarea class="form-control" formControlName="problematic" rows="4" name="problematic" placeholder="What can we help you with?" aria-label="What can we help you with?" required data-msg="Please enter a reason." data-error-class="u-has-error" data-success-class="u-has-success"></textarea>
+      </div>
+      <div *ngIf="problematic.touched"> 
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+          <i class="icon-check2"></i>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="fs-22">Info</h4>
+          <p>This change must be validate by Your Director</p>
+        </div>
+      </div>
+  </div>
+  
+
+  <!-- End Input -->
+                <div class="text-center">
+                    <!--<button type="submit" class="btn btn-primary btn-wide transition-3d-hover mb-4" (click)="getInfo()" >Update</button>-->
+                    <button class="btn btn-primary"(click)="getInfo()" type="button" data-toggle="popup" data-target="#popup-basic">Update</button>
+                </div>
+            </form>
+            <!-- End Contacts Form -->
+            
+   
+        </div>
+    </div>
+
+</main>
+</div>
+<footer></footer>
+
+ <!-- Basic -->
+ <div id="popup-basic" class="popup col-6 col-md-3 bg-primary" data-position="top-center">
+  <button type="button" class="close" data-dismiss="popup" aria-label="Close">
+      <span class="text-white" aria-hidden="true">&times;</span>
+  </button>
+  <div class="media">
+     
+      <div class="media-body text-white">
+          <h5>Your Fyp Has updated</h5>
+          <p class="mb-0">this file must be validated By Your Director</p>
+      </div>
+  </div>
 </div>

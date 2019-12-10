@@ -1,6 +1,7 @@
 
 import { FYPSubject } from './fyp-subject';
 import { Company } from '../users/Company';
+import { Student } from '../users/student';
 export interface FypFile {
  id:number
   title: string;
@@ -17,6 +18,9 @@ export interface FypFile {
   interventions: any[];
   keywords: any[];
   categories: any[];
+  student:Student;
+  up:boolean;
+
  
 
 

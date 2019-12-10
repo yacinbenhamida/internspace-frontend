@@ -1,17 +1,23 @@
-<div class="form-inline cool-item ">
 <br>
 <br>
-<br>
-    <div class="mr-4">
+<notifier-container></notifier-container>
+  <div class="cool-item">
 
-      <select class="cool-item" style="max-width:90%;" (change)="onChange_fyp()">
-        <option>Preview File</option>
-        <option *ngFor="let category of fypCache; let index = index;" [value]="category"
-          [selected]="category == selectedfyp">
-          {{category}}</option>
-      </select>
-
+      <div class="form-inline justify-content-center">
+          <select form-inline justify-content-center class="cool-item" style="max-width:90%;" (change)="onChange_fyp()" >
+              <option>Preview Files</option>
+              <option *ngFor="let category of fypCache; let index = index;" [value]="category"
+                [selected]="category == selectedfyp">
+                {{category}}</option>
+            </select>
+      
+      </div>
+    
     </div>
-  </div>
-  <app-tabel [tab]="fypllist" [hid]="hid"></app-tabel>
-<div class="cool-item" id="chart1" style="width: 100%; height: 500px"></div>
+    <app-tabel [tab]="fypllist" ></app-tabel>
+    <app-fyp-categorie></app-fyp-categorie>
+
+    <br>
+    <br>
+    <div class="cool-item" id="chart1" style=" height: 500px"></div>
+

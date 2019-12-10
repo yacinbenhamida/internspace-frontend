@@ -1,0 +1,95 @@
+<section id="theme-banner-four" class="section m-gab-5">
+        <img src="assets/img/home/1.png" alt="" data-aos="fade-left" data-aos-duration="1000" class="screen-one aos-init aos-animate">
+        <img src="assets/img/home/2.png" alt="" class="screen-two aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+        <img src="assets/img/shape/shape-8.svg" alt="" class="shape-one">
+        <img src="assets/img/shape/shape-9.svg" alt="" class="shape-two">
+        <img src="assets/img/shape/shape-10.svg" alt="" class="shape-three">
+        <img src="assets/img/shape/shape-11.svg" alt="" class="shape-four">
+        <div class="round-shape-one"></div>
+        <div class="round-shape-two"></div>
+        <div class="round-shape-three"></div>
+        <div class="round-shape-four"></div>
+
+        <div class="container">
+            <div class="main-wrapper aos-init aos-animate" data-aos="fade-right" data-aos-duration="800">
+                <h1 class="fs-65 mb-5">Filter files <br>with many <br>Search criteria.</h1>
+                <p class="lead mb-4">At least two criteria</p>
+
+                <div class="media align-items-center text-left">
+                        <div class="mr-2">
+                            <button class="btn btn-pill btn-sleek-primary" (click)="hideState=false">
+                                <i class="fa fa-play fs-13" style="margin-left: .15rem;"></i>
+                            </button>
+                        </div>
+                        <div class="media-body">
+                            <h6 class="text-primary">Start now</h6>
+                        </div>
+                    </div>
+               
+                <div class="mt-4 mt-lg-5" [hidden]="hideState">
+       
+            
+                        <label class="text-primary" style="margin-left: 20px;">A State</label>
+                      
+                                <select (change)="selectChanged($event)" name="input" class="form-control" placeholder="Select input" id="inputPT" [(ngModel)]="state">
+                                        <option value="">none</option>
+                                        <option value="pending"> pending</option>
+                                        <option value="confirmed">confirmed</option>
+                                        <option value="declined">declined</option>
+                                        </select>
+                        
+                    
+                        <div class="form-group bg-white input-round w-75">
+                    <div  [hidden]="selectTest">
+                            <label class="text-primary" style="margin-left: 20px;">A year</label>
+                        <input #inputYear type="text"  class="form-control height-inherit pl-4" [(ngModel)]="year" placeholder="Enter year here">
+                    </div>
+                    <br>
+                    <div [hidden]="inputYear.value.length>3?false:true">
+                            <label class="text-primary" style="margin-left: 20px;">A location</label>
+                        <input #inputLocation type="text"  class="form-control height-inherit pl-4" [(ngModel)]="location" placeholder="Enter location here">
+                    </div>
+                </div>
+                <div class="input-group-append p-1">
+                        <button class="btn btn-primary" type="button" (click)="haha()" [hidden]="inputYear.value.length>3?false:true">Search</button>
+                    </div>
+    
+    
+    
+    
+                    <div class="container">
+    
+                            <div class="row gap-y">
+                                <div class="col-md-4" *ngFor="let x of myRes">
+                                    <div class="uikit-example" >
+                                        <div class="card p-3">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{x.title}}</h5>
+                                                <h6>company<p>{{x.subject.company.name}}</p></h6>
+                                                <h6>class<p>{{x.subject.title}}</p></h6>
+                                                <h6>final mark<p>{{x.finalMark?x.finalMark:"_"}}</p></h6>
+                                            </div>
+                                        </div>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                
+    
+                    
+                           
+                     
+     
+        
+        </div>
+    
+               
+            </div> <!-- /.main-wrapper -->
+        </div> <!-- /.container -->
+    </section>
+
+
+
+
+    

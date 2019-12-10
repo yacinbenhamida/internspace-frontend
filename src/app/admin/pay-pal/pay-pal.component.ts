@@ -74,3 +74,4 @@ export class PayPalComponent implements OnInit {
   };
   }
 }
+
