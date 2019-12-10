@@ -212,7 +212,9 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     NgxPayPalModule,
     NgbModalModule,
     FlatpickrModule.forRoot(),
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
+    
+    AngularFireModule.initializeApp(environment.firebase),
 
 
  
@@ -227,7 +229,6 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     MatInputModule,
     TagInputModule,
     QuizModule,
-    AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule
