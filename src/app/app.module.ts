@@ -90,6 +90,7 @@ import { SheetsManagementComponent } from './Student/Directeur/sheets-management
 import { AdminStudentsComponent } from './admin/admin-students/admin-students.component';
 import { AdminEmployeesComponent } from './admin/admin-employees/admin-employees.component';
 import { AdminClassesComponent } from './admin/admin-classes/admin-classes.component';
+import { FavcategorieComponent } from './fy-categorie/favcategorie/favcategorie.component';
 
 
 @NgModule({
@@ -162,6 +163,7 @@ import { AdminClassesComponent } from './admin/admin-classes/admin-classes.compo
     AdminStudentsComponent,
     AdminEmployeesComponent,
     AdminClassesComponent,
+    FavcategorieComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({
