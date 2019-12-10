@@ -90,7 +90,7 @@
                                         </li>
                                         <li *ngIf="auth.currentUserValue && auth.currentUserValue.userType == 'student'"
                                             class="dropdown dropdown-reverse">
-                                            <a class="dropdown-item" routerLink="/student/inter">Intership Convention
+                                            <a class="dropdown-item" routerLink="/student/inter">Internship Convention
                                             </a>
                                         </li>
                                         <li *ngIf="auth.currentUserValue && auth.currentUserValue.userType == 'student'"
@@ -100,7 +100,7 @@
                                         <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'"
                                             class="dropdown">
                                             <a class="dropdown-item dropdown-toggle "
-                                                routerLink="Directeur/sheetPending">Intership Management</a>
+                                                routerLink="Directeur/sheetPending">Internship</a>
                                         </li>
 
                                         <li *ngIf="auth.currentUserValue && auth.currentUserValue.role == 'departmentHead'"
@@ -165,7 +165,7 @@
                                         <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'"
                                             class="dropdown">
                                             <a class="dropdown-item dropdown-toggle "
-                                                routerLink="internshipDirector/studentManagement">Student Managment</a>
+                                                routerLink="internshipDirector/studentManagement">Students</a>
                                         </li>
 
                                         <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'"
