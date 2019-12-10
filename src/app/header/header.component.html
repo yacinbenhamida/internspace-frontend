@@ -103,7 +103,7 @@
                                                 <li><a class="dropdown-item" routerLink="/majormodif" href="#"><i class="icon-list-2 menu-icon"></i> Major Modification section</a></li>
                                                 </ul>
                                             </li>
-                                                <li class="dropdown"><a class="dropdown-item" routerLink="uniDash">Dashboard</a></li>
+                                                <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown"><a class="dropdown-item" routerLink="uniDash">Dashboard</a></li>
                                             <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'departmentHead'" class="dropdown">
                                                 <a class="dropdown-item dropdown-toggle" routerLink="notifications/history"><i class="fas fa-bell"></i></a>
                                             </li>
@@ -130,7 +130,9 @@
                                                 <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role == 'internshipsDirector'" class="dropdown">
                                                     <a class="dropdown-item dropdown-toggle " routerLink="/internshipDirector/reportValidation">Reports Validation</a>
                                                 </li>
-
+                                                <li *ngIf="auth.currentUserValue  && auth.currentUserValue.role != 'departmentHead'" class="dropdown">
+                                                        <a class="dropdown-item dropdown-toggle" routerLink="notifications"><i class="fas fa-bell"></i></a>
+                                                </li>
 
 
 

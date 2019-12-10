@@ -1,1 +1,26 @@
-<p>notifications works!</p>
+<br>
+<br>
+<main class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mb-9">
+                    <h3 class="h5 mb-4 text-primary">Your notifications</h3>
+                    <div class="clearfix">
+                        <div class="media align-items-center mb-4" *ngFor="let a of notificationList">
+                            <div class="w-60px mr-3 text-center">
+                                <i class="icon-bubble-conversation-2 fs-35"></i>
+                            </div>
+                            <div class="media-body">
+                                <a class="mt-0 mb-2 text-dark anim-link-2 clearfix">{{a.content}}</a>
+                                <span><a  class="text-dark small anim-link-2">{{a.sender.firstName}} {{a.sender.lastName}}</a> <span
+                                        class="small">-</span> </span>
+                                <span class="time small text-muted">{{a.dateOfEmission.dayOfWeek}} {{a.dateOfEmission.month}} {{a.dateOfEmission.year}} at {{a.dateOfEmission.hour}}:{{a.dateOfEmission.minute}}:{{a.dateOfEmission.second}}</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</main>

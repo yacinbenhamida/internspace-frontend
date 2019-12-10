@@ -7,6 +7,8 @@ import { User } from 'src/app/models/User';
 import { FypFileInterventionService } from 'src/app/services/fyp-file/fypfile-intervention.service';
 import { FypIntervention } from 'src/app/models/fyp/fyp-intervention';
 import { UserService } from 'src/app/services/security/user.service';
+import { NotificationService } from 'src/app/services/exchanges/notifications.service';
+import { Notification } from 'src/app/models/exchanges/notification';
 
 @Component({
   selector: 'app-fypfiles-operations',
@@ -37,7 +39,8 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   newRole : string = ""
   constructor(private fypservice:FypFileService,
     private auth:AuthenticationService,private interventionService:FypFileInterventionService,
-    private userv:UserService) { }
+    private userv:UserService,
+    private notificationService:NotificationService) { }
 
   ngOnInit() {
     this.acceptedSheetsOptions = {  
@@ -156,13 +159,28 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
   }
   confirmTeacherAssign(){
     if(this.teacherTargetedRole && this.teachertoBeAssigned){
+      this.userv.getStudentOfSheet(this.selectedFile.id).subscribe(stud=>{
+        this.sendNotification("The teacher "+this.teachertoBeAssigned.username+" has been assigned to your sheet as a "+this.teacherTargetedRole,stud);
+        this.sendNotification("You have been assigned as a "+this.teacherTargetedRole+" to "+stud.username,
+        this.teachertoBeAssigned)
         this.interventionService.
         assignTeacherToFYPSheetWithRole(this.teachertoBeAssigned.id,this.selectedFile,this.teacherTargetedRole)
-        .subscribe(res=>{ 
+        .subscribe(res=>{    
           alert("teacher assigned to this sheet")
           this.cancelTeacherAssign()
         })
+      })
     }
+  }
+
+  sendNotification(content:string,target:User){
+    let notif:Notification = {
+      sender : this.auth.currentUserValue,
+      reciever : target,
+      content : content,
+    }
+    console.log(notif.content)
+    this.notificationService.saveNotification(notif).subscribe(x=>console.log("user notified"))
   }
   determineAdvancement(input:FypFile,type:string){
     let width : number = 0
@@ -221,11 +239,17 @@ export class FypfilesOperationsComponent implements OnInit,OnDestroy {
     return c1 && c2 ? c1.id == c2.id : false;
 }
 editTeacherRole(){
-  this.interventionService.editTeacherRole(this.interventionToBeEdit.id,
+  this.userv.getStudentOfSheet(this.interventionToBeEdit.fypFile.id).subscribe(stud=>{
+    this.sendNotification("The teacher "+this.interventionToBeEdit.teacher.username +
+    " has been granted the role of "+this.newRole,stud);
+    this.sendNotification("You have been assigned as a "+this.newRole+" to "+stud.username,
+    this.interventionToBeEdit.teacher)
+    this.interventionService.editTeacherRole(this.interventionToBeEdit.id,
     this.newRole,this.interventionToBeEdit.teacher.id).subscribe( x=>{
     window.location.reload();
   }
   )
+})
 }
 
 parseStatus(file:FypFile){

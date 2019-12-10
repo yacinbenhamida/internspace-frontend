@@ -189,6 +189,7 @@ const routes: Routes = [
   data: {
     expectedRole: 'departmentHead'
   }},
+  {path : 'notifications', component : NotificationsComponent, canActivate: [AuthGuard]},
   {path : 'dptteachers', component : TeachersComponent, canActivate: [RoleGuard],
   data: {
     expectedRole: 'departmentHead'
