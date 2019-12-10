@@ -3,6 +3,8 @@ import { TeacherServiceService } from '../services/Teacher/teacher-service.servi
 import { Router } from '@angular/router';
 import { FypCategory } from '../models/fyp/fyp-category';
 import { UniStatsService } from '../services/dashboard/uni-stats.service';
+import { AuthenticationService } from '../services/security/authentication.service';
+import { FYPCategoriesService } from '../services/categories/fyp-categories.service';
 
 @Component({
   selector: 'app-fyp-categorie',
@@ -16,22 +18,22 @@ export class FypCategorieComponent implements OnInit {
   Descr:string;
   restApi: TeacherServiceService;
   router: Router;
-  uniStatsService:UniStatsService;
-  constructor(uniStatsService: UniStatsService,
-     restApi: TeacherServiceService, 
+  uniStatsService:FYPCategoriesService;
+  constructor(uniStatsService: FYPCategoriesService,
+     restApi: TeacherServiceService, private auth:AuthenticationService, 
      router: Router
   ) {this.restApi=restApi;
   this.router=router;
   this.uniStatsService=uniStatsService;}
 
   ngOnInit() {
-    this.uniStatsService.GetCategories().subscribe(e => this.fypcategorys = e);
+    this.uniStatsService.getAllCategories(this.auth.currentUserValue.department.id).subscribe(e => {this.fypcategorys = e;console.log(e);});
    console.log(this.fypcategorys+"ff");
    }
 
   addFypcat() {
-   
-    this.restApi.AddFypCategory(this.name,this.fypcategory,this.Descr).subscribe((data: {}) => {
+   console.log(this.auth.currentUserValue.department.id);
+    this.restApi.AddFypCategory(this.name,this.fypcategory,this.Descr,this.auth.currentUserValue.department.id).subscribe((data: {}) => {
       this.router.navigate([]);
     })
   }
