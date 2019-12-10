@@ -10,14 +10,21 @@
                 [selected]="category == selectedfyp">
                 {{category}}</option>
             </select>
+            <select class="cool-item" (change)="onChange_UY($event.target.value)">
+              <option>Universitary Year</option>
+              <option *ngFor="let uy of cachedUYs; let index = index;" [value]="index"
+                [selected]="uy == selectedUY">
+                {{uy.startDate}} - {{uy.endDate}}</option>
+            </select>
       
       </div>
     
     </div>
     <app-tabel [tab]="fypllist" ></app-tabel>
+    <div class="cool-item" id="chart1" style=" height: 500px"></div>
     <app-fyp-categorie></app-fyp-categorie>
 
     <br>
     <br>
-    <div class="cool-item" id="chart1" style=" height: 500px"></div>
+ 
 
