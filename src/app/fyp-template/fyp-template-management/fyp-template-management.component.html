@@ -1,8 +1,10 @@
+<br>
+<br>
 <div class="form-inline cool-item">
 
   <div class="mr-4">
 
-    <select class="cool-item" style="max-width:90%;" (change)="onChange_FypFileIndex($event.target.value)" formControlName="template">
+    <select class="cool-item" style="max-width:90%;" (change)="onChange_FypFileIndex($event.target.value)">
       <option>Preview File</option>
       <option *ngFor="let template of likeFypFileSearch; let index = index;" [value]="index"
         [selected]="template == previewFypFile">
@@ -15,8 +17,7 @@
 
 <div class="form-inline cool-item justify-content-center">
 
-  <select (change)="onChange_FypTemplateIndex($event.target.value)" class="custom-select mr-4"
-    formControlName="template">
+  <select (change)="onChange_FypTemplateIndex($event.target.value)" class="custom-select mr-4">
     <option value="">Choose your template</option>
     <option *ngFor="let template of allFypTemplates; let index = index;" [value]="index"
       [selected]="template == currFypTemplate">{{template.templateName}}</option>
@@ -29,12 +30,12 @@
   <button type="button" class="btn btn-outline-secondary mr-4" (click)="exportTemplate()">
     <span>Export</span></button>
   <button [disabled]='previewFypFile == null' type="button" class="btn btn-outline-secondary mr-2">
-    <span>Clear Data</span></button>
+    <span style='cursor: pointer;' (click)='onClick_ClearPreviewFypFile()'>Clear Data</span></button>
 
-  <form justify-content-center>
+  <div [formGroup]='templateForm' justify-content-center>
     <input formControlName="templateName" class="cool-item ml-4" type="text">
-    <button class="btn btn-primary mr-4">Add</button>
-  </form>
+    <button type='submit' (click)='onClick_AddNewTemplate()' class="btn btn-primary mr-4">Add</button>
+  </div>
 </div>
 
 <hr>
@@ -42,7 +43,8 @@
 <div id="template-editor-window" *ngIf='currFypTemplate' class="drag-boundary">
 
   <div *ngFor='let element of currFypTemplate.templateElements; let i=index'>
-    <app-fyp-template-element [orderz]='i' [element]='element' [previewFypFile]='previewFypFile'></app-fyp-template-element>
+    <app-fyp-template-element [orderz]='i' [element]='element' [bExporting]='bExporting' [previewFypFile]='previewFypFile'>
+    </app-fyp-template-element>
   </div>
 
 

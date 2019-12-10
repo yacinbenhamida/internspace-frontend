@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../../services/security/authentication.service';
 import { FypFile } from './../../models/fyp/fyp-file';
 import { FypTemplateService } from './../../services/fyp-template/fyp-template.service';
 import { FypTemplateElement } from '../../models/fyp/fyp-template-element';
@@ -14,11 +15,12 @@ export class FypTemplateElementComponent implements OnInit {
   @Input() element: FypTemplateElement;
   @Input() previewFypFile: FypFile;
   @Input() orderz: number;
+  @Input() bExporting: boolean;
 
   coords2D: any;
   fypTemplateService: FypTemplateService;
 
-  constructor(fypTemplateService: FypTemplateService) {
+  constructor(fypTemplateService: FypTemplateService, public auth: AuthenticationService) {
     this.fypTemplateService = fypTemplateService;
   }
 
