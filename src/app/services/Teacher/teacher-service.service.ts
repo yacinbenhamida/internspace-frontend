@@ -34,8 +34,8 @@ export class TeacherServiceService {
   };
 
   // POST
-  AddFypCategory(name: string,data:FypCategory,desc:string): Observable<FypCategory> {
-    return this.http.post<FypCategory>(this.baseurl+'/add?name='+name+'&desc='+desc, JSON.stringify(data), this.httpOptions);
+  AddFypCategory(name: string,data:FypCategory,desc:string,depId:number): Observable<FypCategory> {
+    return this.http.post<FypCategory>(this.baseurl+'/add?name='+name+'&desc='+desc+'&depid='+depId, JSON.stringify(data), this.httpOptions);
   }
 
   // GET
