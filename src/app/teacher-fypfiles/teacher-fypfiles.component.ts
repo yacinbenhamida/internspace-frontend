@@ -71,9 +71,9 @@ export class TeacherFypfilesComponent implements OnInit {
       if(this.timeLeft > 0) {
         this.timeLeft--;
       } else {
-        this.restApi.getmodificationssize().subscribe(res =>{this.xx=res;});
-console.log(this.xx);
+      // this.restApi.getmodificationssize().subscribe(res =>{this.xx=res;});
 
+        this.xx = 6
         if (this.xx!=this.majo)
         {
           this.showNotification("you have "+this.xx+"  modification request")
