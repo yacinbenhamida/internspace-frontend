@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FypTemplateManagementComponent } from './fyp-template-management/fyp-template-management.component';
@@ -25,6 +26,7 @@ import { FypTemplateService } from './../services/fyp-template/fyp-template.serv
     CommonModule,
     DragDropModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
 
   providers: [FypTemplateService]

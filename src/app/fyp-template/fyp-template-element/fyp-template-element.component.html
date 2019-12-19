@@ -1,6 +1,22 @@
+<!-- Icon -->
+<div [ngStyle]="{'z-index':orderz }" id="a" *ngIf="element.sectionName === 'universityIcon'"  cdkDragBoundary=".drag-boundary"  [ngClass]="{'drag-box' : true, 'title-elem': bExporting==false}" cdkDrag
+  [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)" (cdkDragEnded)="onDragEnded($event)" >
+  <h5> {{auth.currentUserValue.department.site.university.name}} </h5>
+
+  <div class="mr-1 ml-1">
+      <img *ngIf='auth.currentUserValue.department.site.university.logoUrl != null' class='img-fluid rounded-circle'
+        src={{auth.currentUserValue.department.site.university.logoUrl}} width="70" alt="Icon">
+      <img *ngIf='auth.currentUserValue.department.site.university.logoUrl == null' class='img-fluid rounded-circle'
+        src="assets/images/default-user-male.png" width="70" alt="Icon">
+    </div>
+
+  
+
+</div>
+
 <!-- Title -->
 
-<div [ngStyle]="{'z-index':orderz }" id="a" *ngIf="element.sectionName === 'title'" cdkDragBoundary=".drag-boundary" class="drag-box title-elem" cdkDrag
+<div [ngStyle]="{'z-index':orderz }" id="a" *ngIf="element.sectionName === 'title'" cdkDragBoundary=".drag-boundary" [ngClass]="{'drag-box' :true, 'title-elem': bExporting==false}" cdkDrag
   [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)" (cdkDragEnded)="onDragEnded($event)">
   <h5> Title </h5>
   <p type="text" class="form-control"> {{previewFypFile ? previewFypFile.title : 'Title'}} </p>
@@ -8,7 +24,7 @@
 
 <!-- Description -->
 
-<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'description'" cdkDragBoundary=".drag-boundary" class="drag-box description-elem" cdkDrag
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'description'" cdkDragBoundary=".drag-boundary"  [ngClass]="{'drag-box' :true, 'description-elem': bExporting==false}" class="drag-box description-elem" cdkDrag
   [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
   <h5> Description </h5>
   <textarea class="form-control" rows="10"
@@ -17,7 +33,7 @@
 
 <!-- Problematic -->
 
-<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'problematic'" cdkDragBoundary=".drag-boundary" class="drag-box problematic-elem" cdkDrag
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'problematic'" cdkDragBoundary=".drag-boundary" [ngClass]="{'drag-box' :true, 'problematic-elem': bExporting==false}" cdkDrag
   [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
   <h5> Problematic </h5>
   <textarea class="form-control" rows="10"
@@ -26,16 +42,16 @@
 
 <!-- Features -->
 
-<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'features'" class="drag-box features-elem" cdkDragBoundary=".drag-boundary" cdkDrag
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'features'" [ngClass]="{'drag-box' :true, 'features-elem': bExporting==false}" cdkDragBoundary=".drag-boundary" cdkDrag
   [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <h5>Features</h5>
-      <button class="btn btn-primary">+</button>
+      <button *ngIf='bExporting==false' class="btn btn-primary">+</button>
     </div>
     <hr>
 
-    <div class="rXow" style="width: 350px">
+    <div [ngClass]="{'row' : bExporting==true, 'rXow': bExporting==false}" style="width: 350px">
       <div *ngFor="let feature of (previewFypFile && previewFypFile.features ? previewFypFile.features : [1, 2]); let i=index" class="col-md-12">
         <div class="form-group">
           <p type="text" class="form-control"> {{i}}: {{feature && feature.content ? (feature.content) : 'Preview ' + i}} </p>
@@ -48,16 +64,16 @@
 
 <!-- Categories -->
 
-<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'categories'" class="drag-box categories-elem" cdkDragBoundary=".drag-boundary"
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'categories'" [ngClass]="{'drag-box' :bExporting==false, 'categories-elem': bExporting==false}" cdkDragBoundary=".drag-boundary"
   cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
   <div class="card-body">
     <div class="d-flex justify-content-between card-title">
       <h5 class="d-flex align-items-center">
         Categories</h5>
-      <button class="btn btn-primary">+</button>
+      <button *ngIf='bExporting==false' class="btn btn-primary">+</button>
     </div>
 
-    <div class="rXow" style="width: 350px; height: 200px;">
+    <div [ngClass]="{'row' : bExporting==true, 'rXow': bExporting==false}" style="width: 350px; height: 200px;">
         <div *ngFor="let category of (previewFypFile && previewFypFile.categories ? previewFypFile.categories : [1, 2]); let i=index" class="col-md-12">
           <div class="form-group">
             <p type="text" class="form-control"> {{i}}: {{category && category.name ? (category.name) : 'Preview ' + i}} </p>
@@ -70,13 +86,13 @@
 
 <!-- Keywords -->
 
-<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'keywords'" class="drag-box keywords-elem" cdkDragBoundary=".drag-boundary" cdkDrag
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'keywords'" [ngClass]="{'drag-box' :bExporting==false, 'keywords-elem': bExporting==false}" cdkDragBoundary=".drag-boundary" cdkDrag
   [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
-  <div class="card-body">
-    <div class="d-flex justify-content-between card-title">
+  <div [ngClass]="{'card-body' :bExporting==false}">
+    <div [ngClass]="{'card-title' :bExporting==false}" class="    justify-content-between card-title">
       <h5 class="d-flex align-items-center">
         Keywords</h5>
-      <button class="btn btn-primary">+</button>
+      <button *ngIf='bExporting==false' class="btn btn-primary">+</button>
     </div>
     <div class="rXow">
       <div class="col-md-12"
@@ -91,7 +107,7 @@
 
 <!-- Subject | Company Information -->
 
-<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'company'" class="drag-box company-info-elem" cdkDragBoundary=".drag-boundary" cdkDrag
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'company'" [ngClass]="{'drag-box' :bExporting==false, 'company-info-elem': bExporting==false}" cdkDragBoundary=".drag-boundary" cdkDrag
   [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
   <div class="card-body">
     <div class="d-flex justify-content-between card-title">
@@ -115,7 +131,7 @@
 
 <!-- Personal Details-->
 
-<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'personal-details'" class="drag-box personal-details-elem"
+<div [ngStyle]="{'z-index':orderz }" *ngIf="element.sectionName === 'personal-details'" [ngClass]="{'drag-box' :bExporting==false, 'personal-details-elem': bExporting==false}"
   cdkDragBoundary=".drag-boundary" cdkDrag [cdkDragFreeDragPosition]="coords2D" (cdkDragEnded)="onDragEnded($event)">
   <h5> Personal Details </h5>
   <div class="row">

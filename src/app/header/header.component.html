@@ -1,70 +1,65 @@
 <header id="header" class="header-effect-shrink header-no-border-bottom"
-    data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}"
-    style="height: 91px;">
-    <div class="header-body">
-        <div class="header-container container">
-            <div class="header-row">
-                <div class="header-column">
-                    <div class="header-row">
-                        <div class="header-logo" style="width: 140px; height: 35px;">
-                            <a routerLink="/">
-                                <img alt="Vertex" width="140" height="35" data-sticky-width="100"
-                                    data-sticky-height="25" src="../assets/img/logo.png">
-                            </a>
-                        </div>
-                    </div>
-                </div>
+  data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}"
+  style="height: 91px;">
+  <div class="header-body">
+    <div class="header-container container">
+      <div class="header-row">
+        <div class="header-column">
+          <div class="header-row">
+            <div class="header-logo" style="width: 140px; height: 35px;">
+              <a routerLink="/">
+                <img alt="Vertex" width="140" height="35" data-sticky-width="100" data-sticky-height="25"
+                  src="../assets/img/logo.png">
+              </a>
+            </div>
+          </div>
+        </div>
 
-                <div class="header-column justify-content-end">
-                    <div *ngIf="auth.currentUserValue" class="header-row pt-2">
-                        <nav class="header-nav-top">
-                            <ul class="nav nav-pills">
-                                <li class="nav-item nav-item-anim-icon d-none d-md-block">
-                                    <span class="ws-nowrap m-list--link fs-15"><span
-                                            class="badge badge-pill badge-light"><i class="fas fa-user"></i>
-                                            {{auth.currentUserValue.username}}</span></span>
-                                </li>
-                                <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department"
-                                    class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
-                                    <span *ngIf="auth.currentUserValue.userType == 'employee'"
-                                        class="ws-nowrap m-list--link fs-15"> <span
-                                            class="badge badge-pill badge-primary">
-                                            {{convertRole(auth.currentUserValue.role)}} at
-                                            {{auth.currentUserValue.department.site.university.name}}</span></span>
-                                    <span *ngIf="auth.currentUserValue.userType == 'student'"
-                                        class="ws-nowrap m-list--link fs-15"> <span
-                                            class="badge badge-pill badge-primary">
-                                            {{convertRole(auth.currentUserValue.role)}} at
-                                            {{auth.currentUserValue.studyClass.classOption.departement.site.university.name}}</span></span>
-                                </li>
-                                <li *ngIf="auth.currentUserValue.userType == 'student' && auth.currentUserValue.studyClass.classOption.departement"
-                                    class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
-                                    <span class="ws-nowrap m-list--link fs-15"> <span
-                                            class="badge badge-pill badge-primary"> student at
-                                            {{auth.currentUserValue.studyClass.classOption.departement.site.university.name}}</span></span>
-                                </li>
-                                <li
-                                    class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
-                                    <div class="social social-bg-light social-sm mt-1">
-                                        <a (click)="logoutAction()" class="social-facebook m-0 transition-hover"
-                                            href="#"><i class="fas fa-sign-out-alt"></i></a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="header-row">
-                        <div class="header-nav header-nav-links order-2 order-lg-1">
-                            <div
-                                class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
-                                <nav class="collapse">
-                                    <ul class="nav nav-pills" id="mainNav">
-                                        <li class="dropdown dropdown-reverse">
-                                            <a class="dropdown-item" routerLink="/">Home </a>
-                                        </li>
-                                        <li *ngIf="
-                                            auth.currentUserValue && auth.currentUserValue.userType != 'company'
-                                            && auth.currentUserValue && auth.currentUserValue.userType != 'student'
+        <div class="header-column justify-content-end">
+          <div *ngIf="auth.currentUserValue" class="header-row pt-2">
+            <nav class="header-nav-top">
+              <ul class="nav nav-pills">
+                <li class="nav-item nav-item-anim-icon d-none d-md-block">
+                  <span class="ws-nowrap m-list--link fs-15"><span class="badge badge-pill badge-light"><i
+                        class="fas fa-user"></i>
+                      {{auth.currentUserValue.username}}</span></span>
+                </li>
+                <li *ngIf="auth.currentUserValue.userType != 'company' && auth.currentUserValue.department"
+                  class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                  <span *ngIf="auth.currentUserValue.userType == 'employee'" class="ws-nowrap m-list--link fs-15"> <span
+                      class="badge badge-pill badge-primary">
+                      {{convertRole(auth.currentUserValue.role)}} at
+                      {{auth.currentUserValue.department.site.university.name}}</span></span>
+                  <span *ngIf="auth.currentUserValue.userType == 'student'" class="ws-nowrap m-list--link fs-15"> <span
+                      class="badge badge-pill badge-primary">
+                      {{convertRole(auth.currentUserValue.role)}} at
+                      {{auth.currentUserValue.studyClass.classOption.departement.site.university.name}}</span></span>
+                </li>
+                <li
+                  *ngIf="auth.currentUserValue.userType == 'student' && auth.currentUserValue.studyClass.classOption.departement"
+                  class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                  <span class="ws-nowrap m-list--link fs-15"> <span class="badge badge-pill badge-primary"> student at
+                      {{auth.currentUserValue.studyClass.classOption.departement.site.university.name}}</span></span>
+                </li>
+                <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+                  <div class="social social-bg-light social-sm mt-1">
+                    <a (click)="logoutAction()" class="social-facebook m-0 transition-hover" href="#"><i
+                        class="fas fa-sign-out-alt"></i></a>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header-row">
+            <div class="header-nav header-nav-links order-2 order-lg-1">
+              <div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+                <nav class="collapse">
+                  <ul class="nav nav-pills" id="mainNav">
+                    <li class="dropdown dropdown-reverse">
+                      <a class="dropdown-item" routerLink="/">Home </a>
+                    </li>
+                    <li *ngIf=" auth.currentUserValue && auth.currentUserValue.userType != 'company' 
+                      && auth.currentUserValue && auth.currentUserValue.userType != 'student'
                                             " class="dropdown dropdown-reverse">
                                             <a class="dropdown-item" routerLink="/profile">Profile </a>
                                         </li>
@@ -222,6 +217,10 @@
                     </div>
                 </div>
             </div>
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </header>

@@ -1,11 +1,13 @@
 <br>
 <br>
+<main class="main-content">
 <div class="cool-item">
-   
-      
-<notifier-container></notifier-container>
+ 
+    
+        <div class="container z-index-10">
 
-<div class="form-inline justify-content-center">
+      
+      <div class="form-inline justify-content-center">
         
           <select form-inline justify-content-center class="cool-item" style="max-width:90%;" (change)="onChange_fyp()" >
               <option>Preview Files</option>
@@ -19,19 +21,20 @@
                 [selected]="uy == selectedUY">
                 {{uy.startDate}} - {{uy.endDate}}</option>
             </select>
-
       
      
         
       
    
     <app-tabel [tab]="fypllist" ></app-tabel>
- 
+      </div>
     <div class="cool-item" id="chart1" style=" height: 500px"></div>
     <app-fyp-categorie></app-fyp-categorie>
-</div>
-    <br>
-    <br>
+    <notifier-container></notifier-container>
  </div>
+
+ </div>
+ </main>
+
 
 
