@@ -18,4 +18,10 @@ export class UserService {
   getUserById(id:number){
     return this.http.get<User>("/api/users/"+id)
   }
+  getAllUsers(){
+    return this.http.get<User[]>("/api/student/isnonautorised")
+  }
+  allowStudent(id:number){
+    return this.http.get<User>("/api/student/authorize?id="+id)
+  }
 }

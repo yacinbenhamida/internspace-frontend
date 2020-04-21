@@ -1,7 +1,7 @@
 import { StudyClass } from "./studyClass"
 
 class Student {
-        id:number
+        id?:number
         firstName: String
         lastName: String
         email: String
@@ -11,13 +11,13 @@ class Student {
         birthDate: Date
         hasSubmittedAReport: Boolean
         cin: String
-        passGenerated: String
-        isCreated: Boolean
-        isSaved: Boolean
-        isAutorised: Boolean
-        isDisabled: Boolean
+        passGenerated?: String
+        isCreated?: Boolean
+        isSaved?: Boolean
+        isAutorised?: Boolean
+        isDisabled?: Boolean
         studyClass?: StudyClass
-        isCanceled:boolean
+        isCanceled?:boolean
 }
 
 export default Student;

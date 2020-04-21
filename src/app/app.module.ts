@@ -108,6 +108,7 @@ import { ProfileStudentComponent } from './Student/profile-student/profile-stude
 import { SheetsModificationComponent } from './Student/Directeur/sheets-modification/sheets-modification.component';
 import { ProfileStudentDetailComponent } from './Student/profile-student-detail/profile-student-detail.component';
 import { InternshipsSearchComponent } from './internships-search/internships-search.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -192,6 +193,7 @@ import { InternshipsSearchComponent } from './internships-search/internships-sea
     SheetsModificationComponent,
     ProfileStudentDetailComponent,
     InternshipsSearchComponent,
+    SignupComponent,
   ],
   imports: [
     AgmCoreModule.forRoot({

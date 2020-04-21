@@ -1,0 +1,117 @@
+
+<div class="wrapper bg-light">
+    <main class="main-content">
+        <div class="d-flex align-items-center position-relative h-100vh">
+            <div class="col-lg-5 col-xl-4 d-none d-lg-flex align-items-center h-100vh px-0" data-overlay="1" style="background-image:url(../assets/img/mix/desktop-7.png); background-size:cover;">
+                <div class="w-100 p-7 text-center">
+  
+                    <div class="position-absolute right-0 top-0 left-0 p-5">
+                        <img src="assets/img/logo-white.png" width="150" />
+                    </div>
+  
+                    <div class="text-white position-relative">
+                        <h1>
+                            Sign up as a student
+                        </h1>
+                    </div>
+                </div>
+            </div>
+  
+            <div class="container">
+                <div class="row">
+                    <div *ngIf="submitted" class="ml-5">
+                        <h2 class="h3 font-weight-normal ">Welcome to <span class="font-weight-semi-bold text-primary">Internspace</span></h2>
+                        <p>Your account is pending approval from the administrator.</p>
+                    </div>
+                    <div class="col-md-8 col-lg-7 col-xl-5 offset-md-2 offset-lg-2 offset-xl-3" *ngIf="!submitted">
+                        <div class="mb-2">
+                            <p>Create an account</p>
+                        </div>
+                        
+                        <form class="input-line vertex-input" [formGroup]="loginForm" (ngSubmit)="submit()">
+                            <div class="row no-gutters">
+                                <div class="col-md-6">
+                                    <div class="vertex-input-group">
+                                        <div class="apend-wrap">
+                                            <i class="icon-user-edit-1"></i>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>First Name</label>
+                                            <input type="text" formControlName="firstName" value="" placeholder="Your Name" maxlength="100" class="form-control" name="name" id="name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="vertex-input-group">
+                                        <div class="apend-wrap">
+                                            <i class="icon-user-edit-1"></i>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Last Name</label>
+                                            <input type="text" formControlName="lastName" value="" placeholder="Last name" maxlength="100" class="form-control" name="name" id="name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vertex-input-group first">
+                                <div class="apend-wrap">
+                                    <i class="icon-mail-2"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label>birth date <span class="required">*</span></label>
+                                    <input type="date" formControlName="birthDate" class="form-control" >
+                                </div>
+                            </div>
+                            <div class="vertex-input-group first">
+                                <div class="apend-wrap">
+                                    <i class="icon-mail-2"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label>Username <span class="required">*</span></label>
+                                    <input type="text" formControlName="username" placeholder="Username" maxlength="100" class="form-control" name="name" id="name">
+                                </div>
+                            </div>
+                            <div class="vertex-input-group first">
+                                <div class="apend-wrap">
+                                    <i class="icon-mail-2"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label>CIN <span class="required">*</span></label>
+                                    <input type="text" formControlName="cin" placeholder="XXXXXX" maxlength="100" class="form-control" name="name" id="name">
+                                </div>
+                            </div>
+                            <div class="vertex-input-group first">
+                                <div class="apend-wrap">
+                                    <i class="icon-mail-2"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label>email <span class="required">*</span></label>
+                                    <input type="text" formControlName="email" placeholder="email" maxlength="100" class="form-control" name="email" id="email">
+                                </div>
+                            </div>
+                            <div class="vertex-input-group last">
+                                <div class="apend-wrap">
+                                    <i class="icon-lock-unlock-2"></i>
+                                </div>
+                                <div class="form-group">
+                                    <label>Password <span class="required">*</span></label>
+                                    <input type="password" formControlName="password" placeholder="*******" maxlength="100" class="form-control" name="password" id="password">
+                                </div>
+                                <div class="form-group">
+                                    <label>Confirm <span class="required">*</span></label>
+                                    <input type="password" formControlName="confirmPassword" placeholder="*******" maxlength="100" class="form-control" name="password" id="password">
+                                </div>
+                            </div>
+                            <div class="row mt-4">  
+                                <div class="col-md-12 center">
+                                    <button type="submit" class="btn btn-primary btn-block transition-hover mt-4 mb-2">Sign Up</button>
+                                </div>
+                            </div>
+                            <br />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+  </div>

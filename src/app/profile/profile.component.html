@@ -1,318 +1,52 @@
 <br/><br/> <br/>
 <main class="main-content">
-        <section class="section pt-6">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-
-                        <div class="mb-9">
-                            <div class="px-6 py-7 rounded text-white custom-section-4">
-                                <h1 class="h1 mb-4">My Space</h1>
-                                <h3 class="h5 mb-4">{{auth.currentUserValue.firstName }} {{auth.currentUserValue.lastName }}</h3>
-                                <p class="small">@{{auth.currentUserValue.username }} - {{auth.currentUserValue.userType }}</p>
-                            </div>
-                        </div>
-
-                        <div class="mb-9">
-                            <h3 class="h5 mb-4 text-primary">Management</h3>
-
-                            <ul class="list-group">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a class="text-dark anim-link-2" routerLink="/fypTemplate">Template Editor</a>
-                                    <span class="badge badge-primary badge-pill">></span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a class="text-dark anim-link-2" routerLink="/uniDash">University Dashboard</a>
-                                    <span class="badge badge-primary badge-pill">></span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="mb-9">
-                            <h3 class="h5 mb-4 text-primary">Trending Posts</h3>
-                            <div class="clearfix">
-                                <div class="media mb-4">
-                                    <div class="w-60px mr-3">
-                                        <img class="pi-img-round" src="../assets/img/bls1.jpg" />
-                                    </div>
-                                    <div class="media-body">
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">Tourism in Dubai is booming by international tourist</a>
-                                        <span class="time small text-muted">Dec 17, 2019</span>
-                                    </div>
-                                </div>
-
-                                <div class="media mb-4">
-                                    <div class="w-60px mr-3">
-                                        <img class="pi-img-round" src="../assets/img/bls3.jpg" />
-                                    </div>
-                                    <div class="media-body">
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">3 Ways to Boost Online Sales off Season</a>
-                                        <span class="time small text-muted">May 28, 2019</span>
-                                    </div>
-                                </div>
-
-                                <div class="media mb-4">
-                                    <div class="w-60px mr-3">
-                                        <img class="pi-img-round" src="../assets/img/bls2.jpg" />
-                                    </div>
-                                    <div class="media-body">
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">Google Play Warns Users It Doesn’t Carry Fortnite</a>
-                                        <span class="time small text-muted">Jun 14, 2019</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-9">
-                            <h3 class="h5 mb-4 text-primary">Don't Miss</h3>
-                            <div class="clearfix">
-                                <div class="media align-items-center mb-4">
-                                    <div class="w-60px mr-3 text-center">
-                                        <i class="icon-bubble-conversation-2 fs-35"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">Instant coffee was invented by a brilliant man</a>
-                                        <span><a href="#" class="text-dark small anim-link-2">Sophia Green</a> <span class="small">-</span> </span>
-                                        <span class="time small text-muted">Dec 17, 2019</span>
-                                    </div>
-                                </div>
-
-                                <div class="media align-items-center mb-4">
-                                    <div class="w-60px mr-3 text-center">
-                                        <i class="icon-bubble-conversation-2 fs-35"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">The world consumes close to 2.25B cups of coffee daily</a>
-                                        <span><a href="#" class="text-dark small anim-link-2">Sophia Green</a> <span class="small">-</span> </span>
-                                        <span class="time small text-muted">Dec 17, 2019</span>
-                                    </div>
-                                </div>
-
-                                <div class="media align-items-center mb-4">
-                                    <div class="w-60px mr-3 text-center">
-                                        <i class="icon-bubble-conversation-2 fs-35"></i>
-                                    </div>
-                                    <div class="media-body">
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 clearfix" href="#">Coffee beans aren’t beans at all, they are just fruit pits</a>
-                                        <span><a href="#" class="text-dark small anim-link-2">Sophia Green</a> <span class="small">-</span> </span>
-                                        <span class="time small text-muted">Dec 17, 2019</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mb-9">
-                            <h3 class="h5 mb-4 text-primary">Recent Comments</h3>
-                            <div class="clearfix">
-                                <div class="media align-items-center mb-4">
-                                    <div class="w-60px mr-3 text-center">
-                                        <i class="icon-bubble-conversation-2 fs-35"></i>
-                                    </div>
-                                    <div class="media-body fs-15">
-                                        <span><a href="#" class="text-dark anim-link-2 text-style-italic">Sophia Green</a> <span class="text-muted">on</span> </span>
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 text-style-italic" href="#">Five reasons why in-form Leicester City will finish the job and stay up</a>
-                                    </div>
-                                </div>
-
-                                <div class="media align-items-center mb-4">
-                                    <div class="w-60px mr-3 text-center">
-                                        <i class="icon-bubble-conversation-2 fs-35"></i>
-                                    </div>
-                                    <div class="media-body fs-15">
-                                        <span><a href="#" class="text-dark anim-link-2 text-style-italic">John Doe</a> <span class="text-muted">on</span> </span>
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 text-style-italic" href="#">Pasta with caramelised onions and yogurt recipe</a>
-                                    </div>
-                                </div>
-
-                                <div class="media align-items-center mb-4">
-                                    <div class="w-60px mr-3 text-center">
-                                        <i class="icon-bubble-conversation-2 fs-35"></i>
-                                    </div>
-                                    <div class="media-body fs-15">
-                                        <span><a href="#" class="text-dark anim-link-2 text-style-italic">Sophia Green</a> <span class="text-muted">on</span> </span>
-                                        <a class="mt-0 mb-2 text-dark anim-link-2 text-style-italic" href="#">Pasta with caramelised onions and yogurt recipe</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-
-                        <div class="row">
-
-                            <div class="col-md-12">
-                                <article class="card border-0">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="media mt-4">
-                                                <div class="media-body fs-13">
-                                                    <div class="text-muted mb-2"> <i class="icon-bubble-conversation-2 mr-1"></i> Creative</div>
-                                                    <h3 class="card-title h5 fw-600">
-                                                        <a class="text-dark anim-link-2" href="single.html">Basketball Stars Face Off in Ultimate Playoff Beard Battle</a>
-                                                    </h3>
-                                                    <div class="d-flex">
-                                                        <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/avatar3.jpg" alt="...">
-                                                        <div>
-                                                            <span class="text-muted">by</span> <a href="#" class="text-dark anim-link-2">Charles Wellington</a><br />
-                                                            <span class="text-muted"> 2 months ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <div class="col-md-12 m-gab-1"></div>
-
-                            <div class="col-md-12">
-                                <article class="card border-0">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img class="img-fluid rounded" src="../assets/img/bl1.jpg" alt="Image Description">
-                                        </div>
-                                        <div class="col-md-6 mt-4">
-                                            <div class="media">
-                                                <div class="media-body fs-13">
-                                                    <div class="text-muted mb-2"> <i class="icon-bubble-conversation-2 mr-1"></i> Creative</div>
-                                                    <h3 class="card-title h5 fw-600">
-                                                        <a class="text-dark anim-link-2" href="single.html">We make easy design</a>
-                                                    </h3>
-                                                    <div class="d-flex">
-                                                        <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/avatar3.jpg" alt="...">
-                                                        <div>
-                                                            <span class="text-muted">by</span> <a href="#" class="text-dark anim-link-2">Charles Wellington</a><br />
-                                                            <span class="text-muted"> 2 months ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <div class="col-md-12 m-gab-1"></div>
-
-                            <div class="col-md-12">
-                                <article class="card border-0">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img class="img-fluid rounded" src="../assets/img/bl8.jpg" alt="Image Description">
-                                        </div>
-                                        <div class="col-md-6 mt-4">
-                                            <div class="media">
-                                                <div class="media-body fs-13">
-                                                    <div class="text-muted mb-2"> <i class="icon-bubble-conversation-2 mr-1"></i> Creative</div>
-                                                    <h3 class="card-title h5 fw-600">
-                                                        <a class="text-dark anim-link-2" href="single.html">3 Ways to Boost Online Sales</a>
-                                                    </h3>
-                                                    <div class="d-flex">
-                                                        <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/avatar3.jpg" alt="...">
-                                                        <div>
-                                                            <span class="text-muted">by</span> <a href="#" class="text-dark anim-link-2">Charles Wellington</a><br />
-                                                            <span class="text-muted"> 2 months ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
 
 
-                            <div class="col-md-12 m-gab-1"></div>
+<div class="d-flex custom-section-2 hover-shadow-6 justify-content-center">
+  <div class="">
 
+    <div *ngIf='auth.currentUserValue' class="media m-3 align-items-center">
+      <div class=" transition-hover  mr-5">
+        <img class='rounded-circle' *ngIf='auth.currentUserValue.pictureUrl != null' src={{auth.currentUserValue.pictureUrl}} width="150"
+          alt="Icon">
+        <img class='rounded-circle' *ngIf='auth.currentUserValue.pictureUrl == null' src="assets/images/default-user-male.png" width="150"
+          alt="Icon">
+        <ul class="nav nav-pills d-flex justify-content-center">
 
-                            <div class="col-md-12">
-                                <article class="card border-0">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <img class="img-fluid rounded w-100" src="../assets/img/bl6.jpg" alt="Image Description">
-
-                                            <div class="media mt-4">
-                                                <div class="media-body fs-13">
-                                                    <div class="text-muted mb-2"> <i class="icon-bubble-conversation-2 mr-1"></i> Creative</div>
-                                                    <h3 class="card-title h5 fw-600">
-                                                        <a class="text-dark anim-link-2" href="single.html">Basketball Stars Face Off in Ultimate Playoff Beard Battle</a>
-                                                    </h3>
-                                                    <div class="d-flex">
-                                                        <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/avatar3.jpg" alt="...">
-                                                        <div>
-                                                            <span class="text-muted">by</span> <a href="#" class="text-dark anim-link-2">Charles Wellington</a><br />
-                                                            <span class="text-muted"> 2 months ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <div class="col-md-12 m-gab-1"></div>
-
-
-                            <div class="col-md-12">
-                                <article class="card border-0">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img class="img-fluid rounded" src="../assets/img/bl5.jpg" alt="Image Description">
-                                        </div>
-                                        <div class="col-md-6 mt-4">
-                                            <div class="media">
-                                                <div class="media-body fs-13">
-                                                    <div class="text-muted mb-2"> <i class="icon-bubble-conversation-2 mr-1"></i> Creative</div>
-                                                    <h3 class="card-title h5 fw-600">
-                                                        <a class="text-dark anim-link-2" href="single.html">Google Play Warns Users It Doesn’t Carry Fortnite</a>
-                                                    </h3>
-                                                    <div class="d-flex">
-                                                        <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/avatar3.jpg" alt="...">
-                                                        <div>
-                                                            <span class="text-muted">by</span> <a href="#" class="text-dark anim-link-2">Charles Wellington</a><br />
-                                                            <span class="text-muted"> 2 months ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-
-                            <div class="col-md-12 m-gab-1"></div>
-
-                            <div class="col-md-12">
-                                <article class="card border-0">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img class="img-fluid rounded" src="../assets/img/bl7.jpg" alt="Image Description">
-                                        </div>
-                                        <div class="col-md-6 mt-4">
-                                            <div class="media">
-                                                <div class="media-body fs-13">
-                                                    <div class="text-muted mb-2"> <i class="icon-bubble-conversation-2 mr-1"></i> Creative</div>
-                                                    <h3 class="card-title h5 fw-600">
-                                                        <a class="text-dark anim-link-2" href="single.html">Neon Bluetooth Wireless On-Ear Headphones Audio JLab</a>
-                                                    </h3>
-                                                    <div class="d-flex">
-                                                        <img class="avatar avatar-xs mr-3" src="../assets/img/avatar/avatar3.jpg" alt="...">
-                                                        <div>
-                                                            <span class="text-muted">by</span> <a href="#" class="text-dark anim-link-2">Charles Wellington</a><br />
-                                                            <span class="text-muted"> 2 months ago</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          <li class="nav-item nav-item-left-border nav-item-left-border-remove nav-item-left-border-md-show">
+            <div class="social social-brand social-sm mt-1">
+              <a class="social-facebook m-0 transition-hover" href="#"><i class="fab fa-facebook"></i></a>
+              <a class="social-twitter m-0 transition-hover" href="#"><i class="fab fa-twitter"></i></a>
             </div>
-        </section>
+          </li>
+        </ul>
+      </div>
+
+      <div class="media-body">
+        <h3 class="h4 text-secondary mb-0 fw-100"><span class="fw-600">
+            {{ auth.currentUserValue.firstName }}
+            {{ auth.currentUserValue.lastName }}
+          </span>
+        </h3>
+
+        <h5 class="h4 text-primary mb-0 fw-100"><span class="fw-600">@{{ auth.currentUserValue.username }}</span>
+        </h5>
+        <ul class="nav nav-pills">
+
+          <li class="nav-item nav-item-anim-icon d-none d-md-block">
+            <a class="nav-link text-primary pl-0 m-list--link" href="#"><i class="icon-mail-2 fs-15 mr-1"></i>
+              {{auth.currentUserValue.email}} </a>
+          </li>
+        </ul>
+        <p *ngIf='auth.currentUserValue.department && auth.currentUserValue.department.site' class="mb-3">
+          department head at {{auth.currentUserValue.department.site.university.name}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
     </main>
